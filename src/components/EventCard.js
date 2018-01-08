@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import Radium from 'radium';
 import _ from 'lodash';
 import moment from 'moment';
 import lt from 'moment/locale/lt';
 
 moment.locale('lt');
 
-export default class EventCard extends Component {
+class EventCard extends Component {
   mainPhotoUrl() {
     if (!this.mainPhoto()) return;
 
@@ -62,12 +63,14 @@ export default class EventCard extends Component {
           {city}
         </div>
         <div>
-          <img src={this.mainPhotoUrl()} style={styles.img} />
+          <div style={[styles.img, { backgroundImage: `url('${this.mainPhotoUrl()}')` }]} />
         </div>
       </div>
     );
   }
 }
+
+export default Radium(EventCard);
 
 const styles = {
   container: {
@@ -86,6 +89,10 @@ const styles = {
     color: 'grey',
   },
   img: {
-    width: '100%',
+    width: '80px',
+    height: '80px',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    margin: '30px auto',
   },
 };
