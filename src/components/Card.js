@@ -31,11 +31,11 @@ class Card extends Component {
   }
 
   category() {
-    if (this.type() == 'job') {
+    if (this.type() === 'job') {
       return 'Darbas';
-    } else if (this.type() == 'event') {
+    } else if (this.type() === 'event') {
       return 'Renginys';
-    } else if (this.type() == 'person') {
+    } else if (this.type() === 'person') {
       return 'Profilis';
     } else {
       return 'Kažkas';
@@ -59,9 +59,9 @@ class Card extends Component {
       },
     } = this.props;
 
-    if (id == 'job') {
+    if (id === 'job') {
       return companyName;
-    } else if (id == 'event') {
+    } else if (id === 'event') {
       return `${_.capitalize(moment(date).format('MMMM D'))}d.`;
     }
   }
@@ -124,7 +124,7 @@ class Card extends Component {
   }
 
   isPerson() {
-    return this.type() == 'person';
+    return this.type() === 'person';
   }
 
   personHref() {

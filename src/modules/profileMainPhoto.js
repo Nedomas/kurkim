@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { createClient } from 'contentful';
 
 export const LOAD_START = 'profileMainPhoto/LOAD_START';
@@ -14,7 +13,6 @@ const initialState = {
 export function load(mainPhotoId) {
   return (dispatch, getState) => {
     dispatch({ type: LOAD_START });
-    console.log(getState());
 
     const client = createClient({
       space: 'gd1luemmtdhg',

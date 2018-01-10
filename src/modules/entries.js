@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { createClient } from 'contentful';
 
 export const LOAD_START = 'entries/LOAD_START';
@@ -35,7 +34,6 @@ export default function initialData(state = initialState, action = {}) {
       };
 
     case LOAD_SUCCESS:
-      console.log(action.result);
       return {
         ...state,
         loading: false,

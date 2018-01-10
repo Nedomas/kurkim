@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
 import { connect } from 'react-redux';
 import ReactMarkdown from 'react-markdown';
 
@@ -10,9 +9,6 @@ import {
 import {
   load as loadProfileMainPhoto,
 } from '../modules/profileMainPhoto';
-
-import Card from './Card';
-import Splash from './Splash';
 
 class Profile extends Component {
   componentDidMount() {
