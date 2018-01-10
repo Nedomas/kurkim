@@ -129,6 +129,32 @@ class Card extends Component {
     return this.type() == 'person';
   }
 
+  personHref() {
+    const {
+      data: {
+        sys: {
+          id,
+        },
+      },
+    } = this.props;
+
+    return `/profile/${id}`;
+  }
+
+  href() {
+    if (this.isPerson()) return this.personHref();
+
+    const {
+      data: {
+        fields: {
+          link,
+        },
+      },
+    } = this.props;
+
+    return link;
+  }
+
   render() {
     const {
       data: {
@@ -146,7 +172,7 @@ class Card extends Component {
 
     return (
       <a
-        href='#'
+        href={this.href()}
         style={[styles.container, this.isPerson() && styles.person.container]}
         onMouseEnter={() => this.handleMouseEnter()}
         onMouseLeave={() => this.handleMouseLeave()}
