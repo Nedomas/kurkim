@@ -6,6 +6,42 @@ import lt from 'moment/locale/lt';
 moment.locale('lt');
 
 class Card extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      hover: false,
+    };
+  }
+
+  type() {
+    const {
+      data: {
+        sys: {
+          contentType: {
+            sys: {
+              id,
+            },
+          },
+        },
+      },
+    } = this.props;
+
+    return id;
+  }
+
+  category() {
+    if (this.type() == 'job') {
+      return 'Darbas';
+    } else if (this.type() == 'event') {
+      return 'Renginys';
+    } else if (this.type() == 'person') {
+      return 'Profilis';
+    } else {
+      return 'Kažkas';
+    }
+  }
+
   greyBlock() {
     const {
       data: {
@@ -27,8 +63,6 @@ class Card extends Component {
       return companyName;
     } else if (id == 'event') {
       return `${_.capitalize(moment(date).format('MMMM D'))}d.`;
-    } else {
-      return <div>Unknown type</div>
     }
   }
 
@@ -67,18 +101,36 @@ class Card extends Component {
     return _.find(Asset, { sys: { id } });
   }
 
+  handleMouseEnter() {
+    this.setState({ hover: true });
+  }
+
+  handleMouseLeave() {
+    this.setState({ hover: false });
+  }
+
+  title() {
+    const {
+      data: {
+        fields: {
+          title,
+          firstName,
+          lastName,
+        },
+      },
+    } = this.props;
+
+    if (this.isPerson()) return `${firstName} ${lastName}`;
+
+    return title;
+  }
+
+  isPerson() {
+    return this.type() == 'person';
+  }
 
   render() {
     const {
-      data: {
-        sys: {
-          contentType: {
-            sys: {
-              id,
-            },
-          },
-        },
-      },
       data: {
         fields: {
           title,
@@ -86,18 +138,26 @@ class Card extends Component {
           shortDescription,
         },
       },
-      includes,
     } = this.props;
 
+    const {
+      hover,
+    } = this.state;
+
     return (
-      <div style={styles.container}>
+      <a
+        href='#'
+        style={[styles.container, this.isPerson() && styles.person.container]}
+        onMouseEnter={() => this.handleMouseEnter()}
+        onMouseLeave={() => this.handleMouseLeave()}
+      >
         <div style={styles.type}>
-          Darbas
+          {this.category()}
         </div>
 
         <div style={styles.blocks.top}>
-          <div style={styles.title}>
-            {title}
+          <div style={[styles.title, hover && styles.hover.title]}>
+            {this.title()}
           </div>
 
           <div style={styles.city}>
@@ -118,7 +178,7 @@ class Card extends Component {
             {this.greyBlock()}
           </div>
         </div>
-      </div>
+      </a>
     );
   }
 }
@@ -128,13 +188,15 @@ export default Radium(Card);
 const styles = {
   container: {
     height: '350px',
-    border: '3px solid #000',
+    border: '2px solid #000',
     width: '220px',
     padding: '20px 20px 13px',
-    margin: '0 15px',
+    margin: '15px 15px',
     fontFamily: 'SF Mono',
     display: 'flex',
     flexDirection: 'column',
+    color: '#000',
+    textDecoration: 'none',
   },
   title: {
     fontWeight: 600,
@@ -180,6 +242,16 @@ const styles = {
       justifyContent: 'space-between',
       height: '100%',
       paddingTop: '20px',
+    },
+  },
+  hover: {
+    title: {
+      textDecoration: 'underline',
+    },
+  },
+  person: {
+    container: {
+      backgroundColor: '#FBD230',
     },
   },
 };

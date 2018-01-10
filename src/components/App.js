@@ -71,8 +71,12 @@ class App extends Component {
         </div>
 
         <div style={styles.inner}>
-          <div style={styles.cards}>
-            {_.map(all, (entry) => <Card key={entry.sys.id} data={entry} includes={includes} />)}
+          <div style={styles.cards.title}>
+            Naujausi <span style={styles.cards.titleDash}>-</span>
+          </div>
+
+          <div style={styles.cards.list}>
+            {_.map(_.shuffle(all.concat(all)), (entry) => <Card key={entry.sys.id} data={entry} includes={includes} />)}
           </div>
         </div>
       </div>
@@ -94,10 +98,22 @@ const styles = {
     padding: '40px',
   },
   cards: {
-    display: 'flex',
-    padding: '100px 0',
-    margin: '0 -10px',
-    justifyContent: 'center',
+    title: {
+      fontSize: '70px',
+      letterSpacing: '1.2px',
+      fontWeight: 600,
+      color: '#000',
+    },
+    titleDash: {
+      color: '#FBD230',
+    },
+    list: {
+      display: 'flex',
+      padding: '50px 0',
+      margin: '0 -10px',
+      flexWrap: 'wrap',
+      // justifyContent: 'center',
+    },
   },
   header: {
     container: {
