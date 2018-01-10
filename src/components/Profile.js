@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
+import ReactMarkdown from 'react-markdown';
 
 import {
   load as loadProfile,
@@ -64,11 +65,18 @@ class Profile extends Component {
           </div>
 
           <div style={styles.content.container}>
-            <div style={styles.title}>
+            <div style={styles.fullName}>
               {this.fullName()}
+            </div>
+            <div style={styles.title}>
+              {this.profileFields().title}
             </div>
             <div style={styles.city}>
               {this.profileFields().city}
+            </div>
+
+            <div style={styles.description}>
+              <ReactMarkdown source={this.profileFields().description} />
             </div>
           </div>
         </div>
@@ -99,11 +107,20 @@ const styles = {
   },
   content: {
     container: {
+      width: '70%',
     },
   },
-  title: {
+  fullName: {
     fontSize: '60px',
     margin: '-15px 0 0 -6px',
+  },
+  title: {
+    fontSize: '30px',
+    marginLeft: '-3px',
+  },
+  city: {
+    fontFamily: 'SF Mono',
+    paddingTop: '10px',
   },
 }
 
