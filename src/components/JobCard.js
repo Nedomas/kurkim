@@ -10,6 +10,7 @@ class JobCard extends Component {
           title,
           city,
           shortDescription,
+          companyName,
         },
       },
     } = this.props;
@@ -37,6 +38,10 @@ class JobCard extends Component {
         <div style={styles.shortDescription}>
           {shortDescription}
         </div>
+
+        <div style={styles.companyName}>
+          {companyName}
+        </div>
       </div>
     );
   }
@@ -49,9 +54,12 @@ const styles = {
     height: '350px',
     border: '3px solid #000',
     width: '220px',
-    padding: '20px',
+    padding: '20px 20px 13px',
     margin: '0 15px',
     fontFamily: 'SF Mono',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
   },
   title: {
     fontWeight: 600,
@@ -69,6 +77,10 @@ const styles = {
   shortDescription: {
     padding: '0 20px 0 0',
     fontSize: '14px',
+  },
+  companyName: {
+    paddingTop: '10px',
+    color: 'grey',
   },
   img: {
     width: '80px',
