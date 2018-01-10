@@ -1,3 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,600,700');
+@font-face {
+  font-family: CT Cinetype;
+  src: url('/GT-Cinetype-Regular.ttf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: CT Cinetype;
+  src: url('/GT-Cinetype-Bold.ttf');
+  font-weight: 600;
+}
+
 body {
   margin: 0;
   padding: 0;

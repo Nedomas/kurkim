@@ -27,7 +27,9 @@ class App extends Component {
           <div style={styles.inner}>
             <div style={styles.navbar.container}>
               <div style={styles.navbar.logo}>
-                Chilli Con Arte
+                Chilli
+                <br/>
+                Con Arte
               </div>
 
               <div style={styles.navbar.links.container}>
@@ -41,27 +43,31 @@ class App extends Component {
                 </div>
               </div>
             </div>
-          </div>
 
-          <div style={styles.header.content.container}>
-            <div>
-              <div style={styles.header.title}>
-                Kūrybingi darbai
-                <br />
-                kūrybingiems
-              </div>
+            <div style={styles.header.content.container}>
+              <div>
+                <div style={styles.header.title}>
+                  <div>
+                    Kūrybingi darbai
+                  </div>
+                  <div style={styles.header.titleSecond}>
+                    kūrybingiems
+                  </div>
+                </div>
 
-              <div style={styles.header.buttons.container}>
-                <button style={styles.header.buttons.button}>
-                  Įkelti darbo skelbimą
-                </button>
+                <div style={styles.header.buttons.container}>
+                  <button style={styles.header.buttons.button}>
+                    Įkelti darbo skelbimą
+                  </button>
 
-                <button style={styles.header.buttons.button}>
-                  Esu kūrybingas
-                </button>
+                  <button style={styles.header.buttons.button}>
+                    Esu kūrybingas
+                  </button>
+                </div>
               </div>
             </div>
           </div>
+
         </div>
 
         <div style={styles.inner}>
@@ -83,8 +89,9 @@ const styles = {
     height: "100vh",
   },
   inner: {
-    width: '800px',
+    // width: '800px',
     margin: '0 auto',
+    padding: '40px',
   },
   cards: {
     display: 'flex',
@@ -93,21 +100,29 @@ const styles = {
   },
   header: {
     container: {
-      backgroundImage: 'url("/chilli.png")',
+      backgroundImage: 'url("/art2.jpg")',
+      backgroundSize: 'auto 70%',
       backgroundRepeat: 'no-repeat',
-      backgroundSize: 'cover',
-      backgroundPosition: 'center bottom',
+      // backgroundSize: 'cover',
+      backgroundPosition: '75% 50%',
+      // backgroundColor: '#F7FDF4',
       minHeight: '115vh',
     },
     title: {
-      fontSize: '40px',
+      fontSize: '100px',
+      letterSpacing: '1.2px',
+      lineHeight: '120px',
       fontWeight: 600,
-      color: '#fff',
+      color: '#000',
+      fontFamily: '"CT Cinetype"',
+    },
+    titleSecond: {
+      color: '#0B24FA'
     },
     content: {
       container: {
         paddingTop: '100px',
-        width: '800px',
+        // width: '800px',
         margin: '0 auto',
       },
     },
@@ -125,15 +140,17 @@ const styles = {
         paddingTop: '30px',
       },
       button: {
-        backgroundColor: 'hsla(0, 0%, 100%, 0.9)',
-        border: 'none',
+        marginTop: '-4px',
+        background: 'none',
+        border: '3px solid #000',
+        padding: '18px 20px',
         color: '#000',
-        padding: '20px',
-        fontSize: '14px',
-        fontWeight: 600,
-        textTransform: 'uppercase',
-        borderRadius: '4px',
         marginRight: '20px',
+        fontFamily: '"CT Cinetype"',
+        fontSize: '19px',
+        letterSpacing: '1px',
+        // textTransform: 'uppercase',
+        fontWeight: 600,
       },
     },
   },
@@ -142,12 +159,14 @@ const styles = {
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      padding: '30px 0',
     },
     logo: {
       fontWeight: 600,
-      fontSize: '20px',
-      color: '#fff',
+      fontSize: '25px',
+      lineHeight: '30px',
+      color: '#000',
+      textTransform: 'uppercase',
+      fontFamily: '"CT Cinetype"',
     },
     links: {
       container: {
@@ -155,18 +174,21 @@ const styles = {
         alignItems: 'center',
       },
       item: {
-        paddingLeft: '30px',
-        color: '#fff',
+        paddingLeft: '50px',
+        color: '#000',
         fontWeight: 600,
+        fontFamily: '"CT Cinetype"',
+        fontSize: '15px',
+        letterSpacing: '1px',
+        textTransform: 'uppercase',
       },
       button: {
-        backgroundColor: '#EC4033',
-        padding: '10px',
-        color: '#fff',
+        marginTop: '-4px',
+        background: 'none',
+        border: '3px solid #000',
+        padding: '13px 20px',
+        color: '#000',
         fontWeight: 600,
-        fontSize: '12px',
-        borderRadius: '3px',
-        textTransform: 'uppercase',
       },
     },
   },
