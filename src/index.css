@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,600,700');
+@import url('https://fonts.googleapis.com/css?family=PT+Mono');
+
 @font-face {
   font-family: CT Cinetype;
   src: url('/GT-Cinetype-Regular.ttf');
@@ -14,5 +16,5 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Avenir Next', sans-serif;
+  font-family: 'CT Cinetype', sans-serif;
 }

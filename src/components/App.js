@@ -97,6 +97,7 @@ const styles = {
     display: 'flex',
     padding: '100px 0',
     margin: '0 -10px',
+    justifyContent: 'center',
   },
   header: {
     container: {
