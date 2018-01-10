@@ -81,8 +81,6 @@ class Card extends Component {
   }
 
   mainPhoto() {
-    console.log(this.props);
-
     const {
       data: {
         fields: {
@@ -277,7 +275,7 @@ const styles = {
   },
   person: {
     container: {
-      backgroundColor: '#FBD230',
+      backgroundColor: '#F7FDF4',
     },
   },
 };
