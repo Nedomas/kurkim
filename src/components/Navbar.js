@@ -5,20 +5,20 @@ class Navbar extends Component {
   render() {
     return (
       <div style={styles.container}>
-        <div style={styles.logo}>
+        <a href='/' style={styles.logo}>
           Chilli
           <br/>
           Con Arte
-        </div>
+        </a>
 
         <div style={styles.links.container}>
-          <div style={styles.links.item}>
+          <a href='/' style={styles.links.item}>
             Blogas
-          </div>
+          </a>
           <div style={styles.links.item}>
-            <div style={styles.links.button}>
+            <a href='/' style={styles.links.button}>
               Įkelti skelbimą
-            </div>
+            </a>
           </div>
         </div>
       </div>
@@ -43,6 +43,8 @@ const styles = {
     color: '#000',
     textTransform: 'uppercase',
     fontFamily: '"CT Cinetype"',
+    display: 'block',
+    textDecoration: 'none',
   },
   links: {
     container: {
@@ -57,6 +59,8 @@ const styles = {
       fontSize: '15px',
       letterSpacing: '1px',
       textTransform: 'uppercase',
+      display: 'block',
+      textDecoration: 'none',
     },
     button: {
       marginTop: '-4px',
@@ -65,6 +69,8 @@ const styles = {
       padding: '13px 20px',
       color: '#000',
       fontWeight: 600,
+      display: 'block',
+      textDecoration: 'none',
     },
   },
 };

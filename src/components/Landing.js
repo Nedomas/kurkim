@@ -32,7 +32,7 @@ class Landing extends Component {
           </div>
 
           <div style={styles.cards.list}>
-            {_.map(_.shuffle(all.concat(all)), (entry) => <Card key={entry.sys.id} data={entry} includes={includes} />)}
+            {_.map(all, (entry) => <Card key={entry.sys.id} data={entry} includes={includes} />)}
           </div>
         </div>
       </div>

@@ -16,13 +16,13 @@ class Splash extends Component {
           </div>
 
           <div style={styles.buttons.container}>
-            <button style={styles.buttons.button}>
+            <a href='/' style={styles.buttons.button}>
               Įkelti darbo skelbimą
-            </button>
+            </a>
 
-            <button style={styles.buttons.button}>
+            <a href='/' style={styles.buttons.button}>
               Esu kūrybingas
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -73,8 +73,9 @@ const styles = {
       fontFamily: '"CT Cinetype"',
       fontSize: '19px',
       letterSpacing: '1px',
-      // textTransform: 'uppercase',
       fontWeight: 600,
+      display: 'block',
+      textDecoration: 'none',
     },
   },
 };

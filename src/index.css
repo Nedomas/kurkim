@@ -1,16 +1,19 @@
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,600,700');
-@import url('https://fonts.googleapis.com/css?family=PT+Mono');
-
 @font-face {
   font-family: CT Cinetype;
-  src: url('/GT-Cinetype-Regular.ttf');
+  src: url('/fonts/GT-Cinetype/GT-Cinetype-Regular.ttf');
   font-weight: 400;
 }
 
 @font-face {
   font-family: CT Cinetype;
-  src: url('/GT-Cinetype-Bold.ttf');
+  src: url('/fonts/GT-Cinetype/GT-Cinetype-Bold.ttf');
   font-weight: 600;
+}
+
+@font-face {
+  font-family: SF Mono;
+  src: url('/fonts/SFMono/SFMono-Regular.otf');
+  font-weight: 400;
 }
 
 body {
