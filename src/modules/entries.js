@@ -1,4 +1,5 @@
 import { createClient } from 'contentful';
+import _ from 'lodash';
 
 export const LOAD_START = 'entries/LOAD_START';
 export const LOAD_SUCCESS = 'entries/LOAD_SUCCESS';
@@ -34,10 +35,14 @@ export default function initialData(state = initialState, action = {}) {
       };
 
     case LOAD_SUCCESS:
+      const filteredItems = _.filter(action.result.items, (item) => {
+        return _.includes(['job', 'event', 'person'], item.sys.contentType.sys.id);
+      });
+
       return {
         ...state,
         loading: false,
-        all: action.result.items,
+        all: filteredItems,
         includes: action.result.includes,
       };
 

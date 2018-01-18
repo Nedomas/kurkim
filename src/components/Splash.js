@@ -47,7 +47,7 @@ const styles = {
     lineHeight: '120px',
     fontWeight: 600,
     color: '#000',
-    fontFamily: '"CT Cinetype"',
+    fontFamily: '"Lab Grotesque"',
   },
   titleSecond: {
     color: '#0B24FA'
@@ -70,7 +70,7 @@ const styles = {
       padding: '18px 20px',
       color: '#000',
       marginRight: '20px',
-      fontFamily: '"CT Cinetype"',
+      fontFamily: '"Lab Grotesque"',
       fontSize: '19px',
       letterSpacing: '1px',
       fontWeight: 600,

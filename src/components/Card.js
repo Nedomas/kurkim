@@ -32,7 +32,7 @@ class Card extends Component {
 
   category() {
     if (this.type() === 'job') {
-      return 'Darbas';
+      return 'Ieškomas';
     } else if (this.type() === 'event') {
       return 'Renginys';
     } else if (this.type() === 'person') {
@@ -55,15 +55,17 @@ class Card extends Component {
         fields: {
           companyName,
           date,
+          city,
         },
       },
     } = this.props;
 
-    if (id === 'job') {
-      return companyName;
-    } else if (id === 'event') {
-      return `${_.capitalize(moment(date).format('MMMM D'))}d.`;
-    }
+    return city;
+    // if (id === 'job') {
+    //   return companyName;
+    // } else if (id === 'event') {
+    //   return `${_.capitalize(moment(date).format('MMMM D'))}d.`;
+    // }
   }
 
   mainPhotoUrl() {
@@ -183,10 +185,6 @@ class Card extends Component {
           <div style={[styles.title, hover && styles.hover.title]}>
             {this.title()}
           </div>
-
-          <div style={styles.city}>
-            {city}
-          </div>
         </div>
 
         <div style={styles.blocks.middle}>
@@ -198,7 +196,7 @@ class Card extends Component {
             {shortDescription}
           </div>
 
-          <div style={styles.companyName}>
+          <div style={styles.greyBlock}>
             {this.greyBlock()}
           </div>
         </div>
@@ -216,7 +214,7 @@ const styles = {
     width: '220px',
     padding: '20px 20px 13px',
     margin: '15px 15px',
-    fontFamily: 'SF Mono',
+    fontFamily: '"Lab Grotesque"',
     display: 'flex',
     flexDirection: 'column',
     color: '#000',
@@ -236,16 +234,17 @@ const styles = {
     paddingBottom: '30px',
   },
   shortDescription: {
-    padding: '0 20px 0 0',
+    // padding: '0 10px 0 0',
     fontSize: '14px',
   },
-  companyName: {
+  greyBlock: {
     paddingTop: '10px',
     color: 'grey',
+    textAlign: 'center',
   },
   img: {
-    width: '80px',
-    height: '80px',
+    width: '120px',
+    height: '120px',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     margin: '0 auto',
@@ -257,7 +256,7 @@ const styles = {
       flexShrink: 0,
     },
     middle: {
-      paddingTop: '30px',
+      // paddingTop: '30px',
       height: '100px',
     },
     bottom: {

@@ -89,7 +89,7 @@ const styles = {
     width: '220px',
     padding: '20px',
     margin: '0 15px',
-    fontFamily: 'SF Mono',
+    fontFamily: '"CT Cinetype"',
   },
   title: {
     fontWeight: 600,

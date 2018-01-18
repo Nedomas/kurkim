@@ -18,7 +18,7 @@ class JobCard extends Component {
     return (
       <div style={styles.container}>
         <div style={styles.type}>
-          Darbas
+          Ieškomas
         </div>
 
         <div style={styles.blocks.top}>
@@ -56,7 +56,7 @@ const styles = {
     width: '220px',
     padding: '20px 20px 13px',
     margin: '0 15px',
-    fontFamily: 'SF Mono',
+    fontFamily: '"CT Cinetype"',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',

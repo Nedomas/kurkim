@@ -115,7 +115,7 @@ const styles = {
     marginLeft: '-3px',
   },
   city: {
-    fontFamily: 'SF Mono',
+    fontFamily: '"CT Cinetype"',
     paddingTop: '10px',
   },
 }
