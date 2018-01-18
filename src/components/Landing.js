@@ -43,7 +43,7 @@ class Landing extends Component {
 const styles = {
   container: {
     margin: '0 auto',
-    padding: '40px',
+    // padding: '40px',
   },
   cards: {
     title: {

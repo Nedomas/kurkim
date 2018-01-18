@@ -1,29 +1,47 @@
+/* @font-face { */
+/*   font-family: CT Cinetype; */
+/*   src: url('/fonts/GT-Cinetype/GT-Cinetype-Regular.ttf'); */
+/*   font-weight: 400; */
+/* } */
+/*  */
+/* @font-face { */
+/*   font-family: CT Cinetype; */
+/*   src: url('/fonts/GT-Cinetype/GT-Cinetype-Bold.ttf'); */
+/*   font-weight: 600; */
+/* } */
+/*  */
+/* @font-face { */
+/*   font-family: SF Mono; */
+/*   src: url('/fonts/SFMono/SFMono-Regular.otf'); */
+/*   font-weight: 400; */
+/* } */
+/*  */
+/* @font-face { */
+/*   font-family: Lab Grotesque; */
+/*   src: url('/fonts/Lab-Grotesque/LabGrotesque-Regular.ttf'); */
+/*   font-weight: 400; */
+/* } */
+
 @font-face {
-  font-family: CT Cinetype;
-  src: url('/fonts/GT-Cinetype/GT-Cinetype-Regular.ttf');
+  font-family: HK Grotesk;
+  src: url('/fonts/hk-grotesk/HKGrotesk-Regular.otf');
   font-weight: 400;
 }
 
 @font-face {
-  font-family: CT Cinetype;
-  src: url('/fonts/GT-Cinetype/GT-Cinetype-Bold.ttf');
+  font-family: HK Grotesk;
+  src: url('/fonts/hk-grotesk/HKGrotesk-Bold.otf');
   font-weight: 600;
 }
 
 @font-face {
-  font-family: SF Mono;
-  src: url('/fonts/SFMono/SFMono-Regular.otf');
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: Lab Grotesque;
-  src: url('/fonts/Lab-Grotesque/LabGrotesque-Regular.ttf');
+  font-family: Garamond Premier Pro Display;
+  src: url('/fonts/Garamond Premier Pro Display/Garamond Premier Pro Display.otf');
   font-weight: 400;
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Lab Grotesque', sans-serif;
+  font-family: 'HK Grotesk', sans-serif;
 }

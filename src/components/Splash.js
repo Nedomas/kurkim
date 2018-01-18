@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
+import Navbar from './Navbar';
 
 class Splash extends Component {
   render() {
     return (
       <div style={styles.container}>
+        <Navbar />
+
         <div style={styles.content.container}>
           <div style={styles.title}>
             <div>
@@ -34,48 +37,47 @@ export default Radium(Splash);
 
 const styles = {
   container: {
-    backgroundImage: 'url("/art2.jpg")',
-    backgroundSize: 'auto 70%',
+    backgroundImage: 'url("/darker2.jpg")',
+    backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
-    backgroundPosition: '80% 0',
+    // backgroundPosition: '80% 0',
     minHeight: '100vh',
     margin: '0 auto',
+    width: '100%',
   },
   title: {
-    fontSize: '100px',
+    fontSize: '80px',
     letterSpacing: '1.2px',
-    lineHeight: '120px',
-    fontWeight: 600,
-    color: '#000',
-    fontFamily: '"Lab Grotesque"',
+    lineHeight: '75px',
+    color: '#fff',
+    fontFamily: '"Garamond Premier Pro Display"',
   },
   titleSecond: {
-    color: '#0B24FA'
+    // color: '#0B24FA'
   },
   content: {
     container: {
-      paddingTop: '50px',
+      padding: '200px 80px 0',
       margin: '0 auto',
     },
   },
   buttons: {
     container: {
       display: 'flex',
-      paddingTop: '30px',
+      paddingTop: '40px',
     },
     button: {
-      marginTop: '-4px',
       background: 'none',
-      border: '3px solid #000',
-      padding: '18px 20px',
-      color: '#000',
-      marginRight: '20px',
-      fontFamily: '"Lab Grotesque"',
-      fontSize: '19px',
+      borderBottom: '1px solid #fff',
+      padding: '10px 0',
+      color: '#fff',
+      marginRight: '40px',
+      fontFamily: '"HK Grotesk"',
+      fontSize: '15px',
       letterSpacing: '1px',
-      fontWeight: 600,
       display: 'block',
       textDecoration: 'none',
+      textTransform: 'uppercase',
     },
   },
 };

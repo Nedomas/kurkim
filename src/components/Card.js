@@ -214,7 +214,7 @@ const styles = {
     width: '220px',
     padding: '20px 20px 13px',
     margin: '15px 15px',
-    fontFamily: '"Lab Grotesque"',
+    fontFamily: '"HK Grotesk"',
     display: 'flex',
     flexDirection: 'column',
     color: '#000',
