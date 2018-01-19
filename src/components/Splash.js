@@ -59,6 +59,7 @@ const styles = {
     container: {
       padding: '200px 80px 0',
       margin: '0 auto',
+      maxWidth: '1000px',
     },
   },
   buttons: {

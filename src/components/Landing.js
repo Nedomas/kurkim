@@ -26,7 +26,7 @@ class Landing extends Component {
       <div style={styles.container}>
         <Splash />
 
-        <div style={styles.inner}>
+        <div style={styles.cards.container}>
           <div style={styles.cards.title}>
             Naujausi <span style={styles.cards.titleDash}>-</span>
           </div>
@@ -46,7 +46,13 @@ const styles = {
     // padding: '40px',
   },
   cards: {
+    container: {
+      padding: '100px 80px',
+      margin: '0 auto',
+      maxWidth: '1000px',
+    },
     title: {
+      fontFamily: '"Garamond Premier Pro Display"',
       fontSize: '70px',
       letterSpacing: '1.2px',
       fontWeight: 600,
@@ -58,8 +64,8 @@ const styles = {
     list: {
       display: 'flex',
       padding: '50px 0',
-      margin: '0 -10px',
       flexWrap: 'wrap',
+      margin: '0 -15px',
     },
   },
 }

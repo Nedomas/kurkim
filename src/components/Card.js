@@ -177,6 +177,10 @@ class Card extends Component {
         onMouseEnter={() => this.handleMouseEnter()}
         onMouseLeave={() => this.handleMouseLeave()}
       >
+        <div style={styles.blocks.middle}>
+          <div style={[styles.img, { backgroundImage: `url('${this.mainPhotoUrl()}')` }]} />
+        </div>
+
         <div style={styles.type}>
           {this.category()}
         </div>
@@ -185,10 +189,6 @@ class Card extends Component {
           <div style={[styles.title, hover && styles.hover.title]}>
             {this.title()}
           </div>
-        </div>
-
-        <div style={styles.blocks.middle}>
-          <div style={[styles.img, { backgroundImage: `url('${this.mainPhotoUrl()}')` }]} />
         </div>
 
         <div style={styles.blocks.bottom}>
@@ -209,29 +209,30 @@ export default Radium(Card);
 
 const styles = {
   container: {
-    height: '350px',
-    border: '2px solid #000',
-    width: '220px',
-    padding: '20px 20px 13px',
-    margin: '15px 15px',
+    // border: '2px solid #000',
+    width: '30%',
+    padding: '50px 10px',
+    // margin: '15px 0',
     fontFamily: '"HK Grotesk"',
-    display: 'flex',
-    flexDirection: 'column',
+    // display: 'flex',
+    // flexDirection: 'column',
     color: '#000',
     textDecoration: 'none',
   },
   title: {
-    fontWeight: 600,
-    letterSpacing: '1.1px',
-    padding: '0 10px 10px 0',
+    fontFamily: '"HK Grotesk"',
+    // letterSpacing: '1.1px',
+    // padding: '20px 0',
     paddingBottom: '10px',
     fontSize: '20px',
     textTransform: 'uppercase',
   },
   type: {
     textTransform: 'uppercase',
-    fontSize: '14px',
-    paddingBottom: '30px',
+    letterSpacing: '.1em',
+    padding: '20px 0',
+    fontFamily: '"HK Grotesk"',
+    fontSize: '12px',
   },
   shortDescription: {
     // padding: '0 10px 0 0',
@@ -243,8 +244,8 @@ const styles = {
     textAlign: 'center',
   },
   img: {
-    width: '120px',
-    height: '120px',
+    width: '100%',
+    height: '180px',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     margin: '0 auto',
@@ -252,18 +253,14 @@ const styles = {
   },
   blocks: {
     top: {
-      height: '80px',
-      flexShrink: 0,
+      // height: '80px',
+      // flexShrink: 0,
     },
     middle: {
       // paddingTop: '30px',
-      height: '100px',
+      // height: '100px',
     },
     bottom: {
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'space-between',
-      height: '100%',
       paddingTop: '20px',
     },
   },
@@ -274,7 +271,7 @@ const styles = {
   },
   person: {
     container: {
-      backgroundColor: '#F7FDF4',
+      // backgroundColor: '#F7FDF4',
     },
   },
 };
