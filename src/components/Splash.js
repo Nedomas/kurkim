@@ -37,7 +37,7 @@ export default Radium(Splash);
 
 const styles = {
   container: {
-    backgroundImage: 'url("/darker2.jpg")',
+    backgroundImage: 'url("/darker3.jpg")',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     // backgroundPosition: '80% 0',

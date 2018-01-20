@@ -27,10 +27,6 @@ class Landing extends Component {
         <Splash />
 
         <div style={styles.cards.container}>
-          <div style={styles.cards.title}>
-            Naujausi <span style={styles.cards.titleDash}>-</span>
-          </div>
-
           <div style={styles.cards.list}>
             {_.map(all, (entry) => <Card key={entry.sys.id} data={entry} includes={includes} />)}
           </div>
@@ -63,7 +59,6 @@ const styles = {
     },
     list: {
       display: 'flex',
-      padding: '50px 0',
       flexWrap: 'wrap',
       margin: '0 -15px',
     },

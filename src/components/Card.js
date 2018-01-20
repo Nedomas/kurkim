@@ -211,13 +211,15 @@ const styles = {
   container: {
     // border: '2px solid #000',
     width: '30%',
-    padding: '50px 10px',
+    padding: '50px 0 10px',
+    margin: '0 15px',
     // margin: '15px 0',
     fontFamily: '"HK Grotesk"',
     // display: 'flex',
     // flexDirection: 'column',
     color: '#000',
     textDecoration: 'none',
+    borderBottom: '1px solid #E6E6E6',
   },
   title: {
     fontFamily: '"HK Grotesk"',
@@ -230,26 +232,28 @@ const styles = {
   type: {
     textTransform: 'uppercase',
     letterSpacing: '.1em',
-    padding: '20px 0',
+    padding: '20px 0 0',
     fontFamily: '"HK Grotesk"',
     fontSize: '12px',
   },
   shortDescription: {
     // padding: '0 10px 0 0',
     fontSize: '14px',
+    minHeight: '70px',
   },
   greyBlock: {
     paddingTop: '10px',
     color: 'grey',
-    textAlign: 'center',
+    // textAlign: 'right',
   },
   img: {
     width: '100%',
-    height: '180px',
+    height: '200px',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     margin: '0 auto',
-    // filter: 'grayscale(100%)',
+    mixBlendMode: 'darken',
+    filter: 'grayscale(100%) contrast(2)',
   },
   blocks: {
     top: {
@@ -257,11 +261,14 @@ const styles = {
       // flexShrink: 0,
     },
     middle: {
+      // backgroundColor: '#f1e3a0',
+      background: 'linear-gradient(180deg, #F86E57, #f2e782)',
       // paddingTop: '30px',
       // height: '100px',
     },
     bottom: {
       paddingTop: '20px',
+      // display: 'flex',
     },
   },
   hover: {

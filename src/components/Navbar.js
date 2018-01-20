@@ -15,6 +15,15 @@ class Navbar extends Component {
           <a href='/' style={styles.links.item}>
             Blogas
           </a>
+          <a href='/' style={styles.links.item}>
+            Žmonės
+          </a>
+          <a href='/' style={styles.links.item}>
+            Renginiai
+          </a>
+          <a href='/' style={styles.links.item}>
+            Darbo skelbimai
+          </a>
           <div style={styles.links.item}>
             <a href='/' style={styles.links.button}>
               Įkelti skelbimą
@@ -63,7 +72,7 @@ const styles = {
       textDecoration: 'none',
     },
     button: {
-      marginTop: '-4px',
+      marginTop: '-1px',
       background: 'none',
       borderBottom: '1px solid #fff',
       // border: '3px solid #000',
