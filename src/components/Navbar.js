@@ -19,13 +19,13 @@ class Navbar extends Component {
           <a href='/' style={[styles.links.item, dark && styles.dark.links.item]}>
             Blogas
           </a>
-          <a href='/' style={[styles.links.item, dark && styles.dark.links.item]}>
+          <a href='/people#cards' style={[styles.links.item, dark && styles.dark.links.item]}>
             Žmonės
           </a>
-          <a href='/' style={[styles.links.item, dark && styles.dark.links.item]}>
+          <a href='/events#cards' style={[styles.links.item, dark && styles.dark.links.item]}>
             Renginiai
           </a>
-          <a href='/' style={[styles.links.item, dark && styles.dark.links.item]}>
+          <a href='/jobs#cards' style={[styles.links.item, dark && styles.dark.links.item]}>
             Darbo skelbimai
           </a>
           <div style={[styles.links.item, dark && styles.dark.links.item]}>
