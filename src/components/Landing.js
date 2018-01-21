@@ -14,10 +14,50 @@ class Landing extends Component {
     this.props.handleLoad();
   }
 
-  render() {
+  all() {
     const {
       entries: {
         all,
+      },
+    } = this.props;
+
+    console.log(all);
+    const jobs = _.filter(all, {
+      sys: {
+        contentType: {
+          sys: {
+            id: 'job'
+          }
+        }
+      }
+    });
+
+    const events = _.filter(all, {
+      sys: {
+        contentType: {
+          sys: {
+            id: 'event'
+          }
+        }
+      }
+    });
+
+    const people = _.filter(all, {
+      sys: {
+        contentType: {
+          sys: {
+            id: 'person'
+          }
+        }
+      }
+    });
+
+    return _.compact(_.flatten(_.zip(jobs, events, people)));
+  }
+
+  render() {
+    const {
+      entries: {
         includes,
       },
     } = this.props;
@@ -27,8 +67,22 @@ class Landing extends Component {
         <Splash />
 
         <div style={styles.cards.container}>
+          <div style={styles.filters.container}>
+            <a href='/' style={styles.filters.item}>
+              Visi
+            </a>
+            <a href='/' style={styles.filters.item}>
+              Žmonės
+            </a>
+            <a href='/' style={styles.filters.item}>
+              Renginiai
+            </a>
+            <a href='/' style={styles.filters.item}>
+              Darbo skelbimai
+            </a>
+          </div>
           <div style={styles.cards.list}>
-            {_.map(all, (entry) => <Card key={entry.sys.id} data={entry} includes={includes} />)}
+            {_.map(this.all(), (entry) => <Card key={entry.sys.id} data={entry} includes={includes} />)}
           </div>
         </div>
       </div>
@@ -61,6 +115,26 @@ const styles = {
       display: 'flex',
       flexWrap: 'wrap',
       margin: '0 -15px',
+    },
+  },
+  filters: {
+    container: {
+      display: 'flex',
+      alignItems: 'center',
+      paddingBottom: '55px',
+    },
+    item: {
+      marginRight: '20px',
+      color: '#312E3F',
+      // fontWeight: 600,
+      fontFamily: '"HK Grotesk"',
+      fontSize: '13px',
+      letterSpacing: '1px',
+      textTransform: 'uppercase',
+      display: 'block',
+      textDecoration: 'none',
+      paddingBottom: '4px',
+      borderBottom: '1px solid hsla(251, 16%, 21%, 0.1)',
     },
   },
 }

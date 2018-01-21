@@ -69,7 +69,7 @@ const styles = {
     },
     button: {
       background: 'none',
-      borderBottom: '1px solid #fff',
+      borderBottom: '1px solid hsla(0, 0%, 100%, .5)',
       padding: '10px 0',
       color: '#fff',
       marginRight: '40px',

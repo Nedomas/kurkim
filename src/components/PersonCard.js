@@ -2,18 +2,15 @@ import React, { Component } from 'react';
 import Radium from 'radium';
 import _ from 'lodash';
 import moment from 'moment';
-import PersonCard from './PersonCard';
 import lt from 'moment/locale/lt';
-import Measure from 'react-measure';
 moment.locale('lt');
 
-class Card extends Component {
+class PersonCard extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       hover: false,
-      titleHeight: 0,
     };
   }
 
@@ -112,27 +109,32 @@ class Card extends Component {
     this.setState({ hover: false });
   }
 
-  title() {
+  fullName() {
     const {
       data: {
         fields: {
-          title,
           firstName,
           lastName,
         },
       },
     } = this.props;
 
-    if (this.isPerson()) return `${firstName} ${lastName}`;
+    return `${firstName} ${lastName}`;
+  }
+
+  title() {
+    const {
+      data: {
+        fields: {
+          title,
+        },
+      },
+    } = this.props;
 
     return title;
   }
 
-  isPerson() {
-    return this.type() === 'person';
-  }
-
-  personHref() {
+  href() {
     const {
       data: {
         sys: {
@@ -142,20 +144,6 @@ class Card extends Component {
     } = this.props;
 
     return `/profile/${id}`;
-  }
-
-  href() {
-    if (this.isPerson()) return this.personHref();
-
-    const {
-      data: {
-        fields: {
-          link,
-        },
-      },
-    } = this.props;
-
-    return link;
   }
 
   render() {
@@ -171,16 +159,12 @@ class Card extends Component {
 
     const {
       hover,
-      titleHeight,
     } = this.state;
-    console.log(titleHeight);
-
-    if (this.isPerson()) return <PersonCard {...this.props} />;
 
     return (
       <a
         href={this.href()}
-        style={[styles.container, this.isPerson() && styles.person.container]}
+        style={styles.container}
         onMouseEnter={() => this.handleMouseEnter()}
         onMouseLeave={() => this.handleMouseLeave()}
       >
@@ -188,38 +172,13 @@ class Card extends Component {
           <div style={[styles.img, { backgroundImage: `url('${this.mainPhotoUrl()}')` }]} />
         </div>
 
-        <div style={styles.topContainer}>
-          <div style={styles.category}>
-            {this.category()}
+        <div style={styles.content}>
+          <div style={[styles.fullName, hover && styles.hover.fullName]}>
+            {this.fullName()}
           </div>
-          <div>
-            {this.greyBlock()}
-          </div>
-        </div>
 
-        <div style={styles.blocks.top}>
-          <div style={[styles.title, hover && styles.hover.title]}>
-            <Measure
-              bounds
-              onResize={(contentRect) => {
-                this.setState({ titleHeight: contentRect.bounds.height })
-              }}
-            >
-              {({ measureRef }) => (
-                <div ref={measureRef}>
-                  {this.title()}
-                </div>
-              )}
-            </Measure>
-          </div>
-          {titleHeight < 100 && <div style={styles.seperator}>
-            —
-          </div>}
-        </div>
-
-        <div style={styles.blocks.bottom}>
-          <div style={styles.shortDescription}>
-            {shortDescription}
+          <div style={styles.title}>
+            {this.title()}
           </div>
         </div>
       </a>
@@ -227,94 +186,87 @@ class Card extends Component {
   }
 }
 
-export default Radium(Card);
+export default Radium(PersonCard);
 
 const styles = {
   container: {
     // border: '2px solid #000',
     width: '30%',
-    padding: '0 0 10px',
+    padding: '0',
     margin: '0 15px 50px',
     // margin: '15px 0',
     fontFamily: '"HK Grotesk"',
     // display: 'flex',
     // flexDirection: 'column',
-    color: '#888888',
-    textDecoration: 'none',
-    // borderBottom: '1px solid #E6E6E6',
-  },
-  title: {
-    // fontFamily: '"HK Grotesk"',
-    fontFamily: '"Garamond Premier Pro Display"',
     color: '#000',
+    textDecoration: 'none',
+  },
+  fullName: {
+    // fontFamily: '"HK Grotesk"',
     // letterSpacing: '1.1px',
     // padding: '20px 0',
-    padding: '10px 0 0',
+    // paddingBottom: '10px',
     fontSize: '60px',
     lineHeight: '50px',
+    fontFamily: '"Garamond Premier Pro Display"',
     marginLeft: '-2px',
-    textTransform: 'capitalize',
+    // textTransform: 'uppercase',
   },
-  topContainer: {
-    textTransform: 'uppercase',
+  title: {
+    // textTransform: 'uppercase',
     letterSpacing: '.1em',
-    padding: '20px 0 10px',
+    padding: '0px 0 0',
     fontFamily: '"HK Grotesk"',
-    fontSize: '12px',
-    color: '#888888',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  category: {
-    border: '1px solid #888888',
-    padding: '2px 5px 1px',
+    fontSize: '16px',
   },
   shortDescription: {
     // padding: '0 10px 0 0',
     fontSize: '14px',
-    // minHeight: '70px',
+    minHeight: '70px',
   },
   greyBlock: {
-    // paddingTop: '10px',
+    paddingTop: '10px',
     color: 'grey',
     // textAlign: 'right',
   },
   img: {
     width: '100%',
-    height: '170px',
+    height: '400px',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     margin: '0 auto',
     mixBlendMode: 'darken',
-    filter: 'grayscale(100%) contrast(1.5)',
+    filter: 'grayscale(50%) contrast(2)',
   },
   blocks: {
     top: {
+      // height: '80px',
+      // flexShrink: 0,
     },
     middle: {
+      // backgroundColor: '#f1e3a0',
+      // background: 'linear-gradient(180deg, #D1A072, #EFDBC1)',
+      background: 'linear-gradient(180deg, #F86E57, #f2e782)'
+      // paddingTop: '30px',
+      // height: '100px',
     },
     bottom: {
-      paddingTop: '10px',
+      paddingTop: '20px',
+      // display: 'flex',
     },
   },
   hover: {
-    title: {
+    fullName: {
       textDecoration: 'underline',
     },
   },
-  person: {
-    container: {
-      // backgroundColor: '#F7FDF4',
-    },
+  content: {
+    padding: '20px',
+    marginTop: '-160px',
+    color: '#fff',
+    isolation: 'isolate',
   },
   seperator: {
-    fontFamily: '"Garamond Premier Pro Display"',
-    color: '#000',
-    // letterSpacing: '1.1px',
-    // padding: '20px 0',
-    fontSize: '60px',
-    lineHeight: '50px',
-    textTransform: 'capitalize',
+    paddingTop: '10px',
   },
 };

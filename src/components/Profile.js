@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ReactMarkdown from 'react-markdown';
+import Navbar from './Navbar';
 
 import {
   load as loadProfile,
@@ -54,25 +55,30 @@ class Profile extends Component {
     if (this.props.profile.loading) return '';
 
     return (
-      <div style={styles.container}>
-        <div style={styles.blocks.top}>
-          <div style={styles.mainPhoto.container}>
-            <img src={this.mainPhotoUrl()} style={styles.mainPhoto.img} />
-          </div>
+      <div>
+        <Navbar dark />
 
-          <div style={styles.content.container}>
-            <div style={styles.fullName}>
-              {this.fullName()}
-            </div>
-            <div style={styles.title}>
-              {this.profileFields().title}
-            </div>
-            <div style={styles.city}>
-              {this.profileFields().city}
+        <div style={styles.container}>
+
+          <div style={styles.blocks.top}>
+            <div style={styles.mainPhoto.container}>
+              <img src={this.mainPhotoUrl()} style={styles.mainPhoto.img} />
             </div>
 
-            <div style={styles.description}>
-              <ReactMarkdown source={this.profileFields().description} />
+            <div style={styles.content.container}>
+              <div style={styles.fullName}>
+                {this.fullName()}
+              </div>
+              <div style={styles.title}>
+                {this.profileFields().title}
+              </div>
+              <div style={styles.city}>
+                {this.profileFields().city}
+              </div>
+
+              <div style={styles.description}>
+                <ReactMarkdown source={this.profileFields().description} />
+              </div>
             </div>
           </div>
         </div>

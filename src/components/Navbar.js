@@ -3,29 +3,33 @@ import Radium from 'radium';
 
 class Navbar extends Component {
   render() {
+    const {
+      dark,
+    } = this.props;
+
     return (
       <div style={styles.container}>
-        <a href='/' style={styles.logo}>
+        <a href='/' style={[styles.logo, dark && styles.dark.logo]}>
           Chilli
           <br/>
           Con Arte
         </a>
 
         <div style={styles.links.container}>
-          <a href='/' style={styles.links.item}>
+          <a href='/' style={[styles.links.item, dark && styles.dark.links.item]}>
             Blogas
           </a>
-          <a href='/' style={styles.links.item}>
+          <a href='/' style={[styles.links.item, dark && styles.dark.links.item]}>
             Žmonės
           </a>
-          <a href='/' style={styles.links.item}>
+          <a href='/' style={[styles.links.item, dark && styles.dark.links.item]}>
             Renginiai
           </a>
-          <a href='/' style={styles.links.item}>
+          <a href='/' style={[styles.links.item, dark && styles.dark.links.item]}>
             Darbo skelbimai
           </a>
-          <div style={styles.links.item}>
-            <a href='/' style={styles.links.button}>
+          <div style={[styles.links.item, dark && styles.dark.links.item]}>
+            <a href='/' style={[styles.links.button, dark && styles.dark.links.button]}>
               Įkelti skelbimą
             </a>
           </div>
@@ -74,13 +78,27 @@ const styles = {
     button: {
       marginTop: '-1px',
       background: 'none',
-      borderBottom: '1px solid #fff',
+      borderBottom: '1px solid hsla(0, 0%, 100%, .5)',
       // border: '3px solid #000',
       padding: '10px 0',
       color: '#fff',
       // fontWeight: 600,
       display: 'block',
       textDecoration: 'none',
+    },
+  },
+  dark: {
+    logo: {
+      color: '#000',
+    },
+    links: {
+      item: {
+        color: '#000',
+      },
+      button: {
+        color: '#000',
+        borderBottom: '1px solid #000',
+      },
     },
   },
 };
