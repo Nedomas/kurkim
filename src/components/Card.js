@@ -272,7 +272,7 @@ const styles = {
   },
   shortDescription: {
     // padding: '0 10px 0 0',
-    fontSize: '14px',
+    fontSize: '18px',
     // minHeight: '70px',
   },
   greyBlock: {
@@ -286,8 +286,8 @@ const styles = {
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     margin: '0 auto',
-    mixBlendMode: 'darken',
-    filter: 'grayscale(100%) contrast(1.5)',
+    // mixBlendMode: 'darken',
+    // filter: 'grayscale(100%) contrast(1.5)',
   },
   blocks: {
     top: {

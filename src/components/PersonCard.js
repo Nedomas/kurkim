@@ -235,8 +235,8 @@ const styles = {
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     margin: '0 auto',
-    mixBlendMode: 'darken',
-    filter: 'grayscale(50%) contrast(2)',
+    // mixBlendMode: 'darken',
+    // filter: 'grayscale(100%) contrast(1)',
   },
   blocks: {
     top: {
@@ -246,7 +246,7 @@ const styles = {
     middle: {
       // backgroundColor: '#f1e3a0',
       // background: 'linear-gradient(180deg, #D1A072, #EFDBC1)',
-      background: 'linear-gradient(180deg, #F86E57, #f2e782)'
+      // background: 'linear-gradient(180deg, #F86E57, #f2e782)'
       // paddingTop: '30px',
       // height: '100px',
     },
