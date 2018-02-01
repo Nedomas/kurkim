@@ -286,6 +286,7 @@ const styles = {
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     margin: '0 auto',
+    opacity: '.8',
     // mixBlendMode: 'darken',
     // filter: 'grayscale(100%) contrast(1.5)',
   },
