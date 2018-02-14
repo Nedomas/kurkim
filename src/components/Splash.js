@@ -23,7 +23,7 @@ class Splash extends Component {
               Įkelti darbo skelbimą
             </a>
 
-            <a href='/' style={styles.buttons.button}>
+            <a href='/apply/person' style={styles.buttons.button}>
               Esu kūrybingas
             </a>
           </div>

@@ -6,6 +6,7 @@ import Jobs from './Jobs';
 import Events from './Events';
 import People from './People';
 import Profile from './Profile';
+import ApplyPerson from './ApplyPerson';
 
 export default class App extends Component {
   render() {
@@ -16,6 +17,7 @@ export default class App extends Component {
         <Route path='/events' exact component={Events} />
         <Route path='/people' exact component={People} />
         <Route path='/profile/:personId' exact component={Profile} />
+        <Route path='/apply/person' exact component={ApplyPerson} />
       </div>
     );
   }

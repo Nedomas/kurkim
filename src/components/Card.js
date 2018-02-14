@@ -86,20 +86,8 @@ class Card extends Component {
   }
 
   mainPhoto() {
-    const {
-      data: {
-        fields: {
-          mainPhoto: {
-            sys: {
-              id,
-            },
-          },
-        },
-      },
-      includes: {
-        Asset,
-      },
-    } = this.props;
+    const id = _.get(this.props, 'data.fields.mainPhoto.sys.id');
+    const Asset = _.get(this.props, 'includes.Asset');
 
     return _.find(Asset, { sys: { id } });
   }
