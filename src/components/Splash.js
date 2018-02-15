@@ -6,13 +6,14 @@ import windowSize from 'react-window-size';
 class Splash extends Component {
   render() {
     const small = this.props.windowWidth <= 768;
+    const big = this.props.windowWidth > 1000;
 
     return (
       <div style={styles.container}>
         <Navbar />
 
         <div style={[styles.content.container, small && styles.small.content.container]}>
-          <div style={[styles.title, small && styles.small.title]}>
+          <div style={[styles.title, small && styles.small.title, big && styles.big.title]}>
             <div>
               Kūrybingi darbai
             </div>
@@ -23,7 +24,7 @@ class Splash extends Component {
 
           <div style={styles.buttons.container}>
             <a href='https://vaida6.typeform.com/to/Zuo2lo' target='_blank' style={styles.buttons.button} key='company'>
-              Įkelti darbo skelbimą
+              Ieškoti kūrybingų
             </a>
 
             <a href='https://vaida6.typeform.com/to/Mwj5Y8' target='_blank' style={styles.buttons.button} key='person'>
@@ -98,6 +99,13 @@ const styles = {
       container: {
         padding: '150px 40px 0',
       },
+    },
+  },
+  big: {
+    title: {
+      fontSize: '100px',
+      letterSpacing: '-1.5px',
+      lineHeight: '95px',
     },
   },
 };

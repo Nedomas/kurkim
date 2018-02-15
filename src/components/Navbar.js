@@ -30,7 +30,7 @@ class Navbar extends Component {
           </a>
           <div style={[styles.links.item, dark && styles.dark.links.item]}>
             <a href='https://vaida6.typeform.com/to/Zuo2lo' target='_blank' style={[styles.links.button, dark && styles.dark.links.button]}>
-              Įkelti skelbimą
+              Ieškoti kūrybingų
             </a>
           </div>
         </div>}
