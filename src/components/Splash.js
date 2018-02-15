@@ -91,9 +91,9 @@ const styles = {
   },
   small: {
     title: {
-      fontSize: '50px',
-      letterSpacing: '-1.5px',
-      lineHeight: '45px',
+      fontSize: '40px',
+      letterSpacing: '-1px',
+      lineHeight: '35px',
     },
     content: {
       container: {
