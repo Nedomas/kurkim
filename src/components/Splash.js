@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
 import Navbar from './Navbar';
+import windowSize from 'react-window-size';
 
 class Splash extends Component {
   render() {
+    const small = this.props.windowWidth <= 768;
+
     return (
       <div style={styles.container}>
         <Navbar />
 
-        <div style={styles.content.container}>
-          <div style={styles.title}>
+        <div style={[styles.content.container, small && styles.small.content.container]}>
+          <div style={[styles.title, small && styles.small.title]}>
             <div>
               Kūrybingi darbai
             </div>
@@ -19,11 +22,11 @@ class Splash extends Component {
           </div>
 
           <div style={styles.buttons.container}>
-            <a href='/' style={styles.buttons.button}>
+            <a href='https://vaida6.typeform.com/to/Zuo2lo' target='_blank' style={styles.buttons.button} key='company'>
               Įkelti darbo skelbimą
             </a>
 
-            <a href='/apply/person' style={styles.buttons.button}>
+            <a href='https://vaida6.typeform.com/to/Mwj5Y8' target='_blank' style={styles.buttons.button} key='person'>
               Esu kūrybingas
             </a>
           </div>
@@ -33,7 +36,7 @@ class Splash extends Component {
   }
 }
 
-export default Radium(Splash);
+export default windowSize(Radium(Splash));
 
 const styles = {
   container: {
@@ -47,10 +50,10 @@ const styles = {
   },
   title: {
     fontSize: '80px',
-    letterSpacing: '1.2px',
+    letterSpacing: '-2.5px',
     lineHeight: '75px',
     color: '#fff',
-    fontFamily: '"Garamond Premier Pro Display"',
+    fontFamily: 'Apercu Pro',
   },
   titleSecond: {
     // color: '#0B24FA'
@@ -68,17 +71,33 @@ const styles = {
       paddingTop: '40px',
     },
     button: {
-      background: 'none',
-      borderBottom: '1px solid hsla(0, 0%, 100%, .5)',
-      padding: '10px 0',
+      background: 'hsla(229, 47%, 47%, .5)',
+      // borderBottom: '1px solid hsla(0, 0%, 100%, .5)',
+      padding: '10px',
+      borderRadius: '5px',
       color: '#fff',
       marginRight: '40px',
-      fontFamily: '"HK Grotesk"',
       fontSize: '15px',
       letterSpacing: '1px',
       display: 'block',
       textDecoration: 'none',
       textTransform: 'uppercase',
+
+      ':hover': {
+        background: 'hsla(229, 47%, 47%, .8)',
+      },
+    },
+  },
+  small: {
+    title: {
+      fontSize: '50px',
+      letterSpacing: '-1.5px',
+      lineHeight: '45px',
+    },
+    content: {
+      container: {
+        padding: '150px 40px 0',
+      },
     },
   },
 };

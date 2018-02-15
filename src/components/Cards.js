@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
+import Radium from 'radium';
 import { connect } from 'react-redux';
+import windowSize from 'react-window-size';
 
 import {
   load,
@@ -71,9 +73,10 @@ class Cards extends Component {
         includes,
       },
     } = this.props;
+    const small = this.props.windowWidth <= 768;
 
     return (
-      <div style={styles.container} id='cards'>
+      <div style={[styles.container, small && styles.small.container]} id='cards'>
         <div style={styles.filters.container}>
           <a href='/#cards' style={styles.filters.item}>
             Visi
@@ -103,10 +106,10 @@ const styles = {
     maxWidth: '1000px',
   },
   title: {
-    fontFamily: '"Garamond Premier Pro Display"',
+    fontFamily: 'Apercu Pro',
     fontSize: '70px',
     letterSpacing: '1.2px',
-    fontWeight: 600,
+    // fontWeight: 600,
     color: '#000',
   },
   titleDash: {
@@ -114,12 +117,14 @@ const styles = {
   },
   list: {
     display: 'flex',
+    justifyContent: 'center',
     flexWrap: 'wrap',
     margin: '0 -15px',
   },
   filters: {
     container: {
       display: 'flex',
+      justifyContent: 'center',
       alignItems: 'center',
       paddingBottom: '55px',
     },
@@ -127,7 +132,6 @@ const styles = {
       marginRight: '20px',
       color: '#312E3F',
       // fontWeight: 600,
-      fontFamily: '"HK Grotesk"',
       fontSize: '13px',
       letterSpacing: '1px',
       textTransform: 'uppercase',
@@ -137,10 +141,15 @@ const styles = {
       borderBottom: '1px solid hsla(251, 16%, 21%, 0.1)',
     },
   },
+  small: {
+    container: {
+      padding: '100px 40px',
+    },
+  },
 }
 
 export default connect(state => ({
   entries: state.entries,
 }), {
   handleLoad: load,
-})(Cards);
+})(windowSize(Radium(Cards)));

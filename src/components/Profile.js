@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ReactMarkdown from 'react-markdown';
+import Radium from 'radium';
+import windowSize from 'react-window-size';
 import Navbar from './Navbar';
 
 import {
@@ -53,13 +55,13 @@ class Profile extends Component {
 
   render() {
     if (this.props.profile.loading) return '';
+    const small = this.props.windowWidth <= 768;
 
     return (
       <div>
         <Navbar dark />
 
-        <div style={styles.container}>
-
+        <div style={[styles.container, small && styles.small.container]}>
           <div style={styles.blocks.top}>
             <div style={styles.mainPhoto.container}>
               <img src={this.mainPhotoUrl()} style={styles.mainPhoto.img} />
@@ -95,6 +97,7 @@ const styles = {
   blocks: {
     top: {
       display: 'flex',
+      flexWrap: 'wrap',
     },
   },
   mainPhoto: {
@@ -110,6 +113,7 @@ const styles = {
   content: {
     container: {
       width: '70%',
+      minWidth: '450px',
     },
   },
   fullName: {
@@ -121,8 +125,12 @@ const styles = {
     marginLeft: '-3px',
   },
   city: {
-    fontFamily: '"CT Cinetype"',
     paddingTop: '10px',
+  },
+  small: {
+    container: {
+      padding: '40px',
+    },
   },
 }
 
@@ -132,4 +140,4 @@ export default connect(state => ({
 }), {
   handleLoadProfile: loadProfile,
   handleLoadProfileMainPhoto: loadProfileMainPhoto,
-})(Profile);
+})(windowSize(Radium(Profile)));

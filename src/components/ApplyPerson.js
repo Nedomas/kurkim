@@ -16,10 +16,6 @@ class ApplyPerson extends Component {
     this.props.handleLoad();
   }
 
-  onSubmit(values) {
-    this.props.handleSubmit(values);
-  }
-
   render() {
     const {
       applyPerson: {
@@ -27,6 +23,7 @@ class ApplyPerson extends Component {
         all,
       },
       handleSubmit,
+      onSubmit,
     } = this.props;
 
     if (loading) return '';
@@ -35,7 +32,7 @@ class ApplyPerson extends Component {
       <div>
         <Navbar dark />
 
-        <div style={styles.container}>
+        <form style={styles.container} onSubmit={handleSubmit((values) => onSubmit(values))}>
           {_.map(all, (question) => (
             <div key={question.sys.id}>
               <label htmlFor={question.sys.id}>
@@ -44,10 +41,10 @@ class ApplyPerson extends Component {
               <Field name={question.sys.id} component='input' type='text' />
             </div>
           ))}
-          <button onClick={handleSubmit((values) => this.onSubmit(values))}>
+          <button type='submit'>
             Tęsti
           </button>
-        </div>
+        </form>
       </div>
     );
   }
@@ -96,7 +93,7 @@ const ConnectedApplyPerson = connect(state => ({
   applyPerson: state.applyPerson,
 }), {
   handleLoad: load,
-  handleSubmit: submit,
+  onSubmit: submit,
 })(ApplyPerson);
 
 export default reduxForm({

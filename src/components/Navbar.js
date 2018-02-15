@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
+import windowSize from 'react-window-size';
 
 class Navbar extends Component {
   render() {
     const {
       dark,
     } = this.props;
+
+    const small = this.props.windowWidth <= 768;
 
     return (
       <div style={styles.container}>
@@ -15,10 +18,7 @@ class Navbar extends Component {
           Con Arte
         </a>
 
-        <div style={styles.links.container}>
-          <a href='/' style={[styles.links.item, dark && styles.dark.links.item]}>
-            Blogas
-          </a>
+        {!small && <div style={styles.links.container}>
           <a href='/people#cards' style={[styles.links.item, dark && styles.dark.links.item]}>
             Žmonės
           </a>
@@ -29,17 +29,17 @@ class Navbar extends Component {
             Darbo skelbimai
           </a>
           <div style={[styles.links.item, dark && styles.dark.links.item]}>
-            <a href='/' style={[styles.links.button, dark && styles.dark.links.button]}>
+            <a href='https://vaida6.typeform.com/to/Zuo2lo' target='_blank' style={[styles.links.button, dark && styles.dark.links.button]}>
               Įkelti skelbimą
             </a>
           </div>
-        </div>
+        </div>}
       </div>
     );
   }
 }
 
-export default Radium(Navbar);
+export default windowSize(Radium(Navbar));
 
 const styles = {
   container: {
@@ -55,7 +55,6 @@ const styles = {
     lineHeight: '20px',
     color: '#fff',
     textTransform: 'uppercase',
-    fontFamily: '"HK Grotesk"',
     display: 'block',
     textDecoration: 'none',
   },
@@ -68,7 +67,6 @@ const styles = {
       paddingLeft: '50px',
       color: '#fff',
       // fontWeight: 600,
-      fontFamily: '"HK Grotesk"',
       fontSize: '13px',
       letterSpacing: '1px',
       textTransform: 'uppercase',
@@ -76,15 +74,20 @@ const styles = {
       textDecoration: 'none',
     },
     button: {
-      marginTop: '-1px',
-      background: 'none',
-      borderBottom: '1px solid hsla(0, 0%, 100%, .5)',
-      // border: '3px solid #000',
-      padding: '10px 0',
+      background: 'hsla(229, 47%, 47%, .5)',
+      // borderBottom: '1px solid hsla(0, 0%, 100%, .5)',
+      padding: '10px',
+      borderRadius: '5px',
       color: '#fff',
-      // fontWeight: 600,
+      fontSize: '13px',
+      letterSpacing: '1px',
       display: 'block',
       textDecoration: 'none',
+      textTransform: 'uppercase',
+
+      ':hover': {
+        background: 'hsla(229, 47%, 47%, .8)',
+      },
     },
   },
   dark: {

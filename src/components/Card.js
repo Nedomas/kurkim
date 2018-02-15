@@ -221,10 +221,10 @@ const styles = {
   container: {
     // border: '2px solid #000',
     width: '30%',
+    minWidth: '300px',
     padding: '0 0 10px',
     margin: '0 15px 50px',
     // margin: '15px 0',
-    fontFamily: '"HK Grotesk"',
     // display: 'flex',
     // flexDirection: 'column',
     color: '#888888',
@@ -232,14 +232,13 @@ const styles = {
     // borderBottom: '1px solid #E6E6E6',
   },
   title: {
-    // fontFamily: '"HK Grotesk"',
-    fontFamily: '"Garamond Premier Pro Display"',
     color: '#000',
     // letterSpacing: '1.1px',
     // padding: '20px 0',
+    letterSpacing: '-1px',
     padding: '10px 0 0',
-    fontSize: '60px',
-    lineHeight: '50px',
+    fontSize: '44px',
+    lineHeight: '44px',
     marginLeft: '-2px',
     textTransform: 'capitalize',
   },
@@ -247,7 +246,6 @@ const styles = {
     textTransform: 'uppercase',
     letterSpacing: '.1em',
     padding: '20px 0 10px',
-    fontFamily: '"HK Grotesk"',
     fontSize: '12px',
     color: '#888888',
     display: 'flex',
@@ -280,6 +278,7 @@ const styles = {
   },
   blocks: {
     top: {
+      minHeight: '130px',
     },
     middle: {
     },
@@ -298,7 +297,7 @@ const styles = {
     },
   },
   seperator: {
-    fontFamily: '"Garamond Premier Pro Display"',
+    fontFamily: 'Apercu Pro',
     color: '#000',
     // letterSpacing: '1.1px',
     // padding: '20px 0',
