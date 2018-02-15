@@ -6,7 +6,7 @@ import windowSize from 'react-window-size';
 class Splash extends Component {
   render() {
     const small = this.props.windowWidth <= 768;
-    const big = this.props.windowWidth > 1000;
+    const big = this.props.windowWidth > 1300;
 
     return (
       <div style={styles.container}>
