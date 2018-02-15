@@ -61,7 +61,7 @@ const styles = {
   },
   content: {
     container: {
-      padding: '150px 80px 0',
+      padding: '20vh 80px 0',
       margin: '0 auto',
       maxWidth: '1000px',
     },
