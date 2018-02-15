@@ -13,12 +13,10 @@ class Navbar extends Component {
     return (
       <div style={styles.container}>
         <a href='/' style={[styles.logo, dark && styles.dark.logo]}>
-          Chilli
-          <br/>
-          Con Arte
+          Chilli con Arte
         </a>
 
-        {!small && <div style={styles.links.container}>
+        {false && <div style={styles.links.container}>
           <a href='/people#cards' style={[styles.links.item, dark && styles.dark.links.item]}>
             Žmonės
           </a>
@@ -51,10 +49,10 @@ const styles = {
   },
   logo: {
     // fontWeight: 600,
-    fontSize: '15px',
+    fontSize: '20px',
     lineHeight: '20px',
     color: '#fff',
-    textTransform: 'uppercase',
+    // textTransform: 'uppercase',
     display: 'block',
     textDecoration: 'none',
   },

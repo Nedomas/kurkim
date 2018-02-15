@@ -46,6 +46,12 @@
   font-weight: 400;
 }
 
+@font-face {
+  font-family: Apercu Pro;
+  src: url('/fonts/Apercu/apercupro-bold/apercu_bold_pro.otf');
+  font-weight: 600;
+}
+
 body {
   margin: 0;
   padding: 0;
