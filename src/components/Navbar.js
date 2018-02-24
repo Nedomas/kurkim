@@ -46,6 +46,7 @@ const styles = {
     alignItems: 'center',
     margin: '0 auto',
     padding: '40px',
+    maxWidth: '1000px',
   },
   logo: {
     // fontWeight: 600,
