@@ -102,7 +102,6 @@ const styles = {
   },
   mainPhoto: {
     container: {
-      width: '30%',
       maxWidth: '500px',
       marginRight: '50px',
     },
@@ -112,8 +111,8 @@ const styles = {
   },
   content: {
     container: {
-      width: '70%',
-      minWidth: '450px',
+      width: '100%',
+      maxWidth: '450px',
     },
   },
   fullName: {

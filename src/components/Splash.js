@@ -22,7 +22,7 @@ class Splash extends Component {
             </div>
           </div>
 
-          <div style={styles.buttons.container}>
+          <div style={[styles.buttons.container, small && styles.small.buttons.container]}>
             <a href='https://vaida6.typeform.com/to/Zuo2lo' target='_blank' style={styles.buttons.button} key='company'>
               Ieškoti kūrybingų
             </a>
@@ -78,7 +78,7 @@ const styles = {
       padding: '10px 20px',
       // borderRadius: '5px',
       color: '#000',
-      marginRight: '40px',
+      margin: '0 40px 10px 0',
       fontSize: '18px',
       letterSpacing: '1px',
       display: 'block',
@@ -99,6 +99,11 @@ const styles = {
     content: {
       container: {
         padding: '150px 40px 0',
+      },
+    },
+    buttons: {
+      container: {
+        display: 'block',
       },
     },
   },

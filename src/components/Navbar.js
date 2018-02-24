@@ -16,17 +16,23 @@ class Navbar extends Component {
           Chilli con Arte
         </a>
 
-        {<div style={styles.links.container}>
-          <a href='/people#cards' style={[styles.links.item, dark && styles.dark.links.item]}>
+        {small && <div style={[styles.links.item, dark && styles.dark.links.item, small && styles.small.links.item]}>
+          <a href='https://vaida6.typeform.com/to/Zuo2lo' target='_blank' style={[styles.links.button, dark && styles.dark.links.button]}>
+            Tinklaraštis
+          </a>
+        </div>}
+
+        {!small && <div style={[styles.links.container, small && styles.small.links.container]}>
+          <a href='/people#cards' style={[styles.links.item, dark && styles.dark.links.item, small && styles.small.links.item]}>
             Žmonės
           </a>
-          <a href='/events#cards' style={[styles.links.item, dark && styles.dark.links.item]}>
+          <a href='/events#cards' style={[styles.links.item, dark && styles.dark.links.item, small && styles.small.links.item]}>
             Renginiai
           </a>
-          <a href='/jobs#cards' style={[styles.links.item, dark && styles.dark.links.item]}>
+          <a href='/jobs#cards' style={[styles.links.item, dark && styles.dark.links.item, small && styles.small.links.item]}>
             Darbo skelbimai
           </a>
-          <div style={[styles.links.item, dark && styles.dark.links.item]}>
+          <div style={[styles.links.item, dark && styles.dark.links.item, small && styles.small.links.item]}>
             <a href='https://vaida6.typeform.com/to/Zuo2lo' target='_blank' style={[styles.links.button, dark && styles.dark.links.button]}>
               Tinklaraštis
             </a>
@@ -100,8 +106,21 @@ const styles = {
         color: '#000',
       },
       button: {
-        color: '#000',
-        borderBottom: '1px solid #000',
+      },
+    },
+  },
+  open: {
+    container: {
+      // display: 'block',
+    },
+  },
+  small: {
+    links: {
+      container: {
+        display: 'block',
+      },
+      item: {
+        padding: '10px 0 0',
       },
     },
   },
