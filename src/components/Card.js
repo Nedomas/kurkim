@@ -45,6 +45,14 @@ class Card extends Component {
     }
   }
 
+  isJob() {
+    return this.type() === 'job';
+  }
+
+  isEvent() {
+    return this.type() === 'event';
+  }
+
   greyBlock() {
     const {
       data: {
@@ -172,8 +180,10 @@ class Card extends Component {
         onMouseEnter={() => this.handleMouseEnter()}
         onMouseLeave={() => this.handleMouseLeave()}
       >
-        <div style={styles.blocks.middle}>
-          <div style={[styles.img, { backgroundImage: `url('${this.mainPhotoUrl()}')` }]} />
+        <div style={[styles.blocks.middle, styles.blocks[this.type()]]}>
+          <div style={[styles.title, hover && styles.hover.title]}>
+            {this.title()}
+          </div>
         </div>
 
         <div style={styles.topContainer}>
@@ -183,26 +193,6 @@ class Card extends Component {
           <div>
             {this.greyBlock()}
           </div>
-        </div>
-
-        <div style={styles.blocks.top}>
-          <div style={[styles.title, hover && styles.hover.title]}>
-            <Measure
-              bounds
-              onResize={(contentRect) => {
-                this.setState({ titleHeight: contentRect.bounds.height })
-              }}
-            >
-              {({ measureRef }) => (
-                <div ref={measureRef}>
-                  {this.title()}
-                </div>
-              )}
-            </Measure>
-          </div>
-          {titleHeight < 100 && <div style={styles.seperator}>
-            —
-          </div>}
         </div>
 
         <div style={styles.blocks.bottom}>
@@ -232,13 +222,14 @@ const styles = {
     // borderBottom: '1px solid #E6E6E6',
   },
   title: {
-    color: '#000',
+    // color: '#000',
+    color: '#fff',
     // letterSpacing: '1.1px',
     // padding: '20px 0',
     letterSpacing: '-1px',
     padding: '10px 0 0',
-    fontSize: '44px',
-    lineHeight: '44px',
+    fontSize: '30px',
+    lineHeight: '30px',
     marginLeft: '-2px',
     textTransform: 'capitalize',
   },
@@ -277,10 +268,19 @@ const styles = {
     // filter: 'grayscale(100%) contrast(1.5)',
   },
   blocks: {
+    job: {
+      backgroundColor: '#415BFB',
+    },
+    event: {
+      backgroundColor: '#FDB19A',
+    },
     top: {
-      minHeight: '130px',
+      // backgroundColor: 'red',
+      // minHeight: '130px',
     },
     middle: {
+      height: '150px',
+      padding: '10px 20px',
     },
     bottom: {
       paddingTop: '10px',
@@ -288,7 +288,7 @@ const styles = {
   },
   hover: {
     title: {
-      textDecoration: 'underline',
+      // textDecoration: 'underline',
     },
   },
   person: {
