@@ -16,7 +16,7 @@ class Navbar extends Component {
           Chilli con Arte
         </a>
 
-        {false && <div style={styles.links.container}>
+        {<div style={styles.links.container}>
           <a href='/people#cards' style={[styles.links.item, dark && styles.dark.links.item]}>
             Žmonės
           </a>
@@ -28,7 +28,7 @@ class Navbar extends Component {
           </a>
           <div style={[styles.links.item, dark && styles.dark.links.item]}>
             <a href='https://vaida6.typeform.com/to/Zuo2lo' target='_blank' style={[styles.links.button, dark && styles.dark.links.button]}>
-              Ieškoti kūrybingų
+              Tinklaraštis
             </a>
           </div>
         </div>}
@@ -64,7 +64,7 @@ const styles = {
     },
     item: {
       paddingLeft: '50px',
-      color: '#fff',
+      color: '#000',
       // fontWeight: 600,
       fontSize: '13px',
       letterSpacing: '1px',
@@ -73,11 +73,12 @@ const styles = {
       textDecoration: 'none',
     },
     button: {
-      background: 'hsla(229, 47%, 47%, .5)',
+      // background: 'hsla(229, 47%, 47%, .5)',
       // borderBottom: '1px solid hsla(0, 0%, 100%, .5)',
-      padding: '10px',
-      borderRadius: '5px',
-      color: '#fff',
+      border: '2px solid #000',
+      padding: '8px 15px',
+      // borderRadius: '5px',
+      color: '#000',
       fontSize: '13px',
       letterSpacing: '1px',
       display: 'block',
@@ -85,7 +86,8 @@ const styles = {
       textTransform: 'uppercase',
 
       ':hover': {
-        background: 'hsla(229, 47%, 47%, .8)',
+        background: 'hsla(0, 0%, 0%, .05)',
+        // background: 'hsla(229, 47%, 47%, .8)',
       },
     },
   },

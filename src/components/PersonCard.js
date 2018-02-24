@@ -235,6 +235,7 @@ const styles = {
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     margin: '0 auto',
+    boxShadow: '5px 5px 0 hsla(0, 0%, 0%, 0.1)',
     // mixBlendMode: 'darken',
     // filter: 'grayscale(100%) contrast(1)',
   },

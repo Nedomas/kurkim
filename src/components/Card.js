@@ -180,7 +180,7 @@ class Card extends Component {
         onMouseEnter={() => this.handleMouseEnter()}
         onMouseLeave={() => this.handleMouseLeave()}
       >
-        <div style={[styles.blocks.middle, styles.blocks[this.type()]]}>
+        <div style={[styles.blocks.middle, styles.blocks[this.type()], hover && styles.hover.blocks[this.type()]]}>
           <div style={[styles.title, hover && styles.hover.title]}>
             {this.title()}
           </div>
@@ -281,6 +281,7 @@ const styles = {
     middle: {
       height: '150px',
       padding: '10px 20px',
+      boxShadow: '5px 5px 0 hsla(0, 0%, 0%, 0.1)',
     },
     bottom: {
       paddingTop: '10px',
@@ -289,6 +290,16 @@ const styles = {
   hover: {
     title: {
       // textDecoration: 'underline',
+    },
+    blocks: {
+      job: {
+        // backgroundColor: 'hsla(183, 56%, 71%, 1)',
+        backgroundColor: 'hsla(183, 80%, 71%, 1)',
+      },
+      event: {
+        // backgroundColor: 'hsla(14, 96%, 80%, 1)',
+        backgroundColor: 'hsla(14, 100%, 70%, 1)',
+      },
     },
   },
   person: {

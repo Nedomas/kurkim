@@ -45,7 +45,7 @@ const styles = {
     backgroundSize: '400px',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: '20vw 25vh',
-    minHeight: '100vh',
+    minHeight: '90vh',
     margin: '0 auto',
     width: '100%',
   },
