@@ -41,10 +41,10 @@ export default windowSize(Radium(Splash));
 
 const styles = {
   container: {
-    backgroundImage: 'url("/new4.jpg")',
-    backgroundSize: 'cover',
+    backgroundImage: 'url("/bg1.jpg")',
+    backgroundSize: '400px',
     backgroundRepeat: 'no-repeat',
-    // backgroundPosition: 'top',
+    backgroundPosition: '20vw 25vh',
     minHeight: '100vh',
     margin: '0 auto',
     width: '100%',
@@ -53,7 +53,7 @@ const styles = {
     fontSize: '80px',
     letterSpacing: '-2.5px',
     lineHeight: '75px',
-    color: '#fff',
+    // color: '#fff',
     fontFamily: 'Apercu Pro',
   },
   titleSecond: {

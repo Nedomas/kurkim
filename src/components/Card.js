@@ -269,7 +269,7 @@ const styles = {
   },
   blocks: {
     job: {
-      backgroundColor: '#415BFB',
+      backgroundColor: '#8CDBDF',
     },
     event: {
       backgroundColor: '#FDB19A',

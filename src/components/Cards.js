@@ -77,22 +77,24 @@ class Cards extends Component {
 
     return (
       <div style={[styles.container, small && styles.small.container]} id='cards'>
-        <div style={styles.filters.container}>
-          <a href='/#cards' style={styles.filters.item}>
-            Visi
-          </a>
-          <a href='/people#cards' style={styles.filters.item}>
-            Žmonės
-          </a>
-          <a href='/events#cards' style={styles.filters.item}>
-            Renginiai
-          </a>
-          <a href='/jobs#cards' style={styles.filters.item}>
-            Darbo skelbimai
-          </a>
-        </div>
-        <div style={styles.list}>
-          {_.map(this.all(), (entry) => <Card key={entry.sys.id} data={entry} includes={includes} />)}
+        <div style={styles.innerContainer}>
+          <div style={styles.filters.container}>
+            <a href='/#cards' style={styles.filters.item}>
+              Visi
+            </a>
+            <a href='/people#cards' style={styles.filters.item}>
+              Žmonės
+            </a>
+            <a href='/events#cards' style={styles.filters.item}>
+              Renginiai
+            </a>
+            <a href='/jobs#cards' style={styles.filters.item}>
+              Darbo skelbimai
+            </a>
+          </div>
+          <div style={styles.list}>
+              {_.map(this.all(), (entry) => <Card key={entry.sys.id} data={entry} includes={includes} />)}
+          </div>
         </div>
       </div>
     );
@@ -100,10 +102,16 @@ class Cards extends Component {
 }
 
 const styles = {
-  container: {
-    padding: '100px 80px',
-    margin: '0 auto',
+  innerContainer: {
     maxWidth: '1000px',
+    margin: '0 auto',
+  },
+  container: {
+    backgroundImage: 'url("/bg2.jpg")',
+    backgroundSize: '400px',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: '70vw 0px',
+    padding: '100px 80px',
   },
   title: {
     fontFamily: 'Apercu Pro',

@@ -231,7 +231,7 @@ const styles = {
   },
   img: {
     width: '100%',
-    height: '400px',
+    height: '370px',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     margin: '0 auto',

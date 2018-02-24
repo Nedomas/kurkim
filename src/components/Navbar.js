@@ -51,7 +51,7 @@ const styles = {
     // fontWeight: 600,
     fontSize: '20px',
     lineHeight: '20px',
-    color: '#fff',
+    color: '#000',
     // textTransform: 'uppercase',
     display: 'block',
     textDecoration: 'none',
