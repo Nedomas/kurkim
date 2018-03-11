@@ -5,6 +5,8 @@ import Landing from './Landing';
 import Jobs from './Jobs';
 import Events from './Events';
 import People from './People';
+
+import Job from './Job';
 import Profile from './Profile';
 import ApplyPerson from './ApplyPerson';
 
@@ -14,6 +16,7 @@ export default class App extends Component {
       <div>
         <Route path='/' exact component={Landing} />
         <Route path='/jobs' exact component={Jobs} />
+        <Route path='/jobs/:id' exact component={Job} />
         <Route path='/events' exact component={Events} />
         <Route path='/people' exact component={People} />
         <Route path='/profile/:personId' exact component={Profile} />

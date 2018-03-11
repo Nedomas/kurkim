@@ -66,10 +66,11 @@ class Card extends Component {
     const {
       data: {
         __typename,
+        id,
       },
     } = this.props;
 
-    return _.kebabCase(plural(__typename));
+    return `${_.kebabCase(plural(__typename))}/${id}`;
   }
 
   render() {

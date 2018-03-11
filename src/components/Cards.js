@@ -129,8 +129,12 @@ const CardsQuery = gql`
     allJobs {
       id
       headline
-      city
       teaser
+
+      cities {
+        name
+        location
+      }
     }
   }
 `;
