@@ -13,7 +13,7 @@ class Navbar extends Component {
     return (
       <div style={styles.container}>
         <a href='/' style={[styles.logo, dark && styles.dark.logo]}>
-          Chilli con Arte
+          Kurkim
         </a>
 
         {small && <div style={[styles.links.item, dark && styles.dark.links.item, small && styles.small.links.item]}>

@@ -220,7 +220,7 @@ const styles = {
     color: '#888888',
     textDecoration: 'none',
     boxShadow: '5px 5px 0 hsla(0, 0%, 0%, 0.1)',
-    border: '1px solid #888888',
+    border: '1px solid #EBEAEC',
     // borderBottom: '1px solid #E6E6E6',
   },
   title: {
