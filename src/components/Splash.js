@@ -41,11 +41,12 @@ export default windowSize(Radium(Splash));
 
 const styles = {
   container: {
-    backgroundImage: 'url("/bg1.jpg")',
-    backgroundSize: '400px',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: '20vw 25vh',
-    minHeight: '90vh',
+    // backgroundImage: 'url("/bg1.jpg")',
+    // backgroundSize: '400px',
+    // backgroundRepeat: 'no-repeat',
+    // backgroundPosition: '20vw 25vh',
+    backgroundColor: '#F4808A',
+    minHeight: '100vh',
     margin: '0 auto',
     width: '100%',
   },
@@ -53,7 +54,7 @@ const styles = {
     fontSize: '80px',
     letterSpacing: '-2.5px',
     lineHeight: '75px',
-    // color: '#fff',
+    color: '#fff',
     fontFamily: 'Apercu Pro',
   },
   titleSecond: {
@@ -74,10 +75,10 @@ const styles = {
     button: {
       // background: 'hsla(229, 47%, 47%, .5)',
       // borderBottom: '1px solid hsla(0, 0%, 100%, .5)',
-      border: '2px solid #000',
+      border: '2px solid #fff',
       padding: '10px 20px',
       // borderRadius: '5px',
-      color: '#000',
+      color: '#fff',
       margin: '0 40px 10px 0',
       fontSize: '18px',
       letterSpacing: '1px',

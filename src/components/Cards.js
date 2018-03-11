@@ -107,10 +107,10 @@ const styles = {
     margin: '0 auto',
   },
   container: {
-    backgroundImage: 'url("/bg2.jpg")',
-    backgroundSize: '400px',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: '70vw 0px',
+    // backgroundImage: 'url("/bg2.jpg")',
+    // backgroundSize: '400px',
+    // backgroundRepeat: 'no-repeat',
+    // backgroundPosition: '70vw 0px',
     padding: '100px 80px',
   },
   title: {
