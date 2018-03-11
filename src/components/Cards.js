@@ -3,77 +3,45 @@ import _ from 'lodash';
 import Radium from 'radium';
 import { connect } from 'react-redux';
 import windowSize from 'react-window-size';
-
-import {
-  load,
-} from '../modules/entries';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
+import { compose } from 'redux';
 
 import Card from './Card';
 
-class Cards extends Component {
-  componentDidMount() {
-    this.props.handleLoad();
-  }
+const COLLECTIONS = [
+  'allJobs',
+  'allEvents',
+  'allPeople',
+];
 
+class Cards extends Component {
   all() {
     const {
-      entries: {
-        all,
-      },
+      data,
       filter,
     } = this.props;
 
-    const jobs = _.filter(all, {
-      sys: {
-        contentType: {
-          sys: {
-            id: 'job'
-          }
-        }
-      }
-    });
+    const result = _.compact(_.flatten(_.map(COLLECTIONS, (collection) => data[collection])));
 
-    const events = _.filter(all, {
-      sys: {
-        contentType: {
-          sys: {
-            id: 'event'
-          }
-        }
-      }
-    });
-
-    const people = _.filter(all, {
-      sys: {
-        contentType: {
-          sys: {
-            id: 'person'
-          }
-        }
-      }
-    });
-
-    const result = _.compact(_.flatten(_.zip(jobs, events, people)));
     if (!filter) return result;
 
-    return _.filter(all, {
-      sys: {
-        contentType: {
-          sys: {
-            id: filter
-          }
-        }
-      }
+    return _.filter(result, {
+      __typename: _.capitalize(filter)
     });
   }
 
   render() {
     const {
-      entries: {
-        includes,
+      data: {
+        loading,
       },
     } = this.props;
+
     const small = this.props.windowWidth <= 768;
+
+    if (loading) return <div/>;
+    console.log(this.all());
 
     return (
       <div style={[styles.container, small && styles.small.container]} id='cards'>
@@ -93,7 +61,7 @@ class Cards extends Component {
             </a>
           </div>
           <div style={styles.list}>
-              {_.map(this.all(), (entry) => <Card key={entry.sys.id} data={entry} includes={includes} />)}
+              {_.map(this.all(), (data) => <Card key={data.id} data={data} />)}
           </div>
         </div>
       </div>
@@ -156,8 +124,19 @@ const styles = {
   },
 }
 
-export default connect(state => ({
-  entries: state.entries,
-}), {
-  handleLoad: load,
-})(windowSize(Radium(Cards)));
+const CardsQuery = gql`
+  query CardsQuery {
+    allJobs {
+      id
+      headline
+      city
+      teaser
+    }
+  }
+`;
+
+export default compose(
+  graphql(CardsQuery),
+  windowSize,
+  Radium,
+)(Cards);

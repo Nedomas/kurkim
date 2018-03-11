@@ -6,16 +6,7 @@ import { Field, reduxForm } from 'redux-form';
 
 import Navbar from './Navbar';
 
-import {
-  load,
-  submit,
-} from '../modules/applyPerson';
-
 class ApplyPerson extends Component {
-  componentDidMount() {
-    this.props.handleLoad();
-  }
-
   render() {
     const {
       applyPerson: {
@@ -92,8 +83,6 @@ const styles = {
 const ConnectedApplyPerson = connect(state => ({
   applyPerson: state.applyPerson,
 }), {
-  handleLoad: load,
-  onSubmit: submit,
 })(ApplyPerson);
 
 export default reduxForm({

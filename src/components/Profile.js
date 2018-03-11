@@ -5,20 +5,7 @@ import Radium from 'radium';
 import windowSize from 'react-window-size';
 import Navbar from './Navbar';
 
-import {
-  load as loadProfile,
-} from '../modules/profile';
-
-import {
-  load as loadProfileMainPhoto,
-} from '../modules/profileMainPhoto';
-
 class Profile extends Component {
-  componentDidMount() {
-    this.props.handleLoadProfile(this.props.match.params.personId)
-      .then(() => this.props.handleLoadProfileMainPhoto());
-  }
-
   fullName() {
     return `${this.profileFields().firstName} ${this.profileFields().lastName}`;
   }
@@ -137,6 +124,4 @@ export default connect(state => ({
   profile: state.profile,
   profileMainPhoto: state.profileMainPhoto,
 }), {
-  handleLoadProfile: loadProfile,
-  handleLoadProfileMainPhoto: loadProfileMainPhoto,
 })(windowSize(Radium(Profile)));

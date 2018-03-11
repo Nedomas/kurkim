@@ -5,6 +5,7 @@ import moment from 'moment';
 import PersonCard from './PersonCard';
 import lt from 'moment/locale/lt';
 import Measure from 'react-measure';
+import plural from 'plural';
 moment.locale('lt');
 
 class Card extends Component {
@@ -17,28 +18,12 @@ class Card extends Component {
     };
   }
 
-  type() {
-    const {
-      data: {
-        sys: {
-          contentType: {
-            sys: {
-              id,
-            },
-          },
-        },
-      },
-    } = this.props;
-
-    return id;
-  }
-
   category() {
-    if (this.type() === 'job') {
+    if (this.isJob()) {
       return 'Ieškomas';
-    } else if (this.type() === 'event') {
+    } else if (this.isEvent()) {
       return 'Renginys';
-    } else if (this.type() === 'person') {
+    } else if (this.isPerson()) {
       return 'Profilis';
     } else {
       return 'Kažkas';
@@ -46,58 +31,15 @@ class Card extends Component {
   }
 
   isJob() {
-    return this.type() === 'job';
+    return this.props.data.__typename === 'Job';
   }
 
   isEvent() {
-    return this.type() === 'event';
+    return this.props.data.__typename === 'Event';
   }
 
-  greyBlock() {
-    const {
-      data: {
-        sys: {
-          contentType: {
-            sys: {
-              id,
-            },
-          },
-        },
-        fields: {
-          companyName,
-          date,
-          city,
-        },
-      },
-    } = this.props;
-
-    return city;
-    // if (id === 'job') {
-    //   return companyName;
-    // } else if (id === 'event') {
-    //   return `${_.capitalize(moment(date).format('MMMM D'))}d.`;
-    // }
-  }
-
-  mainPhotoUrl() {
-    if (!this.mainPhoto()) return;
-
-    const {
-      fields: {
-        file: {
-          url,
-        },
-      },
-    } = this.mainPhoto();
-
-    return url;
-  }
-
-  mainPhoto() {
-    const id = _.get(this.props, 'data.fields.mainPhoto.sys.id');
-    const Asset = _.get(this.props, 'includes.Asset');
-
-    return _.find(Asset, { sys: { id } });
+  isPerson() {
+    return this.props.data.__typename === 'Person';
   }
 
   handleMouseEnter() {
@@ -106,26 +48,6 @@ class Card extends Component {
 
   handleMouseLeave() {
     this.setState({ hover: false });
-  }
-
-  title() {
-    const {
-      data: {
-        fields: {
-          title,
-          firstName,
-          lastName,
-        },
-      },
-    } = this.props;
-
-    if (this.isPerson()) return `${firstName} ${lastName}`;
-
-    return title;
-  }
-
-  isPerson() {
-    return this.type() === 'person';
   }
 
   personHref() {
@@ -141,27 +63,23 @@ class Card extends Component {
   }
 
   href() {
-    if (this.isPerson()) return this.personHref();
-
     const {
       data: {
-        fields: {
-          link,
-        },
+        __typename,
       },
     } = this.props;
 
-    return link;
+    return _.kebabCase(plural(__typename));
   }
 
   render() {
     const {
       data: {
-        fields: {
-          title,
-          city,
-          shortDescription,
-        },
+        __typename,
+        id,
+        headline,
+        city,
+        teaser,
       },
     } = this.props;
 
@@ -180,9 +98,9 @@ class Card extends Component {
         onMouseEnter={() => this.handleMouseEnter()}
         onMouseLeave={() => this.handleMouseLeave()}
       >
-        <div style={[styles.blocks.middle, styles.blocks[this.type()], hover && styles.hover.blocks[this.type()]]}>
+        <div style={[styles.blocks.middle, styles.blocks[__typename], hover && styles.hover.blocks[__typename]]}>
           <div style={[styles.title, hover && styles.hover.title]}>
-            {this.title()}
+            {headline}
           </div>
         </div>
 
@@ -191,13 +109,13 @@ class Card extends Component {
             {this.category()}
           </div>
           <div>
-            {this.greyBlock()}
+            {city}
           </div>
         </div>
 
         <div style={styles.blocks.bottom}>
           <div style={styles.shortDescription}>
-            {shortDescription}
+            {teaser}
           </div>
         </div>
       </a>
@@ -270,10 +188,10 @@ const styles = {
     // filter: 'grayscale(100%) contrast(1.5)',
   },
   blocks: {
-    job: {
+    Job: {
       backgroundColor: '#8CDBDF',
     },
-    event: {
+    Event: {
       backgroundColor: '#FDB19A',
     },
     top: {
@@ -293,11 +211,11 @@ const styles = {
       // textDecoration: 'underline',
     },
     blocks: {
-      job: {
+      Job: {
         // backgroundColor: 'hsla(183, 56%, 71%, 1)',
         backgroundColor: 'hsla(183, 80%, 71%, 1)',
       },
-      event: {
+      Event: {
         // backgroundColor: 'hsla(14, 96%, 80%, 1)',
         backgroundColor: 'hsla(14, 100%, 70%, 1)',
       },
