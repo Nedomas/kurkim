@@ -106,6 +106,8 @@ const styles = {
         color: '#000',
       },
       button: {
+        border: '2px solid #000',
+        color: '#000',
       },
     },
   },

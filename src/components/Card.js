@@ -79,7 +79,7 @@ class Card extends Component {
         __typename,
         id,
         headline,
-        city,
+        cities,
         teaser,
       },
     } = this.props;
@@ -110,7 +110,7 @@ class Card extends Component {
             {this.category()}
           </div>
           <div>
-            {city}
+            {_.map(cities, 'name').join(', ')}
           </div>
         </div>
 

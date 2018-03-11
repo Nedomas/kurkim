@@ -19,11 +19,18 @@ class Job extends Component {
 
     if (loading) return <div/>;
 
-    console.log(this.props);
     const {
       data: {
         Job: {
+          headline,
+          teaser,
           description,
+          company: {
+            name,
+            logo: {
+              url: companyLogoUrl,
+            },
+          },
         },
       },
     } = this.props;
@@ -34,15 +41,20 @@ class Job extends Component {
       <div>
         <Navbar dark />
 
-        <div style={[styles.container, small && styles.small.container]}>
-          <div style={styles.blocks.top}>
-            <div style={styles.mainPhoto.container}>
+        <div style={styles.container}>
+          <div style={styles.company.container}>
+            <img src={companyLogoUrl} />
+            <div>
+              {name}
             </div>
+          </div>
 
-            <div style={styles.content.container}>
-              <div style={styles.description}>
-                <ReactMarkdown source={description} />
-              </div>
+          <div style={styles.content.container}>
+            <div>
+              {headline}
+            </div>
+            <div>
+              <ReactMarkdown source={description} />
             </div>
           </div>
         </div>
@@ -53,47 +65,22 @@ class Job extends Component {
 
 const styles = {
   container: {
+    display: 'flex',
+    padding: '20px',
+    maxWidth: '1000px',
     margin: '0 auto',
-    padding: '40px 120px',
   },
-  blocks: {
-    top: {
-      display: 'flex',
-      flexWrap: 'wrap',
-    },
-  },
-  mainPhoto: {
+  company: {
     container: {
-      maxWidth: '500px',
-      marginRight: '50px',
-    },
-    img: {
-      width: '100%',
+      width: '30%',
     },
   },
   content: {
     container: {
-      width: '100%',
-      maxWidth: '450px',
+      width: '70%',
     },
   },
-  fullName: {
-    fontSize: '60px',
-    margin: '-15px 0 0 -6px',
-  },
-  title: {
-    fontSize: '30px',
-    marginLeft: '-3px',
-  },
-  city: {
-    paddingTop: '10px',
-  },
-  small: {
-    container: {
-      padding: '40px',
-    },
-  },
-}
+};
 
 const JobQuery = gql`
   query JobQuery($id: ID!) {
@@ -102,6 +89,19 @@ const JobQuery = gql`
       headline
       teaser
       description
+      activeFrom
+      activeUntil
+
+      cities {
+        name
+      }
+
+      company {
+        name
+        logo {
+          url
+        }
+      }
     }
   }
 `;

@@ -75,17 +75,12 @@ const styles = {
     margin: '0 auto',
   },
   container: {
-    // backgroundImage: 'url("/bg2.jpg")',
-    // backgroundSize: '400px',
-    // backgroundRepeat: 'no-repeat',
-    // backgroundPosition: '70vw 0px',
     padding: '100px 80px',
   },
   title: {
     fontFamily: 'Apercu Pro',
     fontSize: '70px',
     letterSpacing: '1.2px',
-    // fontWeight: 600,
     color: '#000',
   },
   titleDash: {
@@ -133,7 +128,6 @@ const CardsQuery = gql`
 
       cities {
         name
-        location
       }
     }
   }
