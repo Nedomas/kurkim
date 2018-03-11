@@ -219,6 +219,8 @@ const styles = {
     // flexDirection: 'column',
     color: '#888888',
     textDecoration: 'none',
+    boxShadow: '5px 5px 0 hsla(0, 0%, 0%, 0.1)',
+    border: '1px solid #888888',
     // borderBottom: '1px solid #E6E6E6',
   },
   title: {
@@ -236,7 +238,7 @@ const styles = {
   topContainer: {
     textTransform: 'uppercase',
     letterSpacing: '.1em',
-    padding: '20px 0 10px',
+    padding: '20px 10px 10px',
     fontSize: '12px',
     color: '#888888',
     display: 'flex',
@@ -281,10 +283,9 @@ const styles = {
     middle: {
       height: '150px',
       padding: '10px 20px',
-      boxShadow: '5px 5px 0 hsla(0, 0%, 0%, 0.1)',
     },
     bottom: {
-      paddingTop: '10px',
+      padding: '10px',
     },
   },
   hover: {

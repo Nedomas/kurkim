@@ -41,11 +41,11 @@ export default windowSize(Radium(Splash));
 
 const styles = {
   container: {
-    // backgroundImage: 'url("/bg1.jpg")',
-    // backgroundSize: '400px',
-    // backgroundRepeat: 'no-repeat',
-    // backgroundPosition: '20vw 25vh',
-    backgroundColor: '#F4808A',
+    backgroundImage: 'url("/splash.png")',
+    backgroundSize: '400px',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: '50vw 25vh',
+    backgroundColor: '#F96D6F',
     minHeight: '100vh',
     margin: '0 auto',
     width: '100%',
