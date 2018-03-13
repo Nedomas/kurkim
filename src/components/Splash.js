@@ -52,9 +52,9 @@ const styles = {
   },
   content: {
     container: {
-      padding: `${step(5)} ${step()}`,
+      padding: `20vh 20vw ${step()} ${step()}`,
       maxWidth: fluid(600, 600),
-      paddingLeft: '15vw',
+      margin: '0 auto',
     },
   },
 };
