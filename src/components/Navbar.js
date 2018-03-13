@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
 import windowSize from 'react-window-size';
+import step from '@bloometry/step';
 
 class Navbar extends Component {
   render() {
@@ -50,21 +51,16 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    margin: '0 auto',
-    padding: '40px',
-    maxWidth: '1000px',
+    padding: step(2),
   },
   logo: {
-    // fontWeight: 600,
     fontSize: '20px',
     lineHeight: '60px',
     color: '#fff',
-    // textTransform: 'uppercase',
     display: 'block',
     textDecoration: 'none',
     backgroundImage: 'url("/logo-oval-white.svg")',
     backgroundSize: 'contain',
-    // backgroundPosition: '0px 0',
     backgroundRepeat: 'no-repeat',
     paddingLeft: '30px',
   },

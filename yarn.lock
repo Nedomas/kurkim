@@ -2,6 +2,18 @@
 # yarn lockfile v1
 
 
+"@bloometry/fluid@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@bloometry/fluid/-/fluid-1.0.0.tgz#62cd14bb1c63c14810bc19c15fa0a8a98b295b61"
+  dependencies:
+    number-parsing "^0.3.0"
+
+"@bloometry/step@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@bloometry/step/-/step-1.0.0.tgz#b32c2fd3e5a1d4e2574aa451c0b18b722275b540"
+  dependencies:
+    "@bloometry/fluid" "^1.0.0"
+
 "@types/async@2.0.47":
   version "2.0.47"
   resolved "https://registry.yarnpkg.com/@types/async/-/async-2.0.47.tgz#f49ba1dd1f189486beb6e1d070a850f6ab4bd521"
@@ -4162,6 +4174,10 @@ lodash.uniq@^4.5.0:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
+lodash@^3.8.0:
+  version "3.10.1"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
+
 loglevel@^1.4.1:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/loglevel/-/loglevel-1.6.0.tgz#ae0caa561111498c5ba13723d6fb631d24003934"
@@ -4520,6 +4536,10 @@ normalize-url@^1.4.0:
     query-string "^4.1.0"
     sort-keys "^1.0.0"
 
+normalize.css@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/normalize.css/-/normalize.css-8.0.0.tgz#14ac5e461612538a4ce9be90a7da23f86e718493"
+
 npm-run-path@^2.0.0:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/npm-run-path/-/npm-run-path-2.0.2.tgz#35a9232dfa35d7067b4cb2ddf2357b1871536c5f"
@@ -4548,6 +4568,12 @@ num2fraction@^1.2.2:
 number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
+
+number-parsing@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/number-parsing/-/number-parsing-0.3.0.tgz#60fa2e5b097aff54762637be33ac96ca218a17bf"
+  dependencies:
+    lodash "^3.8.0"
 
 "nwmatcher@>= 1.3.9 < 2.0.0":
   version "1.4.3"

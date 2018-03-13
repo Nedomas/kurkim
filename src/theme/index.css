@@ -1,3 +1,6 @@
+@import '../../node_modules/normalize.css/normalize.css';
+@import './extra-normalize.css';
+
 /* @font-face { */
 /*   font-family: CT Cinetype; */
 /*   src: url('/fonts/GT-Cinetype/GT-Cinetype-Regular.ttf'); */
