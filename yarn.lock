@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@bloometry/fluid@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@bloometry/fluid/-/fluid-1.0.1.tgz#b48a1dee4edc17efee47b4d65ddc35055f25582a"
+"@bloometry/fluid@1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@bloometry/fluid/-/fluid-1.0.2.tgz#785fb0415896e599caf4b2ef1a5fd7ba300b81e2"
   dependencies:
     number-parsing "^0.3.0"
 
@@ -12,11 +12,11 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@bloometry/round/-/round-1.0.0.tgz#e2db762fff7e31fb7d5013269d19f65bd63872c9"
 
-"@bloometry/step@1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@bloometry/step/-/step-1.0.1.tgz#b8209a3a6ed9bb0368d7d6c55d7c615333104617"
+"@bloometry/step@1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@bloometry/step/-/step-1.0.2.tgz#eaab430daba372c11dac23a6c4d0db330b528ab3"
   dependencies:
-    "@bloometry/fluid" "^1.0.1"
+    "@bloometry/fluid" "1.0.2"
 
 "@types/async@2.0.47":
   version "2.0.47"
