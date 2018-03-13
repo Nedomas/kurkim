@@ -57,11 +57,16 @@ const styles = {
   logo: {
     // fontWeight: 600,
     fontSize: '20px',
-    lineHeight: '20px',
+    lineHeight: '60px',
     color: '#fff',
     // textTransform: 'uppercase',
     display: 'block',
     textDecoration: 'none',
+    backgroundImage: 'url("/logo-oval-white.svg")',
+    backgroundSize: 'contain',
+    // backgroundPosition: '0px 0',
+    backgroundRepeat: 'no-repeat',
+    paddingLeft: '30px',
   },
   links: {
     container: {
@@ -100,6 +105,7 @@ const styles = {
   dark: {
     logo: {
       color: '#000',
+      backgroundImage: 'url("/logo-oval-black.svg")',
     },
     links: {
       item: {
