@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@bloometry/fluid@1.0.6":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@bloometry/fluid/-/fluid-1.0.6.tgz#0a53b0a4aff12ef67ca69c7fbd549e9e0fd487f1"
+"@bloometry/fluid@1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@bloometry/fluid/-/fluid-1.0.8.tgz#fc052a77213e961c2909537e03b0d4e381a43de9"
   dependencies:
     babel-cli "^6.26.0"
     babel-preset-env "^1.6.1"
@@ -15,11 +15,11 @@
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@bloometry/round/-/round-1.0.1.tgz#8c13a41bdf0a5d791fa3cc54f01b99048e79a6c7"
 
-"@bloometry/step@1.0.7":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@bloometry/step/-/step-1.0.7.tgz#b439dfddf5754ccb5dbc67d6279c890cef55fb44"
+"@bloometry/step@1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@bloometry/step/-/step-1.0.8.tgz#a3459faca21d940582aecb4d0f691eb3b4e7115f"
   dependencies:
-    "@bloometry/fluid" "1.0.6"
+    "@bloometry/fluid" "1.0.8"
     babel-cli "^6.26.0"
     babel-preset-env "^1.6.1"
     babel-preset-minify "^0.3.0"
