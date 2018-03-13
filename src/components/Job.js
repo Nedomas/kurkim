@@ -68,7 +68,14 @@ class Job extends Component {
         <Container style={styles.container}>
           <div style={styles.company.container}>
             <div style={styles.company.logo.container}>
-              <img src={companyLogoUrl} style={styles.company.logo.img} />
+              <div
+                style={[
+                  {
+                    backgroundImage: `url('${companyLogoUrl}')`
+                  },
+                  styles.company.logo.img,
+                ]}
+              />
             </div>
             <Headline tier={3}>
               {name}
@@ -111,8 +118,15 @@ const styles = {
     },
     logo: {
       img: {
+        backgroundSize: 'contain',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
         borderRadius: '9999999999px',
         border: `1px solid ${colors.black}`,
+        width: '200px',
+        height: '200px',
+        backgroundColor: colors.white,
+        margin: '0 auto',
       },
       container: {
         backgroundImage: 'url("/chaos-black.svg")',
