@@ -6,6 +6,8 @@ import windowSize from 'react-window-size';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { compose } from 'redux';
+import rgbHex from 'rgb-hex';
+import _ from 'lodash';
 
 import step from '@bloometry/step';
 import colors from '../theme/colors';
@@ -33,6 +35,23 @@ const RENDERERS = {
 };
 
 class Job extends Component {
+  logoBackgroundColor() {
+    const {
+      data: {
+        Job: {
+          company: {
+            logoBackgroundColor,
+          },
+        },
+      },
+    } = this.props;
+
+    if (!logoBackgroundColor) return colors.white;
+
+    const code = rgbHex(..._.take(_.values(JSON.parse(logoBackgroundColor)), 3));
+    return `#${code}`;
+  }
+
   render() {
     const {
       data: {
@@ -41,6 +60,7 @@ class Job extends Component {
     } = this.props;
 
     if (loading) return <div/>;
+    console.log(this.logoBackgroundColor());
 
     const {
       data: {
@@ -71,7 +91,8 @@ class Job extends Component {
               <div
                 style={[
                   {
-                    backgroundImage: `url('${companyLogoUrl}')`
+                    backgroundImage: `url('${companyLogoUrl}')`,
+                    backgroundColor: this.logoBackgroundColor(),
                   },
                   styles.company.logo.img,
                 ]}
@@ -118,14 +139,13 @@ const styles = {
     },
     logo: {
       img: {
-        backgroundSize: 'contain',
+        backgroundSize: '160px',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
         borderRadius: '9999999999px',
         border: `1px solid ${colors.black}`,
         width: '200px',
         height: '200px',
-        backgroundColor: colors.white,
         margin: '0 auto',
       },
       container: {
@@ -166,6 +186,7 @@ const JobQuery = gql`
         logo {
           url
         }
+        logoBackgroundColor
       }
     }
   }
