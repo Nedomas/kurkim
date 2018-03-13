@@ -7,7 +7,30 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { compose } from 'redux';
 
+import step from '@bloometry/step';
+import colors from '../theme/colors';
+
 import Navbar from './Navbar';
+import Container from './Container';
+import Headline from './Headline';
+import Text from './Text';
+import Button from './Button';
+
+import MarkdownRendererImage from './MarkdownRenderers/Image';
+import MarkdownRendererLink from './MarkdownRenderers/Link';
+import MarkdownRendererList from './MarkdownRenderers/List';
+import MarkdownRendererListItem from './MarkdownRenderers/ListItem';
+import MarkdownRendererParagraph from './MarkdownRenderers/Paragraph';
+
+import maxReadableWidth from '../theme/maxReadableWidth';
+
+const RENDERERS = {
+  image: MarkdownRendererImage,
+  link: MarkdownRendererLink,
+  list: MarkdownRendererList,
+  listItem: MarkdownRendererListItem,
+  paragraph: MarkdownRendererParagraph,
+};
 
 class Job extends Component {
   render() {
@@ -25,6 +48,7 @@ class Job extends Component {
           headline,
           teaser,
           description,
+          applyLink,
           company: {
             name,
             logo: {
@@ -41,23 +65,35 @@ class Job extends Component {
       <div>
         <Navbar dark />
 
-        <div style={styles.container}>
+        <Container style={styles.container}>
           <div style={styles.company.container}>
-            <img src={companyLogoUrl} />
-            <div>
-              {name}
+            <div style={styles.company.logo.container}>
+              <img src={companyLogoUrl} style={styles.company.logo.img} />
             </div>
+            <Headline tier={3}>
+              {name}
+            </Headline>
+            <Text tier={3}>
+              Motyvacinį laišką ir gyvenimo aprašymą (CV) prašome siųsti info@atostoguparkas.lt Informuosime tik atrinktus kandidatus.
+            </Text>
+            <Button component='a' href={applyLink} target='_blank' center>
+              Aplikuoti
+            </Button>
           </div>
 
           <div style={styles.content.container}>
-            <div>
+            <Headline tier={2}>
               {headline}
-            </div>
-            <div>
-              <ReactMarkdown source={description} />
-            </div>
+            </Headline>
+            <Text>
+              <ReactMarkdown
+                source={description}
+                escapeHtml={false}
+                renderers={RENDERERS}
+              />
+            </Text>
           </div>
-        </div>
+        </Container>
       </div>
     );
   }
@@ -66,18 +102,32 @@ class Job extends Component {
 const styles = {
   container: {
     display: 'flex',
-    padding: '20px',
-    maxWidth: '1000px',
-    margin: '0 auto',
   },
   company: {
     container: {
       width: '30%',
+      textAlign: 'center',
+      paddingRight: step(3),
+    },
+    logo: {
+      img: {
+        borderRadius: '9999999999px',
+        border: `1px solid ${colors.black}`,
+      },
+      container: {
+        backgroundImage: 'url("/chaos-black.svg")',
+        backgroundSize: 'contain',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        paddingBottom: step(2),
+        marginBottom: step(1.5),
+      },
     },
   },
   content: {
     container: {
       width: '70%',
+      maxWidth: maxReadableWidth,
     },
   },
 };
@@ -91,6 +141,7 @@ const JobQuery = gql`
       description
       activeFrom
       activeUntil
+      applyLink
 
       cities {
         name

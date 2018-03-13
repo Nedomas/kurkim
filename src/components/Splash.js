@@ -5,6 +5,7 @@ import step from '@bloometry/step';
 import windowSize from 'react-window-size';
 
 import colors from '../theme/colors';
+import maxReadableWidth from '../theme/maxReadableWidth';
 import Headline from './Headline';
 import Navbar from './Navbar';
 
@@ -53,7 +54,7 @@ const styles = {
   content: {
     container: {
       padding: `20vh 20vw ${step()} ${step()}`,
-      maxWidth: fluid(600, 600),
+      maxWidth: maxReadableWidth,
       margin: '0 auto',
     },
   },
