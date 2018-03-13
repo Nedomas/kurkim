@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@bloometry/fluid": "1.0.2",
+    "@bloometry/fluid": "1.0.3",
     "@bloometry/round": "^1.0.0",
-    "@bloometry/step": "1.0.4",
+    "@bloometry/step": "1.0.5",
     "apollo-cache-inmemory": "^1.1.10",
     "apollo-client": "^2.2.6",
     "apollo-client-preset": "^1.0.8",
