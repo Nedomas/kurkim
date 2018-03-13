@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import Radium from 'radium';
 import windowSize from 'react-window-size';
 import step from '@bloometry/step';
+import { Link as RouterLink } from 'react-router-dom';
+
+const Link = Radium(RouterLink);
 
 class Navbar extends Component {
   render() {
@@ -18,9 +21,9 @@ class Navbar extends Component {
         </a>
 
         {small && <div style={[styles.links.item, dark && styles.dark.links.item, small && styles.small.links.item]}>
-          <a href='https://vaida6.typeform.com/to/Zuo2lo' target='_blank' style={[styles.links.button, dark && styles.dark.links.button]}>
+          <Link to='/blog' style={[styles.links.button, dark && styles.dark.links.button]}>
             Tinklaraštis
-          </a>
+          </Link>
         </div>}
 
         {!small && <div style={[styles.links.container, small && styles.small.links.container]}>
@@ -34,9 +37,9 @@ class Navbar extends Component {
             Darbo skelbimai
           </a>
           <div style={[styles.links.item, dark && styles.dark.links.item, small && styles.small.links.item]}>
-            <a href='https://vaida6.typeform.com/to/Zuo2lo' target='_blank' style={[styles.links.button, dark && styles.dark.links.button]}>
+            <Link to='/blog' style={[styles.links.button, dark && styles.dark.links.button]}>
               Tinklaraštis
-            </a>
+            </Link>
           </div>
         </div>}
       </div>
