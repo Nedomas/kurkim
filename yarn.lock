@@ -11,6 +11,15 @@
     babel-preset-minify "^0.3.0"
     number-parsing "^0.3.0"
 
+"@bloometry/fluid@1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@bloometry/fluid/-/fluid-1.0.4.tgz#c8815b06699c5e707450086330f6c7f8f1f13fda"
+  dependencies:
+    babel-cli "^6.26.0"
+    babel-preset-env "^1.6.1"
+    babel-preset-minify "^0.3.0"
+    number-parsing "^0.3.0"
+
 "@bloometry/round@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@bloometry/round/-/round-1.0.0.tgz#e2db762fff7e31fb7d5013269d19f65bd63872c9"

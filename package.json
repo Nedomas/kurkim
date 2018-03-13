@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@bloometry/fluid": "1.0.3",
+    "@bloometry/fluid": "1.0.4",
     "@bloometry/round": "^1.0.0",
     "@bloometry/step": "1.0.5",
     "apollo-cache-inmemory": "^1.1.10",
