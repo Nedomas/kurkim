@@ -27,9 +27,9 @@ class Navbar extends Component {
         </div>}
 
         {!small && <div style={[styles.links.container, small && styles.small.links.container]}>
-          <a href='/people#cards' style={[styles.links.item, dark && styles.dark.links.item, small && styles.small.links.item]}>
-            Žmonės
-          </a>
+          <Link to='/creatives/signup' style={[styles.links.item, dark && styles.dark.links.item, small && styles.small.links.item]}>
+            Kūrybingiems
+          </Link>
           <a href='/events#cards' style={[styles.links.item, dark && styles.dark.links.item, small && styles.small.links.item]}>
             Renginiai
           </a>

@@ -4,6 +4,7 @@ import Radium from 'radium';
 import windowSize from 'react-window-size';
 
 import step from '@bloometry/step';
+import fluid from '@bloometry/fluid';
 import constrain from '../theme/constrain';
 
 class Container extends Component {
@@ -15,6 +16,9 @@ class Container extends Component {
       narrow,
       limited,
       left,
+      chaos,
+      dark,
+      minWindowHeight,
       windowWidth,
       children,
     } = this.props;
@@ -27,6 +31,9 @@ class Container extends Component {
         center && styles.center,
         narrow && styles.narrow,
         limited && styles.limited,
+        chaos && styles.chaos,
+        dark && chaos && styles.dark.chaos,
+        minWindowHeight && styles.minWindowHeight,
         style,
         small && styles.small,
         middle && styles.middle,
@@ -41,6 +48,9 @@ class Container extends Component {
 const styles = {
   container: {
     padding: `0 ${step()} ${step()}`,
+  },
+  minWindowHeight: {
+    minHeight: '70vh',
   },
   center: {
     textAlign: 'center',
@@ -66,6 +76,17 @@ const styles = {
   },
   left: {
     textAlign: 'left',
+  },
+  chaos: {
+    backgroundImage: 'url("/splash.svg")',
+    backgroundSize: fluid(200, 400),
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: '90% 90%',
+  },
+  dark: {
+    chaos: {
+      backgroundImage: 'url("/chaos-black.svg")',
+    },
   },
 };
 

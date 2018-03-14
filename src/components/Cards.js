@@ -50,9 +50,6 @@ class Cards extends Component {
             <a href='/#cards' style={styles.filters.item}>
               Visi
             </a>
-            <a href='/people#cards' style={styles.filters.item}>
-              Žmonės
-            </a>
             <a href='/events#cards' style={styles.filters.item}>
               Renginiai
             </a>
