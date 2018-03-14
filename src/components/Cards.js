@@ -8,6 +8,7 @@ import gql from 'graphql-tag';
 import { compose } from 'redux';
 
 import Card from './Card';
+import FullScreenLoading from './FullScreenLoading';
 
 const COLLECTIONS = [
   'allJobs',
@@ -40,8 +41,7 @@ class Cards extends Component {
 
     const small = this.props.windowWidth <= 768;
 
-    if (loading) return <div/>;
-    console.log(this.all());
+    if (loading) return <FullScreenLoading />;
 
     return (
       <div style={[styles.container, small && styles.small.container]} id='cards'>

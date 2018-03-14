@@ -12,6 +12,7 @@ import moment from 'moment';
 import step from '@bloometry/step';
 import colors from '../theme/colors';
 
+import FullScreenLoading from './FullScreenLoading';
 import Navbar from './Navbar';
 import Container from './Container';
 import Headline from './Headline';
@@ -52,8 +53,7 @@ class Job extends Component {
       },
     } = this.props;
 
-    if (loading) return <div/>;
-    console.log(this.logoBackgroundColor());
+    if (loading) return <FullScreenLoading />;
 
     const {
       data: {

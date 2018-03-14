@@ -13,6 +13,8 @@ import Container from './Container';
 import Headline from './Headline';
 import Markdown from './Markdown';
 import Text from './Text';
+import FullScreenLoading from './FullScreenLoading';
+
 import step from '@bloometry/step';
 import colors from '../theme/colors';
 import fluid from '@bloometry/fluid';
@@ -29,7 +31,7 @@ class Company extends Component {
       },
     } = this.props;
 
-    if (loading) return <div />;
+    if (loading) return <FullScreenLoading />;
 
     const {
       data: {

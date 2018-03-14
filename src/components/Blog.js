@@ -9,6 +9,7 @@ import BlogPostItem from './BlogPostItem';
 import Container from './Container';
 import Headline from './Headline';
 import Footer from './Footer';
+import FullScreenLoading from './FullScreenLoading';
 import step from '@bloometry/step';
 
 class Blog extends Component {
@@ -19,7 +20,7 @@ class Blog extends Component {
       },
     } = this.props;
 
-    if (loading) return <div />;
+    if (loading) return <FullScreenLoading />;
 
     const {
       data: {
