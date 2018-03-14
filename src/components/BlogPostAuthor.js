@@ -10,6 +10,8 @@ import colors from '../theme/colors';
 
 class BlogPostAuthor extends Component {
   render() {
+    if (!this.props.author) return <div/>;
+
     const {
       author: {
         fullName,

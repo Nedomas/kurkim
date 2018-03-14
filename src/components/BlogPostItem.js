@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { Link as RouterLink } from 'react-router-dom';
 import Radium from 'radium';
+import _ from 'lodash';
 
 import BlogPostAuthor from './BlogPostAuthor';
 import BlogPostMeta from './BlogPostMeta';
@@ -22,9 +23,7 @@ class BlogPostItem extends Component {
         headline,
         slug,
         teaser,
-        displayImage: {
-          url: displayImageUrl,
-        },
+        displayImage,
         author,
       },
     } = this.props;
@@ -35,7 +34,7 @@ class BlogPostItem extends Component {
           style={[
             styles.displayImage,
             {
-              backgroundImage: `url('${displayImageUrl}')`
+              backgroundImage: `url('${_.get(displayImage, 'url')}')`
             },
           ]}
         />
