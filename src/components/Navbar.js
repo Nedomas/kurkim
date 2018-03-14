@@ -4,6 +4,8 @@ import windowSize from 'react-window-size';
 import step from '@bloometry/step';
 import { Link as RouterLink } from 'react-router-dom';
 
+import Logo from './Logo';
+
 const Link = Radium(RouterLink);
 
 class Navbar extends Component {
@@ -16,9 +18,7 @@ class Navbar extends Component {
 
     return (
       <div style={styles.container}>
-        <a href='/' style={[styles.logo, dark && styles.dark.logo]}>
-          Kurkim
-        </a>
+        <Logo {...this.props} />
 
         {small && <div style={[styles.links.item, dark && styles.dark.links.item, small && styles.small.links.item]}>
           <Link to='/blog' style={[styles.links.button, dark && styles.dark.links.button]}>
@@ -59,17 +59,6 @@ const styles = {
     alignItems: 'center',
     padding: step(2),
   },
-  logo: {
-    fontSize: '20px',
-    lineHeight: '60px',
-    color: '#fff',
-    display: 'block',
-    textDecoration: 'none',
-    backgroundImage: 'url("/logo-oval-white.svg")',
-    backgroundSize: 'contain',
-    backgroundRepeat: 'no-repeat',
-    paddingLeft: '30px',
-  },
   links: {
     container: {
       display: 'flex',
@@ -105,10 +94,6 @@ const styles = {
     },
   },
   dark: {
-    logo: {
-      color: '#000',
-      backgroundImage: 'url("/logo-oval-black.svg")',
-    },
     links: {
       item: {
         color: '#000',

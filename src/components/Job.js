@@ -20,6 +20,7 @@ import Button from './Button';
 import FacebookShareButton from './FacebookShareButton';
 import Markdown from './Markdown';
 import CompanyLogo from './CompanyLogo';
+import Footer from './Footer';
 
 import maxReadableWidth from '../theme/maxReadableWidth';
 
@@ -117,6 +118,8 @@ class Job extends Component {
             <Markdown source={description} />
           </div>
         </Container>
+
+        <Footer {...this.props} />
       </div>
     );
   }

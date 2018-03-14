@@ -50,7 +50,7 @@ const styles = {
     padding: `0 ${step()} ${step()}`,
   },
   minWindowHeight: {
-    minHeight: '70vh',
+    minHeight: '80vh',
   },
   center: {
     textAlign: 'center',
@@ -81,7 +81,7 @@ const styles = {
     backgroundImage: 'url("/splash.svg")',
     backgroundSize: fluid(200, 400),
     backgroundRepeat: 'no-repeat',
-    backgroundPosition: '90% 90%',
+    backgroundPosition: '95% 40%',
   },
   dark: {
     chaos: {

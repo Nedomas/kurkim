@@ -8,6 +8,7 @@ import Navbar from './Navbar';
 import BlogPostItem from './BlogPostItem';
 import Container from './Container';
 import Headline from './Headline';
+import Footer from './Footer';
 import step from '@bloometry/step';
 
 class Blog extends Component {
@@ -46,6 +47,8 @@ class Blog extends Component {
             })}
           </div>
         </Container>
+
+        <Footer {...this.props} />
       </div>
     );
   }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Splash from './Splash';
 import Cards from './Cards';
+import Footer from './Footer';
 
 export default class Landing extends Component {
   render() {
@@ -9,6 +10,7 @@ export default class Landing extends Component {
       <div style={styles.container}>
         <Splash />
         <Cards />
+        <Footer {...this.props} />
       </div>
     );
   }

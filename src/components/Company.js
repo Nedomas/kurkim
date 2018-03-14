@@ -19,6 +19,7 @@ import fluid from '@bloometry/fluid';
 import borderRadius from '../theme/borderRadius';
 import constrain from '../theme/constrain';
 import CompanyLogo from './CompanyLogo';
+import Footer from './Footer';
 
 class Company extends Component {
   render() {
@@ -66,6 +67,8 @@ class Company extends Component {
             {_.map(jobs, (job) => <Card key={job.id} data={job} />)}
           </div>
         </Container>
+
+        <Footer {...this.props} />
       </div>
     );
   }

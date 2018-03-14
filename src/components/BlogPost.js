@@ -8,6 +8,7 @@ import { Helmet } from 'react-helmet';
 
 import Navbar from './Navbar';
 import BlogPostMeta from './BlogPostMeta';
+import Footer from './Footer';
 import BlogPostAuthor from './BlogPostAuthor';
 import Container from './Container';
 import Headline from './Headline';
@@ -70,6 +71,8 @@ class BlogPost extends Component {
           <Markdown source={content} />
           <BlogPostAuthor author={author} />
         </Container>
+
+        <Footer {...this.props} />
       </div>
     );
   }
