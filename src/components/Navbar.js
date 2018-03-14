@@ -36,6 +36,9 @@ class Navbar extends Component {
           <a href='/jobs#cards' style={[styles.links.item, dark && styles.dark.links.item, small && styles.small.links.item]}>
             Darbo skelbimai
           </a>
+          <Link to='/about' style={[styles.links.item, dark && styles.dark.links.item, small && styles.small.links.item]}>
+            Apie Kurkim
+          </Link>
           <div style={[styles.links.item, dark && styles.dark.links.item, small && styles.small.links.item]}>
             <Link to='/blog' style={[styles.links.button, dark && styles.dark.links.button]}>
               Tinklaraštis

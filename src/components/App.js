@@ -6,6 +6,7 @@ import Jobs from './Jobs';
 import Events from './Events';
 import People from './People';
 import CreativesSignup from './CreativesSignup';
+import About from './About';
 
 import Job from './Job';
 import Profile from './Profile';
@@ -29,6 +30,7 @@ export default class App extends Component {
         <Route path='/blog/:slug' exact component={BlogPost} />
         <Route path='/companies/:slug' exact component={Company} />
         <Route path='/creatives/signup' exact component={CreativesSignup} />
+        <Route path='/about' exact component={About} />
       </div>
     );
   }
