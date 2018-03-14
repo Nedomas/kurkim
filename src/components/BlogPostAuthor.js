@@ -14,6 +14,7 @@ class BlogPostAuthor extends Component {
       author: {
         fullName,
         title,
+        avatarOnly,
         avatar: {
           url,
         },
@@ -22,15 +23,15 @@ class BlogPostAuthor extends Component {
 
     return (
       <div style={styles.container}>
-        <BlogPostAvatar url={url} />
-        <div style={styles.content}>
+        <BlogPostAvatar url={url} big={avatarOnly} />
+        {!avatarOnly && <div style={styles.content}>
           <div>
             {fullName}
           </div>
           <div>
             {title}
           </div>
-        </div>
+        </div>}
       </div>
     );
   }

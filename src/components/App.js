@@ -10,6 +10,7 @@ import Job from './Job';
 import Profile from './Profile';
 import ApplyPerson from './ApplyPerson';
 import Blog from './Blog';
+import BlogPost from './BlogPost';
 
 export default class App extends Component {
   render() {
@@ -23,6 +24,7 @@ export default class App extends Component {
         <Route path='/profile/:personId' exact component={Profile} />
         <Route path='/apply/person' exact component={ApplyPerson} />
         <Route path='/blog' exact component={Blog} />
+        <Route path='/blog/:slug' exact component={BlogPost} />
       </div>
     );
   }

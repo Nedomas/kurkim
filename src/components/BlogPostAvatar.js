@@ -10,11 +10,12 @@ class BlogPostAvatar extends Component {
     const {
       url,
       center,
+      big,
     } = this.props;
 
     return (
-      <div style={[styles.container, center && { margin: '0 auto' }]}>
-        <img alt='avatar' src={url} style={styles.img} />
+      <div style={[styles.container, center && { margin: '0 auto' }, big && styles.big.container]}>
+        <img alt='avatar' src={url} style={[styles.img, big && styles.big.img]} />
       </div>
     );
   }
@@ -27,6 +28,14 @@ const styles = {
   img: {
     width: '100%',
     borderRadius: round,
+  },
+  big: {
+    container: {
+      width: fluid(100, 200),
+    },
+    img: {
+      borderRadius: 0,
+    },
   },
 };
 

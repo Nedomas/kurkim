@@ -40,7 +40,7 @@ class Blog extends Component {
           </Headline>
 
           <div style={styles.blogPosts.container}>
-            {_.isEmpty(allBlogPosts) && 'No stars in the universe yet.'}
+            {_.isEmpty(allBlogPosts) && 'Vis dar nieko neprikeverzojom.'}
             {_.map(allBlogPosts, (blogPost) => {
               return <BlogPostItem key={blogPost.slug} blogPost={blogPost} />;
             })}
@@ -81,6 +81,7 @@ export const BlogPostsQuery = gql`
       author {
         fullName
         title
+        avatarOnly
         avatar {
           url
         }

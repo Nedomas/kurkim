@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import ReactMarkdown from 'react-markdown';
 import Radium from 'radium';
 import windowSize from 'react-window-size';
 import { graphql } from 'react-apollo';
@@ -16,22 +15,9 @@ import Container from './Container';
 import Headline from './Headline';
 import Text from './Text';
 import Button from './Button';
-
-import MarkdownRendererImage from './MarkdownRenderers/Image';
-import MarkdownRendererLink from './MarkdownRenderers/Link';
-import MarkdownRendererList from './MarkdownRenderers/List';
-import MarkdownRendererListItem from './MarkdownRenderers/ListItem';
-import MarkdownRendererParagraph from './MarkdownRenderers/Paragraph';
+import Markdown from './Markdown';
 
 import maxReadableWidth from '../theme/maxReadableWidth';
-
-const RENDERERS = {
-  image: MarkdownRendererImage,
-  link: MarkdownRendererLink,
-  list: MarkdownRendererList,
-  listItem: MarkdownRendererListItem,
-  paragraph: MarkdownRendererParagraph,
-};
 
 class Job extends Component {
   logoBackgroundColor() {
@@ -111,13 +97,7 @@ class Job extends Component {
             <Headline tier={2}>
               {headline}
             </Headline>
-            <Text>
-              <ReactMarkdown
-                source={description}
-                escapeHtml={false}
-                renderers={RENDERERS}
-              />
-            </Text>
+            <Markdown source={description} />
           </div>
         </Container>
       </div>
