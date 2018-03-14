@@ -112,11 +112,12 @@ const styles = {
     height: 'initial',
   },
   transparent: {
-    backgroundColor: colors.lightLightGrey,
-    color: colors.blue,
+    color: colors.black,
+    backgroundColor: colors.lightLightBlack,
 
     ':hover': {
-      backgroundColor: colors.lightGrey,
+      backgroundColor: colors.lighterBlack,
+      color: colors.white,
     },
   },
   more: {

@@ -21,6 +21,7 @@
     "react": "^16.2.0",
     "react-apollo": "^2.0.4",
     "react-dom": "^16.2.0",
+    "react-facebook": "^4.2.1",
     "react-helmet": "^5.2.0",
     "react-markdown": "^3.1.4",
     "react-measure": "^2.0.2",

@@ -6,6 +6,8 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { compose } from 'redux';
 import _ from 'lodash';
+import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 import step from '@bloometry/step';
 import colors from '../theme/colors';
@@ -15,6 +17,7 @@ import Container from './Container';
 import Headline from './Headline';
 import Text from './Text';
 import Button from './Button';
+import FacebookShareButton from './FacebookShareButton';
 import Markdown from './Markdown';
 
 import maxReadableWidth from '../theme/maxReadableWidth';
@@ -36,6 +39,10 @@ class Job extends Component {
     return `rgba(${_.values(JSON.parse(logoBackgroundColor)).join(', ')})`;
   }
 
+  formatTime(time) {
+    return moment(time).format('YYYY-MM-DD');
+  }
+
   render() {
     const {
       data: {
@@ -53,10 +60,17 @@ class Job extends Component {
           teaser,
           description,
           applyLink,
+          cities,
+          activeFrom,
+          activeUntil,
           company: {
             name,
+            slug,
             logo: {
               url: companyLogoUrl,
+            },
+            _jobsMeta: {
+              count,
             },
           },
         },
@@ -86,10 +100,24 @@ class Job extends Component {
               {name}
             </Headline>
             <Text tier={3}>
+              {_.map(cities, 'name').join(', ')}
+            </Text>
+            <Text tier={3}>
+              Aktyvus nuo {this.formatTime(activeFrom)} iki {this.formatTime(activeUntil)}
+            </Text>
+            <Text tier={3}>
               Motyvacinį laišką ir gyvenimo aprašymą (CV) prašome siųsti info@atostoguparkas.lt Informuosime tik atrinktus kandidatus.
             </Text>
             <Button component='a' href={applyLink} target='_blank' center>
               Aplikuoti
+            </Button>
+
+            <Button transparent component={Link} to={`/companies/${slug}`} center style={styles.secondaryButton}>
+              Visi {name} skelbimai ({count})
+            </Button>
+
+            <Button transparent component={Link} to={`/companies/${slug}`} center style={styles.secondaryButton}>
+              Daugiau apie {name}
             </Button>
           </div>
 
@@ -142,6 +170,9 @@ const styles = {
       maxWidth: maxReadableWidth,
     },
   },
+  secondaryButton: {
+    marginTop: step(),
+  },
 };
 
 const JobQuery = gql`
@@ -161,10 +192,15 @@ const JobQuery = gql`
 
       company {
         name
+        slug
         logo {
           url
         }
         logoBackgroundColor
+
+        _jobsMeta {
+          count
+        }
       }
     }
   }
