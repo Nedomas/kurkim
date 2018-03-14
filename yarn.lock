@@ -2768,6 +2768,10 @@ extglob@^0.3.1:
   dependencies:
     is-extglob "^1.0.0"
 
+extract-domain@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/extract-domain/-/extract-domain-2.0.3.tgz#a22a4f53aa73440706fb38b6966c6ad42e1f5b57"
+
 extract-text-webpack-plugin@3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/extract-text-webpack-plugin/-/extract-text-webpack-plugin-3.0.2.tgz#5f043eaa02f9750a9258b78c0a6e0dc1408fb2f7"

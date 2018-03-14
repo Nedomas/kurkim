@@ -11,6 +11,7 @@ import Profile from './Profile';
 import ApplyPerson from './ApplyPerson';
 import Blog from './Blog';
 import BlogPost from './BlogPost';
+import Company from './Company';
 
 export default class App extends Component {
   render() {
@@ -25,6 +26,7 @@ export default class App extends Component {
         <Route path='/apply/person' exact component={ApplyPerson} />
         <Route path='/blog' exact component={Blog} />
         <Route path='/blog/:slug' exact component={BlogPost} />
+        <Route path='/companies/:slug' exact component={Company} />
       </div>
     );
   }

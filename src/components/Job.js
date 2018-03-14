@@ -19,6 +19,7 @@ import Text from './Text';
 import Button from './Button';
 import FacebookShareButton from './FacebookShareButton';
 import Markdown from './Markdown';
+import CompanyLogo from './CompanyLogo';
 
 import maxReadableWidth from '../theme/maxReadableWidth';
 
@@ -63,6 +64,7 @@ class Job extends Component {
           cities,
           activeFrom,
           activeUntil,
+          company,
           company: {
             name,
             slug,
@@ -85,17 +87,7 @@ class Job extends Component {
 
         <Container style={styles.container}>
           <div style={styles.company.container}>
-            <div style={styles.company.logo.container}>
-              <div
-                style={[
-                  {
-                    backgroundImage: `url('${companyLogoUrl}')`,
-                    backgroundColor: this.logoBackgroundColor(),
-                  },
-                  styles.company.logo.img,
-                ]}
-              />
-            </div>
+            <CompanyLogo company={company} />
             <Headline tier={3}>
               {name}
             </Headline>
@@ -104,9 +96,6 @@ class Job extends Component {
             </Text>
             <Text tier={3}>
               Aktyvus nuo {this.formatTime(activeFrom)} iki {this.formatTime(activeUntil)}
-            </Text>
-            <Text tier={3}>
-              Motyvacinį laišką ir gyvenimo aprašymą (CV) prašome siųsti info@atostoguparkas.lt Informuosime tik atrinktus kandidatus.
             </Text>
             <Button component='a' href={applyLink} target='_blank' center>
               Aplikuoti
@@ -142,26 +131,6 @@ const styles = {
       width: '30%',
       textAlign: 'center',
       paddingRight: step(3),
-    },
-    logo: {
-      img: {
-        backgroundSize: '160px',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
-        borderRadius: '9999999999px',
-        border: `1px solid ${colors.black}`,
-        width: '200px',
-        height: '200px',
-        margin: '0 auto',
-      },
-      container: {
-        backgroundImage: 'url("/chaos-black.svg")',
-        backgroundSize: 'contain',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
-        paddingBottom: step(2),
-        marginBottom: step(1.5),
-      },
     },
   },
   content: {
