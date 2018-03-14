@@ -6,7 +6,6 @@ import windowSize from 'react-window-size';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { compose } from 'redux';
-import rgbHex from 'rgb-hex';
 import _ from 'lodash';
 
 import step from '@bloometry/step';
@@ -48,8 +47,7 @@ class Job extends Component {
 
     if (!logoBackgroundColor) return colors.white;
 
-    const code = rgbHex(..._.take(_.values(JSON.parse(logoBackgroundColor)), 3));
-    return `#${code}`;
+    return `rgba(${_.values(JSON.parse(logoBackgroundColor)).join(', ')})`;
   }
 
   render() {
