@@ -8,11 +8,17 @@ import colors from '../theme/colors';
 import { ReactComponent as city } from '../assets/city.svg';
 import { ReactComponent as website } from '../assets/website.svg';
 import { ReactComponent as link } from '../assets/link.svg';
+import { ReactComponent as egg } from '../assets/egg-white.svg';
+import { ReactComponent as imperfectOval } from '../assets/imperfect-oval-white.svg';
+import { ReactComponent as oval } from '../assets/logo-oval-white.svg';
 
 const TYPES = {
   city,
   website,
   link,
+  egg,
+  imperfectOval,
+  oval,
 };
 
 class Icon extends Component {

@@ -15,6 +15,7 @@ class Text extends Component {
       center,
       medium,
       bold,
+      italic,
       style,
       children,
     } = this.props;
@@ -28,6 +29,7 @@ class Text extends Component {
           grey && { color: colors.grey },
           medium && { fontWeight: 500 },
           bold && { fontWeight: 600 },
+          italic && { fontStyle: 'italic' },
           style,
         ]}
       >

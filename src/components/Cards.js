@@ -72,10 +72,6 @@ class Cards extends Component {
 
     return (
       <Container style={styles.container}>
-        <Headline center tier={2} padBottom>
-          Naujausi kūrybingo darbo skelbimai
-        </Headline>
-
         <div style={styles.filters.container}>
           <Button component={Link} to='/' active={this.isActive()} tiny transparent style={styles.filters.button}>
             Visi
@@ -95,7 +91,7 @@ class Cards extends Component {
 
 const styles = {
   container: {
-    padding: `${step(7)} ${step(2)} 0`,
+    padding: `${step(4)} ${step(2)} 0`,
   },
   filters: {
     container: {

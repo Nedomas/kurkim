@@ -115,7 +115,7 @@ const styles = {
     height: 'initial',
   },
   transparent: {
-    color: colors.black,
+    color: colors.lighterBlack,
     backgroundColor: colors.lightLightBlack,
 
     ':hover': {
