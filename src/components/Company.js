@@ -131,6 +131,10 @@ export const CompanyQuery = gql`
             url
           }
 
+          displayImage {
+            url
+          }
+
           logoBackgroundColor
         }
       }
