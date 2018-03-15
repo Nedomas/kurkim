@@ -31,12 +31,6 @@ class Navbar extends Component {
           <Link to='/creatives/signup' style={[styles.links.item, dark && styles.dark.links.item, small && styles.small.links.item]}>
             Kūrybingiems
           </Link>
-          <a href='/events#cards' style={[styles.links.item, dark && styles.dark.links.item, small && styles.small.links.item]}>
-            Renginiai
-          </a>
-          <a href='/jobs#cards' style={[styles.links.item, dark && styles.dark.links.item, small && styles.small.links.item]}>
-            Darbo skelbimai
-          </a>
           <Link to='/about' style={[styles.links.item, dark && styles.dark.links.item, small && styles.small.links.item]}>
             Apie Kurkim
           </Link>

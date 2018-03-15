@@ -119,8 +119,7 @@ const styles = {
     backgroundColor: colors.lightLightBlack,
 
     ':hover': {
-      backgroundColor: colors.lighterBlack,
-      color: colors.white,
+      backgroundColor: colors.darkerLightLightBlack,
     },
   },
   more: {
@@ -148,8 +147,9 @@ const styles = {
     maxWidth: 'inherit',
   },
   active: {
-    backgroundColor: colors.lighterBlack,
-    color: colors.white,
+    border: `2px solid ${colors.lighterBlack}`,
+    // backgroundColor: colors.lighterBlack,
+    // color: colors.white,
   },
 };
 

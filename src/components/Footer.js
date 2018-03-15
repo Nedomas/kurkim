@@ -23,12 +23,6 @@ class Footer extends Component {
             <Link key='creatives-signup' to='/creatives/signup' style={styles.link}>
               Kūrybingiems
             </Link>
-            <Link key='events' to='/events#cards' style={styles.link}>
-              Renginiai
-            </Link>
-            <Link key='jobs' to='/jobs#cards' style={styles.link}>
-              Darbo skelbimai
-            </Link>
             <Link key='about' to='/about' style={styles.link}>
               Apie Kurkim
             </Link>
@@ -44,6 +38,7 @@ class Footer extends Component {
 
 const styles = {
   container: {
+    margin: `${step(10)} 0 0`,
     backgroundColor: colors.lightLightBlack,
   },
   innerContainer: {

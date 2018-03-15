@@ -25,6 +25,7 @@ class Card extends Component {
 
     this.state = {
       hover: false,
+      height: _.sample([350, 400, 450]),
     };
   }
 
@@ -85,19 +86,17 @@ class Card extends Component {
           displayImage,
         },
       },
-      last,
     } = this.props;
 
     const {
       hover,
+      height,
     } = this.state;
-
-    const isIsSingleColumn = this.props.windowWidth <= 600;
 
     return (
       <a
         href={this.href()}
-        style={[styles.container, last && !isIsSingleColumn && styles.last.container]}
+        style={[styles.container, { height: `${height}px` }]}
         onMouseEnter={() => this.handleMouseEnter()}
         onMouseLeave={() => this.handleMouseLeave()}
       >
@@ -106,6 +105,7 @@ class Card extends Component {
             styles.imageContainer,
             {
               backgroundImage: `url("${_.get(displayImage, 'url')}")`,
+              height: `${height}px`,
             },
             hover && styles.hover.imageContainer,
           ]}
@@ -113,10 +113,11 @@ class Card extends Component {
         <div style={[
           styles.gradientContainer,
           hover && styles.hover.gradientContainer,
+          { height: `${height}px` },
         ]} />
 
         <div style={styles.contentContainer}>
-          <Container style={styles.innerContainer}>
+          <Container style={[styles.innerContainer, { height: `${height - 35}px` }]}>
             <Headline tier={3}>
               {headline}
             </Headline>
@@ -146,18 +147,18 @@ export default compose(
   Radium,
 )(Card);
 
+const cardHeight = 400;
+
 const styles = {
   container: {
     display: 'flex',
     position: 'relative',
-    height: '350px',
     width: '100%',
     borderRadius,
   },
   imageContainer: {
     position: 'absolute',
     width: '300px',
-    height: '350px',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     borderRadius,
@@ -165,7 +166,6 @@ const styles = {
   gradientContainer: {
     position: 'absolute',
     width: '300px',
-    height: '350px',
     background: `linear-gradient(${colors.black}, ${colors.tintBlack}, ${colors.black})`,
     opacity: 0.7,
     borderRadius,
@@ -179,7 +179,6 @@ const styles = {
     justifyContent: 'space-between',
     color: colors.white,
     padding: step(),
-    height: '320px',
   },
   company: {
     container: {

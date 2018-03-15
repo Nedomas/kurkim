@@ -99,7 +99,7 @@ class Cards extends Component {
 
 const styles = {
   container: {
-    padding: `${step(4)} 0`,
+    padding: `${step(7)} 0 0`,
   },
   filters: {
     container: {
