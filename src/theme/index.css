@@ -26,27 +26,15 @@
 /* } */
 
 @font-face {
-  font-family: HK Grotesk;
-  src: url('/fonts/hk-grotesk/HKGrotesk-Regular.otf');
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: HK Grotesk;
-  src: url('/fonts/hk-grotesk/HKGrotesk-Bold.otf');
-  font-weight: 600;
-}
-
-@font-face {
-  font-family: Garamond Premier Pro Display;
-  src: url('/fonts/Garamond Premier Pro Display/Garamond Premier Pro Display.otf');
+  font-family: Apercu Pro;
+  src: url('/fonts/Apercu/apercupro-regular/apercu_regular_pro.otf');
   font-weight: 400;
 }
 
 @font-face {
   font-family: Apercu Pro;
-  src: url('/fonts/Apercu/apercupro-regular/apercu_regular_pro.otf');
-  font-weight: 400;
+  src: url('/fonts/Apercu/apercupro-medium/apercu_medium_pro.otf');
+  font-weight: 500;
 }
 
 @font-face {

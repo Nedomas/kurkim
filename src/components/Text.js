@@ -5,6 +5,7 @@ import Radium from 'radium';
 import fluid from '@bloometry/fluid';
 import step from '@bloometry/step';
 import colors from '../theme/colors';
+import Container from './Container';
 
 class Text extends Component {
   render() {
@@ -18,15 +19,15 @@ class Text extends Component {
     } = this.props;
 
     return (
-      <div style={[
+      <Container style={[
         styles[tier - 1],
         grey && { color: colors.grey },
         center && { textAlign: 'center' },
         bold && { fontWeight: 500 },
         style
-      ]}>
+      ]} {...this.props} >
         {children}
-      </div>
+      </Container>
     );
   }
 };

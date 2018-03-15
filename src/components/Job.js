@@ -8,12 +8,14 @@ import { compose } from 'redux';
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import ReactSimpleRange from 'react-simple-range';
 
 import step from '@bloometry/step';
 import colors from '../theme/colors';
 
 import FullScreenLoading from './FullScreenLoading';
 import Navbar from './Navbar';
+import Icon from './Icon';
 import Container from './Container';
 import Headline from './Headline';
 import Text from './Text';
@@ -89,15 +91,38 @@ class Job extends Component {
         <Container style={styles.container}>
           <div style={styles.company.container}>
             <CompanyLogo chaos company={company} />
-            <Headline tier={3}>
+            <Headline center tier={3} medium>
               {name}
             </Headline>
-            <Text tier={3}>
-              {_.map(cities, 'name').join(', ')}
-            </Text>
-            <Text tier={3}>
-              Aktyvus nuo {this.formatTime(activeFrom)} iki {this.formatTime(activeUntil)}
-            </Text>
+            <div style={styles.company.city}>
+              <Text center tier={3}>
+                <Icon type='city' tiny /> {_.map(cities, 'name').join(', ')}
+              </Text>
+            </div>
+
+            <div style={styles.active.container}>
+              <Text center tier={4}>
+                Skelbimas aktyvus
+              </Text>
+
+              <ReactSimpleRange
+                trackColor={colors.black}
+                thumbColor={colors.red}
+                sliderColor={colors.lightLightBlack}
+                disableThumb
+                value={30}
+                sliderSize={2}
+              />
+              <Container style={styles.labels.container}>
+                <Text tier={4}>
+                  {this.formatTime(activeFrom)}
+                </Text>
+                <Text tier={4}>
+                  {this.formatTime(activeUntil)}
+                </Text>
+              </Container>
+            </div>
+
             <Button component='a' href={applyLink} target='_blank' center>
               Aplikuoti
             </Button>
@@ -132,8 +157,11 @@ const styles = {
   company: {
     container: {
       width: '30%',
-      textAlign: 'center',
-      paddingRight: step(3),
+      padding: `0 ${step()}`,
+      marginRight: step(3),
+    },
+    city: {
+      paddingTop: step(0.1),
     },
   },
   content: {
@@ -144,6 +172,17 @@ const styles = {
   },
   secondaryButton: {
     marginTop: step(),
+  },
+  labels: {
+    container: {
+      display: 'flex',
+      justifyContent: 'space-between',
+    },
+  },
+  active: {
+    container: {
+      padding: `${step(2)} 0`,
+    },
   },
 };
 

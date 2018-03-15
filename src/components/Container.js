@@ -21,12 +21,14 @@ class Container extends Component {
       minWindowHeight,
       windowWidth,
       children,
+      component = 'div',
     } = this.props;
 
     const small = windowWidth <= 650;
+    const TagName = component;
 
     return (
-      <div style={[
+      <TagName style={[
         styles.container,
         center && styles.center,
         narrow && styles.narrow,
@@ -40,14 +42,14 @@ class Container extends Component {
         left && styles.left,
       ]}>
         {children}
-      </div>
+      </TagName>
     );
   }
 };
 
 const styles = {
   container: {
-    padding: `0 ${step()} ${step()}`,
+    // padding: `0 ${step()} ${step()}`,
   },
   minWindowHeight: {
     minHeight: '80vh',

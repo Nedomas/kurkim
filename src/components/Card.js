@@ -29,30 +29,6 @@ class Card extends Component {
     };
   }
 
-  category() {
-    if (this.isJob()) {
-      return 'Ieškomas';
-    } else if (this.isEvent()) {
-      return 'Renginys';
-    } else if (this.isPerson()) {
-      return 'Profilis';
-    } else {
-      return 'Kažkas';
-    }
-  }
-
-  isJob() {
-    return this.props.data.__typename === 'Job';
-  }
-
-  isEvent() {
-    return this.props.data.__typename === 'Event';
-  }
-
-  isPerson() {
-    return this.props.data.__typename === 'Person';
-  }
-
   handleMouseEnter() {
     this.setState({ hover: true });
   }
@@ -69,7 +45,7 @@ class Card extends Component {
       },
     } = this.props;
 
-    return `${_.kebabCase(plural(__typename))}/${id}`;
+    return `/${_.kebabCase(plural(__typename))}/${id}`;
   }
 
   render() {

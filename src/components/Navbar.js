@@ -52,7 +52,7 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: step(2),
+    padding: `${step(2)} ${step(2)} ${step(6)}`,
   },
   links: {
     container: {

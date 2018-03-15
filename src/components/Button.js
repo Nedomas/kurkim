@@ -82,7 +82,7 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
 
-    maxWidth: '320px',
+    // maxWidth: '320px',
     height: fluid(50, 70),
 
     padding: `0 ${step()}`,
@@ -147,9 +147,7 @@ const styles = {
     maxWidth: 'inherit',
   },
   active: {
-    border: `2px solid ${colors.lighterBlack}`,
-    // backgroundColor: colors.lighterBlack,
-    // color: colors.white,
+    border: `1px solid ${colors.lighterBlack}`,
   },
 };
 
