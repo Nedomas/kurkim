@@ -73,27 +73,27 @@ class Navbar extends Component {
           />
         </div>}
 
-        {small && open && <Container pad style={styles.hamburger.container}>
+        {small && open && <Container pad style={[styles.hamburger.container, dark && styles.dark.hamburger.container]}>
           <Container spaceBetween>
-            <Logo dark />
+            <Logo dark={!dark} />
             <div style={styles.hamburgerButton.container}>
               <HamburgerButton
                 open={open}
                 onClick={() => this.handleHamburgerClick()}
                 height={12}
                 width={24}
-                color={colors.black}
+                color={dark ? colors.white : colors.black}
               />
             </div>
           </Container>
 
-          <Text tier={2} padBottom padTop={3} component={Link} to='/creatives/signup' style={styles.hamburger.link}>
+          <Text tier={2} padBottom padTop={3} component={Link} to='/creatives/signup' style={[styles.hamburger.link, dark && styles.dark.hamburger.link]}>
             Kūrybingiems
           </Text>
-          <Text tier={2} padBottom component={Link} to='/about' style={styles.hamburger.link}>
+          <Text tier={2} padBottom component={Link} to='/about' style={[styles.hamburger.link, dark && styles.dark.hamburger.link]}>
             Apie Kurkim
           </Text>
-          <Text tier={2} padBottom component={Link} to='/blog' style={styles.hamburger.link}>
+          <Text tier={2} padBottom component={Link} to='/blog' style={[styles.hamburger.link, dark && styles.dark.hamburger.link]}>
             Tinklaraštis
           </Text>
         </Container>}
@@ -154,6 +154,14 @@ const styles = {
       button: {
         border: '2px solid #000',
         color: '#000',
+      },
+    },
+    hamburger: {
+      container: {
+        background: 'radial-gradient(hsla(380, 92%, 70%, 1), hsla(359, 95%, 70%, 1))',
+      },
+      link: {
+        color: colors.white,
       },
     },
   },
