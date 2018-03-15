@@ -6,6 +6,8 @@ import PersonCard from './PersonCard';
 import lt from 'moment/locale/lt';
 import Measure from 'react-measure';
 import plural from 'plural';
+import { compose } from 'redux';
+import windowSize from 'react-window-size';
 
 import step from '@bloometry/step';
 import Container from './Container';
@@ -83,16 +85,19 @@ class Card extends Component {
           displayImage,
         },
       },
+      last,
     } = this.props;
 
     const {
       hover,
     } = this.state;
 
+    const isIsSingleColumn = this.props.windowWidth <= 600;
+
     return (
       <a
         href={this.href()}
-        style={styles.container}
+        style={[styles.container, last && !isIsSingleColumn && styles.last.container]}
         onMouseEnter={() => this.handleMouseEnter()}
         onMouseLeave={() => this.handleMouseLeave()}
       >
@@ -132,7 +137,10 @@ class Card extends Component {
   }
 }
 
-export default Radium(Card);
+export default compose(
+  windowSize,
+  Radium,
+)(Card);
 
 const styles = {
   container: {
@@ -140,8 +148,17 @@ const styles = {
     position: 'relative',
     height: '350px',
     width: '300px',
-    margin: `0 ${step()} ${step(4)}`,
+    maxWidth: '300px',
+    margin: `0 ${step(.5)} ${step(3)}`,
     borderRadius,
+
+    ':after': {
+      content: '',
+      flex: 1000000,
+    },
+  },
+  lastContainer: {
+    marginRight: 'auto',
   },
   imageContainer: {
     position: 'absolute',
@@ -182,6 +199,11 @@ const styles = {
     },
     name: {
       paddingLeft: step(),
+    },
+  },
+  last: {
+    container: {
+      marginRight: `calc(300px + ${step(1.5)})`,
     },
   },
 };

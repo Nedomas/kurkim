@@ -8,6 +8,7 @@ import gql from 'graphql-tag';
 import { compose } from 'redux';
 
 import Card from './Card';
+import Container from './Container';
 import FullScreenLoading from './FullScreenLoading';
 
 const COLLECTIONS = [
@@ -44,35 +45,33 @@ class Cards extends Component {
     if (loading) return <FullScreenLoading />;
 
     return (
-      <div style={[styles.container, small && styles.small.container]} id='cards'>
-        <div style={styles.innerContainer}>
-          <div style={styles.filters.container}>
-            <a href='/#cards' style={styles.filters.item}>
-              Visi
-            </a>
-            <a href='/events#cards' style={styles.filters.item}>
-              Renginiai
-            </a>
-            <a href='/jobs#cards' style={styles.filters.item}>
-              Darbo skelbimai
-            </a>
-          </div>
-          <div style={styles.list}>
-              {_.map(this.all(), (data) => <Card key={data.id} data={data} />)}
-          </div>
+      <Container center style={styles.container}>
+        <div style={styles.filters.container}>
+          <a href='/#cards' style={styles.filters.item}>
+            Visi
+          </a>
+          <a href='/events#cards' style={styles.filters.item}>
+            Renginiai
+          </a>
+          <a href='/jobs#cards' style={styles.filters.item}>
+            Darbo skelbimai
+          </a>
         </div>
-      </div>
+        <div style={styles.list}>
+          {_.map(this.all(), (data, i) => <Card key={data.id} data={data} last={i === this.all().length - 1}/>)}
+        </div>
+      </Container>
     );
   }
 }
 
 const styles = {
+  // container: {
+  //   padding: '100px 80px',
+  // },
   innerContainer: {
     maxWidth: '1000px',
     margin: '0 auto',
-  },
-  container: {
-    padding: '100px 80px',
   },
   title: {
     fontFamily: 'Apercu Pro',
@@ -86,7 +85,13 @@ const styles = {
   list: {
     display: 'flex',
     flexWrap: 'wrap',
-    margin: '0 -15px',
+    margin: '0 auto',
+    justifyContent: 'center',
+
+    // ':after': {
+    //   content: '',
+    //   flex: 'auto',
+    // },
   },
   filters: {
     container: {
