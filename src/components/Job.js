@@ -105,14 +105,18 @@ class Job extends Component {
                 Skelbimas aktyvus
               </Text>
 
-              <ReactSimpleRange
-                trackColor={colors.black}
-                thumbColor={colors.red}
-                sliderColor={colors.lightLightBlack}
-                disableThumb
-                value={30}
-                sliderSize={2}
-              />
+              <div style={styles.active.range}>
+                <ReactSimpleRange
+                  trackColor={colors.black}
+                  thumbColor={colors.red}
+                  sliderColor={colors.lightLightBlack}
+                  disableThumb
+                  value={moment().valueOf()}
+                  sliderSize={2}
+                  min={moment(activeFrom).valueOf()}
+                  max={moment(activeUntil).valueOf()}
+                />
+              </div>
               <Container style={styles.labels.container}>
                 <Text tier={4}>
                   {this.formatTime(activeFrom)}
@@ -161,7 +165,7 @@ const styles = {
       marginRight: step(3),
     },
     city: {
-      paddingTop: step(0.1),
+      paddingTop: step(0.4),
     },
   },
   content: {
@@ -182,6 +186,9 @@ const styles = {
   active: {
     container: {
       padding: `${step(2)} 0`,
+    },
+    range: {
+      pointerEvents: 'none',
     },
   },
 };
