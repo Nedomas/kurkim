@@ -8,7 +8,7 @@ import { Helmet } from 'react-helmet';
 import extractDomain from 'extract-domain';
 
 import Navbar from './Navbar';
-import Card from './Card';
+import CardsGrid from './CardsGrid';
 import Container from './Container';
 import Headline from './Headline';
 import Markdown from './Markdown';
@@ -61,14 +61,13 @@ class Company extends Component {
             {_.uniq(_.compact(_.flatMap(_.flatMap(jobs, 'cities'), 'name'))).join(', ')}
           </Text>
           <Markdown source={description} />
-
-          <Headline tier={3} center>
-            Visi {name} darbo skelbimai
-          </Headline>
-          <div>
-            {_.map(jobs, (job) => <Card key={job.id} data={job} />)}
-          </div>
         </Container>
+
+        <Headline tier={3} center>
+          Visi {name} darbo skelbimai
+        </Headline>
+
+        <CardsGrid cards={jobs} />
 
         <Footer {...this.props} />
       </div>

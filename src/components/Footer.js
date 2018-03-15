@@ -42,7 +42,7 @@ const styles = {
     backgroundColor: colors.lightLightBlack,
   },
   innerContainer: {
-    padding: `${step(2)} 0 ${step()}`,
+    padding: step(2),
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',

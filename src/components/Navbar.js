@@ -5,6 +5,7 @@ import step from '@bloometry/step';
 import { Link as RouterLink } from 'react-router-dom';
 
 import Logo from './Logo';
+import Container from './Container';
 import borderRadius from '../theme/borderRadius';
 
 const Link = Radium(RouterLink);
@@ -18,7 +19,7 @@ class Navbar extends Component {
     const small = this.props.windowWidth <= 768;
 
     return (
-      <div style={styles.container}>
+      <Container style={styles.container}>
         <Logo {...this.props} />
 
         {small && <div style={[styles.links.item, dark && styles.dark.links.item, small && styles.small.links.item]}>
@@ -40,7 +41,7 @@ class Navbar extends Component {
             </Link>
           </div>
         </div>}
-      </div>
+      </Container>
     );
   }
 }
@@ -52,7 +53,8 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: `${step(2)} ${step(2)} ${step(6)}`,
+    padding: step(2),
+    margin: `0 0 ${step(4)}`,
   },
   links: {
     container: {

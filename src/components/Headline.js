@@ -11,24 +11,16 @@ import Text from './Text';
 class Headline extends Component {
   render() {
     const {
-      style,
-      grey,
-      children,
-      medium,
-      bold,
       tier = 1,
-      center,
+      children,
     } = this.props;
 
     return (
-      <Text component={`h${tier}`} style={[
-        styles[tier - 1],
-        grey && { color: colors.grey },
-        center && { textAlign: 'center' },
-        medium && { fontWeight: 500 },
-        bold && { fontWeight: 600 },
-        style
-      ]}>
+      <Text
+        component={`h${tier}`}
+        style={styles[tier - 1]}
+        {...this.props}
+      >
         {children}
       </Text>
     );
@@ -38,11 +30,9 @@ class Headline extends Component {
 const styles = [
   {
     fontSize: fluid(50, 80),
-    fontWeight: 500,
   },
   {
     fontSize: fluid(35, 50),
-    fontWeight: 500,
   },
   {
     fontSize: fluid(24, 32),

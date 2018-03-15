@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 
 import step from '@bloometry/step';
 import colors from '../theme/colors';
-import Card from './Card';
+import CardsGrid from './CardsGrid';
 import Button from './Button';
 import Headline from './Headline';
 import Container from './Container';
@@ -72,9 +72,10 @@ class Cards extends Component {
 
     return (
       <Container style={styles.container}>
-        <Headline center tier={2}>
+        <Headline center tier={2} padBottom>
           Naujausi kūrybingo darbo skelbimai
         </Headline>
+
         <div style={styles.filters.container}>
           <Button component={Link} to='/' active={this.isActive()} tiny transparent style={styles.filters.button}>
             Visi
@@ -85,13 +86,8 @@ class Cards extends Component {
             </Button>
           ))}
         </div>
-        <StackGrid
-          columnWidth={300}
-          gutterWidth={20}
-          gutterHeight={20}
-        >
-          {_.map(this.all(), (data, i) => <Card key={data.id} data={data}/>)}
-        </StackGrid>
+
+        <CardsGrid cards={this.all()} />
       </Container>
     );
   }
@@ -99,7 +95,7 @@ class Cards extends Component {
 
 const styles = {
   container: {
-    padding: `${step(7)} 0 0`,
+    padding: `${step(7)} ${step(2)} 0`,
   },
   filters: {
     container: {

@@ -20,6 +20,7 @@ class Container extends Component {
       dark,
       minWindowHeight,
       windowWidth,
+      padBottom,
       children,
       component = 'div',
     } = this.props;
@@ -28,19 +29,21 @@ class Container extends Component {
     const TagName = component;
 
     return (
-      <TagName style={[
-        styles.container,
-        center && styles.center,
-        narrow && styles.narrow,
-        limited && styles.limited,
-        chaos && styles.chaos,
-        dark && chaos && styles.dark.chaos,
-        minWindowHeight && styles.minWindowHeight,
-        style,
-        small && styles.small,
-        middle && styles.middle,
-        left && styles.left,
-      ]}>
+      <TagName
+        style={[
+          center && styles.center,
+          narrow && styles.narrow,
+          limited && styles.limited,
+          chaos && styles.chaos,
+          dark && chaos && styles.dark.chaos,
+          minWindowHeight && styles.minWindowHeight,
+          small && styles.small,
+          middle && styles.middle,
+          left && styles.left,
+          padBottom && { paddingBottom: step(padBottom || 1) },
+          style,
+        ]}
+      >
         {children}
       </TagName>
     );
@@ -48,9 +51,6 @@ class Container extends Component {
 };
 
 const styles = {
-  container: {
-    // padding: `0 ${step()} ${step()}`,
-  },
   minWindowHeight: {
     minHeight: '80vh',
   },

@@ -91,14 +91,9 @@ class Job extends Component {
         <Container style={styles.container}>
           <div style={styles.company.container}>
             <CompanyLogo chaos company={company} />
-            <Headline center tier={3} medium>
+            <Headline center medium tier={3}>
               {name}
             </Headline>
-            <div style={styles.company.city}>
-              <Text center tier={3}>
-                <Icon type='city' tiny /> {_.map(cities, 'name').join(', ')}
-              </Text>
-            </div>
 
             <div style={styles.active.container}>
               <Text center tier={4}>
@@ -141,9 +136,14 @@ class Job extends Component {
           </div>
 
           <div style={styles.content.container}>
-            <Headline tier={2}>
+            <Headline bold tier={2}>
               {headline}
             </Headline>
+            <div style={styles.company.city}>
+              <Text tier={3}>
+                <Icon type='city' tiny /> {_.map(cities, 'name').join(', ')}
+              </Text>
+            </div>
             <Markdown source={description} />
           </div>
         </Container>
@@ -157,15 +157,15 @@ class Job extends Component {
 const styles = {
   container: {
     display: 'flex',
+    padding: `0 ${step(2)}`,
   },
   company: {
     container: {
       width: '30%',
-      padding: `0 ${step()}`,
-      marginRight: step(3),
+      marginRight: step(5),
     },
     city: {
-      paddingTop: step(0.4),
+      padding: `${step(0.2)} 0 ${step()}`,
     },
   },
   content: {

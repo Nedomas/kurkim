@@ -10,22 +10,27 @@ import Container from './Container';
 class Text extends Component {
   render() {
     const {
-      style,
-      grey,
-      bold,
-      children,
       tier = 1,
+      grey,
       center,
+      medium,
+      bold,
+      style,
+      children,
     } = this.props;
 
     return (
-      <Container style={[
-        styles[tier - 1],
-        grey && { color: colors.grey },
-        center && { textAlign: 'center' },
-        bold && { fontWeight: 500 },
-        style
-      ]} {...this.props} >
+      <Container
+        {...this.props}
+        style={[
+          styles[tier - 1],
+          center && { textAlign: 'center' },
+          grey && { color: colors.grey },
+          medium && { fontWeight: 500 },
+          bold && { fontWeight: 600 },
+          style,
+        ]}
+      >
         {children}
       </Container>
     );
@@ -41,7 +46,6 @@ const styles = [
   },
   {
     fontSize: fluid(20, 20),
-    lineHeight: fluid(20, 20),
   },
   {
     fontSize: fluid(14, 15),
