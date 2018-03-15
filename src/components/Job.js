@@ -13,6 +13,7 @@ import ReactSimpleRange from 'react-simple-range';
 import step from '@bloometry/step';
 import colors from '../theme/colors';
 
+import Cities from './Cities';
 import FullScreenLoading from './FullScreenLoading';
 import Navbar from './Navbar';
 import Icon from './Icon';
@@ -139,11 +140,7 @@ class Job extends Component {
             <Headline bold tier={2}>
               {headline}
             </Headline>
-            <div style={styles.company.city}>
-              <Text tier={3}>
-                <Icon type='city' tiny /> {_.map(cities, 'name').join(', ')}
-              </Text>
-            </div>
+            <Cities cities={cities} />
             <Markdown source={description} />
           </div>
         </Container>

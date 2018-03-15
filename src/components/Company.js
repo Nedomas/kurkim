@@ -8,10 +8,12 @@ import { Helmet } from 'react-helmet';
 import extractDomain from 'extract-domain';
 
 import Navbar from './Navbar';
+import Cities from './Cities';
 import CardsGrid from './CardsGrid';
 import Container from './Container';
 import Headline from './Headline';
 import Markdown from './Markdown';
+import Icon from './Icon';
 import Text from './Text';
 import FullScreenLoading from './FullScreenLoading';
 
@@ -49,25 +51,30 @@ class Company extends Component {
       <div>
         <Navbar dark {...this.props} />
 
-        <Container center style={styles.container}>
+        <Container pad>
           <CompanyLogo chaos company={Company} />
-          <Headline tier={2} center>
+          <Headline tier={2} center bold padBottom>
             {name}
           </Headline>
-          <Text tier={3} center>
-            <a href={aboutUrl} target='_blank'>{extractDomain(aboutUrl)}</a>
+          <Container style={styles.meta.container} padBottom>
+            <Text tier={3}>
+              <a href={aboutUrl} target='_blank' style={styles.meta.link.container}>
+                <Icon type='link' tiny />
+                <span style={styles.meta.link.text}>
+                  {extractDomain(aboutUrl)}
+                </span>
+              </a>
+            </Text>
+            <Cities cities={_.flatMap(jobs, 'cities')} />
+          </Container>
+          <Text tier={3} readable padTop padBottom={5}>
+            <Markdown source={description} />
           </Text>
-          <Text tier={3} center>
-            {_.uniq(_.compact(_.flatMap(_.flatMap(jobs, 'cities'), 'name'))).join(', ')}
-          </Text>
-          <Markdown source={description} />
         </Container>
 
-        <Headline tier={3} center>
-          Visi {name} darbo skelbimai
-        </Headline>
-
-        <CardsGrid cards={jobs} />
+        <Container pad>
+          <CardsGrid cards={jobs} />
+        </Container>
 
         <Footer {...this.props} />
       </div>
@@ -88,6 +95,23 @@ const styles = {
   },
   teaser: {
     padding: `${step(3)} 0 ${step()}`,
+  },
+  meta: {
+    container: {
+      display: 'flex',
+      justifyContent: 'center',
+    },
+    link: {
+      container: {
+        color: colors.black,
+        paddingRight: step(3),
+        textDecoration: 'none',
+      },
+      text: {
+        paddingLeft: step(0.5),
+        textDecoration: 'underline',
+      },
+    },
   },
 };
 

@@ -6,9 +6,13 @@ import fluid from '@bloometry/fluid';
 import colors from '../theme/colors';
 
 import { ReactComponent as city } from '../assets/city.svg';
+import { ReactComponent as website } from '../assets/website.svg';
+import { ReactComponent as link } from '../assets/link.svg';
 
 const TYPES = {
   city,
+  website,
+  link,
 };
 
 class Icon extends Component {

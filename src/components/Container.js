@@ -6,6 +6,7 @@ import windowSize from 'react-window-size';
 import step from '@bloometry/step';
 import fluid from '@bloometry/fluid';
 import constrain from '../theme/constrain';
+import maxReadableWidth from '../theme/maxReadableWidth';
 
 class Container extends Component {
   render() {
@@ -20,6 +21,9 @@ class Container extends Component {
       dark,
       minWindowHeight,
       windowWidth,
+      pad,
+      readable,
+      padTop,
       padBottom,
       children,
       component = 'div',
@@ -40,7 +44,10 @@ class Container extends Component {
           small && styles.small,
           middle && styles.middle,
           left && styles.left,
+          pad && { padding: step(2) },
+          padTop && { paddingTop: step(padTop || 1) },
           padBottom && { paddingBottom: step(padBottom || 1) },
+          readable && styles.readable,
           style,
         ]}
       >
@@ -89,6 +96,10 @@ const styles = {
     chaos: {
       backgroundImage: 'url("/chaos-black.svg")',
     },
+  },
+  readable: {
+    maxWidth: maxReadableWidth,
+    margin: '0 auto',
   },
 };
 

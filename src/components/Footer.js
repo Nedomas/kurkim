@@ -17,7 +17,7 @@ class Footer extends Component {
   render() {
     return (
       <Container style={styles.container}>
-        <Container style={styles.innerContainer}>
+        <Container pad style={styles.innerContainer}>
           <Logo dark {...this.props} style={styles.logo} />
           <div style={styles.linksContainer}>
             <Link key='creatives-signup' to='/creatives/signup' style={styles.link}>
@@ -42,7 +42,6 @@ const styles = {
     backgroundColor: colors.lightLightBlack,
   },
   innerContainer: {
-    padding: step(2),
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
