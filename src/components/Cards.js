@@ -80,26 +80,13 @@ class Cards extends Component {
 const styles = {
   container: {
     padding: `${step(4)} 0`,
-    // maxWidth: '1000px',
   },
   filters: {
     container: {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      paddingBottom: '55px',
-    },
-    item: {
-      marginRight: '20px',
-      color: colors.black,
-      // color: '#312E3F',
-      // fontSize: '13px',
-      letterSpacing: '1px',
-      // textTransform: 'uppercase',
-      display: 'block',
-      textDecoration: 'none',
-      paddingBottom: '4px',
-      borderBottom: '1px solid hsla(251, 16%, 21%, 0.1)',
+      paddingBottom: step(4),
     },
     button: {
       margin: `0 ${step()}`,

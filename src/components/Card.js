@@ -107,9 +107,13 @@ class Card extends Component {
             {
               backgroundImage: `url("${_.get(displayImage, 'url')}")`,
             },
+            hover && styles.hover.imageContainer,
           ]}
         />
-        <div style={styles.gradientContainer} />
+        <div style={[
+          styles.gradientContainer,
+          hover && styles.hover.gradientContainer,
+        ]} />
 
         <div style={styles.contentContainer}>
           <Container style={styles.innerContainer}>
@@ -148,25 +152,14 @@ const styles = {
     position: 'relative',
     height: '350px',
     width: '100%',
-    // maxWidth: '300px',
-    // margin: `0 ${step(.5)} ${step(3)}`,
     borderRadius,
-
-    // ':after': {
-    //   content: '',
-    //   flex: 1000000,
-    // },
   },
-  // lastContainer: {
-  //   marginRight: 'auto',
-  // },
   imageContainer: {
     position: 'absolute',
     width: '300px',
     height: '350px',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    // filter: 'brightness(85%) saturate(80%)',
     borderRadius,
   },
   gradientContainer: {
@@ -204,6 +197,14 @@ const styles = {
   last: {
     container: {
       marginRight: `calc(300px + ${step(1.5)})`,
+    },
+  },
+  hover: {
+    imageContainer: {
+      filter: 'saturate(200%)',
+    },
+    gradientContainer: {
+      opacity: 0.3,
     },
   },
 };
