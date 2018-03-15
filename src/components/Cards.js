@@ -7,6 +7,7 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { compose } from 'redux';
 import StackGrid from 'react-stack-grid';
+import { Link } from 'react-router-dom';
 
 import step from '@bloometry/step';
 import colors from '../theme/colors';
@@ -26,22 +27,42 @@ class Cards extends Component {
   all() {
     const {
       data,
-      filter,
+      match: {
+        params: {
+          city: filterCityName,
+        },
+      },
     } = this.props;
 
     const result = _.compact(_.flatten(_.map(COLLECTIONS, (collection) => data[collection])));
+    if (!filterCityName) return result;
 
-    if (!filter) return result;
-
-    return _.filter(result, {
-      __typename: _.capitalize(filter)
+    return _.filter(result, (job) => {
+      return _.some(job.cities, { name: filterCityName });
     });
+  }
+
+  isActive(city) {
+    const {
+      data,
+      match: {
+        params: {
+          city: filterCityName,
+        },
+      },
+    } = this.props;
+
+    if (!city && !filterCityName) return true;
+    if (city && city.name === filterCityName) return true;
+
+    return false;
   }
 
   render() {
     const {
       data: {
         loading,
+        allCities,
       },
     } = this.props;
 
@@ -55,15 +76,14 @@ class Cards extends Component {
           Naujausi kūrybingo darbo skelbimai
         </Headline>
         <div style={styles.filters.container}>
-          <Button active tiny transparent style={styles.filters.button}>
+          <Button component={Link} to='/' active={this.isActive()} tiny transparent style={styles.filters.button}>
             Visi
           </Button>
-          <Button tiny transparent style={styles.filters.button}>
-            Vilnius
-          </Button>
-          <Button tiny transparent style={styles.filters.button}>
-            Kaunas
-          </Button>
+          {_.map(allCities, (city) => (
+            <Button key={city.id} active={this.isActive(city)} component={Link} to={`/cities/${city.name}`} tiny transparent style={styles.filters.button}>
+              {city.name} ({city._jobsMeta.count})
+            </Button>
+          ))}
         </div>
         <StackGrid
           columnWidth={300}
@@ -103,6 +123,15 @@ const styles = {
 
 const CardsQuery = gql`
   query CardsQuery {
+    allCities {
+      id
+      name
+
+      _jobsMeta {
+        count
+      }
+    }
+
     allJobs {
       id
       headline

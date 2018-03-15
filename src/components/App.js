@@ -20,10 +20,9 @@ export default class App extends Component {
     return (
       <div>
         <Route path='/' exact component={Landing} />
+        <Route path='/cities/:city' exact component={Landing} />
         <Route path='/jobs' exact component={Jobs} />
         <Route path='/jobs/:id' exact component={Job} />
-        <Route path='/events' exact component={Events} />
-        <Route path='/people' exact component={People} />
         <Route path='/profile/:personId' exact component={Profile} />
         <Route path='/apply/person' exact component={ApplyPerson} />
         <Route path='/blog' exact component={Blog} />

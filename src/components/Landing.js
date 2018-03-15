@@ -8,8 +8,8 @@ export default class Landing extends Component {
   render() {
     return (
       <div style={styles.container}>
-        <Splash />
-        <Cards />
+        <Splash {...this.props} />
+        <Cards {...this.props} />
         <Footer {...this.props} />
       </div>
     );
