@@ -6,8 +6,13 @@ import windowSize from 'react-window-size';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { compose } from 'redux';
+import StackGrid from 'react-stack-grid';
 
+import step from '@bloometry/step';
+import colors from '../theme/colors';
 import Card from './Card';
+import Button from './Button';
+import Headline from './Headline';
 import Container from './Container';
 import FullScreenLoading from './FullScreenLoading';
 
@@ -45,53 +50,37 @@ class Cards extends Component {
     if (loading) return <FullScreenLoading />;
 
     return (
-      <Container center style={styles.container}>
+      <Container style={styles.container}>
+        <Headline center tier={2}>
+          Naujausi kūrybingo darbo skelbimai
+        </Headline>
         <div style={styles.filters.container}>
-          <a href='/#cards' style={styles.filters.item}>
+          <Button active tiny transparent style={styles.filters.button}>
             Visi
-          </a>
-          <a href='/events#cards' style={styles.filters.item}>
-            Renginiai
-          </a>
-          <a href='/jobs#cards' style={styles.filters.item}>
-            Darbo skelbimai
-          </a>
+          </Button>
+          <Button tiny transparent style={styles.filters.button}>
+            Vilnius
+          </Button>
+          <Button tiny transparent style={styles.filters.button}>
+            Kaunas
+          </Button>
         </div>
-        <div style={styles.list}>
-          {_.map(this.all(), (data, i) => <Card key={data.id} data={data} last={i === this.all().length - 1}/>)}
-        </div>
+        <StackGrid
+          columnWidth={300}
+          gutterWidth={20}
+          gutterHeight={20}
+        >
+          {_.map(this.all(), (data, i) => <Card key={data.id} data={data}/>)}
+        </StackGrid>
       </Container>
     );
   }
 }
 
 const styles = {
-  // container: {
-  //   padding: '100px 80px',
-  // },
-  innerContainer: {
-    maxWidth: '1000px',
-    margin: '0 auto',
-  },
-  title: {
-    fontFamily: 'Apercu Pro',
-    fontSize: '70px',
-    letterSpacing: '1.2px',
-    color: '#000',
-  },
-  titleDash: {
-    color: '#FBD230',
-  },
-  list: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    margin: '0 auto',
-    justifyContent: 'center',
-
-    // ':after': {
-    //   content: '',
-    //   flex: 'auto',
-    // },
+  container: {
+    padding: `${step(4)} 0`,
+    // maxWidth: '1000px',
   },
   filters: {
     container: {
@@ -102,21 +91,26 @@ const styles = {
     },
     item: {
       marginRight: '20px',
-      color: '#312E3F',
-      // fontWeight: 600,
-      fontSize: '13px',
+      color: colors.black,
+      // color: '#312E3F',
+      // fontSize: '13px',
       letterSpacing: '1px',
-      textTransform: 'uppercase',
+      // textTransform: 'uppercase',
       display: 'block',
       textDecoration: 'none',
       paddingBottom: '4px',
       borderBottom: '1px solid hsla(251, 16%, 21%, 0.1)',
     },
-  },
-  small: {
-    container: {
-      padding: '100px 40px',
+    button: {
+      margin: `0 ${step()}`,
+      width: '100px',
     },
+  },
+  list: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    margin: '0 auto',
+    justifyContent: 'space-between',
   },
 }
 

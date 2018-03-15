@@ -31,6 +31,7 @@ class Button extends Component {
       center,
       tiny,
       component = 'button',
+      active,
     } = this.props;
 
     const small = this.props.windowWidth <= 650;
@@ -52,6 +53,7 @@ class Button extends Component {
           'center',
           'windowWidth',
           'windowHeight',
+          'active',
         )}
         style={[
           styles.container,
@@ -61,9 +63,10 @@ class Button extends Component {
           more && styles.more,
           disabled && styles.disabled,
           longText && styles.longText,
-          _.omit(style, 'color'),
           small && styles.small,
           this.needsWidth() && styles.needsWidth,
+          _.omit(style, 'color'),
+          active && styles.active,
         ]}
         disabled={loading}
       >
@@ -143,6 +146,10 @@ const styles = {
   small: {
     width: 'inherit',
     maxWidth: 'inherit',
+  },
+  active: {
+    backgroundColor: colors.lighterBlack,
+    color: colors.white,
   },
 };
 

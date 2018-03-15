@@ -147,19 +147,19 @@ const styles = {
     display: 'flex',
     position: 'relative',
     height: '350px',
-    width: '300px',
-    maxWidth: '300px',
-    margin: `0 ${step(.5)} ${step(3)}`,
+    width: '100%',
+    // maxWidth: '300px',
+    // margin: `0 ${step(.5)} ${step(3)}`,
     borderRadius,
 
-    ':after': {
-      content: '',
-      flex: 1000000,
-    },
+    // ':after': {
+    //   content: '',
+    //   flex: 1000000,
+    // },
   },
-  lastContainer: {
-    marginRight: 'auto',
-  },
+  // lastContainer: {
+  //   marginRight: 'auto',
+  // },
   imageContainer: {
     position: 'absolute',
     width: '300px',
