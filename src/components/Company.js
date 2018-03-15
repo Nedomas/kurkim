@@ -50,12 +50,12 @@ class Company extends Component {
         <Navbar dark {...this.props} />
 
         <Container center style={styles.container}>
-          <CompanyLogo company={Company} />
+          <CompanyLogo chaos company={Company} />
           <Headline tier={2} center>
             {name}
           </Headline>
           <Text tier={3} center>
-            <a href={aboutUrl}>{extractDomain(aboutUrl)}</a>
+            <a href={aboutUrl} target='_blank'>{extractDomain(aboutUrl)}</a>
           </Text>
           <Text tier={3} center>
             {_.uniq(_.compact(_.flatMap(_.flatMap(jobs, 'cities'), 'name'))).join(', ')}
@@ -112,6 +112,20 @@ export const CompanyQuery = gql`
 
         cities {
           name
+        }
+
+        company {
+          name
+
+          logo {
+            url
+          }
+
+          logoBackgroundColor
+
+          displayImage {
+            url
+          }
         }
       }
 

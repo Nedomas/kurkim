@@ -85,7 +85,6 @@ const styles = {
   },
   list: {
     display: 'flex',
-    justifyContent: 'center',
     flexWrap: 'wrap',
     margin: '0 -15px',
   },
@@ -125,6 +124,17 @@ const CardsQuery = gql`
 
       cities {
         name
+      }
+
+      company {
+        name
+        logo {
+          url
+        }
+        logoBackgroundColor
+        displayImage {
+          url
+        }
       }
     }
   }

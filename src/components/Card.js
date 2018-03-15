@@ -6,6 +6,15 @@ import PersonCard from './PersonCard';
 import lt from 'moment/locale/lt';
 import Measure from 'react-measure';
 import plural from 'plural';
+
+import step from '@bloometry/step';
+import Container from './Container';
+import Headline from './Headline';
+import Text from './Text';
+import CompanyLogo from './CompanyLogo';
+
+import borderRadius from '../theme/borderRadius';
+import colors from '../theme/colors';
 moment.locale('lt');
 
 class Card extends Component {
@@ -14,7 +23,6 @@ class Card extends Component {
 
     this.state = {
       hover: false,
-      titleHeight: 0,
     };
   }
 
@@ -50,18 +58,6 @@ class Card extends Component {
     this.setState({ hover: false });
   }
 
-  personHref() {
-    const {
-      data: {
-        sys: {
-          id,
-        },
-      },
-    } = this.props;
-
-    return `/profile/${id}`;
-  }
-
   href() {
     const {
       data: {
@@ -81,43 +77,55 @@ class Card extends Component {
         headline,
         cities,
         teaser,
+        company,
+        company: {
+          name,
+          displayImage,
+        },
       },
     } = this.props;
 
     const {
       hover,
-      titleHeight,
     } = this.state;
-    console.log(titleHeight);
-
-    if (this.isPerson()) return <PersonCard {...this.props} />;
 
     return (
       <a
         href={this.href()}
-        style={[styles.container, this.isPerson() && styles.person.container]}
+        style={styles.container}
         onMouseEnter={() => this.handleMouseEnter()}
         onMouseLeave={() => this.handleMouseLeave()}
       >
-        <div style={[styles.blocks.middle, styles.blocks[__typename], hover && styles.hover.blocks[__typename]]}>
-          <div style={[styles.title, hover && styles.hover.title]}>
-            {headline}
-          </div>
-        </div>
+        <div
+          style={[
+            styles.imageContainer,
+            {
+              backgroundImage: `url("${_.get(displayImage, 'url')}")`,
+            },
+          ]}
+        />
+        <div style={styles.gradientContainer} />
 
-        <div style={styles.topContainer}>
-          <div style={styles.category}>
-            {this.category()}
-          </div>
-          <div>
-            {_.map(cities, 'name').join(', ')}
-          </div>
-        </div>
+        <div style={styles.contentContainer}>
+          <Container style={styles.innerContainer}>
+            <Headline tier={3}>
+              {headline}
+            </Headline>
+            <div style={styles.company.container}>
+              <div>
+                <CompanyLogo company={company} size={50} style={styles.company.logo} />
+              </div>
 
-        <div style={styles.blocks.bottom}>
-          <div style={styles.shortDescription}>
-            {teaser}
-          </div>
+              <div style={styles.company.name}>
+                <Text bold tier={3}>
+                  {name}
+                </Text>
+                <Text tier={4}>
+                  {_.map(cities, 'name').join(', ')}
+                </Text>
+              </div>
+            </div>
+          </Container>
         </div>
       </a>
     );
@@ -128,112 +136,52 @@ export default Radium(Card);
 
 const styles = {
   container: {
-    // border: '2px solid #000',
-    width: '30%',
-    minWidth: '300px',
-    padding: '0 0 10px',
-    margin: '0 15px 50px',
-    // margin: '15px 0',
-    // display: 'flex',
-    // flexDirection: 'column',
-    color: '#888888',
-    textDecoration: 'none',
-    boxShadow: '5px 5px 0 hsla(0, 0%, 0%, 0.1)',
-    border: '1px solid #EBEAEC',
-    // borderBottom: '1px solid #E6E6E6',
-  },
-  title: {
-    // color: '#000',
-    color: '#fff',
-    // letterSpacing: '1.1px',
-    // padding: '20px 0',
-    letterSpacing: '-1px',
-    padding: '10px 0 0',
-    fontSize: '30px',
-    lineHeight: '30px',
-    marginLeft: '-2px',
-    textTransform: 'capitalize',
-  },
-  topContainer: {
-    textTransform: 'uppercase',
-    letterSpacing: '.1em',
-    padding: '20px 10px 10px',
-    fontSize: '12px',
-    color: '#888888',
     display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    position: 'relative',
+    height: '350px',
+    width: '300px',
+    margin: `0 ${step()} ${step(4)}`,
+    borderRadius,
   },
-  category: {
-    border: '1px solid #888888',
-    padding: '2px 5px 1px',
-  },
-  shortDescription: {
-    // padding: '0 10px 0 0',
-    fontSize: '18px',
-    // minHeight: '70px',
-  },
-  greyBlock: {
-    // paddingTop: '10px',
-    color: 'grey',
-    // textAlign: 'right',
-  },
-  img: {
-    width: '100%',
-    height: '170px',
+  imageContainer: {
+    position: 'absolute',
+    width: '300px',
+    height: '350px',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    margin: '0 auto',
-    opacity: '.8',
-    // mixBlendMode: 'darken',
-    // filter: 'grayscale(100%) contrast(1.5)',
+    // filter: 'brightness(85%) saturate(80%)',
+    borderRadius,
   },
-  blocks: {
-    Job: {
-      backgroundColor: '#8CDBDF',
-    },
-    Event: {
-      backgroundColor: '#FDB19A',
-    },
-    top: {
-      // backgroundColor: 'red',
-      // minHeight: '130px',
-    },
-    middle: {
-      height: '150px',
-      padding: '10px 20px',
-    },
-    bottom: {
-      padding: '10px',
-    },
+  gradientContainer: {
+    position: 'absolute',
+    width: '300px',
+    height: '350px',
+    background: `linear-gradient(${colors.black}, ${colors.tintBlack}, ${colors.black})`,
+    opacity: 0.7,
+    borderRadius,
   },
-  hover: {
-    title: {
-      // textDecoration: 'underline',
-    },
-    blocks: {
-      Job: {
-        // backgroundColor: 'hsla(183, 56%, 71%, 1)',
-        backgroundColor: 'hsla(183, 80%, 71%, 1)',
-      },
-      Event: {
-        // backgroundColor: 'hsla(14, 96%, 80%, 1)',
-        backgroundColor: 'hsla(14, 100%, 70%, 1)',
-      },
-    },
+  contentContainer: {
+    position: 'absolute',
   },
-  person: {
+  innerContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    color: colors.white,
+    padding: step(),
+    height: '320px',
+  },
+  company: {
     container: {
-      // backgroundColor: '#F7FDF4',
+      display: 'flex',
+      alignItems: 'center',
     },
-  },
-  seperator: {
-    fontFamily: 'Apercu Pro',
-    color: '#000',
-    // letterSpacing: '1.1px',
-    // padding: '20px 0',
-    fontSize: '60px',
-    lineHeight: '50px',
-    textTransform: 'capitalize',
+    logo: {
+      marginBottom: 0,
+      paddingBottom: 0,
+    },
+    name: {
+      paddingLeft: step(),
+    },
   },
 };

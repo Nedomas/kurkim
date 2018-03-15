@@ -11,13 +11,20 @@ class Text extends Component {
     const {
       style,
       grey,
+      bold,
       children,
       tier = 1,
       center,
     } = this.props;
 
     return (
-      <div style={[styles[tier - 1], grey && { color: colors.grey }, center && { textAlign: 'center' }, style]}>
+      <div style={[
+        styles[tier - 1],
+        grey && { color: colors.grey },
+        center && { textAlign: 'center' },
+        bold && { fontWeight: 500 },
+        style
+      ]}>
         {children}
       </div>
     );
@@ -27,19 +34,16 @@ class Text extends Component {
 const styles = [
   {
     fontSize: fluid(16, 20),
-    paddingBottom: step(),
   },
   {
     fontSize: fluid(30, 40),
-    paddingBottom: step(),
   },
   {
-    fontSize: fluid(16, 18),
-    paddingBottom: step(),
+    fontSize: fluid(20, 20),
+    lineHeight: fluid(20, 20),
   },
   {
-    fontSize: fluid(20, 30),
-    paddingBottom: step(),
+    fontSize: fluid(14, 15),
   },
 ];
 

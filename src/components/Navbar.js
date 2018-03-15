@@ -5,6 +5,7 @@ import step from '@bloometry/step';
 import { Link as RouterLink } from 'react-router-dom';
 
 import Logo from './Logo';
+import borderRadius from '../theme/borderRadius';
 
 const Link = Radium(RouterLink);
 
@@ -86,6 +87,7 @@ const styles = {
       display: 'block',
       textDecoration: 'none',
       textTransform: 'uppercase',
+      borderRadius,
 
       ':hover': {
         background: 'hsla(0, 0%, 0%, .05)',

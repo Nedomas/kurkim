@@ -4,6 +4,7 @@ import { compose } from 'redux';
 import _ from 'lodash';
 
 import step from '@bloometry/step';
+import round from '@bloometry/round';
 import colors from '../theme/colors';
 
 class CompanyLogo extends Component {
@@ -26,17 +27,24 @@ class CompanyLogo extends Component {
           url,
         },
       },
+      size = 200,
+      chaos,
+      style,
     } = this.props;
 
     return (
-      <div style={styles.container}>
+      <div style={[styles.container, chaos && styles.chaos.container, style]}>
         <div
           style={[
             {
               backgroundImage: `url('${url}')`,
               backgroundColor: this.logoBackgroundColor(),
+              backgroundSize: `${size - size * 0.2}px`,
+              width: `${size}px`,
+              height: `${size}px`,
             },
             styles.img,
+            chaos && styles.chaos.img,
           ]}
         />
       </div>
@@ -46,22 +54,25 @@ class CompanyLogo extends Component {
 
 const styles = {
   img: {
-    backgroundSize: '160px',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
-    borderRadius: '9999999999px',
-    border: `1px solid ${colors.black}`,
-    width: '200px',
-    height: '200px',
+    borderRadius: round,
     margin: '0 auto',
   },
   container: {
-    backgroundImage: 'url("/chaos-black.svg")',
-    backgroundSize: 'contain',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
     paddingBottom: step(2),
     marginBottom: step(1.5),
+  },
+  chaos: {
+    container: {
+      backgroundImage: 'url("/chaos-black.svg")',
+      backgroundSize: 'contain',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center',
+    },
+    img: {
+      border: `1px solid ${colors.black}`,
+    },
   },
 };
 

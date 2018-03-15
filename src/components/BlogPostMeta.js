@@ -17,7 +17,7 @@ class BlogPostMeta extends Component {
 
     return (
       <div style={styles.container}>
-        {moment(createdAt).format('MMM d, YYYY')} | {timeToRead} skaitymas
+        {moment(createdAt).format('MMM d, YYYY')} | {timeToRead} skaitymo
       </div>
     );
   }

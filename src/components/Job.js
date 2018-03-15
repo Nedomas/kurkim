@@ -88,7 +88,7 @@ class Job extends Component {
 
         <Container style={styles.container}>
           <div style={styles.company.container}>
-            <CompanyLogo company={company} />
+            <CompanyLogo chaos company={company} />
             <Headline tier={3}>
               {name}
             </Headline>

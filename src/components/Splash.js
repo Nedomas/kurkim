@@ -42,11 +42,11 @@ export default windowSize(Radium(Splash));
 const styles = {
   container: {
     color: colors.white,
-    backgroundImage: 'url("/splash.svg")',
-    backgroundSize: fluid(200, 400),
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: '50vw 25vh',
-    backgroundColor: '#F96D6F',
+    // backgroundImage: 'url("/splash.svg")',
+    // backgroundSize: fluid(200, 400),
+    // backgroundRepeat: 'no-repeat',
+    // backgroundPosition: '50vw 25vh',
+    background: 'radial-gradient(hsla(380, 92%, 70%, 1), hsla(359, 95%, 70%, 1))',
     minHeight: '100vh',
     margin: '0 auto',
     width: '100%',
