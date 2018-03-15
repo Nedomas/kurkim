@@ -17,6 +17,7 @@ class Container extends Component {
       narrow,
       limited,
       left,
+      right,
       chaos,
       dark,
       minWindowHeight,
@@ -25,6 +26,7 @@ class Container extends Component {
       readable,
       padTop,
       padBottom,
+      spaceBetween,
       children,
       component = 'div',
     } = this.props;
@@ -34,6 +36,7 @@ class Container extends Component {
 
     return (
       <TagName
+        {...this.props}
         style={[
           center && styles.center,
           narrow && styles.narrow,
@@ -44,6 +47,8 @@ class Container extends Component {
           small && styles.small,
           middle && styles.middle,
           left && styles.left,
+          right && styles.right,
+          spaceBetween && styles.spaceBetween,
           pad && { padding: step(2) },
           padTop && { paddingTop: step(padTop || 1) },
           padBottom && { paddingBottom: step(padBottom || 1) },
@@ -72,9 +77,9 @@ const styles = {
     alignItems: 'center',
   },
   small: {
-    display: 'block',
-    textAlign: 'center',
-    margin: '0 auto',
+    // display: 'block',
+    // textAlign: 'center',
+    // margin: '0 auto',
   },
   narrow: {
     width: '100%',
@@ -85,6 +90,15 @@ const styles = {
   },
   left: {
     textAlign: 'left',
+  },
+  right: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+  },
+  spaceBetween: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   chaos: {
     backgroundImage: 'url("/splash.svg")',

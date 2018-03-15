@@ -83,19 +83,6 @@ class Company extends Component {
 };
 
 const styles = {
-  displayImage: {
-    width: '100%',
-    height: fluid(200, 400),
-    backgroundSize: 'cover',
-  },
-  container: {
-    ...constrain,
-    paddingTop: step(2),
-    textAlign: 'left',
-  },
-  teaser: {
-    padding: `${step(3)} 0 ${step()}`,
-  },
   meta: {
     container: {
       display: 'flex',
@@ -145,10 +132,6 @@ export const CompanyQuery = gql`
           }
 
           logoBackgroundColor
-
-          displayImage {
-            url
-          }
         }
       }
 
