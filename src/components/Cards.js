@@ -66,8 +66,6 @@ class Cards extends Component {
       },
     } = this.props;
 
-    const small = this.props.windowWidth <= 768;
-
     if (loading) return <FullScreenLoading />;
 
     return (

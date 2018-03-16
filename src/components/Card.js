@@ -133,14 +133,14 @@ const styles = {
   },
   imageContainer: {
     position: 'absolute',
-    width: '300px',
+    width: '100%',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     borderRadius,
   },
   gradientContainer: {
     position: 'absolute',
-    width: '300px',
+    width: '100%',
     background: `linear-gradient(${colors.black}, ${colors.tintBlack}, ${colors.black})`,
     opacity: 0.7,
     borderRadius,

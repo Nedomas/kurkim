@@ -11,7 +11,6 @@ export default class MarkdownRendererHeading extends Component {
       children,
       ...rest,
     } = this.props;
-    console.log(this.props);
 
     return (
       <Headline padBottom={0.5} bold {...rest}>

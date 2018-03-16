@@ -15,7 +15,6 @@ class Headline extends Component {
       children,
     } = this.props;
 
-    console.log(children, level);
     return (
       <Text
         {...this.props}

@@ -8,6 +8,7 @@ import step from '@bloometry/step';
 import fluid from '@bloometry/fluid';
 import constrain from '../theme/constrain';
 import maxReadableWidth from '../theme/maxReadableWidth';
+import isSmall from '../theme/isSmall';
 
 class Container extends Component {
   steps(number, defaultSteps) {
@@ -41,7 +42,6 @@ class Container extends Component {
       component = 'div',
     } = this.props;
 
-    const small = windowWidth <= 650;
     const TagName = _.isString(component) ? component : Radium(component);
 
     return (
@@ -54,12 +54,11 @@ class Container extends Component {
           chaos && styles.chaos,
           dark && chaos && styles.dark.chaos,
           minWindowHeight && styles.minWindowHeight,
-          small && styles.small,
           middle && styles.middle,
           left && styles.left,
           right && styles.right,
           spaceBetween && styles.spaceBetween,
-          pad && { padding: step(2) },
+          pad && { padding: step(isSmall(this) ? 1.5 : 2) },
           margin && { marginTop: step(1), marginBottom: step(1) },
           padTop && { paddingTop: this.steps(padTop, 1) },
           padBottom && { paddingBottom: this.steps(padBottom, 1) },
@@ -87,11 +86,6 @@ const styles = {
     paddingTop: 'calc(100vh - 60px - ${step(6)})',
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  small: {
-    // display: 'block',
-    // textAlign: 'center',
-    // margin: '0 auto',
   },
   narrow: {
     width: '100%',

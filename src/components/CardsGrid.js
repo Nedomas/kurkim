@@ -3,6 +3,7 @@ import _ from 'lodash';
 import Radium from 'radium';
 import { compose } from 'redux';
 import StackGrid from 'react-stack-grid';
+import windowSize from 'react-window-size';
 
 import Card from './Card';
 
@@ -14,7 +15,7 @@ class CardsGrid extends Component {
 
     return (
       <StackGrid
-        columnWidth={300}
+        columnWidth={this.props.windowWidth <= 320 ? '100%' : 300}
         gutterWidth={20}
         gutterHeight={20}
       >
@@ -25,5 +26,6 @@ class CardsGrid extends Component {
 }
 
 export default compose(
+  windowSize,
   Radium,
 )(CardsGrid);
