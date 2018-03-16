@@ -87,6 +87,7 @@ const CardsQuery = gql`
       id
       headline
       teaser
+      slug
 
       cities {
         name
@@ -94,6 +95,7 @@ const CardsQuery = gql`
 
       company {
         name
+        slug
         logo {
           url
         }

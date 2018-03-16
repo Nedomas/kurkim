@@ -40,15 +40,18 @@ class Card extends Component {
     const {
       data: {
         __typename,
-        id,
+        slug: jobSlug,
+        company: {
+          slug: companySlug,
+        },
       },
     } = this.props;
 
     const mapping = {
-      Job: 'darbo-skelbimai',
+      Job: 'i',
     };
 
-    return `/${mapping[__typename]}/${id}`;
+    return `/${mapping[__typename]}/${companySlug}/${jobSlug}`;
   }
 
   render() {

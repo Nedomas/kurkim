@@ -17,10 +17,10 @@ export default class App extends Component {
       <div>
         <Route path='/' exact component={Landing} />
         <Route path='/miestai/:city' exact component={Landing} />
-        <Route path='/darbo-skelbimai/:id' exact component={Job} />
         <Route path='/t' exact component={Blog} />
         <Route path='/t/:slug' exact component={BlogPost} />
         <Route path='/i/:slug' exact component={Company} />
+        <Route path='/i/:companySlug/:jobSlug' exact component={Job} />
         <Route path='/kurybingiems' exact component={CreativesSignup} />
         <Route path='/apie-kurkim' exact component={About} />
       </div>

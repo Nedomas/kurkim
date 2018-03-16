@@ -32,7 +32,7 @@ class Filters extends Component {
     } = this.props;
 
     return (
-      <Container padBottom={4} style={styles.container}>
+      <Container padBottom={2} style={styles.container}>
         <Button component={Link} to='/' active={this.isActive()} tiny transparent style={styles.button}>
           Visi
         </Button>

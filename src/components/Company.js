@@ -119,6 +119,7 @@ export const CompanyQuery = gql`
       jobs {
         id
         headline
+        slug
 
         cities {
           name
@@ -126,6 +127,7 @@ export const CompanyQuery = gql`
 
         company {
           name
+          slug
 
           logo {
             url

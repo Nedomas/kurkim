@@ -55,33 +55,31 @@ class Job extends Component {
     const {
       data: {
         loading,
+        allJobs,
       },
     } = this.props;
 
     if (loading) return <FullScreenLoading />;
 
+    const Job = _.first(allJobs);
+
     const {
-      data: {
-        Job,
-        Job: {
-          headline,
-          teaser,
-          description,
-          applyLink,
-          cities,
-          activeFrom,
-          activeUntil,
-          company,
-          company: {
-            name,
-            slug,
-            logo: {
-              url: companyLogoUrl,
-            },
-          },
+      headline,
+      teaser,
+      description,
+      applyLink,
+      cities,
+      activeFrom,
+      activeUntil,
+      company,
+      company: {
+        name,
+        slug,
+        logo: {
+          url: companyLogoUrl,
         },
       },
-    } = this.props;
+    } = Job;
 
     return (
       <div>
@@ -204,8 +202,13 @@ const styles = {
 };
 
 const JobQuery = gql`
-  query JobQuery($id: ID!) {
-    Job(id: $id) {
+  query JobQuery($companySlug: String!, $jobSlug: String!) {
+    allJobs(filter: {
+      slug: $jobSlug,
+      company: {
+        slug: $companySlug,
+      },
+    }) {
       id
       headline
       teaser
@@ -239,12 +242,14 @@ export default compose(
     options: ({
       match: {
         params: {
-          id,
+          companySlug,
+          jobSlug,
         },
       },
     }) => ({
       variables: {
-        id,
+        companySlug,
+        jobSlug,
       },
     }),
   }),
