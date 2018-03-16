@@ -37,7 +37,7 @@ class CreativesSignup extends Component {
       <div>
         <Navbar dark {...this.props} />
 
-        <Container dark chaos middle minWindowHeight>
+        <Container pad dark chaos middle minWindowHeight>
           <Container center limited>
             <Text center>
               <Markdown source={content} />
