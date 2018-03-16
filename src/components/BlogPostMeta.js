@@ -18,7 +18,7 @@ class BlogPostMeta extends Component {
     } = this.props;
 
     return (
-      <Text level={4} grey padBottom {...this.props}>
+      <Text grey padBottom {...this.props}>
         {_.capitalize(moment(createdAt).format('MMM d, YYYY'))} | {timeToRead} skaitymo
       </Text>
     );

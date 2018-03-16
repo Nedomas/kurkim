@@ -10,6 +10,8 @@ import step from '@bloometry/step';
 import colors from '../theme/colors';
 import fluid from '@bloometry/fluid';
 
+import Container from './Container';
+
 class Button extends Component {
   needsWidth() {
     const {
@@ -30,31 +32,16 @@ class Button extends Component {
       disabled,
       center,
       tiny,
+      limitWidth,
       component = 'button',
       active,
     } = this.props;
 
     const small = this.props.windowWidth <= 650;
-    const TagName = _.isString(component) ? component : Radium(component);
 
     return (
-      <TagName
-        {..._.omit(
-          this.props,
-          'loading',
-          'style',
-          'children',
-          'longText',
-          'transparent',
-          'more',
-          'disabled',
-          'component',
-          'tiny',
-          'center',
-          'windowWidth',
-          'windowHeight',
-          'active',
-        )}
+      <Container
+        {...this.props}
         style={[
           styles.container,
           center && styles.center,
@@ -63,15 +50,16 @@ class Button extends Component {
           more && styles.more,
           disabled && styles.disabled,
           longText && styles.longText,
+          limitWidth && styles.limitWidth,
           small && styles.small,
           this.needsWidth() && styles.needsWidth,
-          _.omit(style, 'color'),
           active && styles.active,
+          style,
         ]}
         disabled={loading}
       >
         {loading ? <Spinner fadeIn='none' name='double-bounce' color={colors.white} /> : children}
-      </TagName>
+      </Container>
     );
   }
 };
@@ -82,7 +70,6 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
 
-    // maxWidth: '320px',
     height: fluid(50, 70),
 
     padding: `0 ${step()}`,
@@ -100,6 +87,9 @@ const styles = {
     ':hover': {
       backgroundColor: colors.lighterBlack,
     },
+  },
+  limitWidth: {
+    maxWidth: '320px',
   },
   center: {
     margin: '0 auto',

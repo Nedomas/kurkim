@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import step from '@bloometry/step';
 import colors from '../../theme/colors';
 
+import Container from '../Container';
+
 export default class MarkdownRendererList extends Component {
   render() {
     const {
@@ -13,15 +15,15 @@ export default class MarkdownRendererList extends Component {
     } = this.props;
 
     return (
-      <ul style={styles.container} {...rest}>
+      <Container padBottom={2} style={styles.container} {...rest}>
         {children}
-      </ul>
+      </Container>
     );
   }
 }
 
 const styles = {
   container: {
-    padding: `${step(0.2)} 0`,
+    maxWidth: '650px',
   },
 };

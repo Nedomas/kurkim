@@ -89,7 +89,7 @@ class Job extends Component {
       <div>
         <Navbar dark />
 
-        <Container style={styles.container}>
+        <Container pad padNavbar style={styles.container}>
           <div style={styles.company.container}>
             <CompanyLogo chaos company={company} />
             <Headline center medium level={3}>
@@ -97,7 +97,7 @@ class Job extends Component {
             </Headline>
 
             <div style={styles.active.container}>
-              <Text center level={4}>
+              <Text center>
                 Skelbimas aktyvus
               </Text>
 
@@ -114,10 +114,10 @@ class Job extends Component {
                 />
               </div>
               <Container style={styles.labels.container}>
-                <Text level={4}>
+                <Text>
                   {this.formatTime(activeFrom)}
                 </Text>
-                <Text level={4}>
+                <Text>
                   {this.formatTime(activeUntil)}
                 </Text>
               </Container>
@@ -137,10 +137,10 @@ class Job extends Component {
           </div>
 
           <div style={styles.content.container}>
-            <Headline bold level={2}>
+            <Headline bold level={2} padBottom>
               {headline}
             </Headline>
-            <Cities cities={cities} />
+            <Cities cities={cities} padBottom/>
             <Markdown source={description} />
           </div>
         </Container>
@@ -154,7 +154,6 @@ class Job extends Component {
 const styles = {
   container: {
     display: 'flex',
-    padding: `0 ${step(2)}`,
   },
   company: {
     container: {

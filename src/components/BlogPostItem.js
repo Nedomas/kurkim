@@ -70,7 +70,7 @@ class BlogPostItem extends Component {
           </Headline>
           <BlogPostMeta blogPost={blogPost} />
 
-          <Text grey level={3} padBottom>
+          <Text grey level={2} padBottom>
             {teaser}
           </Text>
 

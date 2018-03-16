@@ -30,7 +30,7 @@ export default class MarkdownRendererLink extends Component {
     } = this.props;
 
     if (this.isButton()) {
-      return <Button {...rest} component='a' target='_blank'>{this.buttonText()}</Button>;
+      return <Button center margin limitWidth {...rest} component='a' target='_blank'>{this.buttonText()}</Button>;
     }
 
     return <a style={styles.container} {...rest}>{children}</a>;

@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 
+import fluid from '@bloometry/fluid';
 import step from '@bloometry/step';
 import colors from '../../theme/colors';
+import Text from '../Text';
+import Container from '../Container';
 
 export default class MarkdownRendererListItem extends Component {
   render() {
@@ -12,11 +15,19 @@ export default class MarkdownRendererListItem extends Component {
       ...rest,
     } = this.props;
 
+    const childrenWithProps = React.Children.map(children, (child) => {
+      return (
+        <Text level={2} tight {...rest}>
+          {child}
+        </Text>
+      );
+    });
+
     return (
-      <li style={styles.container} {...rest}>
+      <Container padBottom={0.7} component='li' style={styles.container} {...rest}>
         <img style={styles.bulletpoint} src='/logo-oval-red-small.svg'/>
-        {children}
-      </li>
+        {childrenWithProps}
+      </Container>
     );
   }
 }
@@ -24,12 +35,11 @@ export default class MarkdownRendererListItem extends Component {
 const styles = {
   container: {
     display: 'flex',
-    padding: `${step(0.2)} 0`,
     width: '100%',
     alignItems: 'center',
   },
   bulletpoint: {
-    height: '10px',
-    paddingRight: '6px',
+    height: step(0.7),
+    paddingRight: step(0.5),
   },
 };

@@ -12,7 +12,7 @@ export default class MarkdownRendererBlockquote extends Component {
       ...rest,
     } = this.props;
 
-    var childrenWithProps = React.Children.map(children, (child) => {
+    const childrenWithProps = React.Children.map(children, (child) => {
       return React.cloneElement(child, { ...rest, level: 2, medium: true });
     });
 

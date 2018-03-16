@@ -9,6 +9,7 @@ import BlogPostItem from './BlogPostItem';
 import Container from './Container';
 import Headline from './Headline';
 import Footer from './Footer';
+import Text from './Text';
 import FullScreenLoading from './FullScreenLoading';
 import Markdown from './Markdown';
 import step from '@bloometry/step';
@@ -35,16 +36,18 @@ class Blog extends Component {
 
     return (
       <div>
-        <Navbar dark {...this.props} />
+        <Container>
+          <Navbar dark {...this.props} />
 
-        <Container pad center style={styles.container}>
-          <Markdown source={content} />
+          <Container pad center readable padNavbar>
+            <Markdown source={content} />
 
-          <Container>
-            {_.isEmpty(allBlogPosts) && 'Vis dar nieko neprikeverzojom.'}
-            {_.map(allBlogPosts, (blogPost) => {
-              return <BlogPostItem key={blogPost.slug} blogPost={blogPost} />;
-            })}
+            <Container>
+              {_.isEmpty(allBlogPosts) && <Text center level={3} chaos dark minWindowHeight>Vis dar nieko neprikeverzojom.</Text>}
+              {_.map(allBlogPosts, (blogPost) => {
+                return <BlogPostItem key={blogPost.slug} blogPost={blogPost} />;
+              })}
+            </Container>
           </Container>
         </Container>
 
@@ -52,12 +55,6 @@ class Blog extends Component {
       </div>
     );
   }
-};
-
-const styles = {
-  container: {
-    maxWidth: fluid(800, 900),
-  },
 };
 
 export const BlogQuery = gql`

@@ -10,6 +10,7 @@ import Headline from './Headline';
 import Button from './Button';
 import Footer from './Footer';
 import Markdown from './Markdown';
+import Text from './Text';
 import FullScreenLoading from './FullScreenLoading';
 
 import step from '@bloometry/step';
@@ -36,9 +37,11 @@ class CreativesSignup extends Component {
       <div>
         <Navbar dark {...this.props} />
 
-        <Container dark chaos middle>
+        <Container dark chaos middle minWindowHeight>
           <Container center limited>
-            <Markdown source={content} />
+            <Text center>
+              <Markdown source={content} />
+            </Text>
           </Container>
         </Container>
 

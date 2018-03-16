@@ -11,6 +11,7 @@ class Text extends Component {
   render() {
     const {
       level = 1,
+      tight,
       grey,
       center,
       medium,
@@ -27,6 +28,7 @@ class Text extends Component {
         {...this.props}
         style={[
           styles[level - 1],
+          tight && tightStyles[level - 1],
           center && { textAlign: 'center' },
           grey && { color: colors.grey },
           medium && { fontWeight: 500 },
@@ -45,12 +47,28 @@ class Text extends Component {
 
 const styles = [
   {
+    fontSize: fluid(15, 16),
+    lineHeight: fluid(17, 18),
+  },
+  {
     fontSize: fluid(18, 22),
     lineHeight: fluid(26, 36),
   },
   {
     fontSize: fluid(34, 39),
     lineHeight: fluid(39, 44),
+  },
+];
+
+const tightStyles = [
+  {
+    lineHeight: fluid(15, 16),
+  },
+  {
+    lineHeight: fluid(18, 22),
+  },
+  {
+    lineHeight: fluid(34, 39),
   },
 ];
 

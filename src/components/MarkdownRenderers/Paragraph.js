@@ -13,7 +13,7 @@ export default class MarkdownRendererParagraph extends Component {
     } = this.props;
 
     return (
-      <Text padBottom={2} {...rest}>
+      <Text level={2} padBottom={2} {...rest}>
         {children}
       </Text>
     );

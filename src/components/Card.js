@@ -102,10 +102,10 @@ class Card extends Component {
               </div>
 
               <div style={styles.company.name}>
-                <Text bold level={3}>
+                <Text medium level={2} tight>
                   {name}
                 </Text>
-                <Text level={4}>
+                <Text>
                   {_.map(cities, 'name').join(', ')}
                 </Text>
               </div>

@@ -14,14 +14,9 @@ export default class MarkdownRendererHeading extends Component {
     console.log(this.props);
 
     return (
-      <Headline style={styles.container} {...rest}>
+      <Headline padBottom={0.5} bold {...rest}>
         {children}
       </Headline>
     );
   }
 }
-
-const styles = {
-  container: {
-  },
-};

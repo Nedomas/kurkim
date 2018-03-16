@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import Radium from 'radium';
 import windowSize from 'react-window-size';
+import _ from 'lodash';
 
 import step from '@bloometry/step';
 import fluid from '@bloometry/fluid';
@@ -9,6 +10,12 @@ import constrain from '../theme/constrain';
 import maxReadableWidth from '../theme/maxReadableWidth';
 
 class Container extends Component {
+  steps(number, defaultSteps) {
+    if (!_.isNumber(number)) return step(defaultSteps);
+
+    return step(number);
+  }
+
   render() {
     const {
       style,
@@ -26,13 +33,16 @@ class Container extends Component {
       readable,
       padTop,
       padBottom,
+      padLeft,
       spaceBetween,
+      padNavbar,
+      margin,
       children,
       component = 'div',
     } = this.props;
 
     const small = windowWidth <= 650;
-    const TagName = component;
+    const TagName = _.isString(component) ? component : Radium(component);
 
     return (
       <TagName
@@ -50,9 +60,12 @@ class Container extends Component {
           right && styles.right,
           spaceBetween && styles.spaceBetween,
           pad && { padding: step(2) },
-          padTop && { paddingTop: step(padTop || 1) },
-          padBottom && { paddingBottom: step(padBottom || 1) },
+          margin && { marginTop: step(1), marginBottom: step(1) },
+          padTop && { paddingTop: this.steps(padTop, 1) },
+          padBottom && { paddingBottom: this.steps(padBottom, 1) },
+          padLeft && { paddingLeft: this.steps(padLeft, 1) },
           readable && styles.readable,
+          padNavbar && { paddingTop: this.steps(padNavbar, 5) },
           style,
         ]}
       >
@@ -64,7 +77,7 @@ class Container extends Component {
 
 const styles = {
   minWindowHeight: {
-    minHeight: '50vh',
+    minHeight: '60vh',
   },
   center: {
     margin: '0 auto',

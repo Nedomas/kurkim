@@ -30,20 +30,20 @@ class Splash extends Component {
           <div style={styles.elementContainer}>
             <Navbar />
 
-            <div style={styles.content.container}>
-              <Headline>
+            <Container pad center padNavbar readable>
+              <Headline center>
                 Kūrybingi darbai
                 kūrybingiems
               </Headline>
 
-              <Headline italic level={2}>
+              <Headline center italic level={2}>
                 Tapk matomas.
                 <br/>
                 Atrask svajonių darbą.
                 <br/>
                 Scrollink.
               </Headline>
-            </div>
+            </Container>
           </div>
         </div>
       </Container>
@@ -71,7 +71,6 @@ const styles = {
   content: {
     container: {
       padding: `0vh 20vw ${step(5)} ${step()}`,
-      maxWidth: maxReadableWidth,
       margin: '0 auto',
     },
   },

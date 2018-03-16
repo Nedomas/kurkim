@@ -51,13 +51,15 @@ class Company extends Component {
       <div>
         <Navbar dark {...this.props} />
 
-        <Container pad>
+        <Container pad readable center>
           <CompanyLogo chaos company={Company} />
           <Headline level={2} center bold padBottom>
             {name}
           </Headline>
           <Container style={styles.meta.container} padBottom>
-            <Text level={3}>
+            <Cities cities={_.flatMap(jobs, 'cities')} />
+
+            <Text level={2} padLeft>
               <a href={aboutUrl} target='_blank' style={styles.meta.link.container}>
                 <Icon type='link' tiny />
                 <span style={styles.meta.link.text}>
@@ -65,9 +67,8 @@ class Company extends Component {
                 </span>
               </a>
             </Text>
-            <Cities cities={_.flatMap(jobs, 'cities')} />
           </Container>
-          <Text level={3} readable padTop padBottom={5}>
+          <Text level={3} padTop padBottom>
             <Markdown source={description} />
           </Text>
         </Container>
@@ -91,7 +92,6 @@ const styles = {
     link: {
       container: {
         color: colors.black,
-        paddingRight: step(3),
         textDecoration: 'none',
       },
       text: {
