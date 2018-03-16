@@ -62,16 +62,17 @@ class BlogPost extends Component {
 
         <div style={[styles.displayImage, { backgroundImage: `url('${displayImageUrl}')` }]} />
 
-        <Container center style={styles.container}>
-          <Headline>
-            {headline}
-          </Headline>
-          <BlogPostMeta blogPost={BlogPost} />
-          <Headline level={3} style={styles.teaser} color={colors.black}>
-            {teaser}
-          </Headline>
-          <Markdown source={content} />
-          <BlogPostAuthor author={author} />
+        <Container pad readable center style={styles.container}>
+          <Container left>
+            <Headline bold level={2}>
+              {headline}
+            </Headline>
+            <BlogPostMeta level={3} blogPost={BlogPost} />
+            <Text color={colors.lighterBlack}>
+              <Markdown source={content} />
+            </Text>
+            <BlogPostAuthor author={author} />
+          </Container>
         </Container>
 
         <Footer {...this.props} />
@@ -83,16 +84,13 @@ class BlogPost extends Component {
 const styles = {
   displayImage: {
     width: '100%',
-    height: fluid(200, 400),
+    height: fluid(200, 700),
     backgroundSize: 'cover',
   },
   container: {
     backgroundColor: colors.white,
     marginTop: fluid(-100, -200),
-    maxWidth: '800px',
-    padding: step(2),
     borderRadius,
-    textAlign: 'left',
   },
   teaser: {
     padding: `${step(3)} 0 ${step()}`,

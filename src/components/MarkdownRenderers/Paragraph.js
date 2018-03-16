@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import step from '@bloometry/step';
 import colors from '../../theme/colors';
 
+import Text from '../Text';
+
 export default class MarkdownRendererParagraph extends Component {
   render() {
     const {
@@ -11,15 +13,9 @@ export default class MarkdownRendererParagraph extends Component {
     } = this.props;
 
     return (
-      <p style={styles.container} {...rest}>
+      <Text padBottom={2} {...rest}>
         {children}
-      </p>
+      </Text>
     );
   }
 }
-
-const styles = {
-  container: {
-    paddingTop: step(),
-  },
-};

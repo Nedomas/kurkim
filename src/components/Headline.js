@@ -31,15 +31,19 @@ class Headline extends Component {
 const styles = [
   {
     fontSize: fluid(50, 80),
+    lineHeight: fluid(60, 90),
   },
   {
     fontSize: fluid(35, 50),
+    lineHeight: fluid(40, 55),
   },
   {
     fontSize: fluid(24, 32),
+    lineHeight: fluid(28, 36),
   },
   {
     fontSize: fluid(20, 30),
+    lineHeight: fluid(23, 33),
   },
 ];
 

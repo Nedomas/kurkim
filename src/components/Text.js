@@ -17,6 +17,7 @@ class Text extends Component {
       bold,
       italic,
       underline,
+      color,
       style,
       children,
     } = this.props;
@@ -32,6 +33,7 @@ class Text extends Component {
           bold && { fontWeight: 600 },
           italic && { fontStyle: 'italic' },
           underline && { textDecoration: 'underline' },
+          color && { color },
           style,
         ]}
       >
@@ -43,16 +45,12 @@ class Text extends Component {
 
 const styles = [
   {
-    fontSize: fluid(16, 20),
+    fontSize: fluid(18, 22),
+    lineHeight: fluid(26, 36),
   },
   {
-    fontSize: fluid(30, 40),
-  },
-  {
-    fontSize: fluid(20, 20),
-  },
-  {
-    fontSize: fluid(14, 15),
+    fontSize: fluid(34, 39),
+    lineHeight: fluid(39, 44),
   },
 ];
 

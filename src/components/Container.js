@@ -112,7 +112,6 @@ const styles = {
   },
   readable: {
     maxWidth: maxReadableWidth,
-    margin: '0 auto',
   },
 };
 

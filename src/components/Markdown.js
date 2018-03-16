@@ -11,6 +11,7 @@ import MarkdownRendererList from './MarkdownRenderers/List';
 import MarkdownRendererListItem from './MarkdownRenderers/ListItem';
 import MarkdownRendererParagraph from './MarkdownRenderers/Paragraph';
 import MarkdownRendererHeading from './MarkdownRenderers/Heading';
+import MarkdownRendererBlockquote from './MarkdownRenderers/Blockquote';
 
 const RENDERERS = {
   image: MarkdownRendererImage,
@@ -19,6 +20,7 @@ const RENDERERS = {
   listItem: MarkdownRendererListItem,
   paragraph: MarkdownRendererParagraph,
   heading: MarkdownRendererHeading,
+  blockquote: MarkdownRendererBlockquote,
 };
 
 class Markdown extends Component {
