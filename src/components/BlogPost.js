@@ -5,6 +5,7 @@ import { compose } from 'redux';
 import Radium from 'radium';
 import _ from 'lodash';
 import { Helmet } from 'react-helmet';
+import windowSize from 'react-window-size';
 
 import Navbar from './Navbar';
 import BlogPostMeta from './BlogPostMeta';
@@ -18,6 +19,7 @@ import FullScreenLoading from './FullScreenLoading';
 
 import step from '@bloometry/step';
 import colors from '../theme/colors';
+import isSmall from '../theme/isSmall';
 import fluid from '@bloometry/fluid';
 import borderRadius from '../theme/borderRadius';
 import constrain from '../theme/constrain';
@@ -62,7 +64,7 @@ class BlogPost extends Component {
 
         <div style={[styles.displayImage, { backgroundImage: `url('${displayImageUrl}')` }]} />
 
-        <Container pad readable center style={styles.container}>
+        <Container pad readable center style={[styles.container, isSmall(this) && styles.small.container]}>
           <Container left>
             <Headline bold level={2}>
               {headline}
@@ -94,6 +96,11 @@ const styles = {
   },
   teaser: {
     padding: `${step(3)} 0 ${step()}`,
+  },
+  small: {
+    container: {
+      borderRadius: 0,
+    },
   },
 };
 
@@ -140,5 +147,6 @@ export default compose(
       },
     }),
   }),
+  windowSize,
   Radium,
 )(BlogPost);

@@ -40,6 +40,6 @@ const styles = {
   },
   bulletpoint: {
     height: step(0.7),
-    paddingRight: step(0.5),
+    paddingRight: step(0.7),
   },
 };

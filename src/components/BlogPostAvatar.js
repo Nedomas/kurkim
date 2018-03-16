@@ -31,7 +31,7 @@ const styles = {
   },
   big: {
     container: {
-      width: fluid(100, 200),
+      width: fluid(150, 200),
     },
     img: {
       borderRadius: 0,

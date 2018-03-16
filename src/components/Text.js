@@ -55,8 +55,8 @@ const styles = [
     lineHeight: fluid(26, 36),
   },
   {
-    fontSize: fluid(34, 39),
-    lineHeight: fluid(39, 44),
+    fontSize: fluid(20, 39),
+    lineHeight: fluid(25, 44),
   },
 ];
 

@@ -34,7 +34,7 @@ class CompanyLogo extends Component {
       style,
     } = this.props;
 
-    const size = initialSize || isSmall(this) ? 100 : 200;
+    const size = initialSize || (isSmall(this) ? 100 : 200);
 
     return (
       <div style={[styles.container, chaos && styles.chaos.container, style]}>

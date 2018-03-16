@@ -3,14 +3,17 @@ import { compose } from 'redux';
 import { Link as RouterLink } from 'react-router-dom';
 import Radium from 'radium';
 import _ from 'lodash';
+import windowSize from 'react-window-size';
 
 import BlogPostAuthor from './BlogPostAuthor';
 import BlogPostMeta from './BlogPostMeta';
 
 import Headline from './Headline';
+import Container from './Container';
 import Text from './Text';
 import step from '@bloometry/step';
 import colors from '../theme/colors';
+import isSmall from '../theme/isSmall';
 import fluid from '@bloometry/fluid';
 import borderRadius from '../theme/borderRadius';
 
@@ -64,7 +67,11 @@ class BlogPostItem extends Component {
             },
           ]}
         />
-        <div style={styles.content}>
+        <Container pad marginTopRaw={fluid(-100, -200)}
+          marginLeft={isSmall(this) ? 0.5 : 2}
+          marginRight={isSmall(this) ? 0.5 : 2}
+          style={styles.content}
+        >
           <Headline bold level={3} underline={hover}>
             {headline}
           </Headline>
@@ -75,7 +82,7 @@ class BlogPostItem extends Component {
           </Text>
 
           <BlogPostAuthor author={author} />
-        </div>
+        </Container>
       </Link>
     );
   }
@@ -99,12 +106,11 @@ const styles = {
   content: {
     border: `1px solid ${colors.lightLightBlack}`,
     borderRadius,
-    margin: `${fluid(-100, -200)} ${step(2)} 0`,
     backgroundColor: colors.white,
-    padding: step(2),
   },
 };
 
 export default compose(
+  windowSize,
   Radium,
 )(BlogPostItem);

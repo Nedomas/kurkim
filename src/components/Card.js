@@ -92,7 +92,7 @@ class Card extends Component {
         ]} />
 
         <div style={styles.contentContainer}>
-          <Container style={[styles.innerContainer, { height: `${height - 35}px` }]}>
+          <Container style={[styles.innerContainer, { height: `${height - height * 0.08}px` }]}>
             <Headline level={3}>
               {headline}
             </Headline>

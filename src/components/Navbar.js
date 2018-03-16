@@ -194,6 +194,7 @@ const styles = {
       right: 0,
       top: 0,
       color: colors.black,
+      zIndex: 9,
     },
     link: {
       display: 'block',
