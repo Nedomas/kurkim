@@ -6,14 +6,16 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { compose } from 'redux';
 import _ from 'lodash';
-import { Link } from 'react-router-dom';
 import moment from 'moment';
 import ReactSimpleRange from 'react-simple-range';
 
 import step from '@bloometry/step';
 import colors from '../theme/colors';
+import isSmall from '../theme/isSmall';
 
 import Cities from './Cities';
+import PrimaryJobButton from './PrimaryJobButton';
+import SecondaryJobButtons from './SecondaryJobButtons';
 import FullScreenLoading from './FullScreenLoading';
 import Navbar from './Navbar';
 import Icon from './Icon';
@@ -60,6 +62,7 @@ class Job extends Component {
 
     const {
       data: {
+        Job,
         Job: {
           headline,
           teaser,
@@ -75,26 +78,22 @@ class Job extends Component {
             logo: {
               url: companyLogoUrl,
             },
-            _jobsMeta: {
-              count,
-            },
           },
         },
       },
     } = this.props;
 
-    const small = this.props.windowWidth <= 768;
-
     return (
       <div>
         <Navbar dark />
 
-        <Container pad padNavbar style={styles.container}>
-          <div style={styles.company.container}>
+        <Container pad padNavbar style={[styles.container, isSmall(this) && styles.small.container]}>
+          <div style={[styles.company.container, isSmall(this) && styles.small.company.container]}>
             <CompanyLogo chaos company={company} />
             <Headline center medium level={3}>
-              {name}
+              {isSmall(this) && `${headline} @ `} {name}
             </Headline>
+            {isSmall(this) && <Cities cities={cities} padTop padBottom center/>}
 
             <div style={styles.active.container}>
               <Text center>
@@ -123,25 +122,25 @@ class Job extends Component {
               </Container>
             </div>
 
-            <Button component='a' href={applyLink} target='_blank' center>
-              Aplikuoti
-            </Button>
-
-            <Button transparent component={Link} to={`/companies/${slug}`} center style={styles.secondaryButton}>
-              Visi {name} skelbimai ({count})
-            </Button>
-
-            <Button transparent component={Link} to={`/companies/${slug}`} center style={styles.secondaryButton}>
-              Daugiau apie {name}
-            </Button>
+            <Container padBottom={isSmall(this)}>
+              <PrimaryJobButton job={Job} />
+              {!isSmall(this) && <SecondaryJobButtons job={Job} />}
+            </Container>
           </div>
 
-          <div style={styles.content.container}>
-            <Headline bold level={2} padBottom>
+          <div style={[styles.content.container, isSmall(this) && styles.small.content.container]}>
+            {!isSmall(this) && <Headline bold level={2} padBottom>
               {headline}
-            </Headline>
-            <Cities cities={cities} padBottom/>
-            <Markdown source={description} />
+            </Headline>}
+            {!isSmall(this) && <Cities cities={cities} padBottom/>}
+            <Container padTop={isSmall(this)}>
+              <Markdown source={description} />
+            </Container>
+
+            {isSmall(this) && <Container>
+              <PrimaryJobButton job={Job} />
+              <SecondaryJobButtons job={Job} />
+            </Container>}
           </div>
         </Container>
 
@@ -185,6 +184,21 @@ const styles = {
     },
     range: {
       pointerEvents: 'none',
+    },
+  },
+  small: {
+    container: {
+      display: 'block',
+    },
+    company: {
+      container: {
+        width: '100%',
+      },
+    },
+    content: {
+      container: {
+        width: '100%',
+      },
     },
   },
 };

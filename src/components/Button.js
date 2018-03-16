@@ -37,8 +37,6 @@ class Button extends Component {
       active,
     } = this.props;
 
-    const small = this.props.windowWidth <= 650;
-
     return (
       <Container
         {...this.props}
@@ -51,7 +49,6 @@ class Button extends Component {
           disabled && styles.disabled,
           longText && styles.longText,
           limitWidth && styles.limitWidth,
-          small && styles.small,
           this.needsWidth() && styles.needsWidth,
           active && styles.active,
           style,
@@ -131,10 +128,6 @@ const styles = {
   },
   longText: {
     fontSize: fluid(14, 16),
-  },
-  small: {
-    width: 'inherit',
-    maxWidth: 'inherit',
   },
   active: {
     border: `1px solid ${colors.lighterBlack}`,

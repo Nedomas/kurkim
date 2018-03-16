@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import Radium from 'radium';
 import { compose } from 'redux';
 import _ from 'lodash';
+import windowSize from 'react-window-size';
 
 import step from '@bloometry/step';
 import round from '@bloometry/round';
 import colors from '../theme/colors';
+import isSmall from '../theme/isSmall';
 
 class CompanyLogo extends Component {
   logoBackgroundColor() {
@@ -27,10 +29,12 @@ class CompanyLogo extends Component {
           url,
         },
       },
-      size = 200,
+      size: initialSize,
       chaos,
       style,
     } = this.props;
+
+    const size = initialSize || isSmall(this) ? 100 : 200;
 
     return (
       <div style={[styles.container, chaos && styles.chaos.container, style]}>
@@ -78,5 +82,6 @@ const styles = {
 
 
 export default compose(
+  windowSize,
   Radium,
 )(CompanyLogo);
