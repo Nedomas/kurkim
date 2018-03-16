@@ -6,6 +6,7 @@ import windowSize from 'react-window-size';
 
 import Container from './Container';
 import Logo from './Logo';
+import Text from './Text';
 
 import colors from '../theme/colors';
 import fluid from '@bloometry/fluid';
@@ -19,18 +20,18 @@ class Footer extends Component {
   render() {
     return (
       <Container style={styles.container}>
-        <Container pad style={[styles.innerContainer, isSmall(this) && styles.small.innerContainer]}>
+        <Container pad padTop={isSmall(this) && 5} padBottom={isSmall(this) && 10} style={[styles.innerContainer, isSmall(this) && styles.small.innerContainer]}>
           <Logo dark {...this.props} style={styles.logo} />
           <div style={[styles.linksContainer, isSmall(this) && styles.small.linksContainer]}>
-            <Link key='creatives-signup' to='/creatives/signup' style={styles.link}>
+            <Text center={isSmall(this)} level={isSmall(this) ? 3 : 2} padTop={isSmall(this) && 3} component={Link} key='creatives-signup' to='/creatives/signup' style={styles.link}>
               Kūrybingiems
-            </Link>
-            <Link key='about' to='/about' style={styles.link}>
+            </Text>
+            <Text center={isSmall(this)} level={isSmall(this) ? 3 : 2} padTop={isSmall(this)} component={Link} key='about' to='/about' style={styles.link}>
               Apie Kurkim
-            </Link>
-            <Link key='blog' to='/blog' style={styles.link}>
+            </Text>
+            <Text center={isSmall(this)} level={isSmall(this) ? 3 : 2} padTop={isSmall(this)} component={Link} key='blog' to='/blog' style={styles.link}>
               Tinklaraštis
-            </Link>
+            </Text>
           </div>
         </Container>
       </Container>
@@ -58,7 +59,7 @@ const styles = {
   link: {
     textDecoration: 'none',
     color: colors.black,
-    fontSize: fluid(16, 20),
+    // fontSize: fluid(16, 20),
     display: 'block',
     paddingLeft: step(2),
 

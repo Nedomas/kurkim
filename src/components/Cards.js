@@ -11,11 +11,13 @@ import { Link } from 'react-router-dom';
 
 import step from '@bloometry/step';
 import colors from '../theme/colors';
+import isSmall from '../theme/isSmall';
 import CardsGrid from './CardsGrid';
 import Button from './Button';
 import Headline from './Headline';
 import Container from './Container';
 import FullScreenLoading from './FullScreenLoading';
+import Filters from './Filters';
 
 const COLLECTIONS = [
   'allJobs',
@@ -42,22 +44,6 @@ class Cards extends Component {
     });
   }
 
-  isActive(city) {
-    const {
-      data,
-      match: {
-        params: {
-          city: filterCityName,
-        },
-      },
-    } = this.props;
-
-    if (!city && !filterCityName) return true;
-    if (city && city.name === filterCityName) return true;
-
-    return false;
-  }
-
   render() {
     const {
       data: {
@@ -69,18 +55,8 @@ class Cards extends Component {
     if (loading) return <FullScreenLoading />;
 
     return (
-      <Container style={styles.container}>
-        <div style={styles.filters.container}>
-          <Button component={Link} to='/' active={this.isActive()} tiny transparent style={styles.filters.button}>
-            Visi
-          </Button>
-          {_.map(allCities, (city) => (
-            <Button key={city.id} active={this.isActive(city)} component={Link} to={`/cities/${city.name}`} tiny transparent style={styles.filters.button}>
-              {city.name} ({city._jobsMeta.count})
-            </Button>
-          ))}
-        </div>
-
+      <Container pad padTop={4}>
+        <Filters {...this.props} cities={allCities} />
         <CardsGrid cards={this.all()} />
       </Container>
     );
@@ -88,21 +64,6 @@ class Cards extends Component {
 }
 
 const styles = {
-  container: {
-    padding: `${step(4)} ${step(2)} 0`,
-  },
-  filters: {
-    container: {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      paddingBottom: step(4),
-    },
-    button: {
-      margin: `0 ${step()}`,
-      width: '100px',
-    },
-  },
   list: {
     display: 'flex',
     flexWrap: 'wrap',
