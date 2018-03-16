@@ -37,7 +37,7 @@ class Filters extends Component {
           Visi
         </Button>
         {_.map(cities, (city) => (
-          <Button key={city.id} active={this.isActive(city)} component={Link} to={`/cities/${city.name}`} tiny transparent style={styles.button}>
+          <Button key={city.id} active={this.isActive(city)} component={Link} to={`/miestai/${city.name}`} tiny transparent style={styles.button}>
             {city.name} {!isSmall(this) && ` (${city._jobsMeta.count})`}
           </Button>
         ))}

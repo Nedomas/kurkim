@@ -23,13 +23,13 @@ class Footer extends Component {
         <Container pad padTop={isSmall(this) && 5} padBottom={isSmall(this) && 10} style={[styles.innerContainer, isSmall(this) && styles.small.innerContainer]}>
           <Logo dark {...this.props} style={styles.logo} />
           <div style={[styles.linksContainer, isSmall(this) && styles.small.linksContainer]}>
-            <Text center={isSmall(this)} level={isSmall(this) ? 3 : 2} padTop={isSmall(this) && 3} component={Link} key='creatives-signup' to='/creatives/signup' style={styles.link}>
+            <Text center={isSmall(this)} level={isSmall(this) ? 3 : 2} padTop={isSmall(this) && 3} component={Link} key='creatives-signup' to='/kurybingiems' style={styles.link}>
               Kūrybingiems
             </Text>
-            <Text center={isSmall(this)} level={isSmall(this) ? 3 : 2} padTop={isSmall(this)} component={Link} key='about' to='/about' style={styles.link}>
+            <Text center={isSmall(this)} level={isSmall(this) ? 3 : 2} padTop={isSmall(this)} component={Link} key='about' to='/apie-kurkim' style={styles.link}>
               Apie Kurkim
             </Text>
-            <Text center={isSmall(this)} level={isSmall(this) ? 3 : 2} padTop={isSmall(this)} component={Link} key='blog' to='/blog' style={styles.link}>
+            <Text center={isSmall(this)} level={isSmall(this) ? 3 : 2} padTop={isSmall(this)} component={Link} key='blog' to='/t' style={styles.link}>
               Tinklaraštis
             </Text>
           </div>

@@ -52,13 +52,13 @@ class Navbar extends Component {
         <Logo {...this.props} />
 
         {!small && <div style={styles.links.container}>
-          <Link to='/creatives/signup' style={[styles.links.item, dark && styles.dark.links.item]}>
+          <Link to='/kurybingiems' style={[styles.links.item, dark && styles.dark.links.item]}>
             Kūrybingiems
           </Link>
-          <Link to='/about' style={[styles.links.item, dark && styles.dark.links.item]}>
+          <Link to='/apie-kurkim' style={[styles.links.item, dark && styles.dark.links.item]}>
             Apie Kurkim
           </Link>
-          <Link to='/blog' style={[styles.links.item, styles.links.button, dark && styles.dark.links.button]}>
+          <Link to='/t' style={[styles.links.item, styles.links.button, dark && styles.dark.links.button]}>
             Tinklaraštis
           </Link>
         </div>}
@@ -87,13 +87,13 @@ class Navbar extends Component {
             </div>
           </Container>
 
-          <Text level={3} padBottom padTop={3} component={Link} to='/creatives/signup' style={[styles.hamburger.link, dark && styles.dark.hamburger.link]}>
+          <Text level={3} padBottom padTop={3} component={Link} to='/kurybingiems' style={[styles.hamburger.link, dark && styles.dark.hamburger.link]}>
             Kūrybingiems
           </Text>
-          <Text level={3} padBottom component={Link} to='/about' style={[styles.hamburger.link, dark && styles.dark.hamburger.link]}>
+          <Text level={3} padBottom component={Link} to='/apie-kurkim' style={[styles.hamburger.link, dark && styles.dark.hamburger.link]}>
             Apie Kurkim
           </Text>
-          <Text level={3} padBottom component={Link} to='/blog' style={[styles.hamburger.link, dark && styles.dark.hamburger.link]}>
+          <Text level={3} padBottom component={Link} to='/t' style={[styles.hamburger.link, dark && styles.dark.hamburger.link]}>
             Tinklaraštis
           </Text>
         </Container>}

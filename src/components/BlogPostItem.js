@@ -54,7 +54,7 @@ class BlogPostItem extends Component {
 
     return (
       <Link
-        to={`/blog/${slug}`}
+        to={`/t/${slug}`}
         style={styles.container}
         onMouseEnter={() => this.handleMouseEnter()}
         onMouseLeave={() => this.handleMouseLeave()}

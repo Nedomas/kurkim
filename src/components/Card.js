@@ -44,7 +44,11 @@ class Card extends Component {
       },
     } = this.props;
 
-    return `/${_.kebabCase(plural(__typename))}/${id}`;
+    const mapping = {
+      Job: 'darbo-skelbimai',
+    };
+
+    return `/${mapping[__typename]}/${id}`;
   }
 
   render() {
