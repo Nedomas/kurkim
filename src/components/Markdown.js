@@ -10,6 +10,7 @@ import MarkdownRendererLink from './MarkdownRenderers/Link';
 import MarkdownRendererList from './MarkdownRenderers/List';
 import MarkdownRendererListItem from './MarkdownRenderers/ListItem';
 import MarkdownRendererParagraph from './MarkdownRenderers/Paragraph';
+import MarkdownRendererHeading from './MarkdownRenderers/Heading';
 
 const RENDERERS = {
   image: MarkdownRendererImage,
@@ -17,6 +18,7 @@ const RENDERERS = {
   list: MarkdownRendererList,
   listItem: MarkdownRendererListItem,
   paragraph: MarkdownRendererParagraph,
+  heading: MarkdownRendererHeading,
 };
 
 class Markdown extends Component {

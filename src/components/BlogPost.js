@@ -67,7 +67,7 @@ class BlogPost extends Component {
             {headline}
           </Headline>
           <BlogPostMeta blogPost={BlogPost} />
-          <Headline tier={3} style={styles.teaser} color={colors.black}>
+          <Headline level={3} style={styles.teaser} color={colors.black}>
             {teaser}
           </Headline>
           <Markdown source={content} />

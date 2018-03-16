@@ -17,7 +17,7 @@ class Cities extends Component {
 
     return (
       <Container {...this.props}>
-        <Text {...this.props} tier={3}>
+        <Text {...this.props} level={3}>
           <Icon type='city' tiny />
           <span style={styles.text}>
             {_.uniq(_.map(cities, 'name')).join(', ')}

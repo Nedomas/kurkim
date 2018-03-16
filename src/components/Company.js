@@ -53,11 +53,11 @@ class Company extends Component {
 
         <Container pad>
           <CompanyLogo chaos company={Company} />
-          <Headline tier={2} center bold padBottom>
+          <Headline level={2} center bold padBottom>
             {name}
           </Headline>
           <Container style={styles.meta.container} padBottom>
-            <Text tier={3}>
+            <Text level={3}>
               <a href={aboutUrl} target='_blank' style={styles.meta.link.container}>
                 <Icon type='link' tiny />
                 <span style={styles.meta.link.text}>
@@ -67,7 +67,7 @@ class Company extends Component {
             </Text>
             <Cities cities={_.flatMap(jobs, 'cities')} />
           </Container>
-          <Text tier={3} readable padTop padBottom={5}>
+          <Text level={3} readable padTop padBottom={5}>
             <Markdown source={description} />
           </Text>
         </Container>

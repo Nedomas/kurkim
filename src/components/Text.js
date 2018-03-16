@@ -10,12 +10,13 @@ import Container from './Container';
 class Text extends Component {
   render() {
     const {
-      tier = 1,
+      level = 1,
       grey,
       center,
       medium,
       bold,
       italic,
+      underline,
       style,
       children,
     } = this.props;
@@ -24,12 +25,13 @@ class Text extends Component {
       <Container
         {...this.props}
         style={[
-          styles[tier - 1],
+          styles[level - 1],
           center && { textAlign: 'center' },
           grey && { color: colors.grey },
           medium && { fontWeight: 500 },
           bold && { fontWeight: 600 },
           italic && { fontStyle: 'italic' },
+          underline && { textDecoration: 'underline' },
           style,
         ]}
       >

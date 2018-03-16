@@ -1,27 +1,44 @@
 import React, { Component } from 'react';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
+import { compose } from 'redux';
+import Radium from 'radium';
 
 import Navbar from './Navbar';
 import Container from './Container';
 import Headline from './Headline';
 import Button from './Button';
 import Footer from './Footer';
+import Markdown from './Markdown';
+import FullScreenLoading from './FullScreenLoading';
 
 import step from '@bloometry/step';
 
-export default class About extends Component {
+class About extends Component {
   render() {
+    const {
+      data: {
+        loading,
+      },
+    } = this.props;
+
+    if (loading) return <FullScreenLoading />;
+
+    const {
+      data: {
+        Page: {
+          content,
+        },
+      },
+    } = this.props;
+
     return (
       <div>
         <Navbar dark {...this.props} />
 
-        <Container dark chaos minWindowHeight>
-          <Container center limited style={styles.container}>
-            <Headline>
-              Apie Kurkim
-            </Headline>
-            <Headline tier={2}>
-              Mes esam tokie ir tokie
-            </Headline>
+        <Container dark chaos middle>
+          <Container center limited>
+            <Markdown source={content} />
           </Container>
         </Container>
 
@@ -31,11 +48,15 @@ export default class About extends Component {
   }
 }
 
-const styles = {
-  container: {
-    paddingTop: step(3),
-  },
-  button: {
-    marginTop: step(),
-  },
-};
+const AboutQuery = gql`
+  query AboutQuery {
+    Page(id: "cjetr2n7nd8f701488uv6rnsm") {
+      content
+    }
+  }
+`;
+
+export default compose(
+  graphql(AboutQuery),
+  Radium,
+)(About);

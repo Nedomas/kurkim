@@ -93,7 +93,7 @@ class Card extends Component {
 
         <div style={styles.contentContainer}>
           <Container style={[styles.innerContainer, { height: `${height - 35}px` }]}>
-            <Headline tier={3}>
+            <Headline level={3}>
               {headline}
             </Headline>
             <div style={styles.company.container}>
@@ -102,10 +102,10 @@ class Card extends Component {
               </div>
 
               <div style={styles.company.name}>
-                <Text bold tier={3}>
+                <Text bold level={3}>
                   {name}
                 </Text>
-                <Text tier={4}>
+                <Text level={4}>
                   {_.map(cities, 'name').join(', ')}
                 </Text>
               </div>

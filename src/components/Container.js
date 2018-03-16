@@ -64,15 +64,14 @@ class Container extends Component {
 
 const styles = {
   minWindowHeight: {
-    minHeight: '80vh',
+    minHeight: '50vh',
   },
   center: {
-    textAlign: 'center',
     margin: '0 auto',
   },
   middle: {
     display: 'flex',
-    minHeight: '80vh',
+    paddingTop: 'calc(100vh - 60px - ${step(6)})',
     justifyContent: 'center',
     alignItems: 'center',
   },

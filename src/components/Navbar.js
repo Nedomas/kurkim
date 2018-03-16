@@ -87,13 +87,13 @@ class Navbar extends Component {
             </div>
           </Container>
 
-          <Text tier={2} padBottom padTop={3} component={Link} to='/creatives/signup' style={[styles.hamburger.link, dark && styles.dark.hamburger.link]}>
+          <Text level={2} padBottom padTop={3} component={Link} to='/creatives/signup' style={[styles.hamburger.link, dark && styles.dark.hamburger.link]}>
             Kūrybingiems
           </Text>
-          <Text tier={2} padBottom component={Link} to='/about' style={[styles.hamburger.link, dark && styles.dark.hamburger.link]}>
+          <Text level={2} padBottom component={Link} to='/about' style={[styles.hamburger.link, dark && styles.dark.hamburger.link]}>
             Apie Kurkim
           </Text>
-          <Text tier={2} padBottom component={Link} to='/blog' style={[styles.hamburger.link, dark && styles.dark.hamburger.link]}>
+          <Text level={2} padBottom component={Link} to='/blog' style={[styles.hamburger.link, dark && styles.dark.hamburger.link]}>
             Tinklaraštis
           </Text>
         </Container>}
@@ -109,7 +109,6 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    margin: `0 0 ${step(4)}`,
   },
   links: {
     container: {

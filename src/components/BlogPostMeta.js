@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import Radium from 'radium';
 import moment from 'moment';
+import _ from 'lodash';
 
 import colors from '../theme/colors';
 import fluid from '@bloometry/fluid';
+import Text from './Text';
 
 class BlogPostMeta extends Component {
   render() {
@@ -16,19 +18,11 @@ class BlogPostMeta extends Component {
     } = this.props;
 
     return (
-      <div style={styles.container}>
-        {moment(createdAt).format('MMM d, YYYY')} | {timeToRead} skaitymo
-      </div>
+      <Text level={4} grey padBottom>
+        {_.capitalize(moment(createdAt).format('MMM d, YYYY'))} | {timeToRead} skaitymo
+      </Text>
     );
   }
-};
-
-const styles = {
-  container: {
-    color: colors.grey,
-    fontSize: fluid(16, 17),
-    fontWeight: 550,
-  },
 };
 
 export default compose(

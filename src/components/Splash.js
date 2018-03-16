@@ -36,7 +36,7 @@ class Splash extends Component {
                 kūrybingiems
               </Headline>
 
-              <Headline italic tier={2}>
+              <Headline italic level={2}>
                 Tapk matomas.
                 <br/>
                 Atrask svajonių darbą.

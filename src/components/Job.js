@@ -92,12 +92,12 @@ class Job extends Component {
         <Container style={styles.container}>
           <div style={styles.company.container}>
             <CompanyLogo chaos company={company} />
-            <Headline center medium tier={3}>
+            <Headline center medium level={3}>
               {name}
             </Headline>
 
             <div style={styles.active.container}>
-              <Text center tier={4}>
+              <Text center level={4}>
                 Skelbimas aktyvus
               </Text>
 
@@ -114,10 +114,10 @@ class Job extends Component {
                 />
               </div>
               <Container style={styles.labels.container}>
-                <Text tier={4}>
+                <Text level={4}>
                   {this.formatTime(activeFrom)}
                 </Text>
-                <Text tier={4}>
+                <Text level={4}>
                   {this.formatTime(activeUntil)}
                 </Text>
               </Container>
@@ -137,7 +137,7 @@ class Job extends Component {
           </div>
 
           <div style={styles.content.container}>
-            <Headline bold tier={2}>
+            <Headline bold level={2}>
               {headline}
             </Headline>
             <Cities cities={cities} />

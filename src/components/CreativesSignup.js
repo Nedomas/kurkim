@@ -1,31 +1,44 @@
 import React, { Component } from 'react';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
+import { compose } from 'redux';
+import Radium from 'radium';
 
 import Navbar from './Navbar';
 import Container from './Container';
 import Headline from './Headline';
 import Button from './Button';
 import Footer from './Footer';
+import Markdown from './Markdown';
+import FullScreenLoading from './FullScreenLoading';
 
 import step from '@bloometry/step';
 
-export default class Landing extends Component {
+class CreativesSignup extends Component {
   render() {
+    const {
+      data: {
+        loading,
+      },
+    } = this.props;
+
+    if (loading) return <FullScreenLoading />;
+
+    const {
+      data: {
+        Page: {
+          content,
+        },
+      },
+    } = this.props;
+
     return (
       <div>
         <Navbar dark {...this.props} />
 
-        <Container dark chaos minWindowHeight>
-          <Container center limited style={styles.container}>
-            <Headline>
-              Mes vis dar jauni
-            </Headline>
-            <Headline tier={2}>
-              Neužilgo plėsime savo kūrybininkų bendruomenę
-              ir atidarėme "early-bird" registraciją.
-            </Headline>
-            <Button center component='a' href='https://vaida6.typeform.com/to/Mwj5Y8' target='_blank' style={styles.button}>
-              Registruotis
-            </Button>
+        <Container dark chaos middle>
+          <Container center limited>
+            <Markdown source={content} />
           </Container>
         </Container>
 
@@ -35,11 +48,15 @@ export default class Landing extends Component {
   }
 }
 
-const styles = {
-  container: {
-    paddingTop: step(3),
-  },
-  button: {
-    marginTop: step(),
-  },
-};
+const CreativesSignupQuery = gql`
+  query CreativesSignupQuery {
+    Page(id: "cjetpi88fcng801489rtle075") {
+      content
+    }
+  }
+`;
+
+export default compose(
+  graphql(CreativesSignupQuery),
+  Radium,
+)(CreativesSignup);

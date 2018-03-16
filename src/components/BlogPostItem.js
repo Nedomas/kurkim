@@ -8,6 +8,7 @@ import BlogPostAuthor from './BlogPostAuthor';
 import BlogPostMeta from './BlogPostMeta';
 
 import Headline from './Headline';
+import Text from './Text';
 import step from '@bloometry/step';
 import colors from '../theme/colors';
 import fluid from '@bloometry/fluid';
@@ -16,6 +17,22 @@ import borderRadius from '../theme/borderRadius';
 const Link = Radium(RouterLink);
 
 class BlogPostItem extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      hover: false,
+    };
+  }
+
+  handleMouseEnter() {
+    this.setState({ hover: true });
+  }
+
+  handleMouseLeave() {
+    this.setState({ hover: false });
+  }
+
   render() {
     const {
       blogPost,
@@ -28,8 +45,17 @@ class BlogPostItem extends Component {
       },
     } = this.props;
 
+    const {
+      hover,
+    } = this.state;
+
     return (
-      <Link to={`/blog/${slug}`} style={styles.container}>
+      <Link
+        to={`/blog/${slug}`}
+        style={styles.container}
+        onMouseEnter={() => this.handleMouseEnter()}
+        onMouseLeave={() => this.handleMouseLeave()}
+      >
         <div
           style={[
             styles.displayImage,
@@ -39,14 +65,14 @@ class BlogPostItem extends Component {
           ]}
         />
         <div style={styles.content}>
-          <Headline tier={3} style={styles.headline}>
+          <Headline bold level={3} underline={hover}>
             {headline}
           </Headline>
           <BlogPostMeta blogPost={blogPost} />
 
-          <Headline tier={4} style={styles.teaser}>
+          <Text grey level={3} padBottom>
             {teaser}
-          </Headline>
+          </Text>
 
           <BlogPostAuthor author={author} />
         </div>
@@ -61,14 +87,8 @@ const styles = {
     textDecoration: 'none',
     display: 'block',
     maxWidth: fluid(800, 900),
-    borderRadius,
     marginBottom: step(5),
-  },
-  headline: {
-    paddingBottom: step(0.5),
-  },
-  teaser: {
-    paddingTop: step(),
+    borderRadius,
   },
   displayImage: {
     width: '100%',
@@ -77,6 +97,7 @@ const styles = {
     borderRadius,
   },
   content: {
+    border: `1px solid ${colors.lightLightBlack}`,
     borderRadius,
     margin: `${fluid(-100, -200)} ${step(2)} 0`,
     backgroundColor: colors.white,

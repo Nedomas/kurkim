@@ -10,7 +10,9 @@ import Container from './Container';
 import Headline from './Headline';
 import Footer from './Footer';
 import FullScreenLoading from './FullScreenLoading';
+import Markdown from './Markdown';
 import step from '@bloometry/step';
+import fluid from '@bloometry/fluid';
 
 class Blog extends Component {
   render() {
@@ -24,6 +26,9 @@ class Blog extends Component {
 
     const {
       data: {
+        Page: {
+          content,
+        },
         allBlogPosts,
       },
     } = this.props;
@@ -32,21 +37,15 @@ class Blog extends Component {
       <div>
         <Navbar dark {...this.props} />
 
-        <Container left style={styles.container}>
-          <Headline>
-            Tinklaraštis
-          </Headline>
+        <Container pad center style={styles.container}>
+          <Markdown source={content} />
 
-          <Headline tier={2}>
-            Kūrybingi pasvaigimai ir panašiai.
-          </Headline>
-
-          <div style={styles.blogPosts.container}>
+          <Container>
             {_.isEmpty(allBlogPosts) && 'Vis dar nieko neprikeverzojom.'}
             {_.map(allBlogPosts, (blogPost) => {
               return <BlogPostItem key={blogPost.slug} blogPost={blogPost} />;
             })}
-          </div>
+          </Container>
         </Container>
 
         <Footer {...this.props} />
@@ -57,18 +56,16 @@ class Blog extends Component {
 
 const styles = {
   container: {
-    minHeight: '70vh',
-  },
-  blogPosts: {
-    container: {
-      paddingTop: step(),
-    },
+    maxWidth: fluid(800, 900),
   },
 };
 
+export const BlogQuery = gql`
+  query BlogQuery($isPublished: Boolean!) {
+    Page(id: "cjets3li54nbl0166dl5lb7l5") {
+      content
+    }
 
-export const BlogPostsQuery = gql`
-  query BlogPostsQuery($isPublished: Boolean!) {
     allBlogPosts(filter: {
       isPublished: $isPublished,
     },
@@ -95,7 +92,7 @@ export const BlogPostsQuery = gql`
 `;
 
 export default compose(
-  graphql(BlogPostsQuery, {
+  graphql(BlogQuery, {
     options: ({
       location: {
         search,

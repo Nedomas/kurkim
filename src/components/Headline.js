@@ -11,15 +11,16 @@ import Text from './Text';
 class Headline extends Component {
   render() {
     const {
-      tier = 1,
+      level = 1,
       children,
     } = this.props;
 
+    console.log(children, level);
     return (
       <Text
-        component={`h${tier}`}
-        style={styles[tier - 1]}
         {...this.props}
+        component={`h${level}`}
+        style={styles[level - 1]}
       >
         {children}
       </Text>
