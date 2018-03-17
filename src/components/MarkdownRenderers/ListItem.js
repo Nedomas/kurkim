@@ -17,7 +17,7 @@ export default class MarkdownRendererListItem extends Component {
 
     const childrenWithProps = React.Children.map(children, (child) => {
       return (
-        <Text level={2} tight {...rest}>
+        <Text level={2} tight style={styles.childText} {...rest}>
           {child}
         </Text>
       );
@@ -40,6 +40,9 @@ const styles = {
   },
   bulletpoint: {
     height: step(0.7),
-    paddingRight: step(0.7),
+    paddingRight: step(0.5),
+  },
+  childText: {
+    padding: `0 ${step(0.1)}`,
   },
 };

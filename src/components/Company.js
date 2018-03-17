@@ -111,7 +111,7 @@ export const CompanyQuery = gql`
       aboutUrl
 
       logo {
-        url
+        handle
       }
 
       logoBackgroundColor
@@ -130,11 +130,11 @@ export const CompanyQuery = gql`
           slug
 
           logo {
-            url
+            handle
           }
 
           displayImage {
-            url
+            handle
           }
 
           logoBackgroundColor

@@ -8,6 +8,7 @@ import step from '@bloometry/step';
 import round from '@bloometry/round';
 import colors from '../theme/colors';
 import isSmall from '../theme/isSmall';
+import imageUrl from '../theme/imageUrl';
 
 class CompanyLogo extends Component {
   logoBackgroundColor() {
@@ -25,9 +26,7 @@ class CompanyLogo extends Component {
   render() {
     const {
       company: {
-        logo: {
-          url,
-        },
+        logo,
       },
       size: initialSize,
       chaos,
@@ -35,13 +34,14 @@ class CompanyLogo extends Component {
     } = this.props;
 
     const size = initialSize || (isSmall(this) ? 100 : 200);
+    const logoSize = size - size * 0.2;
 
     return (
       <div style={[styles.container, chaos && styles.chaos.container, style]}>
         <div
           style={[
             {
-              backgroundImage: `url('${url}')`,
+              backgroundImage: `url('${imageUrl(logo, { fit: 'clip', height: logoSize, width: logoSize })}')`,
               backgroundColor: this.logoBackgroundColor(),
               backgroundSize: `${size - size * 0.2}px`,
               width: `${size}px`,

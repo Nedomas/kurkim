@@ -75,9 +75,7 @@ class Job extends Component {
       company: {
         name,
         slug,
-        logo: {
-          url: companyLogoUrl,
-        },
+        logo,
       },
     } = Job;
 
@@ -225,7 +223,7 @@ const JobQuery = gql`
         name
         slug
         logo {
-          url
+          handle
         }
         logoBackgroundColor
 

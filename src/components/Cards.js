@@ -97,13 +97,11 @@ const CardsQuery = gql`
         name
         slug
         logo {
-          url
+          handle
         }
         logoBackgroundColor
         displayImage {
           handle
-          width
-          height
         }
       }
     }
