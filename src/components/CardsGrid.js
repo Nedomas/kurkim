@@ -8,6 +8,10 @@ import windowSize from 'react-window-size';
 import Card from './Card';
 
 class CardsGrid extends Component {
+  width() {
+    return this.props.windowWidth <= 320 ? '280' : 300;
+  }
+
   render() {
     const {
       cards,
@@ -15,11 +19,11 @@ class CardsGrid extends Component {
 
     return (
       <StackGrid
-        columnWidth={this.props.windowWidth <= 320 ? '100%' : 300}
+        columnWidth={this.width()}
         gutterWidth={20}
         gutterHeight={20}
       >
-        {_.map(cards, (card) => <Card key={card.id} data={card}/>)}
+        {_.map(cards, (card) => <Card key={card.id} width={this.width()} data={card}/>)}
       </StackGrid>
     );
   }

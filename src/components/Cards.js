@@ -101,7 +101,9 @@ const CardsQuery = gql`
         }
         logoBackgroundColor
         displayImage {
-          url
+          handle
+          width
+          height
         }
       }
     }

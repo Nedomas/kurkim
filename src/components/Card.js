@@ -7,6 +7,7 @@ import Measure from 'react-measure';
 import plural from 'plural';
 import { compose } from 'redux';
 import windowSize from 'react-window-size';
+import GraphImg from 'graphcms-image';
 
 import step from '@bloometry/step';
 import Container from './Container';
@@ -16,6 +17,7 @@ import CompanyLogo from './CompanyLogo';
 
 import borderRadius from '../theme/borderRadius';
 import colors from '../theme/colors';
+import graphCmsImageUrl from '../theme/graphCmsImageUrl';
 moment.locale('lt');
 
 class Card extends Component {
@@ -56,6 +58,7 @@ class Card extends Component {
 
   render() {
     const {
+      width,
       data: {
         __typename,
         id,
@@ -86,7 +89,7 @@ class Card extends Component {
           style={[
             styles.imageContainer,
             {
-              backgroundImage: `url("${_.get(displayImage, 'url')}")`,
+              backgroundImage: graphCmsImageUrl(displayImage, { height, width }),
               height: `${height}px`,
             },
             hover && styles.hover.imageContainer,
