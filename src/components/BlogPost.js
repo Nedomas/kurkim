@@ -23,6 +23,7 @@ import isSmall from '../theme/isSmall';
 import fluid from '@bloometry/fluid';
 import borderRadius from '../theme/borderRadius';
 import constrain from '../theme/constrain';
+import imageUrl from '../theme/imageUrl';
 
 class BlogPost extends Component {
   render() {
@@ -44,9 +45,7 @@ class BlogPost extends Component {
           ogTitle,
           ogDescription,
           ogImage,
-          displayImage: {
-            url: displayImageUrl,
-          },
+          displayImage,
           author,
         },
       },
@@ -57,12 +56,12 @@ class BlogPost extends Component {
         <Helmet>
           <meta property='og:title' content={ogTitle || headline} />
           <meta property='og:description' content={ogDescription || teaser} />
-          <meta property='og:image' content={_.get(ogImage, 'url') || displayImageUrl} />
+          <meta property='og:image' content={imageUrl(ogImage) || imageUrl(displayImage)} />
         </Helmet>
 
         <Navbar dark {...this.props} />
 
-        <div style={[styles.displayImage, { backgroundImage: `url('${displayImageUrl}')` }]} />
+        <div style={[styles.displayImage, { backgroundImage: `url('${imageUrl(displayImage)}')` }]} />
 
         <Container pad readable center style={[styles.container, isSmall(this) && styles.small.container]}>
           <Container left>
@@ -115,18 +114,18 @@ export const BlogPostQuery = gql`
       ogTitle
       ogDescription
       ogImage {
-        url
+        handle
       }
 
       displayImage {
-        url
+        handle
       }
       author {
         fullName
         title
         avatarOnly
         avatar {
-          url
+          handle
         }
       }
     }

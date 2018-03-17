@@ -73,7 +73,7 @@ export const BlogQuery = gql`
       createdAt
       timeToRead
       displayImage {
-        url
+        handle
       }
 
       author {
@@ -81,7 +81,7 @@ export const BlogQuery = gql`
         title
         avatarOnly
         avatar {
-          url
+          handle
         }
       }
     }

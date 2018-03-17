@@ -4,18 +4,19 @@ import Radium from 'radium';
 
 import round from '@bloometry/round';
 import fluid from '@bloometry/fluid';
+import imageUrl from '../theme/imageUrl';
 
 class BlogPostAvatar extends Component {
   render() {
     const {
-      url,
+      avatar,
       center,
       big,
     } = this.props;
 
     return (
       <div style={[styles.container, center && { margin: '0 auto' }, big && styles.big.container]}>
-        <img alt='avatar' src={url} style={[styles.img, big && styles.big.img]} />
+        <img alt='avatar' src={imageUrl(avatar)} style={[styles.img, big && styles.big.img]} />
       </div>
     );
   }

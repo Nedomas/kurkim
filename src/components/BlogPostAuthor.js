@@ -17,15 +17,13 @@ class BlogPostAuthor extends Component {
         fullName,
         title,
         avatarOnly,
-        avatar: {
-          url,
-        },
+        avatar,
       },
     } = this.props;
 
     return (
       <div style={styles.container}>
-        <BlogPostAvatar url={url} big={avatarOnly} />
+        <BlogPostAvatar avatar={avatar} big={avatarOnly} />
         {!avatarOnly && <div style={styles.content}>
           <div>
             {fullName}

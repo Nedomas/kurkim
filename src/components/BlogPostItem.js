@@ -16,6 +16,7 @@ import colors from '../theme/colors';
 import isSmall from '../theme/isSmall';
 import fluid from '@bloometry/fluid';
 import borderRadius from '../theme/borderRadius';
+import imageUrl from '../theme/imageUrl';
 
 const Link = Radium(RouterLink);
 
@@ -63,7 +64,7 @@ class BlogPostItem extends Component {
           style={[
             styles.displayImage,
             {
-              backgroundImage: `url('${_.get(displayImage, 'url')}')`
+              backgroundImage: `url('${imageUrl(displayImage)}')`
             },
           ]}
         />
