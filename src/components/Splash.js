@@ -30,18 +30,9 @@ class Splash extends Component {
           <div style={styles.elementContainer}>
             <Navbar />
 
-            <Container pad center padNavbar readable>
-              <Headline center>
-                Kūrybingi darbai
+            <Container pad padNavbar>
+              <Headline center bold marginTopRaw='42vh'>
                 kūrybingiems
-              </Headline>
-
-              <Headline center italic level={2}>
-                Tapk matomas.
-                <br/>
-                Atrask svajonių darbą.
-                <br/>
-                Scrollink.
               </Headline>
             </Container>
           </div>
@@ -64,8 +55,11 @@ const spinAnimation = Radium.keyframes({
 
 const styles = {
   container: {
-    color: colors.white,
-    background: 'radial-gradient(hsla(380, 92%, 70%, 1), hsla(359, 95%, 70%, 1))',
+    color: colors.red,
+    // background: 'radial-gradient(hsla(380, 92%, 70%, 1), hsla(359, 95%, 70%, 1))',
+    backgroundImage: 'url("/jj.png")',
+    backgroundPosition: 'top',
+    backgroundSize: 'contain',
     overflow: 'hidden',
   },
   content: {
