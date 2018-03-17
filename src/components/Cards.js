@@ -26,7 +26,7 @@ const COLLECTIONS = [
 ];
 
 class Cards extends Component {
-  all() {
+  jobs() {
     const {
       data,
       match: {
@@ -42,6 +42,10 @@ class Cards extends Component {
     return _.filter(result, (job) => {
       return _.some(job.cities, { name: filterCityName });
     });
+  }
+
+  all() {
+    return _.map(this.jobs(), (job) => ({ type: 'job', ...job }));
   }
 
   render() {

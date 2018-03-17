@@ -131,8 +131,6 @@ export default compose(
   Radium,
 )(Card);
 
-const cardHeight = 400;
-
 const styles = {
   container: {
     display: 'flex',
