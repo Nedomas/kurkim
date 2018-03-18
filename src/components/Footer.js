@@ -32,6 +32,9 @@ class Footer extends Component {
             <Text center={isSmall(this)} level={isSmall(this) ? 3 : 2} padTop={isSmall(this)} component={Link} key='blog' to='/t' style={styles.link}>
               Žurnalas
             </Text>
+            <Text center={isSmall(this)} level={isSmall(this) ? 3 : 2} padTop={isSmall(this)} component={Link} key='blog' to='/t' style={styles.link}>
+              Susisiek su mumis
+            </Text>
           </div>
         </Container>
       </Container>
