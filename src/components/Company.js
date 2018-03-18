@@ -26,6 +26,18 @@ import CompanyLogo from './CompanyLogo';
 import Footer from './Footer';
 
 class Company extends Component {
+  jobs() {
+    const {
+      data: {
+        Company: {
+          jobs,
+        },
+      },
+    } = this.props;
+
+    return _.map(jobs, (job) => ({ type: 'job', ...job }));
+  }
+
   render() {
     const {
       data: {
@@ -42,7 +54,6 @@ class Company extends Component {
           name,
           aboutUrl,
           description,
-          jobs,
         },
       },
     } = this.props;
@@ -57,7 +68,7 @@ class Company extends Component {
             {name}
           </Headline>
           <Container style={styles.meta.container} padBottom>
-            <Cities cities={_.flatMap(jobs, 'cities')} />
+            <Cities cities={_.flatMap(this.jobs(), 'cities')} />
 
             <Text level={2} padLeft>
               <a href={aboutUrl} target='_blank' style={styles.meta.link.container}>
@@ -74,7 +85,7 @@ class Company extends Component {
         </Container>
 
         <Container pad>
-          <CardsGrid cards={jobs} />
+          <CardsGrid cards={this.jobs()} />
         </Container>
 
         <Footer {...this.props} />

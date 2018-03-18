@@ -45,10 +45,10 @@ class Cards extends Component {
   }
 
   all() {
-    const set = (n, ins, arr) => [...arr.slice(0, n), ins, ...arr.slice(n)];
     const jobs = _.map(this.jobs(), (job) => ({ type: 'job', ...job }));
+
+    const set = (n, ins, arr) => [...arr.slice(0, n), ins, ...arr.slice(n)];
     return set(3, { type: 'subscribe' }, jobs);
-    // return [{ type: 'subscribe' }].concat(jobs);
   }
 
   render() {
