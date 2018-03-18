@@ -7,75 +7,86 @@ import Measure from 'react-measure';
 import plural from 'plural';
 import { compose } from 'redux';
 import windowSize from 'react-window-size';
+import { Field, reduxForm } from 'redux-form';
 
 import step from '@bloometry/step';
 import Container from './Container';
 import Headline from './Headline';
 import Text from './Text';
 import CompanyLogo from './CompanyLogo';
-import JobCard from './JobCard';
-import SubscribeCard from './SubscribeCard';
+import Input from './Input';
+import Button from './Button';
+import ListItem from './MarkdownRenderers/ListItem';
 
 import borderRadius from '../theme/borderRadius';
 import colors from '../theme/colors';
 import imageUrl from '../theme/imageUrl';
-moment.locale('lt');
 
-class Card extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      hover: false,
-      height: _.sample([350, 400, 450]),
-    };
-  }
-
-  handleMouseEnter() {
-    this.setState({ hover: true });
-  }
-
-  handleMouseLeave() {
-    this.setState({ hover: false });
-  }
-
-  childProps() {
-    return {
-      ...this.props,
-      ...this.state,
-      onMouseEnter: () => this.handleMouseEnter(),
-      onMouseLeave: () => this.handleMouseLeave(),
-    };
+class SubscribeCard extends Component {
+  onSubmit(values) {
+    console.log('submitted', values);
   }
 
   render() {
     const {
-      data: {
-        type,
-      },
+      height,
+      handleSubmit,
     } = this.props;
 
-    const CARD_MAPPINGS = {
-      job: JobCard,
-      subscribe: SubscribeCard,
-    };
+    return (
+      <Container
+        {...this.props}
+        style={[styles.container, { height: `400px` }]}
+      >
+        <Container pad={1}>
+          <Headline level={3} bold padBottom>
+            Užsiprenumeruok naujienlaiškį! 🎉
+          </Headline>
 
-    const TagName = CARD_MAPPINGS[type];
+          <Container padBottom>
+            <ListItem>
+              Kūrybingi darbo pasiūlymai
+            </ListItem>
+            <ListItem>
+              Kvietimai į renginius
+            </ListItem>
+            <ListItem>
+              Patarimai kūrybingumui auginti!
+            </ListItem>
+          </Container>
 
-    return <TagName {...this.childProps()} />;
+          <form onSubmit={handleSubmit((values) => this.onSubmit(values))}>
+            <Field marginBottom={0.5} component={Input} placeholder='Vardas' name='firstName' type='text' />
+            <Field marginBottom component={Input} placeholder='El. paštas' name='email' type='email' />
+
+            <Button type='submit' style={styles.button}>
+              Prenumeruoti
+            </Button>
+          </form>
+        </Container>
+      </Container>
+    );
   }
 }
 
 export default compose(
   windowSize,
+  reduxForm({
+    form: 'subscribe'
+  }),
   Radium,
-)(Card);
+)(SubscribeCard);
 
 const styles = {
+  button: {
+    width: `calc(100% - ${step(2)})`,
+  },
   container: {
     display: 'flex',
     position: 'relative',
     width: '100%',
+    borderRadius,
+    backgroundColor: colors.lightLightBlack,
     borderRadius,
   },
   imageContainer: {

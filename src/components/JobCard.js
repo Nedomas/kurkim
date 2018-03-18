@@ -13,63 +13,102 @@ import Container from './Container';
 import Headline from './Headline';
 import Text from './Text';
 import CompanyLogo from './CompanyLogo';
-import JobCard from './JobCard';
-import SubscribeCard from './SubscribeCard';
 
 import borderRadius from '../theme/borderRadius';
 import colors from '../theme/colors';
 import imageUrl from '../theme/imageUrl';
 moment.locale('lt');
 
-class Card extends Component {
-  constructor(props) {
-    super(props);
+class JobCard extends Component {
+  href() {
+    const {
+      data: {
+        __typename,
+        slug: jobSlug,
+        company: {
+          slug: companySlug,
+        },
+      },
+    } = this.props;
 
-    this.state = {
-      hover: false,
-      height: _.sample([350, 400, 450]),
+    const mapping = {
+      Job: 'i',
     };
-  }
 
-  handleMouseEnter() {
-    this.setState({ hover: true });
-  }
-
-  handleMouseLeave() {
-    this.setState({ hover: false });
-  }
-
-  childProps() {
-    return {
-      ...this.props,
-      ...this.state,
-      onMouseEnter: () => this.handleMouseEnter(),
-      onMouseLeave: () => this.handleMouseLeave(),
-    };
+    return `/${mapping[__typename]}/${companySlug}/${jobSlug}`;
   }
 
   render() {
     const {
+      width,
       data: {
-        type,
+        __typename,
+        id,
+        headline,
+        cities,
+        teaser,
+        company,
+        company: {
+          name,
+          displayImage,
+        },
       },
+      hover,
+      height,
     } = this.props;
 
-    const CARD_MAPPINGS = {
-      job: JobCard,
-      subscribe: SubscribeCard,
-    };
+    return (
+      <a
+        {...this.props}
+        href={this.href()}
+        style={[styles.container, { height: `${height}px` }]}
+      >
+        <div
+          style={[
+            styles.imageContainer,
+            {
+              backgroundImage: `url('${imageUrl(displayImage, { height, width })}')`,
+              height: `${height}px`,
+            },
+            hover && styles.hover.imageContainer,
+          ]}
+        />
+        <div style={[
+          styles.gradientContainer,
+          hover && styles.hover.gradientContainer,
+          { height: `${height}px` },
+        ]} />
 
-    const TagName = CARD_MAPPINGS[type];
+        <div style={styles.contentContainer}>
+          <Container style={[styles.innerContainer, { height: `${height - height * 0.08}px` }]}>
+            <Headline level={3}>
+              {headline}
+            </Headline>
+            <div style={styles.company.container}>
+              <div>
+                <CompanyLogo company={company} size={50} style={styles.company.logo} />
+              </div>
 
-    return <TagName {...this.childProps()} />;
+              <div style={styles.company.name}>
+                <Text medium level={2} tight>
+                  {name}
+                </Text>
+                <Text>
+                  {_.map(cities, 'name').join(', ')}
+                </Text>
+              </div>
+            </div>
+          </Container>
+        </div>
+      </a>
+    );
   }
 }
 
 export default compose(
   windowSize,
   Radium,
-)(Card);
+)(JobCard);
 
 const styles = {
   container: {
