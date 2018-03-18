@@ -18,6 +18,7 @@ class Text extends Component {
       bold,
       italic,
       underline,
+      uppercase,
       color,
       style,
       children,
@@ -35,6 +36,7 @@ class Text extends Component {
           bold && { fontWeight: 600 },
           italic && { fontStyle: 'italic' },
           underline && { textDecoration: 'underline' },
+          uppercase && { textTransform: 'uppercase' },
           color && { color },
           style,
         ]}

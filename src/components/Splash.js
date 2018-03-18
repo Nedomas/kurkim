@@ -20,18 +20,10 @@ class Splash extends Component {
       <Container style={styles.container}>
         <div style={styles.innerContainer}>
           <div style={styles.elementContainer}>
-            <StyleRoot>
-              <Icon type='oval' style={[styles.img, styles.oval]} />
-              <Icon type='egg' style={[styles.img, styles.egg]} />
-              <Icon type='imperfectOval' style={[styles.img, styles.imperfectOval]} />
-            </StyleRoot>
-          </div>
-
-          <div style={styles.elementContainer}>
-            <Navbar />
+            <Navbar dark />
 
             <Container pad padNavbar>
-              <Headline center bold marginTopRaw='42vh'>
+              <Headline center color={colors.yellow} uppercase bold marginTopRaw='20vh'>
                 kūrybingiems
               </Headline>
             </Container>
@@ -41,6 +33,14 @@ class Splash extends Component {
     );
   }
 }
+//          <div style={styles.elementContainer}>
+//          <StyleRoot>
+//            <Icon type='oval' style={[styles.img, styles.oval]} />
+//            <Icon type='egg' style={[styles.img, styles.egg]} />
+//            <Icon type='imperfectOval' style={[styles.img, styles.imperfectOval]} />
+//          </StyleRoot>
+//        </div>
+
 
 export default windowSize(Radium(Splash));
 
@@ -57,9 +57,9 @@ const styles = {
   container: {
     color: colors.red,
     // background: 'radial-gradient(hsla(380, 92%, 70%, 1), hsla(359, 95%, 70%, 1))',
-    backgroundImage: 'url("/jj.png")',
+    backgroundImage: 'url("/splash-bg.png")',
     backgroundPosition: 'top',
-    backgroundSize: 'contain',
+    backgroundSize: 'cover',
     overflow: 'hidden',
   },
   content: {
