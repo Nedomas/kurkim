@@ -30,7 +30,7 @@ class Footer extends Component {
               Apie Kurkim
             </Text>
             <Text center={isSmall(this)} level={isSmall(this) ? 3 : 2} padTop={isSmall(this)} component={Link} key='blog' to='/t' style={styles.link}>
-              Tinklaraštis
+              Žurnalas
             </Text>
           </div>
         </Container>

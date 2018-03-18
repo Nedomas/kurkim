@@ -9,6 +9,9 @@ export default class Landing extends Component {
     return (
       <div style={styles.container}>
         <Splash {...this.props} />
+        <div>
+          Short intro
+        </div>
         <Cards {...this.props} />
         <Footer {...this.props} />
       </div>

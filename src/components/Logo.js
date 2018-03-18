@@ -38,7 +38,7 @@ const styles = {
   },
   dark: {
     container: {
-      color: '#000',
+      color: colors.black,
       backgroundImage: 'url("/logo-oval-black.svg")',
     },
   },

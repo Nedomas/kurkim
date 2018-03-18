@@ -21,6 +21,7 @@ class Text extends Component {
       uppercase,
       color,
       style,
+      flowerful,
       children,
     } = this.props;
 
@@ -38,6 +39,7 @@ class Text extends Component {
           underline && { textDecoration: 'underline' },
           uppercase && { textTransform: 'uppercase' },
           color && { color },
+          flowerful && customStyles.flowerful,
           style,
         ]}
       >
@@ -73,6 +75,19 @@ const tightStyles = [
     lineHeight: fluid(34, 39),
   },
 ];
+
+const customStyles = {
+  flowerful: {
+    background: 'url("flowerful.jpg")',
+    color: 'transparent',
+    backgroundSize: 'contain',
+    backgroundClip: 'text',
+    webkitFontSmoothing: 'antialiased',
+    webkitBackgroundClip: 'text',
+    mozBackgroundClip: 'text',
+    webkitTextFillColor: 'transparent',
+  },
+};
 
 export default compose(
   Radium,

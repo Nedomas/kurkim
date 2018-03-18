@@ -56,7 +56,6 @@ const spinAnimation = Radium.keyframes({
 const styles = {
   container: {
     color: colors.red,
-    // background: 'radial-gradient(hsla(380, 92%, 70%, 1), hsla(359, 95%, 70%, 1))',
     backgroundImage: 'url("/splash-bg.png")',
     backgroundPosition: 'top',
     backgroundSize: 'cover',

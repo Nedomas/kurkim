@@ -59,7 +59,7 @@ class Navbar extends Component {
             Apie Kurkim
           </Link>
           <Link to='/t' style={[styles.links.item, styles.links.button, dark && styles.dark.links.button]}>
-            Tinklaraštis
+            Žurnalas
           </Link>
         </div>}
 
@@ -94,7 +94,7 @@ class Navbar extends Component {
             Apie Kurkim
           </Text>
           <Text level={3} padBottom component={Link} to='/t' style={[styles.hamburger.link, dark && styles.dark.hamburger.link]}>
-            Tinklaraštis
+            Žurnalas
           </Text>
         </Container>}
       </Container>

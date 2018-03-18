@@ -33,12 +33,18 @@ class CreativesSignup extends Component {
       },
     } = this.props;
 
+    const rendererProps = {
+      heading: {
+        uppercase: true,
+      },
+    };
+
     return (
       <div>
         <Navbar dark {...this.props} />
 
-        <Container pad dark chaos middle minWindowHeight>
-          <Container center limited>
+        <Container pad dark middle minWindowHeight>
+          <Container center>
             <Text center>
               <Markdown source={content} />
             </Text>
