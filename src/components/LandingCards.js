@@ -108,7 +108,7 @@ const LandingCardsQuery = gql`
       id
       slug
       headline
-      teaser
+      cardTeaser
       createdAt
       timeToRead
       displayImage {
@@ -120,6 +120,9 @@ const LandingCardsQuery = gql`
         title
         avatarOnly
         avatar {
+          handle
+        }
+        lightAvatar {
           handle
         }
       }

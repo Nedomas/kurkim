@@ -13,6 +13,7 @@ import Container from './Container';
 import Headline from './Headline';
 import Text from './Text';
 import CompanyLogo from './CompanyLogo';
+import BlogPostAuthor from './BlogPostAuthor';
 
 import borderRadius from '../theme/borderRadius';
 import colors from '../theme/colors';
@@ -38,8 +39,9 @@ class BlogPostCard extends Component {
         slug,
         id,
         headline,
-        teaser,
+        cardTeaser,
         displayImage,
+        author,
       },
       hover,
       height,
@@ -72,10 +74,12 @@ class BlogPostCard extends Component {
             <Headline level={3}>
               {headline}
             </Headline>
-            <Headline level={4}>
-              {teaser}
-            </Headline>
-            <div style={styles.company.container}>
+            <div style={styles.teaser.container}>
+              <Headline level={4}>
+                {cardTeaser}
+              </Headline>
+
+              <BlogPostAuthor author={author} light />
             </div>
           </Container>
         </div>
@@ -120,22 +124,10 @@ const styles = {
     color: colors.white,
     padding: step(),
   },
-  company: {
+  teaser: {
     container: {
-      display: 'flex',
-      alignItems: 'center',
-    },
-    logo: {
-      marginBottom: 0,
-      paddingBottom: 0,
-    },
-    name: {
-      paddingLeft: step(),
-    },
-  },
-  last: {
-    container: {
-      marginRight: `calc(300px + ${step(1.5)})`,
+      // display: 'flex',
+      // alignItems: 'center',
     },
   },
   hover: {
