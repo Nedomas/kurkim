@@ -36,7 +36,7 @@ class SubscribeCard extends Component {
     return (
       <Container
         {...this.props}
-        style={[styles.container, { height: `400px` }]}
+        style={[styles.container, { minHeight: `400px` }]}
       >
         <Container pad={1}>
           <Headline level={3} bold padBottom>
