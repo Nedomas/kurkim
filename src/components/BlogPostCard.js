@@ -79,7 +79,7 @@ class BlogPostCard extends Component {
                 {cardTeaser}
               </Headline>
 
-              <BlogPostAuthor author={author} light />
+              <BlogPostAuthor author={author} light tiny />
             </div>
           </Container>
         </div>

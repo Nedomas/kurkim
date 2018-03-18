@@ -21,11 +21,12 @@ class BlogPostAuthor extends Component {
         lightAvatar,
       },
       light,
+      tiny,
     } = this.props;
 
     return (
       <div style={styles.container}>
-        <BlogPostAvatar avatar={light ? lightAvatar || avatar : avatar} big={avatarOnly} />
+        <BlogPostAvatar avatar={light ? lightAvatar || avatar : avatar} big={avatarOnly} tiny={tiny} />
         {!avatarOnly && <div style={styles.content}>
           <div>
             {fullName}
