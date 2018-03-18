@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Splash from './Splash';
-import Cards from './Cards';
+import LandingCards from './LandingCards';
 import Footer from './Footer';
 import Container from './Container';
 import Text from './Text';
@@ -17,7 +17,7 @@ export default class Landing extends Component {
             Čia bus trumpas aprašymas apie Kurkim
           </Text>
         </Container>
-        <Cards {...this.props} />
+        <LandingCards {...this.props} />
         <BlogPostList {...this.props} />
 
         <Container center pad>

@@ -13,65 +13,81 @@ import Container from './Container';
 import Headline from './Headline';
 import Text from './Text';
 import CompanyLogo from './CompanyLogo';
-import JobCard from './JobCard';
-import SubscribeCard from './SubscribeCard';
-import BlogPostCard from './BlogPostCard';
 
 import borderRadius from '../theme/borderRadius';
 import colors from '../theme/colors';
 import imageUrl from '../theme/imageUrl';
 moment.locale('lt');
 
-class Card extends Component {
-  constructor(props) {
-    super(props);
+class BlogPostCard extends Component {
+  href() {
+    const {
+      data: {
+        slug,
+      },
+    } = this.props;
 
-    this.state = {
-      hover: false,
-      height: _.sample([350, 400, 450]),
-    };
-  }
-
-  handleMouseEnter() {
-    this.setState({ hover: true });
-  }
-
-  handleMouseLeave() {
-    this.setState({ hover: false });
-  }
-
-  childProps() {
-    return {
-      ...this.props,
-      ...this.state,
-      onMouseEnter: () => this.handleMouseEnter(),
-      onMouseLeave: () => this.handleMouseLeave(),
-    };
+    return `/t/${slug}`;
   }
 
   render() {
     const {
+      width,
       data: {
-        type,
+        __typename,
+        slug,
+        id,
+        headline,
+        teaser,
+        displayImage,
       },
+      hover,
+      height,
     } = this.props;
 
-    const CARD_MAPPINGS = {
-      job: JobCard,
-      subscribe: SubscribeCard,
-      blogPost: BlogPostCard,
-    };
+    return (
+      <a
+        {...this.props}
+        href={this.href()}
+        style={[styles.container, { height: `${height}px` }]}
+      >
+        <div
+          style={[
+            styles.imageContainer,
+            {
+              backgroundImage: `url('${imageUrl(displayImage, { height, width })}')`,
+              height: `${height}px`,
+            },
+            hover && styles.hover.imageContainer,
+          ]}
+        />
+        <div style={[
+          styles.gradientContainer,
+          hover && styles.hover.gradientContainer,
+          { height: `${height}px` },
+        ]} />
 
-    const TagName = CARD_MAPPINGS[type];
-
-    return <TagName {...this.childProps()} />;
+        <div style={styles.contentContainer}>
+          <Container style={[styles.innerContainer, { height: `${height - height * 0.08}px` }]}>
+            <Headline level={3}>
+              {headline}
+            </Headline>
+            <Headline level={4}>
+              {teaser}
+            </Headline>
+            <div style={styles.company.container}>
+            </div>
+          </Container>
+        </div>
+      </a>
+    );
   }
 }
 
 export default compose(
   windowSize,
   Radium,
-)(Card);
+)(BlogPostCard);
 
 const styles = {
   container: {

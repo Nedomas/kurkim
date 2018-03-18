@@ -25,7 +25,7 @@ const COLLECTIONS = [
   'allPeople',
 ];
 
-class Cards extends Component {
+class LandingCards extends Component {
   jobs() {
     const {
       data,
@@ -44,11 +44,22 @@ class Cards extends Component {
     });
   }
 
+  blogPosts() {
+    const {
+      data: {
+        allBlogPosts,
+      },
+    } = this.props;
+
+    return _.map(allBlogPosts, (blogPost) => ({ type: 'blogPost', ...blogPost }));
+  }
+
   all() {
     const jobs = _.map(this.jobs(), (job) => ({ type: 'job', ...job }));
 
     const set = (n, ins, arr) => [...arr.slice(0, n), ins, ...arr.slice(n)];
-    return set(3, { type: 'subscribe' }, jobs);
+    const result = set(3, { type: 'subscribe' }, jobs);
+    return _.shuffle(result.concat(this.blogPosts()));
   }
 
   render() {
@@ -79,14 +90,38 @@ const styles = {
   },
 }
 
-const CardsQuery = gql`
-  query CardsQuery {
+const LandingCardsQuery = gql`
+  query LandingCardsQuery($isPublished: Boolean!) {
     allCities {
       id
       name
 
       _jobsMeta {
         count
+      }
+    }
+
+    allBlogPosts(filter: {
+      isPublished: $isPublished,
+    },
+    orderBy: createdAt_DESC) {
+      id
+      slug
+      headline
+      teaser
+      createdAt
+      timeToRead
+      displayImage {
+        handle
+      }
+
+      author {
+        fullName
+        title
+        avatarOnly
+        avatar {
+          handle
+        }
       }
     }
 
@@ -116,7 +151,17 @@ const CardsQuery = gql`
 `;
 
 export default compose(
-  graphql(CardsQuery),
+  graphql(LandingCardsQuery, {
+    options: ({
+      location: {
+        search,
+      },
+    }) => ({
+      variables: {
+        isPublished: search !== '?unpublished',
+      },
+    }),
+  }),
   windowSize,
   Radium,
-)(Cards);
+)(LandingCards);
