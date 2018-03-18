@@ -5,6 +5,7 @@ import Cards from './Cards';
 import Footer from './Footer';
 import Container from './Container';
 import Text from './Text';
+import BlogPostList from './BlogPostList';
 
 export default class Landing extends Component {
   render() {
@@ -17,11 +18,8 @@ export default class Landing extends Component {
           </Text>
         </Container>
         <Cards {...this.props} />
-        <Container center pad>
-          <Text center>
-            Čia bus paskutiniai straipsniai
-          </Text>
-        </Container>
+        <BlogPostList {...this.props} />
+
         <Container center pad>
           <Text center>
             Ar nori, kad Kurkim publikuotų tavo vizualus? Parašyk mums.

@@ -94,7 +94,7 @@ const styles = {
     color: colors.black,
     textDecoration: 'none',
     display: 'block',
-    maxWidth: fluid(800, 900),
+    // maxWidth: fluid(800, 900),
     marginBottom: step(5),
     borderRadius,
   },

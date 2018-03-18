@@ -1,1 +1,1 @@
-export default '860px';
+export default '940px';
