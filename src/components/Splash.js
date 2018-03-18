@@ -20,10 +20,18 @@ class Splash extends Component {
       <Container style={styles.container}>
         <div style={styles.innerContainer}>
           <div style={styles.elementContainer}>
+          <StyleRoot>
+            <Icon type='oval' style={[styles.img, styles.oval]} />
+            <Icon type='egg' style={[styles.img, styles.egg]} />
+            <Icon type='imperfectOval' style={[styles.img, styles.imperfectOval]} />
+          </StyleRoot>
+        </div>
+
+          <div style={styles.elementContainer}>
             <Navbar dark />
 
             <Container pad padNavbar>
-              <Headline center color={colors.yellow} uppercase bold marginTopRaw='20vh'>
+              <Headline center color={colors.yellow} uppercase bold marginTopRaw={fluid(150, 90)}>
                 kūrybingiems
               </Headline>
             </Container>
@@ -33,14 +41,6 @@ class Splash extends Component {
     );
   }
 }
-//          <div style={styles.elementContainer}>
-//          <StyleRoot>
-//            <Icon type='oval' style={[styles.img, styles.oval]} />
-//            <Icon type='egg' style={[styles.img, styles.egg]} />
-//            <Icon type='imperfectOval' style={[styles.img, styles.imperfectOval]} />
-//          </StyleRoot>
-//        </div>
-
 
 export default windowSize(Radium(Splash));
 
@@ -79,11 +79,11 @@ const styles = {
     width: '100vw',
   },
   img: {
-    height: '500px',
-    width: '500px',
+    height: fluid(150, 500),
+    width: fluid(150, 500),
     position: 'absolute',
-    top: '17vh',
-    left: '55vw',
+    top: fluid(245, 100),
+    left: fluid(300, 900),
     animationName: spinAnimation,
     animationIterationCount: 'infinite',
     animationTimingFunction: 'linear',
