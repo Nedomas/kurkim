@@ -41,6 +41,9 @@ class Filters extends Component {
             {city.name} {!isSmall(this) && ` (${city._jobsMeta.count})`}
           </Button>
         ))}
+        <Button component={Link} to='/t' tiny transparent style={styles.button}>
+          Žurnalas
+        </Button>
       </Container>
     );
   }

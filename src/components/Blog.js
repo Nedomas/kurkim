@@ -20,6 +20,9 @@ class Blog extends Component {
     return (
       <div>
         <Navbar dark {...this.props} />
+        <Container pad>
+          <Markdown center source={_.get(this.props.data, 'blog.content')} />
+        </Container>
         <BlogPostList {...this.props} />
         <Footer {...this.props} />
       </div>
@@ -27,6 +30,14 @@ class Blog extends Component {
   }
 };
 
+const BlogQuery = gql`
+  query BlogQuery {
+    blog: CustomText(slug: "blog") {
+      content
+    }
+  }
+`;
 
 export default compose(
+  graphql(BlogQuery),
 )(Blog);
