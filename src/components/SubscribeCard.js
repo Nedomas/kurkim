@@ -8,8 +8,12 @@ import plural from 'plural';
 import { compose } from 'redux';
 import windowSize from 'react-window-size';
 import { Field, reduxForm } from 'redux-form';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
+import Markdown from './Markdown';
 
 import step from '@bloometry/step';
+import fluid from '@bloometry/fluid';
 import Container from './Container';
 import Headline from './Headline';
 import Text from './Text';
@@ -31,31 +35,18 @@ class SubscribeCard extends Component {
     const {
       height,
       handleSubmit,
+      data,
     } = this.props;
 
     return (
       <Container
         {...this.props}
-        style={[styles.container, { minHeight: `400px` }]}
+        style={[styles.container, { minHeight: fluid(350, 550) }]}
       >
         <Container pad={1} style={styles.contentContainer}>
-          <Headline level={3} bold padBottom>
-            Užsiprenumeruok naujienlaiškį! 🎉
-          </Headline>
+          <Markdown source={_.get(data, 'subscribeCard.content')} />
 
-          <Container padBottom>
-            <ListItem>
-              Kūrybingi darbo pasiūlymai
-            </ListItem>
-            <ListItem>
-              Kvietimai į renginius
-            </ListItem>
-            <ListItem>
-              Patarimai kūrybingumui auginti!
-            </ListItem>
-          </Container>
-
-          <form onSubmit={handleSubmit((values) => this.onSubmit(values))}>
+          <form style={styles.form} onSubmit={handleSubmit((values) => this.onSubmit(values))}>
             <Field marginBottom={0.5} component={Input} placeholder='Vardas' name='firstName' type='text' />
             <Field marginBottom component={Input} placeholder='El. paštas' name='email' type='email' />
 
@@ -69,7 +60,16 @@ class SubscribeCard extends Component {
   }
 }
 
+const SubscribeCardQuery = gql`
+  query SubscribeCardQuery {
+    subscribeCard: CustomText(slug: "subscribe-card") {
+      content
+    }
+  }
+`;
+
 export default compose(
+  graphql(SubscribeCardQuery),
   windowSize,
   reduxForm({
     form: 'subscribe'

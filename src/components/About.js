@@ -26,7 +26,7 @@ class About extends Component {
 
     const {
       data: {
-        Page: {
+        CustomText: {
           content,
         },
       },
@@ -50,7 +50,7 @@ class About extends Component {
 
 const AboutQuery = gql`
   query AboutQuery {
-    Page(id: "cjetr2n7nd8f701488uv6rnsm") {
+    CustomText(slug: "about") {
       content
     }
   }

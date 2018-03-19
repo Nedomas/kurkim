@@ -26,7 +26,7 @@ const RENDERERS = {
 class Markdown extends Component {
   render() {
     return (
-      <Text>
+      <Text {...this.props}>
         <ReactMarkdown
           escapeHtml={false}
           renderers={RENDERERS}
