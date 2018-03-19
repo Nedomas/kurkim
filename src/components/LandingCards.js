@@ -26,6 +26,10 @@ const COLLECTIONS = [
 ];
 
 class LandingCards extends Component {
+  addType(elements, type) {
+    return _.map(elements, (element) => ({ type, ...element }));
+  }
+
   jobs() {
     const {
       data,
@@ -37,11 +41,11 @@ class LandingCards extends Component {
     } = this.props;
 
     const result = _.compact(_.flatten(_.map(COLLECTIONS, (collection) => data[collection])));
-    if (!filterCityName) return result;
+    if (!filterCityName) return this.addType(result, 'job');
 
-    return _.filter(result, (job) => {
+    return this.addType(_.filter(result, (job) => {
       return _.some(job.cities, { name: filterCityName });
-    });
+    }), 'job');
   }
 
   blogPosts() {
@@ -51,15 +55,23 @@ class LandingCards extends Component {
       },
     } = this.props;
 
-    return _.map(allBlogPosts, (blogPost) => ({ type: 'blogPost', ...blogPost }));
+    return this.addType(allBlogPosts, 'blogPost');
+  }
+
+  subscribes() {
+    return [{ type: 'subscribe' }];
   }
 
   all() {
-    const jobs = _.map(this.jobs(), (job) => ({ type: 'job', ...job }));
-
-    const set = (n, ins, arr) => [...arr.slice(0, n), ins, ...arr.slice(n)];
-    const result = set(3, { type: 'subscribe' }, jobs);
-    return _.shuffle(result.concat(this.blogPosts()));
+    return _.compact(
+      _.flatten(
+        _.zip(
+          this.jobs(),
+          _.times(2, _.constant(null)).concat(this.subscribes()),
+          _.times(3, _.constant(null)).concat(this.blogPosts()),
+        )
+      )
+    );
   }
 
   render() {

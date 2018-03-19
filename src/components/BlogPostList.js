@@ -29,11 +29,12 @@ class BlogPostList extends Component {
       data: {
         allBlogPosts,
       },
+      hideEmpty,
     } = this.props;
 
     return (
       <Container pad center readable padNavbar>
-        {_.isEmpty(allBlogPosts) && <Text center level={3} chaos dark minWindowHeight>Vis dar nieko neprikeverzojom.</Text>}
+        {!hideEmpty && _.isEmpty(allBlogPosts) && <Text center level={3} chaos dark minWindowHeight>Vis dar nieko neprikeverzojom.</Text>}
         {_.map(allBlogPosts, (blogPost) => {
           return <BlogPostItem key={blogPost.slug} blogPost={blogPost} />;
         })}
@@ -48,6 +49,7 @@ export const BlogPostListQuery = gql`
       isPublished: $isPublished,
     },
     orderBy: createdAt_DESC) {
+      id
       slug
       headline
       teaser

@@ -38,7 +38,7 @@ class SubscribeCard extends Component {
         {...this.props}
         style={[styles.container, { minHeight: `400px` }]}
       >
-        <Container pad={1}>
+        <Container pad={1} style={styles.contentContainer}>
           <Headline level={3} bold padBottom>
             Užsiprenumeruok naujienlaiškį! 🎉
           </Headline>
@@ -83,28 +83,17 @@ const styles = {
   },
   container: {
     display: 'flex',
-    position: 'relative',
+    // position: 'relative',
     width: '100%',
     borderRadius,
     backgroundColor: colors.lightLightBlack,
     borderRadius,
   },
-  imageContainer: {
-    position: 'absolute',
-    width: '100%',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    borderRadius,
-  },
-  gradientContainer: {
-    position: 'absolute',
-    width: '100%',
-    background: `linear-gradient(${colors.black}, ${colors.tintBlack}, ${colors.black})`,
-    opacity: 0.7,
-    borderRadius,
-  },
   contentContainer: {
-    position: 'absolute',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    borderRadius,
   },
   innerContainer: {
     display: 'flex',
@@ -132,11 +121,5 @@ const styles = {
     },
   },
   hover: {
-    imageContainer: {
-      filter: 'saturate(200%)',
-    },
-    gradientContainer: {
-      opacity: 0.3,
-    },
   },
 };

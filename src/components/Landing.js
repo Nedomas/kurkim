@@ -18,7 +18,7 @@ export default class Landing extends Component {
           </Text>
         </Container>
         <LandingCards {...this.props} />
-        <BlogPostList {...this.props} />
+        <BlogPostList {...this.props} hideEmpty />
 
         <Container center pad>
           <Text center>

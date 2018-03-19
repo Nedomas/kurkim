@@ -14,6 +14,7 @@ import Headline from './Headline';
 import Text from './Text';
 import CompanyLogo from './CompanyLogo';
 import BlogPostAuthor from './BlogPostAuthor';
+import BlogPostMeta from './BlogPostMeta';
 
 import borderRadius from '../theme/borderRadius';
 import colors from '../theme/colors';
@@ -34,6 +35,7 @@ class BlogPostCard extends Component {
   render() {
     const {
       width,
+      data,
       data: {
         __typename,
         slug,
@@ -75,6 +77,7 @@ class BlogPostCard extends Component {
               {headline}
             </Headline>
             <div style={styles.teaser.container}>
+              <BlogPostMeta blogPost={data} padBottom={0} color={colors.white} />
               <Headline level={4}>
                 {cardTeaser}
               </Headline>

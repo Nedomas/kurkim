@@ -41,7 +41,7 @@ const styles = {
   },
   tiny: {
     container: {
-      width: fluid(100, 150),
+      width: fluid(120, 150),
     },
   },
 };
