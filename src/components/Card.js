@@ -7,7 +7,9 @@ import Measure from 'react-measure';
 import plural from 'plural';
 import { compose } from 'redux';
 import windowSize from 'react-window-size';
+import LazyLoad from 'react-lazyload';
 
+import fluid from '@bloometry/fluid';
 import step from '@bloometry/step';
 import Container from './Container';
 import Headline from './Headline';
@@ -44,9 +46,22 @@ class Card extends Component {
     return {
       ...this.props,
       ...this.state,
+      height: this.height(),
       onMouseEnter: () => this.handleMouseEnter(),
       onMouseLeave: () => this.handleMouseLeave(),
     };
+  }
+
+  height() {
+    const {
+      data: {
+        type,
+      },
+    } = this.props;
+
+    if (type !== 'subscribe') return this.state.height;
+
+    return fluid(350, 550);
   }
 
   render() {
@@ -64,7 +79,11 @@ class Card extends Component {
 
     const TagName = CARD_MAPPINGS[type];
 
-    return <TagName {...this.childProps()} />;
+    return (
+      <LazyLoad height={this.height()} offset={100}>
+        <TagName {...this.childProps()} />
+      </LazyLoad>
+    );
   }
 }
 

@@ -77,7 +77,7 @@ class Filters extends Component {
 
 const styles = {
   container: {
-    display: 'block',
+    display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
   },

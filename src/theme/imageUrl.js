@@ -9,9 +9,11 @@ const transformationPart = (transformations) => {
     return `${key}:${val}`;
   });
 
-  return `/resize=${transformationParts.join(',')}`;
+  return `/resize=${transformationParts.join(',')}/compress`;
 };
 
 export default (image, transformations) => {
+  if (!image) return '';
+
   return `https://media.graphcms.com${transformationPart(transformations)}/${_.get(image, 'handle')}`
 };

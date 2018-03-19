@@ -41,7 +41,7 @@ class SubscribeCard extends Component {
     return (
       <Container
         {...this.props}
-        style={[styles.container, { minHeight: fluid(350, 550) }]}
+        style={[styles.container, { height: `${height}px` }]}
       >
         <Container pad={1} style={styles.contentContainer}>
           <Markdown source={_.get(data, 'subscribeCard.content')} />

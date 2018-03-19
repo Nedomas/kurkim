@@ -3,9 +3,14 @@ import Radium, { StyleRoot } from 'radium';
 import fluid from '@bloometry/fluid';
 import step from '@bloometry/step';
 import windowSize from 'react-window-size';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
+import { compose } from 'redux';
+import _ from 'lodash';
 
 import colors from '../theme/colors';
 import maxReadableWidth from '../theme/maxReadableWidth';
+import imageUrl from '../theme/imageUrl';
 import Headline from './Headline';
 import Navbar from './Navbar';
 import Container from './Container';
@@ -17,7 +22,12 @@ class Splash extends Component {
     const big = this.props.windowWidth > 1300;
 
     return (
-      <Container style={styles.container}>
+      <Container style={[
+        styles.container,
+        {
+          backgroundImage: `url('${imageUrl(_.get(this.props, "data.splash.image"), { height: this.props.windowHeight, width: this.props.windowWidth })}')`,
+        },
+      ]}>
         <div style={styles.innerContainer}>
           <div style={styles.elementContainer}>
             <StyleRoot>
@@ -42,7 +52,21 @@ class Splash extends Component {
   }
 }
 
-export default windowSize(Radium(Splash));
+const SplashQuery = gql`
+  query SplashQuery {
+    splash: CustomText(slug: "splash") {
+      image {
+        handle
+      }
+    }
+  }
+`;
+
+export default compose(
+  windowSize,
+  graphql(SplashQuery),
+  Radium,
+)(Splash);
 
 const spinAnimation = Radium.keyframes({
   from: {
@@ -56,7 +80,6 @@ const spinAnimation = Radium.keyframes({
 const styles = {
   container: {
     color: colors.red,
-    backgroundImage: 'url("/splash-bg.png")',
     backgroundPosition: 'top',
     backgroundSize: 'cover',
     overflow: 'hidden',
