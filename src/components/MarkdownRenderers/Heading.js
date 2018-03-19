@@ -13,7 +13,7 @@ export default class MarkdownRendererHeading extends Component {
       children,
     } = this.props;
 
-    return _.some(children, (child) => child.match(FLOWERFUL_REGEX));
+    return _.some(children, (child) => _.isString(child) && child.match(FLOWERFUL_REGEX));
   }
 
   text() {
