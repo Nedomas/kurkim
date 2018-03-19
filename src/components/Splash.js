@@ -20,18 +20,18 @@ class Splash extends Component {
       <Container style={styles.container}>
         <div style={styles.innerContainer}>
           <div style={styles.elementContainer}>
-          <StyleRoot>
-            <Icon type='oval' style={[styles.img, styles.oval]} />
-            <Icon type='egg' style={[styles.img, styles.egg]} />
-            <Icon type='imperfectOval' style={[styles.img, styles.imperfectOval]} />
-          </StyleRoot>
-        </div>
+            <StyleRoot>
+              <Icon type='oval' style={[styles.img, styles.oval]} />
+              <Icon type='egg' style={[styles.img, styles.egg]} />
+              <Icon type='imperfectOval' style={[styles.img, styles.imperfectOval]} />
+            </StyleRoot>
+          </div>
 
           <div style={styles.elementContainer}>
             <Navbar dark />
 
             <Container pad padNavbar>
-              <Headline center color={colors.yellow} uppercase bold marginTopRaw={fluid(150, 90)}>
+              <Headline center color={colors.yellow} uppercase bold marginTopRaw={`calc(50vh - ${fluid(190, 260)})`}>
                 kūrybingiems
               </Headline>
             </Container>
@@ -81,8 +81,8 @@ const styles = {
     height: fluid(150, 500),
     width: fluid(150, 500),
     position: 'absolute',
-    top: fluid(245, 100),
-    left: fluid(300, 900),
+    top: `calc(50vh - ${fluid(100, 240)})`,
+    left: fluid(220, 900),
     animationName: spinAnimation,
     animationIterationCount: 'infinite',
     animationTimingFunction: 'linear',

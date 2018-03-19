@@ -27,7 +27,7 @@ class CreativesSignup extends Component {
 
     const {
       data: {
-        Page: {
+        creativesSignup: {
           content,
         },
       },
@@ -59,7 +59,7 @@ class CreativesSignup extends Component {
 
 const CreativesSignupQuery = gql`
   query CreativesSignupQuery {
-    Page(id: "cjetpi88fcng801489rtle075") {
+    creativesSignup: CustomText(slug: "creatives-signup") {
       content
     }
   }

@@ -22,7 +22,6 @@ class CardsGrid extends Component {
         columnWidth={this.width()}
         gutterWidth={20}
         gutterHeight={20}
-        onLayout={(arg) => console.log('aaa', arg)}
       >
         {_.map(cards, (card) => <Card key={card.id} width={this.width()} data={card}/>)}
       </StackGrid>

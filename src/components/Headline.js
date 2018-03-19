@@ -29,7 +29,7 @@ class Headline extends Component {
 
 const styles = [
   {
-    fontSize: fluid(50, 140),
+    fontSize: fluid(40, 140),
     lineHeight: fluid(60, 150),
   },
   {
