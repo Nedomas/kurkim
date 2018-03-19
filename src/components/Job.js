@@ -8,6 +8,7 @@ import { compose } from 'redux';
 import _ from 'lodash';
 import moment from 'moment';
 import ReactSimpleRange from 'react-simple-range';
+import { Helmet } from 'react-helmet';
 
 import step from '@bloometry/step';
 import colors from '../theme/colors';
@@ -29,6 +30,7 @@ import CompanyLogo from './CompanyLogo';
 import Footer from './Footer';
 
 import maxReadableWidth from '../theme/maxReadableWidth';
+import imageUrl from '../theme/imageUrl';
 
 class Job extends Component {
   logoBackgroundColor() {
@@ -76,11 +78,18 @@ class Job extends Component {
         name,
         slug,
         logo,
+        displayImage,
       },
     } = Job;
 
     return (
       <div>
+        <Helmet>
+          <meta property='og:title' content={headline} />
+          <meta property='og:description' content={teaser} />
+          <meta property='og:image' content={imageUrl(displayImage)} />
+        </Helmet>
+
         <Navbar dark />
 
         <Container pad padNavbar style={[styles.container, isSmall(this) && styles.small.container]}>
@@ -223,6 +232,9 @@ const JobQuery = gql`
         name
         slug
         logo {
+          handle
+        }
+        displayImage {
           handle
         }
         logoBackgroundColor

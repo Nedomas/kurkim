@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
+import { compose } from 'redux';
+import _ from 'lodash';
 
 import Landing from './Landing';
 import CreativesSignup from './CreativesSignup';
@@ -10,11 +15,18 @@ import ApplyPerson from './ApplyPerson';
 import Blog from './Blog';
 import BlogPost from './BlogPost';
 import Company from './Company';
+import imageUrl from '../theme/imageUrl';
 
-export default class App extends Component {
+class App extends Component {
   render() {
     return (
       <div>
+        <Helmet>
+          <meta property='og:title' content={_.get(this.props.data, 'ogTitle.content')} />
+          <meta property='og:description' content={_.get(this.props.data, 'ogDescription.content')} />
+          <meta property='og:image' content={imageUrl(_.get(this.props.data, 'ogImage.image'))} />
+        </Helmet>
+
         <Route path='/' exact component={Landing} />
         <Route path='/miestai/:city' exact component={Landing} />
         <Route path='/t' exact component={Blog} />
@@ -27,3 +39,25 @@ export default class App extends Component {
     );
   }
 }
+
+const AppQuery = gql`
+  query AppQuery {
+    ogTitle: CustomText(slug: "default-og-title") {
+      content
+    }
+
+    ogDescription: CustomText(slug: "default-og-description") {
+      content
+    }
+
+    ogImage: CustomText(slug: "default-og-image") {
+      image {
+        handle
+      }
+    }
+  }
+`;
+
+export default compose(
+  graphql(AppQuery),
+)(App);
