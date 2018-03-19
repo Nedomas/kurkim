@@ -9,7 +9,7 @@ import Card from './Card';
 
 class CardsGrid extends Component {
   width() {
-    return this.props.windowWidth <= 320 ? '100%' : 300;
+    return this.props.windowWidth <= 320 ? this.props.windowWidth - 40 : 300;
   }
 
   render() {

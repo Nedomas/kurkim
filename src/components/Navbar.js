@@ -12,6 +12,7 @@ import Container from './Container';
 import Text from './Text';
 import borderRadius from '../theme/borderRadius';
 import colors from '../theme/colors';
+import isSmall from '../theme/isSmall';
 
 const Link = Radium(RouterLink);
 
@@ -45,13 +46,11 @@ class Navbar extends Component {
       dark,
     } = this.props;
 
-    const small = this.props.windowWidth <= 768;
-
     return (
       <Container pad style={styles.container}>
         <Logo {...this.props} />
 
-        {!small && <div style={styles.links.container}>
+        {!isSmall(this) && <div style={styles.links.container}>
           <Link to='/kurybingiems' style={[styles.links.item, dark && styles.dark.links.item]}>
             Kūrybingiems
           </Link>
@@ -63,7 +62,7 @@ class Navbar extends Component {
           </Link>
         </div>}
 
-        {small && <div style={styles.hamburgerButton.container}>
+        {isSmall(this) && <div style={styles.hamburgerButton.container}>
           <HamburgerButton
             open={open}
             onClick={() => this.handleHamburgerClick()}
@@ -73,7 +72,7 @@ class Navbar extends Component {
           />
         </div>}
 
-        {small && open && <Container pad style={[styles.hamburger.container, dark && styles.dark.hamburger.container]}>
+        {isSmall(this) && open && <Container pad style={[styles.hamburger.container, dark && styles.dark.hamburger.container]}>
           <Container spaceBetween>
             <Logo dark={!dark} />
             <div style={styles.hamburgerButton.container}>
@@ -95,6 +94,15 @@ class Navbar extends Component {
           </Text>
           <Text level={3} padBottom component={Link} to='/t' style={[styles.hamburger.link, dark && styles.dark.hamburger.link]}>
             Žurnalas
+          </Text>
+          <Text level={3} padBottom padTop={2} component={Link} to='/' style={[styles.hamburger.link, dark && styles.dark.hamburger.link]}>
+            Pozicijos
+          </Text>
+          <Text level={3} padBottom padLeft={2} component={Link} to='/miestai/Vilnius' style={[styles.hamburger.link, dark && styles.dark.hamburger.link]}>
+            Vilniuje
+          </Text>
+          <Text level={3} padLeft={2} component={Link} to='/miestai/Kaunas' style={[styles.hamburger.link, dark && styles.dark.hamburger.link]}>
+            Kaune
           </Text>
         </Container>}
       </Container>

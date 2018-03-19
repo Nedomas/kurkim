@@ -91,7 +91,7 @@ class LandingCards extends Component {
 
     return (
       <Container pad padTop={4}>
-        <Filters {...this.props} cities={allCities} />
+        {!isSmall(this) && <Filters {...this.props} cities={allCities} />}
         <CardsGrid cards={this.all()} />
       </Container>
     );
