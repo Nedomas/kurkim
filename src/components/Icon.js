@@ -11,6 +11,7 @@ import { ReactComponent as link } from '../assets/link.svg';
 import { ReactComponent as egg } from '../assets/egg-white.svg';
 import { ReactComponent as imperfectOval } from '../assets/imperfect-oval-white.svg';
 import { ReactComponent as oval } from '../assets/logo-oval-white.svg';
+import { ReactComponent as dropdown } from '../assets/dropdown.svg';
 
 const TYPES = {
   city,
@@ -19,6 +20,7 @@ const TYPES = {
   egg,
   imperfectOval,
   oval,
+  dropdown,
 };
 
 class Icon extends Component {

@@ -3,27 +3,41 @@ import _ from 'lodash';
 import Radium from 'radium';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
+import Dropdown, {
+  DropdownTrigger,
+  DropdownContent,
+} from 'react-simple-dropdown';
 
 import step from '@bloometry/step';
 import isSmall from '../theme/isSmall';
+import colors from '../theme/colors';
 import Button from './Button';
 import Container from './Container';
+import Text from './Text';
+import Icon from './Icon';
 
 class Filters extends Component {
   isActive(city) {
+    if (city && city.name === this.activeCityName()) return true;
+
+    return false;
+  }
+
+  isAll() {
+    return !this.activeCityName();
+  }
+
+  activeCityName() {
     const {
       data,
       match: {
         params: {
-          city: filterCityName,
+          city,
         },
       },
     } = this.props;
 
-    if (!city && !filterCityName) return true;
-    if (city && city.name === filterCityName) return true;
-
-    return false;
+    return city;
   }
 
   render() {
@@ -33,15 +47,27 @@ class Filters extends Component {
 
     return (
       <Container padBottom={2} style={styles.container}>
-        <Button component={Link} to='/' active={this.isActive()} tiny transparent style={styles.button}>
+        <Button component={Link} to='/' active={this.isAll()} tiny transparent style={styles.button.container}>
           Visi
         </Button>
-        {_.map(cities, (city) => (
-          <Button key={city.id} active={this.isActive(city)} component={Link} to={`/miestai/${city.name}`} tiny transparent style={styles.button}>
-            {city.name} {!isSmall(this) && ` (${city._jobsMeta.count})`}
-          </Button>
-        ))}
-        <Button component={Link} to='/t' tiny transparent style={styles.button}>
+
+        <Dropdown>
+          <DropdownTrigger>
+            <Button active={this.activeCityName()} tiny transparent style={styles.button.container}>
+              {this.activeCityName() || 'Pozicijos'} <Icon type='dropdown' tiny style={styles.button.icon} />
+            </Button>
+          </DropdownTrigger>
+          <DropdownContent>
+            <Container style={styles.dropdown.container}>
+              {_.map(cities, (city) => (
+                <Text level={2} padBottom={0.5} component={Link} key={city.id} active={this.isActive(city)} to={`/miestai/${city.name}`} style={styles.dropdown.item}>
+                  {city.name} {!isSmall(this) && ` (${city._jobsMeta.count})`}
+                </Text>
+              ))}
+            </Container>
+          </DropdownContent>
+        </Dropdown>
+        <Button component={Link} to='/t' tiny transparent style={styles.button.container}>
           Žurnalas
         </Button>
       </Container>
@@ -56,8 +82,32 @@ const styles = {
     alignItems: 'center',
   },
   button: {
-    margin: `0 ${step()}`,
-    width: '100px',
+    container: {
+      margin: `0 ${step()}`,
+      minWidth: '100px',
+      display: 'flex',
+      alignItems: 'center',
+      width: 'initial',
+    },
+    icon: {
+      marginLeft: step(),
+    },
+  },
+  dropdown: {
+    container: {
+      backgroundColor: colors.lightLightBlack,
+      zIndex: 10,
+      padding: `${step()} ${step()} ${step(0.5)}`,
+    },
+    item: {
+      display: 'block',
+      textDecoration: 'none',
+      color: colors.black,
+
+      ':hover': {
+        color: colors.yellow,
+      }
+    },
   },
 }
 
