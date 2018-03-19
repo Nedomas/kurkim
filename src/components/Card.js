@@ -57,11 +57,12 @@ class Card extends Component {
       data: {
         type,
       },
+      windowWidth,
     } = this.props;
 
     if (type !== 'subscribe') return this.state.height;
 
-    return fluid(350, 550);
+    return 400 + windowWidth / 12;
   }
 
   render() {
