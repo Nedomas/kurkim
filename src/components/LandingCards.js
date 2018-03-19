@@ -19,12 +19,6 @@ import Container from './Container';
 import FullScreenLoading from './FullScreenLoading';
 import Filters from './Filters';
 
-const COLLECTIONS = [
-  'allJobs',
-  'allEvents',
-  'allPeople',
-];
-
 class LandingCards extends Component {
   addType(elements, type) {
     return _.map(elements, (element) => ({ type, ...element }));
@@ -32,20 +26,12 @@ class LandingCards extends Component {
 
   jobs() {
     const {
-      data,
-      match: {
-        params: {
-          city: filterCityName,
-        },
+      data: {
+        allJobs,
       },
     } = this.props;
 
-    const result = _.compact(_.flatten(_.map(COLLECTIONS, (collection) => data[collection])));
-    if (!filterCityName) return this.addType(result, 'job');
-
-    return this.addType(_.filter(result, (job) => {
-      return _.some(job.cities, { name: filterCityName });
-    }), 'job');
+    return this.addType(allJobs, 'job');
   }
 
   blogPosts() {
@@ -63,7 +49,7 @@ class LandingCards extends Component {
   }
 
   all() {
-    return _.compact(
+    const result = _.compact(
       _.flatten(
         _.zip(
           this.jobs(),
@@ -72,6 +58,25 @@ class LandingCards extends Component {
         )
       )
     );
+
+    return this.filter(result);
+  }
+
+  filter(all) {
+    const {
+      data,
+      match: {
+        params: {
+          city,
+        },
+      },
+    } = this.props;
+
+    if (!city) return all;
+
+    return _.filter(all, (job) => {
+      return _.some(job.cities, { name: city });
+    });
   }
 
   render() {
