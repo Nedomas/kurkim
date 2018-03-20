@@ -11,7 +11,7 @@ const transformationPart = (transformations) => {
     return `${key}:${val}`;
   });
 
-  return `/resize=${transformationParts.join(',')}/compress`;
+  return `/output=format:jpg/resize=${transformationParts.join(',')}/quality=value:80/compress`;
 };
 
 const cacheImage = (image, transformations) => {
