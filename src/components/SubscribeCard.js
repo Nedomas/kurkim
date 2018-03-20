@@ -42,6 +42,10 @@ class SubscribeCard extends Component {
     };
   }
 
+  componentDidUpdate() {
+    this.props.updateGrid();
+  }
+
   async handleSubmit(values) {
     this.setState({
       initialized: true,

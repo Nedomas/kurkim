@@ -12,6 +12,10 @@ class CardsGrid extends Component {
     return this.props.windowWidth <= 320 ? this.props.windowWidth - 40 : 300;
   }
 
+  updateGrid() {
+    this.grid.updateLayout();
+  }
+
   render() {
     const {
       cards,
@@ -22,8 +26,10 @@ class CardsGrid extends Component {
         columnWidth={this.width()}
         gutterWidth={20}
         gutterHeight={20}
+        monitorImagesLoaded
+        gridRef={grid => this.grid = grid}
       >
-        {_.map(cards, (card) => <Card key={card.id} width={this.width()} data={card}/>)}
+        {_.map(cards, (card) => <Card updateGrid={() => this.updateGrid()} key={card.id} width={this.width()} data={card}/>)}
       </StackGrid>
     );
   }
