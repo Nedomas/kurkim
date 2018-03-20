@@ -62,7 +62,7 @@ class Card extends Component {
 
     if (type !== 'subscribe') return this.state.height;
 
-    return 400 + windowWidth / 15;
+    return 400 + windowWidth / 12;
   }
 
   render() {
