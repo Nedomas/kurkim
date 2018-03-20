@@ -4,7 +4,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import Radium from 'radium';
 import _ from 'lodash';
 import windowSize from 'react-window-size';
-import LazyLoad from 'react-lazyload';
+import { lazyload } from 'react-lazyload';
 
 import BlogPostAuthor from './BlogPostAuthor';
 import BlogPostMeta from './BlogPostMeta';
@@ -55,39 +55,37 @@ class BlogPostItem extends Component {
     } = this.state;
 
     return (
-      <LazyLoad offset={100}>
-        <Link
-          to={`/t/${slug}`}
-          style={styles.container}
-          onMouseEnter={() => this.handleMouseEnter()}
-          onMouseLeave={() => this.handleMouseLeave()}
+      <Link
+        to={`/t/${slug}`}
+        style={styles.container}
+        onMouseEnter={() => this.handleMouseEnter()}
+        onMouseLeave={() => this.handleMouseLeave()}
+      >
+        <div
+          style={[
+            styles.displayImage,
+            {
+              backgroundImage: `url('${imageUrl(displayImage)}')`
+            },
+          ]}
+        />
+        <Container pad marginTopRaw={fluid(-100, -200)}
+          marginLeft={isSmall(this) ? 0.5 : 2}
+          marginRight={isSmall(this) ? 0.5 : 2}
+          style={styles.content}
         >
-          <div
-            style={[
-              styles.displayImage,
-              {
-                backgroundImage: `url('${imageUrl(displayImage)}')`
-              },
-            ]}
-          />
-          <Container pad marginTopRaw={fluid(-100, -200)}
-            marginLeft={isSmall(this) ? 0.5 : 2}
-            marginRight={isSmall(this) ? 0.5 : 2}
-            style={styles.content}
-          >
-            <Headline bold level={3} underline={hover}>
-              {headline}
-            </Headline>
-            <BlogPostMeta blogPost={blogPost} />
+          <Headline bold level={3} underline={hover}>
+            {headline}
+          </Headline>
+          <BlogPostMeta blogPost={blogPost} />
 
-            <Text grey level={2} padBottom>
-              {teaser}
-            </Text>
+          <Text grey level={2} padBottom>
+            {teaser}
+          </Text>
 
-            <BlogPostAuthor author={author} />
-          </Container>
-        </Link>
-      </LazyLoad>
+          <BlogPostAuthor author={author} />
+        </Container>
+      </Link>
     );
   }
 };
@@ -116,5 +114,9 @@ const styles = {
 
 export default compose(
   windowSize,
+  lazyload({
+    once: true,
+    offset: 200,
+  }),
   Radium,
 )(BlogPostItem);

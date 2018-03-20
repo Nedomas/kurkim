@@ -81,7 +81,7 @@ class Card extends Component {
     const TagName = CARD_MAPPINGS[type];
 
     return (
-      <LazyLoad height={this.height()} offset={100}>
+      <LazyLoad height={this.height()} offset={200}>
         <TagName {...this.childProps()} />
       </LazyLoad>
     );
