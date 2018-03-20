@@ -27,6 +27,7 @@ class CardsGrid extends Component {
         gutterWidth={20}
         gutterHeight={20}
         monitorImagesLoaded
+        duration={0}
         gridRef={grid => this.grid = grid}
       >
         {_.map(cards, (card) => <Card
