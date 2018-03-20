@@ -4,4 +4,4 @@
 
 [context.production.environment]
   REACT_APP_GRAPHQL_URI = "https://api.graphcms.com/simple/v1/kurkim"
-  REACT_APP_GRAPHCOOL_URI = ""https://api.graph.cool/simple/v1/kurkim-production"
+  REACT_APP_GRAPHCOOL_URI = "https://api.graph.cool/simple/v1/kurkim-production"
