@@ -44,7 +44,7 @@ class Footer extends Component {
 
 const styles = {
   container: {
-    margin: `${step(10)} 0 0`,
+    margin: `${step(6)} 0 0`,
     backgroundColor: colors.lightLightBlack,
   },
   innerContainer: {

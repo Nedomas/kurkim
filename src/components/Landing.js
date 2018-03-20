@@ -22,14 +22,19 @@ class Landing extends Component {
     return (
       <div style={styles.container}>
         <Splash {...this.props} />
-        <Container center pad>
+        <Container center pad readable marginBottom={-3.5}>
           <Markdown center source={_.get(data, 'shortIntro.content')} />
         </Container>
         <LandingCards {...this.props} />
+        <Container center pad marginBottom={-2}>
+          <Markdown center source={_.get(data, 'shareStory.content')} />
+        </Container>
         <BlogPostList {...this.props} hideEmpty />
 
-        <Container center pad>
-          <Markdown center source={_.get(data, 'shareWithUs.content')} />
+        <Container center>
+          <Text grey>
+            <Markdown center source={_.get(data, 'shareVisual.content')} />
+          </Text>
         </Container>
         <Footer {...this.props} />
       </div>
@@ -49,7 +54,11 @@ const LandingQuery = gql`
       content
     }
 
-    shareWithUs: CustomText(slug: "share-with-us") {
+    shareStory: CustomText(slug: "share-story") {
+      content
+    }
+
+    shareVisual: CustomText(slug: "share-visual") {
       content
     }
   }

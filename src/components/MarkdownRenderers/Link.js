@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
+import Radium from 'radium';
+import { compose } from 'redux';
 
 import colors from '../../theme/colors';
 import Button from '../Button';
 
 const BUTTON_REGEX = /^{(.*)}$/;
 
-export default class MarkdownRendererLink extends Component {
+class MarkdownRendererLink extends Component {
   isButton() {
     const {
       children,
@@ -40,5 +42,15 @@ export default class MarkdownRendererLink extends Component {
 const styles = {
   container: {
     color: colors.black,
+    textDecoration: 'none',
+    fontWeight: 500,
+
+    ':hover': {
+      textDecoration: 'underline',
+    },
   },
 };
+
+export default compose(
+  Radium,
+)(MarkdownRendererLink);
