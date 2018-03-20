@@ -32,7 +32,7 @@ class Landing extends Component {
         </Container>
         <BlogPostList {...this.props} hideEmpty />
 
-        <Container center>
+        <Container center pad readable>
           <Text grey>
             <Markdown center source={_.get(data, 'shareVisual.content')} />
           </Text>
