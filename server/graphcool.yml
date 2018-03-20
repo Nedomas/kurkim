@@ -1,0 +1,12 @@
+types: ./types.graphql
+
+functions:
+  subscribe:
+    type: resolver
+    schema: ./src/subscribe.graphql
+    handler:
+      code:
+        src: ./src/subscribe.js
+        environment:
+          MAILERLITE_GROUP_ID: ${env:MAILERLITE_GROUP_ID}
+          MAILERLITE_API_KEY: ${env:MAILERLITE_API_KEY}

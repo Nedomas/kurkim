@@ -40,6 +40,7 @@ class Button extends Component {
     return (
       <Container
         {...this.props}
+        component={component}
         style={[
           styles.container,
           center && styles.center,

@@ -1,0 +1,10 @@
+type SubscribePayload {
+  email: String!,
+}
+
+extend type Mutation {
+  subscribe(
+    firstName: String!,
+    email: String!,
+  ): SubscribePayload
+}

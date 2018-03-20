@@ -10,8 +10,9 @@ import windowSize from 'react-window-size';
 import { Field, reduxForm } from 'redux-form';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-import Markdown from './Markdown';
+import withMutationState from 'apollo-mutation-state';
 
+import Markdown from './Markdown';
 import step from '@bloometry/step';
 import fluid from '@bloometry/fluid';
 import Container from './Container';
@@ -25,10 +26,44 @@ import ListItem from './MarkdownRenderers/ListItem';
 import borderRadius from '../theme/borderRadius';
 import colors from '../theme/colors';
 import imageUrl from '../theme/imageUrl';
+import graphcoolClient from '../helpers/graphcoolClient';
 
 class SubscribeCard extends Component {
-  onSubmit(values) {
-    console.log('submitted', values);
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      mutation: {
+        initialized: false,
+        loading: false,
+        success: false,
+        error: false,
+      },
+    };
+  }
+
+  async handleSubmit(values) {
+    this.setState({
+      initialized: true,
+      loading: true,
+    });
+
+    try {
+      await graphcoolClient.mutate({
+        mutation: SubscribeCardMutation,
+        variables: values,
+      });
+
+      this.setState({
+        loading: false,
+        success: true,
+      });
+    } catch (e) {
+      this.setState({
+        loading: false,
+        error: true,
+      });
+    }
   }
 
   render() {
@@ -38,6 +73,13 @@ class SubscribeCard extends Component {
       data,
     } = this.props;
 
+    const {
+      mutation: {
+        loading,
+      },
+    } = this.state;
+
+    console.log(this.props);
     return (
       <Container
         {...this.props}
@@ -46,11 +88,11 @@ class SubscribeCard extends Component {
         <Container pad={1} style={styles.contentContainer}>
           <Markdown source={_.get(data, 'subscribeCard.content')} />
 
-          <form style={styles.form} onSubmit={handleSubmit((values) => this.onSubmit(values))}>
+          <form style={styles.form} onSubmit={handleSubmit((values) => this.handleSubmit(values))}>
             <Field marginBottom={0.5} component={Input} placeholder='Vardas' name='firstName' type='text' />
             <Field marginBottom component={Input} placeholder='El. paštas' name='email' type='email' />
 
-            <Button type='submit' style={styles.button}>
+            <Button type='submit'>
               Prenumeruoti
             </Button>
           </form>
@@ -68,19 +110,40 @@ const SubscribeCardQuery = gql`
   }
 `;
 
+const SubscribeCardMutation = gql`
+  mutation SubscribeCardMutation($firstName: String!, $email: String!) {
+    subscribe(firstName: $firstName, email: $email) {
+      email
+    }
+  }
+`;
+
+const validate = (values) => {
+  const errors = {};
+
+  if (!values.firstName) {
+    errors.firstName = 'Required';
+  }
+
+  if (!values.email) {
+    errors.email = 'Required';
+  }
+  console.log('err', errors);
+
+  return errors;
+};
+
 export default compose(
   graphql(SubscribeCardQuery),
   windowSize,
   reduxForm({
-    form: 'subscribe'
+    form: 'subscribe',
+    validate,
   }),
   Radium,
 )(SubscribeCard);
 
 const styles = {
-  button: {
-    width: `calc(100% - ${step(2)})`,
-  },
   container: {
     display: 'flex',
     // position: 'relative',
