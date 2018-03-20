@@ -16,6 +16,7 @@ import Blog from './Blog';
 import BlogPost from './BlogPost';
 import Company from './Company';
 import imageUrl from '../theme/imageUrl';
+import ogUrl from '../theme/ogUrl';
 
 class App extends Component {
   render() {
@@ -30,6 +31,8 @@ class App extends Component {
           <meta property='og:title' content={_.get(this.props.data, 'ogTitle.content')} />
           <meta property='og:description' content={_.get(this.props.data, 'ogDescription.content')} />
           <meta property='og:image' content={imageUrl(_.get(this.props.data, 'ogImage.image'), { ogImage: true })} />
+          <meta property='og:url' content={ogUrl()} />
+          <meta property='og:type' content='website' />
         </Helmet>
 
         <Route path='/' exact component={Landing} />

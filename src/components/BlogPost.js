@@ -62,6 +62,7 @@ class BlogPost extends Component {
           <meta property='og:title' content={ogTitle || headline} />
           <meta property='og:description' content={ogDescription || teaser} />
           <meta property='og:image' content={imageUrl(ogImage, { ogImage: true }) || imageUrl(displayImage, { ogImage: true })} />
+          <meta property='og:type' content='article' />
         </Helmet>
 
         <Navbar dark {...this.props} />
