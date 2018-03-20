@@ -85,6 +85,11 @@ class Job extends Component {
     return (
       <div>
         <Helmet>
+          <title>
+            {headline}
+          </title>
+          <meta name='description' content={teaser} />
+
           <meta property='og:title' content={headline} />
           <meta property='og:description' content={teaser} />
           <meta property='og:image' content={imageUrl(displayImage)} />

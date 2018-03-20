@@ -54,6 +54,11 @@ class BlogPost extends Component {
     return (
       <div>
         <Helmet>
+          <title>
+            {ogTitle || headline}
+          </title>
+          <meta name='description' content={ogDescription || teaser} />
+
           <meta property='og:title' content={ogTitle || headline} />
           <meta property='og:description' content={ogDescription || teaser} />
           <meta property='og:image' content={imageUrl(ogImage) || imageUrl(displayImage)} />
