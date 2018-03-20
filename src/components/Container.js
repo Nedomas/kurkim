@@ -36,7 +36,7 @@ class Container extends Component {
 
   childProps() {
     if (!this.isHtmlElement()) {
-      return _.pick(this.props, _.keys(this.component().propTypes));
+      return _.pick(this.props, _.keys(this.component().propTypes).concat('onMouseEnter', 'onMouseLeave'));
     }
 
     return filterInvalidDOMProps(this.props);

@@ -25,7 +25,7 @@ class SecondaryJobButtons extends Component {
     return (
       <Container>
         <Button transparent component={Link} to={`/i/${slug}`} center style={styles.secondaryButton}>
-          Visi {name} skelbimai ({count})
+          Visos {name} pozicijos ({count})
         </Button>
 
         <Button transparent component={Link} to={`/i/${slug}`} center style={styles.secondaryButton}>

@@ -102,7 +102,7 @@ class Job extends Component {
 
             <div style={styles.active.container}>
               <Text center>
-                Skelbimas aktyvus
+                Pozicija aktyvi
               </Text>
 
               <div style={styles.active.range}>
