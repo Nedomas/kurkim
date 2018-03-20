@@ -5,6 +5,7 @@ import { compose } from 'redux';
 import Radium from 'radium';
 import _ from 'lodash';
 
+import step from '@bloometry/step';
 import Splash from './Splash';
 import LandingCards from './LandingCards';
 import Footer from './Footer';
@@ -22,7 +23,7 @@ class Landing extends Component {
     return (
       <div style={styles.container}>
         <Splash {...this.props} />
-        <Container center pad readable marginBottom={-3.5}>
+        <Container center pad readable marginTopRaw={step(1)} marginBottomRaw={step(-2.5)}>
           <Markdown center source={_.get(data, 'shortIntro.content')} />
         </Container>
         <LandingCards {...this.props} />
