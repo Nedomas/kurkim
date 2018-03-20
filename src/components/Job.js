@@ -86,11 +86,11 @@ class Job extends Component {
       <div>
         <Helmet>
           <title>
-            {headline}
+            {headline} @ {name}
           </title>
           <meta name='description' content={teaser} />
 
-          <meta property='og:title' content={headline} />
+          <meta property='og:title' content={`${headline} @ ${name}`} />
           <meta property='og:description' content={teaser} />
           <meta property='og:image' content={imageUrl(displayImage, { ogImage: true })} />
         </Helmet>
