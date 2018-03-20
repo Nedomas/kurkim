@@ -23,7 +23,7 @@ class App extends Component {
       <div>
         <Helmet>
           <title>
-            {_.get(this.props.data, 'ogTitle.content')}
+            {_.get(this.props.data, 'title.content')}
           </title>
           <meta name='description' content={_.get(this.props.data, 'ogDescription.content')} />
 
@@ -47,6 +47,10 @@ class App extends Component {
 
 const AppQuery = gql`
   query AppQuery {
+    title: CustomText(slug: "default-title") {
+      content
+    }
+
     ogTitle: CustomText(slug: "default-og-title") {
       content
     }
