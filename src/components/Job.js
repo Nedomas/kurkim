@@ -92,7 +92,7 @@ class Job extends Component {
 
           <meta property='og:title' content={headline} />
           <meta property='og:description' content={teaser} />
-          <meta property='og:image' content={imageUrl(displayImage)} />
+          <meta property='og:image' content={imageUrl(displayImage, { ogImage: true })} />
         </Helmet>
 
         <Navbar dark />

@@ -29,7 +29,7 @@ class App extends Component {
 
           <meta property='og:title' content={_.get(this.props.data, 'ogTitle.content')} />
           <meta property='og:description' content={_.get(this.props.data, 'ogDescription.content')} />
-          <meta property='og:image' content={imageUrl(_.get(this.props.data, 'ogImage.image'))} />
+          <meta property='og:image' content={imageUrl(_.get(this.props.data, 'ogImage.image'), { ogImage: true })} />
         </Helmet>
 
         <Route path='/' exact component={Landing} />

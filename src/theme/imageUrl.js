@@ -5,7 +5,12 @@ const cache = [];
 const transformationPart = (transformations) => {
   if (_.isEmpty(transformations)) return '';
 
-  const transformationParts = _.map({ fit: 'crop', ...transformations }, (val, key) => {
+  if (_.has(transformations, 'ogImage')) {
+    transformations.width = 1200;
+    transformations.height = 630;
+  }
+
+  const transformationParts = _.map({ fit: 'crop', ..._.omit(transformations, 'ogImage') }, (val, key) => {
     if (_.isNumber(val)) return `${key}:${val * 2}`;
 
     return `${key}:${val}`;
