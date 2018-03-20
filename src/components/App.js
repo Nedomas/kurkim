@@ -31,6 +31,8 @@ class App extends Component {
           <meta property='og:title' content={_.get(this.props.data, 'ogTitle.content')} />
           <meta property='og:description' content={_.get(this.props.data, 'ogDescription.content')} />
           <meta property='og:image' content={imageUrl(_.get(this.props.data, 'ogImage.image'), { ogImage: true })} />
+          <meta property='og:image:width' content='1200' />
+          <meta property='og:image:height' content='630' />
           <meta property='og:url' content={ogUrl()} />
           <meta property='og:type' content='website' />
         </Helmet>
