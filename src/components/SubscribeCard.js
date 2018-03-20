@@ -11,6 +11,7 @@ import { Field, reduxForm } from 'redux-form';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import withMutationState from 'apollo-mutation-state';
+import Confetti from 'react-confetti';
 
 import Markdown from './Markdown';
 import step from '@bloometry/step';
@@ -33,12 +34,11 @@ class SubscribeCard extends Component {
     super(props);
 
     this.state = {
-      mutation: {
-        initialized: false,
-        loading: false,
-        success: false,
-        error: false,
-      },
+      initialized: false,
+      loading: false,
+      success: false,
+      error: false,
+      confetti: 0,
     };
   }
 
@@ -58,6 +58,8 @@ class SubscribeCard extends Component {
         loading: false,
         success: true,
       });
+
+      this.addConfetti();
     } catch (e) {
       this.setState({
         loading: false,
@@ -66,20 +68,27 @@ class SubscribeCard extends Component {
     }
   }
 
+  addConfetti() {
+    this.setState((prevState) => ({
+      confetti: prevState.confetti + 300,
+    }));
+  }
+
   render() {
     const {
       height,
       handleSubmit,
       data,
+      windowWidth,
+      windowHeight,
     } = this.props;
 
     const {
-      mutation: {
-        loading,
-      },
+      success,
+      loading,
+      confetti,
     } = this.state;
 
-    console.log(this.props);
     return (
       <Container
         {...this.props}
@@ -88,14 +97,25 @@ class SubscribeCard extends Component {
         <Container pad={1} style={styles.contentContainer}>
           <Markdown source={_.get(data, 'subscribeCard.content')} />
 
-          <form style={styles.form} onSubmit={handleSubmit((values) => this.handleSubmit(values))}>
+          {!success && <form style={styles.form} onSubmit={handleSubmit((values) => this.handleSubmit(values))}>
             <Field marginBottom={0.5} component={Input} placeholder='Vardas' name='firstName' type='text' />
             <Field marginBottom component={Input} placeholder='El. paštas' name='email' type='email' />
 
-            <Button type='submit'>
+            <Button type='submit' loading={loading}>
               Prenumeruoti
             </Button>
-          </form>
+          </form>}
+          {success && <Container>
+            <Container style={styles.confetti}>
+              <Confetti height={350} recycle={false} numberOfPieces={confetti} />
+            </Container>
+            <Text center padBottom={2}>
+              Tu sėkmingai užsiprenumeravai Kurkim naujienlaiškį! Pasimatysim tavo el. pašto dėžutėje netrukus.
+            </Text>
+            <Button onClick={() => this.addConfetti()}>
+              Vuhu! 🎉
+            </Button>
+          </Container>}
         </Container>
       </Container>
     );
@@ -184,5 +204,11 @@ const styles = {
     },
   },
   hover: {
+  },
+  confetti: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
   },
 };
