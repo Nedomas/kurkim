@@ -7,12 +7,13 @@ import Measure from 'react-measure';
 import plural from 'plural';
 import { compose } from 'redux';
 import windowSize from 'react-window-size';
+import { Link } from 'react-router-dom';
 
 import step from '@bloometry/step';
-import Container from './Container';
 import Headline from './Headline';
 import Text from './Text';
 import CompanyLogo from './CompanyLogo';
+import Container from './Container';
 
 import borderRadius from '../theme/borderRadius';
 import colors from '../theme/colors';
@@ -58,9 +59,10 @@ class JobCard extends Component {
     } = this.props;
 
     return (
-      <a
+      <Container
         {...this.props}
-        href={this.href()}
+        component={Link}
+        to={this.href()}
         style={[styles.container, { height: `${height}px` }]}
       >
         <div
@@ -100,7 +102,7 @@ class JobCard extends Component {
             </div>
           </Container>
         </div>
-      </a>
+      </Container>
     );
   }
 }

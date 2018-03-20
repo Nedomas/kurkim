@@ -3,6 +3,7 @@ import { compose } from 'redux';
 import Radium from 'radium';
 import windowSize from 'react-window-size';
 import _ from 'lodash';
+import filterInvalidDOMProps from 'filter-invalid-dom-props';
 
 import step from '@bloometry/step';
 import fluid from '@bloometry/fluid';
@@ -15,6 +16,30 @@ class Container extends Component {
     if (!_.isNumber(number)) return step(defaultSteps);
 
     return step(number);
+  }
+
+  isHtmlElement() {
+    return _.isString(this.component());
+  }
+
+  tagName() {
+    return this.isHtmlElement() ? this.component() : Radium(this.component());
+  }
+
+  component() {
+    const {
+      component = 'div',
+    } = this.props;
+
+    return component;
+  }
+
+  childProps() {
+    if (!this.isHtmlElement()) {
+      return _.pick(this.props, _.keys(this.component().propTypes));
+    }
+
+    return filterInvalidDOMProps(this.props);
   }
 
   render() {
@@ -43,14 +68,13 @@ class Container extends Component {
       marginRight,
       marginBottom,
       children,
-      component = 'div',
     } = this.props;
 
-    const TagName = _.isString(component) ? component : Radium(component);
+    const TagName = this.tagName();
 
     return (
       <TagName
-        {...this.props}
+        {...this.childProps()}
         style={[
           center && styles.center,
           narrow && styles.narrow,

@@ -13,6 +13,7 @@
     "apollo-link-http": "^1.5.3",
     "apollo-mutation-state": "Nedomas/apollo-mutation-state",
     "extract-domain": "^2.0.3",
+    "filter-invalid-dom-props": "^2.0.0",
     "graphcms-image": "^1.1.0-beta4",
     "graphql": "0.13.0",
     "graphql-tag": "^2.8.0",

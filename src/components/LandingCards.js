@@ -45,7 +45,7 @@ class LandingCards extends Component {
   }
 
   subscribes() {
-    return [{ type: 'subscribe' }];
+    return [{ id: 'subscribe', type: 'subscribe' }];
   }
 
   all() {
