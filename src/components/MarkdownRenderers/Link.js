@@ -4,6 +4,7 @@ import Radium from 'radium';
 import { compose } from 'redux';
 
 import colors from '../../theme/colors';
+import track from '../../helpers/track';
 import Button from '../Button';
 
 const BUTTON_REGEX = /^{(.*)}$/;
@@ -32,10 +33,10 @@ class MarkdownRendererLink extends Component {
     } = this.props;
 
     if (this.isButton()) {
-      return <Button center margin limitWidth {...rest} component='a' target='_blank'>{this.buttonText()}</Button>;
+      return <Button onClick={() => track(`${this.buttonText()} Clicked`, { href: this.props.href })} center margin limitWidth {...rest} component='a' target='_blank'>{this.buttonText()}</Button>;
     }
 
-    return <a style={styles.container} {...rest}>{children}</a>;
+    return <a onClick={() => track(`${children.join(' ')} Clicked`, { href: this.props.href })} style={styles.container} {...rest}>{children}</a>;
   }
 }
 
