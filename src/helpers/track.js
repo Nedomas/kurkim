@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import uuidv1 from 'uuid/v1';
 
 export default (event, properties) => {
@@ -5,7 +6,7 @@ export default (event, properties) => {
 
   window.analytics.track(event, properties);
 
-  if (properties.email && properties.firstName) {
+  if (_.get(properties, 'email') && _.get(properties, 'firstName')) {
     window.analytics.identify(uuidv1(), properties);
   }
 };
