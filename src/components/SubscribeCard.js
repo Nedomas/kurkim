@@ -28,6 +28,7 @@ import borderRadius from '../theme/borderRadius';
 import colors from '../theme/colors';
 import imageUrl from '../theme/imageUrl';
 import graphcoolClient from '../helpers/graphcoolClient';
+import track from '../helpers/track';
 
 class SubscribeCard extends Component {
   constructor(props) {
@@ -47,6 +48,8 @@ class SubscribeCard extends Component {
   }
 
   async handleSubmit(values) {
+    track('Subscribe Clicked', values);
+
     this.setState({
       initialized: true,
       loading: true,
@@ -116,7 +119,7 @@ class SubscribeCard extends Component {
             <Text center padBottom={2}>
               Tu sėkmingai užsiprenumeravai Kurkim naujienlaiškį! Pasimatysim tavo el. pašto dėžutėje netrukus.
             </Text>
-            <Button onClick={() => this.addConfetti()}>
+            <Button onClick={() => { track('Confetti Clicked'); this.addConfetti() }}>
               Vuhu! 🎉
             </Button>
           </Container>}
