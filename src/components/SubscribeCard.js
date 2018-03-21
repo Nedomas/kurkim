@@ -152,7 +152,6 @@ const validate = (values) => {
   if (!values.email) {
     errors.email = 'Required';
   }
-  console.log('err', errors);
 
   return errors;
 };
