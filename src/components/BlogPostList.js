@@ -48,11 +48,12 @@ export const BlogPostListQuery = gql`
     allBlogPosts(filter: {
       isPublished: $isPublished,
     },
-    orderBy: createdAt_DESC) {
+    orderBy: publishedAt_DESC) {
       id
       slug
       headline
       teaser
+      publishedAt
       createdAt
       timeToRead
       displayImage {

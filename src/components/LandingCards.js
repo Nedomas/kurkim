@@ -121,11 +121,12 @@ const LandingCardsQuery = gql`
     allBlogPosts(filter: {
       isPublished: $isPublished,
     },
-    orderBy: createdAt_DESC) {
+    orderBy: publishedAt_DESC) {
       id
       slug
       headline
       cardTeaser
+      publishedAt
       createdAt
       timeToRead
       displayImage {

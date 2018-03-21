@@ -12,14 +12,14 @@ class BlogPostMeta extends Component {
   render() {
     const {
       blogPost: {
-        createdAt,
+        publishedAt,
         timeToRead,
       },
     } = this.props;
 
     return (
       <Text grey padBottom {...this.props}>
-        {_.capitalize(moment(createdAt).format('MMM d, YYYY'))} | {timeToRead} skaitymo
+        {_.capitalize(moment(publishedAt).format('MMM D, YYYY'))} | {timeToRead} skaitymo
       </Text>
     );
   }
