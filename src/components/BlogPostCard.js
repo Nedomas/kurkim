@@ -1,25 +1,17 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
-import _ from 'lodash';
-import moment from 'moment';
-import lt from 'moment/locale/lt';
-import Measure from 'react-measure';
-import plural from 'plural';
 import { compose } from 'redux';
 import windowSize from 'react-window-size';
 
 import step from '@bloometry/step';
 import Container from './Container';
 import Headline from './Headline';
-import Text from './Text';
-import CompanyLogo from './CompanyLogo';
 import BlogPostAuthor from './BlogPostAuthor';
 import BlogPostMeta from './BlogPostMeta';
 
 import borderRadius from '../theme/borderRadius';
 import colors from '../theme/colors';
 import imageUrl from '../theme/imageUrl';
-moment.locale('lt');
 
 class BlogPostCard extends Component {
   href() {
@@ -37,9 +29,6 @@ class BlogPostCard extends Component {
       width,
       data,
       data: {
-        __typename,
-        slug,
-        id,
         headline,
         cardTeaser,
         displayImage,

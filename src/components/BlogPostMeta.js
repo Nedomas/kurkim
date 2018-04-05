@@ -4,8 +4,6 @@ import Radium from 'radium';
 import moment from 'moment';
 import _ from 'lodash';
 
-import colors from '../theme/colors';
-import fluid from '@bloometry/fluid';
 import Text from './Text';
 
 class BlogPostMeta extends Component {

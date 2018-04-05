@@ -6,13 +6,10 @@ import Radium from 'radium';
 
 import Navbar from './Navbar';
 import Container from './Container';
-import Headline from './Headline';
-import Button from './Button';
 import Footer from './Footer';
 import Markdown from './Markdown';
 import FullScreenLoading from './FullScreenLoading';
 
-import step from '@bloometry/step';
 const facebookMessengerSource = `
   <!-- Load Facebook SDK for JavaScript -->
   <div id="fb-root"></div>

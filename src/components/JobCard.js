@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import Radium from 'radium';
 import _ from 'lodash';
 import moment from 'moment';
-import lt from 'moment/locale/lt';
-import Measure from 'react-measure';
-import plural from 'plural';
 import { compose } from 'redux';
 import windowSize from 'react-window-size';
 import { Link } from 'react-router-dom';
@@ -43,11 +40,8 @@ class JobCard extends Component {
     const {
       width,
       data: {
-        __typename,
-        id,
         headline,
         cities,
-        teaser,
         company,
         company: {
           name,

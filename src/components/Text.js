@@ -3,7 +3,6 @@ import { compose } from 'redux';
 import Radium from 'radium';
 
 import fluid from '@bloometry/fluid';
-import step from '@bloometry/step';
 import colors from '../theme/colors';
 import Container from './Container';
 

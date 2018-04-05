@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 
-import step from '@bloometry/step';
-import colors from '../../theme/colors';
-
 import Container from '../Container';
 
 export default class MarkdownRendererList extends Component {

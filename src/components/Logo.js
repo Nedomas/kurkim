@@ -3,8 +3,6 @@ import { compose } from 'redux';
 import Radium from 'radium';
 import { Link as RouterLink } from 'react-router-dom';
 
-import fluid from '@bloometry/fluid';
-import step from '@bloometry/step';
 import colors from '../theme/colors';
 
 const Link = Radium(RouterLink);

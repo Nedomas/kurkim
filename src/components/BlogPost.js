@@ -3,7 +3,6 @@ import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
 import { compose } from 'redux';
 import Radium from 'radium';
-import _ from 'lodash';
 import { Helmet } from 'react-helmet';
 import windowSize from 'react-window-size';
 
@@ -22,7 +21,6 @@ import colors from '../theme/colors';
 import isSmall from '../theme/isSmall';
 import fluid from '@bloometry/fluid';
 import borderRadius from '../theme/borderRadius';
-import constrain from '../theme/constrain';
 import imageUrl from '../theme/imageUrl';
 
 class BlogPost extends Component {

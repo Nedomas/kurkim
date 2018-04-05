@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { compose } from 'redux';
 import Radium from 'radium';
-import _ from 'lodash';
 
 import step from '@bloometry/step';
 import borders from '../theme/borders';

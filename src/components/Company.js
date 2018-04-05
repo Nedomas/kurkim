@@ -4,7 +4,6 @@ import { graphql } from 'react-apollo';
 import { compose } from 'redux';
 import Radium from 'radium';
 import _ from 'lodash';
-import { Helmet } from 'react-helmet';
 import extractDomain from 'extract-domain';
 
 import Navbar from './Navbar';
@@ -19,9 +18,6 @@ import FullScreenLoading from './FullScreenLoading';
 
 import step from '@bloometry/step';
 import colors from '../theme/colors';
-import fluid from '@bloometry/fluid';
-import borderRadius from '../theme/borderRadius';
-import constrain from '../theme/constrain';
 import CompanyLogo from './CompanyLogo';
 import Footer from './Footer';
 

@@ -9,9 +9,7 @@ import Logo from './Logo';
 import Text from './Text';
 
 import colors from '../theme/colors';
-import fluid from '@bloometry/fluid';
 import step from '@bloometry/step';
-import constrain from '../theme/constrain';
 import isSmall from '../theme/isSmall';
 
 const Link = Radium(RouterLink);

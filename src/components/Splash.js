@@ -9,7 +9,6 @@ import { compose } from 'redux';
 import _ from 'lodash';
 
 import colors from '../theme/colors';
-import maxReadableWidth from '../theme/maxReadableWidth';
 import imageUrl from '../theme/imageUrl';
 import Headline from './Headline';
 import Navbar from './Navbar';
@@ -18,9 +17,6 @@ import Icon from './Icon';
 
 class Splash extends Component {
   render() {
-    const small = this.props.windowWidth <= 768;
-    const big = this.props.windowWidth > 1300;
-
     return (
       <Container style={[
         styles.container,

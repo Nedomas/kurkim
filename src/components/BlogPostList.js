@@ -4,16 +4,10 @@ import { graphql } from 'react-apollo';
 import { compose } from 'redux';
 import _ from 'lodash';
 
-import Navbar from './Navbar';
 import BlogPostItem from './BlogPostItem';
 import Container from './Container';
-import Headline from './Headline';
-import Footer from './Footer';
 import Text from './Text';
 import FullScreenLoading from './FullScreenLoading';
-import Markdown from './Markdown';
-import step from '@bloometry/step';
-import fluid from '@bloometry/fluid';
 
 class BlogPostList extends Component {
   render() {

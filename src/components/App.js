@@ -5,18 +5,21 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { compose } from 'redux';
 import _ from 'lodash';
+import moment from 'moment';
+import lt from 'moment/locale/lt';
 
 import Landing from './Landing';
 import CreativesSignup from './CreativesSignup';
 import About from './About';
 
 import Job from './Job';
-import ApplyPerson from './ApplyPerson';
 import Blog from './Blog';
 import BlogPost from './BlogPost';
 import Company from './Company';
 import imageUrl from '../theme/imageUrl';
 import ogUrl from '../theme/ogUrl';
+
+moment.locale('lt');
 
 class App extends Component {
   render() {

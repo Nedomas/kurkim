@@ -2,19 +2,17 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import Radium, { StyleRoot } from 'radium';
 
-import fluid from '@bloometry/fluid';
 import Container from './Container';
-import colors from '../theme/colors';
 
 class FullScreenLoading extends Component {
   render() {
     return (
       <Container middle style={[styles.container, this.props.style]}>
         <StyleRoot>
-          <img style={[styles.img, styles.oval]} src='/logo-oval-black.svg'/>
-          <img style={[styles.img, styles.imperfectOval]} src='/imperfect-oval.svg'/>
-          <img style={[styles.img, styles.egg]} src='/egg.svg'/>
-          <img style={[styles.img, styles.line]} src='/line.svg'/>
+          <img alt='' style={[styles.img, styles.oval]} src='/logo-oval-black.svg'/>
+          <img alt='' style={[styles.img, styles.imperfectOval]} src='/imperfect-oval.svg'/>
+          <img alt='' style={[styles.img, styles.egg]} src='/egg.svg'/>
+          <img alt='' style={[styles.img, styles.line]} src='/line.svg'/>
         </StyleRoot>
       </Container>
     );

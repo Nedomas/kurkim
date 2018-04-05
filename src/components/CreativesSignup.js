@@ -6,14 +6,10 @@ import Radium from 'radium';
 
 import Navbar from './Navbar';
 import Container from './Container';
-import Headline from './Headline';
-import Button from './Button';
 import Footer from './Footer';
 import Markdown from './Markdown';
 import Text from './Text';
 import FullScreenLoading from './FullScreenLoading';
-
-import step from '@bloometry/step';
 
 class CreativesSignup extends Component {
   render() {
@@ -32,12 +28,6 @@ class CreativesSignup extends Component {
         },
       },
     } = this.props;
-
-    const rendererProps = {
-      heading: {
-        uppercase: true,
-      },
-    };
 
     return (
       <div>

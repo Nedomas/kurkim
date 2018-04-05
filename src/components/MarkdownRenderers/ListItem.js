@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
-import fluid from '@bloometry/fluid';
 import step from '@bloometry/step';
-import colors from '../../theme/colors';
 import Text from '../Text';
 import Container from '../Container';
 
@@ -25,7 +23,7 @@ export default class MarkdownRendererListItem extends Component {
 
     return (
       <Container padBottom={0.7} component='li' style={styles.container} {...rest}>
-        <img style={styles.bulletpoint} src='/logo-oval-red-small.svg'/>
+        <img alt='o' style={styles.bulletpoint} src='/logo-oval-red-small.svg'/>
         {childrenWithProps}
       </Container>
     );

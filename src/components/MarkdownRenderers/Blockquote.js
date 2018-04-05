@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 
-import step from '@bloometry/step';
-import colors from '../../theme/colors';
-
 import Text from '../Text';
 
 export default class MarkdownRendererBlockquote extends Component {

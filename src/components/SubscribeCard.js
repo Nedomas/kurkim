@@ -1,32 +1,22 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
 import _ from 'lodash';
-import moment from 'moment';
-import lt from 'moment/locale/lt';
-import Measure from 'react-measure';
-import plural from 'plural';
 import { compose } from 'redux';
 import windowSize from 'react-window-size';
 import { Field, reduxForm } from 'redux-form';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-import withMutationState from 'apollo-mutation-state';
 import Confetti from 'react-confetti';
 
 import Markdown from './Markdown';
 import step from '@bloometry/step';
-import fluid from '@bloometry/fluid';
 import Container from './Container';
-import Headline from './Headline';
 import Text from './Text';
-import CompanyLogo from './CompanyLogo';
 import Input from './Input';
 import Button from './Button';
-import ListItem from './MarkdownRenderers/ListItem';
 
 import borderRadius from '../theme/borderRadius';
 import colors from '../theme/colors';
-import imageUrl from '../theme/imageUrl';
 import graphcoolClient from '../helpers/graphcoolClient';
 import track from '../helpers/track';
 
@@ -86,8 +76,6 @@ class SubscribeCard extends Component {
       height,
       handleSubmit,
       data,
-      windowWidth,
-      windowHeight,
     } = this.props;
 
     const {
@@ -172,9 +160,7 @@ export default compose(
 const styles = {
   container: {
     display: 'flex',
-    // position: 'relative',
     width: '100%',
-    borderRadius,
     backgroundColor: colors.lightLightBlack,
     borderRadius,
   },

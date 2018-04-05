@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import Radium from 'radium';
 import windowSize from 'react-window-size';
 import { graphql } from 'react-apollo';
@@ -19,12 +18,9 @@ import PrimaryJobButton from './PrimaryJobButton';
 import SecondaryJobButtons from './SecondaryJobButtons';
 import FullScreenLoading from './FullScreenLoading';
 import Navbar from './Navbar';
-import Icon from './Icon';
 import Container from './Container';
 import Headline from './Headline';
 import Text from './Text';
-import Button from './Button';
-import FacebookShareButton from './FacebookShareButton';
 import Markdown from './Markdown';
 import CompanyLogo from './CompanyLogo';
 import Footer from './Footer';
@@ -85,15 +81,12 @@ class Job extends Component {
       headline,
       teaser,
       description,
-      applyLink,
       cities,
       activeFrom,
       activeUntil,
       company,
       company: {
         name,
-        slug,
-        logo,
         displayImage,
       },
     } = this.job();

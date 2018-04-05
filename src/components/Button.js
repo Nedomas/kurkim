@@ -3,7 +3,6 @@ import { compose } from 'redux';
 import Spinner from 'react-spinkit';
 import Radium from 'radium';
 import windowSize from 'react-window-size';
-import _ from 'lodash';
 
 import borderRadius from '../theme/borderRadius';
 import step from '@bloometry/step';

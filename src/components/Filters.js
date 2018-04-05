@@ -29,7 +29,6 @@ class Filters extends Component {
 
   activeCityName() {
     const {
-      data,
       match: {
         params: {
           city,

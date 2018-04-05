@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 
-import step from '@bloometry/step';
-import colors from '../../theme/colors';
-
 import Headline from '../Headline';
 const FLOWERFUL_REGEX = /^{flowerful} (.*)$/;
 

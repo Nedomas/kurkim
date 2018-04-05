@@ -7,7 +7,6 @@ import filterInvalidDOMProps from 'filter-invalid-dom-props';
 
 import step from '@bloometry/step';
 import fluid from '@bloometry/fluid';
-import constrain from '../theme/constrain';
 import maxReadableWidth from '../theme/maxReadableWidth';
 import isSmall from '../theme/isSmall';
 
@@ -54,7 +53,6 @@ class Container extends Component {
       chaos,
       dark,
       minWindowHeight,
-      windowWidth,
       pad,
       readable,
       padTop,
@@ -117,7 +115,7 @@ const styles = {
   },
   middle: {
     display: 'flex',
-    paddingTop: 'calc(100vh - 60px - ${step(6)})',
+    paddingTop: `calc(100vh - 60px - ${step(6)})`,
     justifyContent: 'center',
     alignItems: 'center',
   },

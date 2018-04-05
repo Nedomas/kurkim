@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { Link as RouterLink } from 'react-router-dom';
 import Radium from 'radium';
-import _ from 'lodash';
 import windowSize from 'react-window-size';
 import { lazyload } from 'react-lazyload';
 
