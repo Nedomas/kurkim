@@ -53,17 +53,33 @@ class Job extends Component {
     return moment(time).format('YYYY-MM-DD');
   }
 
-  render() {
+  isActive() {
+    const {
+      activeFrom,
+      activeUntil,
+    } = this.job();
+
+    return moment().isBetween(moment(activeFrom), moment(activeUntil));
+  }
+
+  job() {
     const {
       data: {
-        loading,
         allJobs,
       },
     } = this.props;
 
-    if (loading) return <FullScreenLoading />;
+    return _.first(allJobs);
+  }
 
-    const Job = _.first(allJobs);
+  render() {
+    const {
+      data: {
+        loading,
+      },
+    } = this.props;
+
+    if (loading) return <FullScreenLoading />;
 
     const {
       headline,
@@ -80,7 +96,7 @@ class Job extends Component {
         logo,
         displayImage,
       },
-    } = Job;
+    } = this.job();
 
     return (
       <div>
@@ -107,16 +123,16 @@ class Job extends Component {
 
             <div style={styles.active.container}>
               <Text center>
-                Pozicija aktyvi
+                Pozicija {this.isActive() ? 'aktyvi' : 'nebeaktyvi'}
               </Text>
 
               <div style={styles.active.range}>
                 <ReactSimpleRange
-                  trackColor={colors.black}
+                  trackColor={this.isActive() ? colors.black : colors.red}
                   thumbColor={colors.red}
                   sliderColor={colors.lightLightBlack}
                   disableThumb
-                  value={moment().valueOf()}
+                  value={this.isActive() ? moment().valueOf() : moment(activeUntil).valueOf()}
                   sliderSize={2}
                   min={moment(activeFrom).valueOf()}
                   max={moment(activeUntil).valueOf()}
@@ -133,8 +149,8 @@ class Job extends Component {
             </div>
 
             <Container padBottom={isSmall(this)}>
-              <PrimaryJobButton job={Job} />
-              {!isSmall(this) && <SecondaryJobButtons job={Job} />}
+              <PrimaryJobButton job={this.job()} />
+              {!isSmall(this) && <SecondaryJobButtons job={this.job()} />}
             </Container>
           </div>
 
@@ -148,8 +164,8 @@ class Job extends Component {
             </Container>
 
             {isSmall(this) && <Container>
-              <PrimaryJobButton job={Job} />
-              <SecondaryJobButtons job={Job} />
+              <PrimaryJobButton job={this.job()} />
+              <SecondaryJobButtons job={this.job()} />
             </Container>}
           </div>
         </Container>
