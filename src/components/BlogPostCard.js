@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Radium from 'radium';
 import { compose } from 'redux';
 import windowSize from 'react-window-size';
+import _ from 'lodash';
 
 import step from '@bloometry/step';
 import Container from './Container';
@@ -68,7 +69,7 @@ class BlogPostCard extends Component {
             <div style={styles.teaser.container}>
               <BlogPostMeta blogPost={data} padBottom={0} color={colors.white} />
               <Headline level={4}>
-                {cardTeaser}
+                {_.truncate(cardTeaser, { length: 100, separator: /,? +/ })}
               </Headline>
 
               <BlogPostAuthor author={author} light tiny />
