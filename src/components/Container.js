@@ -66,6 +66,7 @@ class Container extends Component {
       marginLeft,
       marginRight,
       marginBottom,
+      justify,
       children,
     } = this.props;
 
@@ -97,6 +98,7 @@ class Container extends Component {
           padLeft && { paddingLeft: this.steps(padLeft, 1) },
           readable && styles.readable,
           padNavbar && { paddingTop: this.steps(padNavbar, 5) },
+          justify && { textAlign: 'justify' },
           style,
         ]}
       >

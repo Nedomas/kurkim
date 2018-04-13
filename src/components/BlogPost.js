@@ -73,7 +73,7 @@ class BlogPost extends Component {
               {headline}
             </Headline>
             <BlogPostMeta level={2} blogPost={BlogPost} />
-            <Text color={colors.lighterBlack}>
+            <Text color={colors.lighterBlack} justify>
               <Markdown source={content} />
             </Text>
             <BlogPostAuthor author={author} />
