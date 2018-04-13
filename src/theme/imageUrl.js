@@ -27,8 +27,8 @@ const cacheImage = (image, transformations) => {
   }
 
   return _.find(sameHandleCacheImages, (cacheImage) => {
-    return _.get(cacheImage, 'transformations.width') >= transformations.width - 200 &&
-      _.get(cacheImage, 'transformations.height') >= transformations.height - 200
+    return _.get(cacheImage, 'transformations.width') >= transformations.width - transformations.width * 0.15 &&
+      _.get(cacheImage, 'transformations.height') >= transformations.height - transformations.height * 0.15
   });
 };
 
