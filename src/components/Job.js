@@ -108,7 +108,7 @@ class Job extends Component {
 
         <Container pad padNavbar style={[styles.container, isSmall(this) && styles.small.container]}>
           <div style={[styles.company.container, isSmall(this) && styles.small.company.container]}>
-            <CompanyLogo chaos company={company} />
+            <CompanyLogo company={company} />
             <Headline center medium level={3}>
               {isSmall(this) && `${headline} @ `} {name}
             </Headline>
