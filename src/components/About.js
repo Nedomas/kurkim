@@ -53,7 +53,7 @@ class About extends Component {
       <div>
         <Navbar dark {...this.props} />
 
-        <Container pad dark chaos middle>
+        <Container pad dark middle>
           <Container center limited>
             <Markdown source={content} />
           </Container>
