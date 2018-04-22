@@ -5,6 +5,7 @@ import windowSize from 'react-window-size';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { compose } from 'redux';
+import moment from 'moment';
 
 import isSmall from '../theme/isSmall';
 import CardsGrid from './CardsGrid';
@@ -91,12 +92,16 @@ class LandingCards extends Component {
 }
 
 const LandingCardsQuery = gql`
-  query LandingCardsQuery($isPublished: Boolean!) {
+  query LandingCardsQuery($isPublished: Boolean!, $today: DateTime!) {
     allCities {
       id
       name
 
-      _jobsMeta {
+      _jobsMeta(
+        filter: {
+          activeUntil_gte: $today,
+        }
+      ) {
         count
       }
     }
@@ -129,7 +134,12 @@ const LandingCardsQuery = gql`
       }
     }
 
-    allJobs {
+    allJobs(
+      orderBy: createdAt_DESC
+      filter: {
+        activeUntil_gte: $today,
+      }
+    ) {
       id
       headline
       teaser
@@ -163,6 +173,7 @@ export default compose(
     }) => ({
       variables: {
         isPublished: search !== '?unpublished',
+        today: moment().toISOString(),
       },
     }),
   }),
