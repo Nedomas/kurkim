@@ -49,13 +49,21 @@ class Job extends Component {
     return moment(time).format('YYYY-MM-DD');
   }
 
-  isActive() {
+  activeFrom() {
     const {
       activeFrom,
+      createdAt,
+    } = this.job();
+
+    return activeFrom || createdAt;
+  }
+
+  isActive() {
+    const {
       activeUntil,
     } = this.job();
 
-    return moment().isBetween(moment(activeFrom), moment(activeUntil));
+    return moment().isBetween(moment(this.activeFrom()), moment(activeUntil));
   }
 
   job() {
@@ -82,7 +90,6 @@ class Job extends Component {
       teaser,
       description,
       cities,
-      activeFrom,
       activeUntil,
       company,
       company: {
@@ -127,13 +134,13 @@ class Job extends Component {
                   disableThumb
                   value={this.isActive() ? moment().valueOf() : moment(activeUntil).valueOf()}
                   sliderSize={2}
-                  min={moment(activeFrom).valueOf()}
+                  min={moment(this.activeFrom()).valueOf()}
                   max={moment(activeUntil).valueOf()}
                 />
               </div>
               <Container style={styles.labels.container}>
                 <Text>
-                  {this.formatTime(activeFrom)}
+                  {this.formatTime(this.activeFrom())}
                 </Text>
                 <Text>
                   {this.formatTime(activeUntil)}
@@ -223,7 +230,7 @@ const styles = {
 };
 
 const JobQuery = gql`
-  query JobQuery($companySlug: String!, $jobSlug: String!) {
+  query JobQuery($companySlug: String!, $jobSlug: String!, $isPublished: Boolean!, $today: DateTime!) {
     allJobs(filter: {
       slug: $jobSlug,
       company: {
@@ -237,6 +244,7 @@ const JobQuery = gql`
       activeFrom
       activeUntil
       applyLink
+      createdAt
 
       cities {
         name
@@ -253,7 +261,12 @@ const JobQuery = gql`
         }
         logoBackgroundColor
 
-        _jobsMeta {
+        _jobsMeta(
+          filter: {
+            isPublished: $isPublished,
+            activeUntil_gte: $today,
+          }
+        ) {
           count
         }
       }
@@ -264,6 +277,9 @@ const JobQuery = gql`
 export default compose(
   graphql(JobQuery, {
     options: ({
+      location: {
+        search,
+      },
       match: {
         params: {
           companySlug,
@@ -274,6 +290,8 @@ export default compose(
       variables: {
         companySlug,
         jobSlug,
+        isPublished: search !== '?unpublished',
+        today: moment().toISOString(),
       },
     }),
   }),

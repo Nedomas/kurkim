@@ -5,6 +5,7 @@ import { compose } from 'redux';
 import Radium from 'radium';
 import _ from 'lodash';
 import extractDomain from 'extract-domain';
+import moment from 'moment';
 
 import Navbar from './Navbar';
 import Cities from './Cities';
@@ -110,7 +111,7 @@ const styles = {
 };
 
 export const CompanyQuery = gql`
-  query CompanyQuery($slug: String) {
+  query CompanyQuery($slug: String, $isPublished: Boolean!, $today: DateTime!) {
     Company(slug: $slug) {
       name
       slug
@@ -123,7 +124,12 @@ export const CompanyQuery = gql`
 
       logoBackgroundColor
 
-      jobs {
+      jobs(
+        filter: {
+          isPublished: $isPublished,
+          activeUntil_gte: $today,
+        }
+      ) {
         id
         headline
         slug
@@ -148,7 +154,12 @@ export const CompanyQuery = gql`
         }
       }
 
-      _jobsMeta {
+      _jobsMeta(
+        filter: {
+          isPublished: $isPublished,
+          activeUntil_gte: $today,
+        }
+      ) {
         count
       }
     }
@@ -158,6 +169,9 @@ export const CompanyQuery = gql`
 export default compose(
   graphql(CompanyQuery, {
     options: ({
+      location: {
+        search,
+      },
       match: {
         params: {
           slug,
@@ -166,6 +180,8 @@ export default compose(
     }) => ({
       variables: {
         slug,
+        isPublished: search !== '?unpublished',
+        today: moment().toISOString(),
       },
     }),
   }),
