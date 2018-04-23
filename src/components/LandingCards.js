@@ -100,6 +100,7 @@ const LandingCardsQuery = gql`
       _jobsMeta(
         filter: {
           activeUntil_gte: $today,
+          isPublished: $isPublished,
         }
       ) {
         count
@@ -138,6 +139,7 @@ const LandingCardsQuery = gql`
       orderBy: createdAt_DESC
       filter: {
         activeUntil_gte: $today,
+        isPublished: $isPublished,
       }
     ) {
       id
