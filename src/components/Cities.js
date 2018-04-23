@@ -15,6 +15,8 @@ class Cities extends Component {
       cities,
     } = this.props;
 
+    if (!cities.length) return null;
+
     return (
       <Container {...this.props}>
         <Text {...this.props} level={2}>
