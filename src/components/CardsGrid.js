@@ -22,24 +22,33 @@ class CardsGrid extends Component {
     } = this.props;
 
     return (
-      <StackGrid
-        columnWidth={this.width()}
-        gutterWidth={20}
-        gutterHeight={20}
-        monitorImagesLoaded
-        duration={0}
-        gridRef={grid => this.grid = grid}
-      >
-        {_.map(cards, (card) => <Card
-          updateGrid={() => this.updateGrid()}
-          key={card.id}
-          width={this.width()}
-          data={card}
-        />)}
-      </StackGrid>
+      <div style={styles.container}>
+        <StackGrid
+          columnWidth={this.width()}
+          gutterWidth={20}
+          gutterHeight={20}
+          monitorImagesLoaded
+          duration={0}
+          gridRef={grid => this.grid = grid}
+        >
+          {_.map(cards, (card) => <Card
+            updateGrid={() => this.updateGrid()}
+            key={card.id}
+            width={this.width()}
+            data={card}
+          />)}
+        </StackGrid>
+      </div>
     );
   }
 }
+
+const styles = {
+  container: {
+    maxWidth: '1400px',
+    margin: '0 auto',
+  },
+};
 
 export default compose(
   windowSize,

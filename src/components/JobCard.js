@@ -12,6 +12,8 @@ import Text from './Text';
 import CompanyLogo from './CompanyLogo';
 import Container from './Container';
 
+import formatJobHeadline from '../helpers/formatJobHeadline';
+
 import borderRadius from '../theme/borderRadius';
 import colors from '../theme/colors';
 import imageUrl from '../theme/imageUrl';
@@ -78,7 +80,7 @@ class JobCard extends Component {
         <div style={styles.contentContainer}>
           <Container style={[styles.innerContainer, { height: `${height - height * 0.08}px` }]}>
             <Headline level={3}>
-              {headline}
+              {formatJobHeadline(headline)}
             </Headline>
             <div style={styles.company.container}>
               <div>

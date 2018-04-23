@@ -13,6 +13,8 @@ import step from '@bloometry/step';
 import colors from '../theme/colors';
 import isSmall from '../theme/isSmall';
 
+import formatJobHeadline from '../helpers/formatJobHeadline';
+
 import Cities from './Cities';
 import PrimaryJobButton from './PrimaryJobButton';
 import SecondaryJobButtons from './SecondaryJobButtons';
@@ -102,11 +104,11 @@ class Job extends Component {
       <div>
         <Helmet>
           <title>
-            {headline} @ {name}
+            {formatJobHeadline(headline)} @ {name}
           </title>
           <meta name='description' content={teaser} />
 
-          <meta property='og:title' content={`${headline} @ ${name}`} />
+          <meta property='og:title' content={`${formatJobHeadline(headline)} @ ${name}`} />
           <meta property='og:description' content={teaser} />
           <meta property='og:image' content={imageUrl(displayImage, { ogImage: true })} />
         </Helmet>
@@ -117,7 +119,7 @@ class Job extends Component {
           <div style={[styles.company.container, isSmall(this) && styles.small.company.container]}>
             <CompanyLogo company={company} />
             <Headline center medium level={3}>
-              {isSmall(this) && `${headline} @ `} {name}
+              {isSmall(this) && `${formatJobHeadline(headline)} @ `} {name}
             </Headline>
             {isSmall(this) && <Cities cities={cities} padTop padBottom center/>}
 
@@ -156,7 +158,7 @@ class Job extends Component {
 
           <div style={[styles.content.container, isSmall(this) && styles.small.content.container]}>
             {!isSmall(this) && <Headline bold level={2} padBottom>
-              {headline}
+              {formatJobHeadline(headline)}
             </Headline>}
             {!isSmall(this) && <Cities cities={cities} padBottom/>}
             <Container padTop={isSmall(this)}>
