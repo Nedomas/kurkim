@@ -161,7 +161,7 @@ class Job extends Component {
               {formatJobHeadline(headline)}
             </Headline>}
             {!isSmall(this) && <Cities cities={cities} padBottom/>}
-            <Container padTop={isSmall(this)}>
+            <Container padTop={isSmall(this)} justify>
               <Markdown source={description} />
             </Container>
 

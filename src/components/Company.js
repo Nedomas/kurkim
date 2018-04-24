@@ -76,7 +76,7 @@ class Company extends Component {
               </a>
             </Text>
           </Container>
-          <Text level={3} padTop padBottom>
+          <Text level={3} padTop padBottom justify>
             <Markdown source={description} />
           </Text>
         </Container>
