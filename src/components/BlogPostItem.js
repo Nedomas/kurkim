@@ -64,7 +64,7 @@ class BlogPostItem extends Component {
           style={[
             styles.displayImage,
             {
-              backgroundImage: `url('${imageUrl(displayImage)}')`
+              backgroundImage: `url('${imageUrl(displayImage, { height: 800 })}')`
             },
           ]}
         />
