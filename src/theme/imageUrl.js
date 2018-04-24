@@ -10,13 +10,15 @@ const transformationPart = (transformations) => {
     transformations.height = 630;
   }
 
-  const transformationParts = _.map({ fit: 'crop', ..._.omit(transformations, 'ogImage') }, (val, key) => {
+  const transformationParts = _.map({ fit: 'crop', ..._.omit(transformations, 'ogImage', 'quality') }, (val, key) => {
     if (_.isNumber(val)) return `${key}:${val * 2}`;
 
     return `${key}:${val}`;
   });
 
-  return `/output=format:jpg/resize=${transformationParts.join(',')}/quality=value:90/compress`;
+  const quality = transformations.quality || 90;
+
+  return `/output=format:jpg/resize=${transformationParts.join(',')}/quality=value:${quality}/compress`;
 };
 
 const cacheImage = (image, transformations) => {

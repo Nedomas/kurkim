@@ -65,7 +65,7 @@ class JobCard extends Component {
           style={[
             styles.imageContainer,
             {
-              backgroundImage: `url('${imageUrl(displayImage, { height, width })}')`,
+              backgroundImage: `url('${imageUrl(displayImage, { height, width, quality: 70 })}')`,
               height: `${height}px`,
             },
             hover && styles.hover.imageContainer,
