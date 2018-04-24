@@ -60,7 +60,7 @@ class Company extends Component {
         <Navbar dark {...this.props} />
 
         <Container pad readable center>
-          <CompanyLogo chaos company={Company} />
+          <CompanyLogo company={Company} />
           <Headline level={2} center bold padBottom>
             {name}
           </Headline>
