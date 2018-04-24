@@ -65,7 +65,7 @@ class BlogPost extends Component {
 
         <Navbar dark {...this.props} />
 
-        <div style={[styles.displayImage, { backgroundImage: `url('${imageUrl(displayImage)}')` }]} />
+        <div style={[styles.displayImage, { backgroundImage: `url('${imageUrl(displayImage, { height: 700 })}')` }]} />
 
         <Container pad readable center style={[styles.container, isSmall(this) && styles.small.container]}>
           <Container left>
@@ -89,8 +89,9 @@ class BlogPost extends Component {
 const styles = {
   displayImage: {
     width: '100%',
-    height: fluid(200, 700),
+    height: fluid(500, 700),
     backgroundSize: 'cover',
+    backgroundPosition: 'top center',
   },
   container: {
     backgroundColor: colors.white,
