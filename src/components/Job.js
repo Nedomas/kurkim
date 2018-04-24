@@ -65,7 +65,7 @@ class Job extends Component {
       activeUntil,
     } = this.job();
 
-    return moment().isBetween(moment(this.activeFrom()), moment(activeUntil));
+    return moment().isSameOrBefore(activeUntil);
   }
 
   job() {
