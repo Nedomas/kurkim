@@ -8,10 +8,12 @@ import _ from 'lodash';
 import moment from 'moment';
 import ReactSimpleRange from 'react-simple-range';
 import { Helmet } from 'react-helmet';
+import { Link } from 'react-router-dom';
 
 import step from '@bloometry/step';
 import colors from '../theme/colors';
 import isSmall from '../theme/isSmall';
+import borderRadius from '../theme/borderRadius';
 
 import formatJobHeadline from '../helpers/formatJobHeadline';
 
@@ -97,8 +99,11 @@ class Job extends Component {
       company: {
         name,
         displayImage,
+        slug,
       },
     } = this.job();
+
+    const companyLogoBorderSize = isSmall(this) ? 120 : 220;
 
     return (
       <div>
@@ -117,7 +122,18 @@ class Job extends Component {
 
         <Container pad padNavbar style={[styles.container, isSmall(this) && styles.small.container]}>
           <div style={[styles.company.container, isSmall(this) && styles.small.company.container]}>
-            <CompanyLogo company={company} />
+            <Container component={Link} to={`/i/${slug}`} style={styles.company.background.container}>
+              <Container style={[
+                styles.company.background.content,
+                {
+                  backgroundImage: `url('${imageUrl(displayImage, { height: companyLogoBorderSize, width: companyLogoBorderSize, quality: 70, fit: "scale" })}')`,
+                  height: `${companyLogoBorderSize}px`,
+                  width: `${companyLogoBorderSize}px`,
+                },
+              ]}>
+                <CompanyLogo company={company} style={styles.company.logo} />
+              </Container>
+            </Container>
             <Headline center medium level={3}>
               {isSmall(this) && `${formatJobHeadline(headline)} @ `} {name}
             </Headline>
@@ -187,8 +203,27 @@ const styles = {
       width: '30%',
       marginRight: step(5),
     },
+    logo: {
+      marginBottom: 0,
+      paddingBottom: 0,
+    },
     city: {
       padding: `${step(0.2)} 0 ${step()}`,
+    },
+    background: {
+      container: {
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+      },
+      content: {
+        marginBottom: step(2),
+        backgroundSize: 'cover',
+        borderRadius: '999px',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+      },
     },
   },
   content: {
