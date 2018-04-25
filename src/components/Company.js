@@ -19,7 +19,7 @@ import FullScreenLoading from './FullScreenLoading';
 
 import step from '@bloometry/step';
 import colors from '../theme/colors';
-import CompanyLogo from './CompanyLogo';
+import CompanyLogoWithBorder from './CompanyLogoWithBorder';
 import Footer from './Footer';
 
 class Company extends Component {
@@ -60,7 +60,7 @@ class Company extends Component {
         <Navbar dark {...this.props} />
 
         <Container pad readable center>
-          <CompanyLogo company={Company} />
+          <CompanyLogoWithBorder company={Company} />
           <Headline level={2} center bold padBottom>
             {name}
           </Headline>
@@ -117,6 +117,10 @@ export const CompanyQuery = gql`
       slug
       description
       aboutUrl
+
+      displayImage {
+        handle
+      }
 
       logo {
         handle

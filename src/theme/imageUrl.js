@@ -34,9 +34,9 @@ const cacheImage = (image, transformations) => {
   });
 };
 
-export default (image, transformations = []) => {
+export default (image, transformations = [], exactCache) => {
   if (!image) return '';
-  if (cacheImage(image, transformations)) return cacheImage(image, transformations).url;
+  if (exactCache && cacheImage(image, transformations)) return cacheImage(image, transformations).url;
 
   const url = `https://media.graphcms.com${transformationPart(transformations)}/${_.get(image, 'handle')}`;
   cache.push({
