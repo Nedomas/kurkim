@@ -125,7 +125,7 @@ const styles = {
   gradientContainer: {
     position: 'absolute',
     width: '100%',
-    background: `linear-gradient(${colors.black}, ${colors.tintBlack}, ${colors.black})`,
+    background: `linear-gradient(${colors.almostBlack}, ${colors.tintBlack}, ${colors.tintBlack}, ${colors.almostBlack})`,
     opacity: 0.7,
     borderRadius,
   },
