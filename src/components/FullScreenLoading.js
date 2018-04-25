@@ -3,16 +3,16 @@ import { compose } from 'redux';
 import Radium, { StyleRoot } from 'radium';
 
 import Container from './Container';
+import Icon from './Icon';
 
 class FullScreenLoading extends Component {
   render() {
     return (
       <Container middle style={[styles.container, this.props.style]}>
         <StyleRoot>
-          <img alt='' style={[styles.img, styles.oval]} src='/logo-oval-black.svg'/>
-          <img alt='' style={[styles.img, styles.imperfectOval]} src='/imperfect-oval.svg'/>
-          <img alt='' style={[styles.img, styles.egg]} src='/egg.svg'/>
-          <img alt='' style={[styles.img, styles.line]} src='/line.svg'/>
+          <Icon type='oval' style={[styles.img, styles.oval]} />
+          <Icon type='egg' style={[styles.img, styles.egg]} />
+          <Icon type='imperfectOval' style={[styles.img, styles.imperfectOval]} />
         </StyleRoot>
       </Container>
     );
