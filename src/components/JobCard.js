@@ -121,6 +121,7 @@ const styles = {
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     borderRadius,
+    backgroundColor: colors.yellow,
   },
   gradientContainer: {
     position: 'absolute',
