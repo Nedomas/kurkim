@@ -1,5 +1,6 @@
 export default {
   white: '#fff',
+  halfWhite: 'hsla(0, 0%, 100%, 0.4)',
   black: '#262627',
   grey: 'hsla(240, 1%, 45%, 1)',
   tintBlack: 'hsla(240, 1%, 15%, .05)',

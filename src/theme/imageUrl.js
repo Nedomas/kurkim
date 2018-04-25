@@ -11,7 +11,7 @@ const transformationPart = (transformations) => {
   }
 
   const transformationParts = _.map({ fit: 'crop', ..._.omit(transformations, 'ogImage', 'quality') }, (val, key) => {
-    if (_.isNumber(val)) return `${key}:${val * 2}`;
+    if (_.isNumber(val)) return `${key}:${_.toInteger(val * 2)}`;
 
     return `${key}:${val}`;
   });

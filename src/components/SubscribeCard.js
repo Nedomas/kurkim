@@ -17,6 +17,7 @@ import Button from './Button';
 
 import borderRadius from '../theme/borderRadius';
 import colors from '../theme/colors';
+import imageUrl from '../theme/imageUrl';
 import graphcoolClient from '../helpers/graphcoolClient';
 import track from '../helpers/track';
 
@@ -87,7 +88,13 @@ class SubscribeCard extends Component {
     return (
       <Container
         {...this.props}
-        style={[styles.container, { height: `${height}px` }]}
+        style={[
+          styles.container,
+          {
+            height: `${height}px`,
+            backgroundImage: `url('${imageUrl({ handle: 'Pqfe42oQuS2XbSJFG1gr' }, { height })}')`,
+          },
+        ]}
       >
         <Container pad={1} style={styles.contentContainer}>
           <Markdown source={_.get(data, 'subscribeCard.content')} />
@@ -96,7 +103,7 @@ class SubscribeCard extends Component {
             <Field marginBottom={0.5} component={Input} placeholder='Vardas' name='firstName' type='text' />
             <Field marginBottom component={Input} placeholder='El. paštas' name='email' type='email' />
 
-            <Button type='submit' loading={loading}>
+            <Button type='submit' loading={loading} bitTransparent>
               Prenumeruoti
             </Button>
           </form>}
@@ -163,6 +170,8 @@ const styles = {
     width: '100%',
     backgroundColor: colors.lightLightBlack,
     borderRadius,
+    boxSizing: 'border-box',
+    backgroundSize: 'cover',
   },
   contentContainer: {
     display: 'flex',

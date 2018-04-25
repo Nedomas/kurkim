@@ -23,7 +23,7 @@ export default class MarkdownRendererListItem extends Component {
 
     return (
       <Container padBottom={0.7} component='li' style={styles.container} {...rest}>
-        <img alt='o' style={styles.bulletpoint} src='/logo-oval-red-small.svg'/>
+        <img alt='o' style={styles.bulletpoint} src='/oval-yellow.svg'/>
         {childrenWithProps}
       </Container>
     );

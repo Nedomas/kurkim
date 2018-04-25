@@ -26,6 +26,7 @@ class Button extends Component {
       style,
       children,
       longText,
+      bitTransparent,
       transparent,
       more,
       disabled,
@@ -44,6 +45,7 @@ class Button extends Component {
           styles.container,
           center && styles.center,
           tiny && styles.tiny,
+          bitTransparent && styles.bitTransparent,
           transparent && styles.transparent,
           more && styles.more,
           disabled && styles.disabled,
@@ -100,6 +102,9 @@ const styles = {
     padding: `${step(0.5)} ${step()}`,
     lineHeight: 'initial',
     height: 'initial',
+  },
+  bitTransparent: {
+    opacity: 0.9,
   },
   transparent: {
     color: colors.lighterBlack,

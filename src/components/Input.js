@@ -4,6 +4,7 @@ import Radium from 'radium';
 
 import step from '@bloometry/step';
 import borders from '../theme/borders';
+import colors from '../theme/colors';
 import borderRadius from '../theme/borderRadius';
 import Container from './Container';
 
@@ -28,10 +29,13 @@ class Input extends Component {
 
 const styles = {
   input: {
+    backgroundColor: colors.halfWhite,
     outline: 0,
-    border: borders.grey,
+    border: borders.halfWhite,
     borderRadius,
     width: `calc(100% - ${step(2)})`,
+    boxSizing: 'border-box',
+    width: '100%',
 
     ':focus': {
       border: borders.yellow,
