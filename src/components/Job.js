@@ -8,12 +8,10 @@ import _ from 'lodash';
 import moment from 'moment';
 import ReactSimpleRange from 'react-simple-range';
 import { Helmet } from 'react-helmet';
-import { Link } from 'react-router-dom';
 
 import step from '@bloometry/step';
 import colors from '../theme/colors';
 import isSmall from '../theme/isSmall';
-import borderRadius from '../theme/borderRadius';
 
 import formatJobHeadline from '../helpers/formatJobHeadline';
 
@@ -26,7 +24,6 @@ import Container from './Container';
 import Headline from './Headline';
 import Text from './Text';
 import Markdown from './Markdown';
-import CompanyLogo from './CompanyLogo';
 import Footer from './Footer';
 import CompanyLogoWithBorder from './CompanyLogoWithBorder';
 
@@ -100,7 +97,6 @@ class Job extends Component {
       company: {
         name,
         displayImage,
-        slug,
       },
     } = this.job();
 

@@ -168,7 +168,7 @@ const styles = {
   container: {
     display: 'flex',
     width: '100%',
-    backgroundColor: colors.lightLightBlack,
+    backgroundColor: '#E5D3D1',
     borderRadius,
     boxSizing: 'border-box',
     backgroundSize: 'cover',
