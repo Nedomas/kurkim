@@ -136,7 +136,7 @@ const LandingCardsQuery = gql`
     }
 
     allJobs(
-      orderBy: createdAt_DESC
+      orderBy: activeFrom_DESC
       filter: {
         activeUntil_gte: $today,
         isPublished: $isPublished,

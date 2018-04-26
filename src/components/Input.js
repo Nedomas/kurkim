@@ -37,6 +37,7 @@ const styles = {
     width: '100%',
 
     ':focus': {
+      boxShadow: 0,
       border: borders.yellow,
     },
   },
