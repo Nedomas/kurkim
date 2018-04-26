@@ -17,7 +17,7 @@ class Input extends Component {
       hideError,
     } = this.props;
 
-    return <Container {...this.props.input} pad={1} component='input' {...this.props} style={[
+    return <Container {...this.props.input} pad={1.2} component='input' {...this.props} style={[
         styles.input,
         this.props.style,
         !hideError && touched && error && styles.error
@@ -30,8 +30,9 @@ const styles = {
   input: {
     backgroundColor: colors.halfWhite,
     outline: 0,
-    border: borders.halfWhite,
+    border: '1px solid transparent',
     borderRadius,
+    boxShadow: 0,
     boxSizing: 'border-box',
     width: '100%',
 
