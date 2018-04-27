@@ -8,6 +8,7 @@ import LazyLoad from 'react-lazyload';
 import JobCard from './JobCard';
 import SubscribeCard from './SubscribeCard';
 import BlogPostCard from './BlogPostCard';
+import EventCard from './EventCard';
 
 class Card extends Component {
   constructor(props) {
@@ -61,6 +62,7 @@ class Card extends Component {
       job: JobCard,
       subscribe: SubscribeCard,
       blogPost: BlogPostCard,
+      event: EventCard,
     };
 
     const TagName = CARD_MAPPINGS[type];

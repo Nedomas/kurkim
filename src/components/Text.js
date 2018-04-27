@@ -22,6 +22,7 @@ class Text extends Component {
       style,
       flowerful,
       children,
+      block,
     } = this.props;
 
     return (
@@ -39,6 +40,7 @@ class Text extends Component {
           uppercase && { textTransform: 'uppercase' },
           color && { color },
           flowerful && customStyles.flowerful,
+          block && { display: 'block' },
           style,
         ]}
       >

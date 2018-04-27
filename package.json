@@ -47,6 +47,7 @@
     "redux": "^3.7.2",
     "redux-form": "^7.2.1",
     "redux-thunk": "^2.2.0",
+    "twix": "^1.2.1",
     "uuid": "^3.2.1"
   },
   "scripts": {

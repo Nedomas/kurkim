@@ -38,6 +38,16 @@ class LandingCards extends Component {
     return this.addType(allBlogPosts, 'blogPost');
   }
 
+  events() {
+    const {
+      data: {
+        allEvents,
+      },
+    } = this.props;
+
+    return this.addType(allEvents, 'event');
+  }
+
   subscribes() {
     return [{ id: 'subscribe', type: 'subscribe' }];
   }
@@ -47,6 +57,7 @@ class LandingCards extends Component {
       _.flatten(
         _.zip(
           this.jobs(),
+          _.times(1, _.constant(null)).concat(this.events()),
           _.times(2, _.constant(null)).concat(this.subscribes()),
           _.times(3, _.constant(null)).concat(this.blogPosts()),
         )
@@ -107,6 +118,39 @@ const LandingCardsQuery = gql`
       }
     }
 
+    allEvents(filter: {
+      isPublished: $isPublished,
+    },
+    orderBy: publishedAt_DESC) {
+      id
+      headline
+      publishedAt
+      rsvpLink
+      startTime
+      endTime
+
+      cities {
+        id
+        name
+      }
+
+      displayImage {
+        handle
+      }
+
+      company {
+        name
+        slug
+        logo {
+          handle
+        }
+        logoBackgroundColor
+        displayImage {
+          handle
+        }
+      }
+    }
+
     allBlogPosts(filter: {
       isPublished: $isPublished,
     },
@@ -148,6 +192,7 @@ const LandingCardsQuery = gql`
       slug
 
       cities {
+        id
         name
       }
 
