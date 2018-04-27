@@ -10,7 +10,6 @@ import twix from 'twix';
 import step from '@bloometry/step';
 import Headline from './Headline';
 import Text from './Text';
-import CompanyLogo from './CompanyLogo';
 import Container from './Container';
 
 import formatJobHeadline from '../helpers/formatJobHeadline';
@@ -27,14 +26,10 @@ class EventCard extends Component {
       data: {
         headline,
         cities,
-        company,
         displayImage,
         rsvpLink,
         startTime,
         endTime,
-        company: {
-          name,
-        },
       },
       hover,
       height,
@@ -125,19 +120,6 @@ const styles = {
     justifyContent: 'space-between',
     color: colors.white,
     padding: step(),
-  },
-  company: {
-    container: {
-      display: 'flex',
-      alignItems: 'center',
-    },
-    logo: {
-      marginBottom: 0,
-      paddingBottom: 0,
-    },
-    name: {
-      paddingLeft: step(),
-    },
   },
   last: {
     container: {

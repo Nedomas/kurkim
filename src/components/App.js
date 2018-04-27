@@ -13,6 +13,7 @@ import CreativesSignup from './CreativesSignup';
 import About from './About';
 
 import Job from './Job';
+import Events from './Events';
 import Blog from './Blog';
 import BlogPost from './BlogPost';
 import Company from './Company';
@@ -47,6 +48,7 @@ class App extends Component {
         <Route path='/' exact component={Landing} />
         <Route path='/miestai/:city' exact component={Landing} />
         <Route path='/t' exact component={Blog} />
+        <Route path='/e' exact component={Events} />
         <Route path='/t/:slug' exact component={BlogPost} />
         <Route path='/i/:slug' exact component={Company} />
         <Route path='/i/:companySlug/:jobSlug' exact component={Job} />

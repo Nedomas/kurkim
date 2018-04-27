@@ -92,6 +92,9 @@ class Navbar extends Component {
           <Text level={3} padBottom component={Link} to='/apie-kurkim' style={[styles.hamburger.link, dark && styles.dark.hamburger.link]}>
             Apie Kurkim
           </Text>
+          <Text level={3} padBottom component={Link} to='/e' style={[styles.hamburger.link, dark && styles.dark.hamburger.link]}>
+            Renginiai
+          </Text>
           <Text level={3} padBottom component={Link} to='/t' style={[styles.hamburger.link, dark && styles.dark.hamburger.link]}>
             Žurnalas
           </Text>

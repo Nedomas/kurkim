@@ -35,7 +35,7 @@ const styles = {
     boxShadow: 0,
     boxSizing: 'border-box',
     width: '100%',
-    webkitAppearance: 'none',
+    WebkitAppearance: 'none',
 
     ':focus': {
       border: borders.yellow,

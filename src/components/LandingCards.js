@@ -74,13 +74,20 @@ class LandingCards extends Component {
           city,
         },
       },
+      eventsOnly,
     } = this.props;
 
-    if (!city) return all;
+    if (city) {
+      return _.filter(all, (card) => {
+        return _.some(card.cities, { name: city }) && card.type === 'job';
+      });
+    }
 
-    return _.filter(all, (job) => {
-      return _.some(job.cities, { name: city });
-    });
+    if (eventsOnly) {
+      return _.filter(all, { type: 'event' });
+    }
+
+    return all;
   }
 
   render() {
@@ -136,18 +143,6 @@ const LandingCardsQuery = gql`
 
       displayImage {
         handle
-      }
-
-      company {
-        name
-        slug
-        logo {
-          handle
-        }
-        logoBackgroundColor
-        displayImage {
-          handle
-        }
       }
     }
 

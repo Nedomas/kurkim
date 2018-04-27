@@ -24,7 +24,7 @@ class Filters extends Component {
   }
 
   isAll() {
-    return !this.activeCityName();
+    return !this.activeCityName() && !this.props.eventsOnly;
   }
 
   activeCityName() {
@@ -42,12 +42,17 @@ class Filters extends Component {
   render() {
     const {
       cities,
+      eventsOnly,
     } = this.props;
 
     return (
       <Container padBottom={2} style={styles.container}>
         <Button component={Link} to='/' active={this.isAll()} tiny transparent style={styles.button.container}>
           Visi
+        </Button>
+
+        <Button component={Link} to='/e' active={eventsOnly} tiny transparent style={styles.button.container}>
+          Renginiai
         </Button>
 
         <Dropdown>
