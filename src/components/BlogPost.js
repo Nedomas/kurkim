@@ -115,6 +115,7 @@ export const BlogPostQuery = gql`
       content
       teaser
       timeToRead
+      publishedAt
 
       ogTitle
       ogDescription
