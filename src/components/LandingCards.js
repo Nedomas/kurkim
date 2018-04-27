@@ -59,7 +59,7 @@ class LandingCards extends Component {
           _.times(1, _.constant(null)).concat(this.events()),
           _.times(3, _.constant(null)).concat(this.blogPosts()),
           this.jobs(),
-          _.times(2, _.constant(null)).concat(this.subscribes()),
+          _.times(10, _.constant(null)).concat(this.subscribes()),
         )
       )
     );
