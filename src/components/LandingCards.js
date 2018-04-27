@@ -56,10 +56,10 @@ class LandingCards extends Component {
     const result = _.compact(
       _.flatten(
         _.zip(
-          this.jobs(),
           _.times(1, _.constant(null)).concat(this.events()),
-          _.times(2, _.constant(null)).concat(this.subscribes()),
           _.times(3, _.constant(null)).concat(this.blogPosts()),
+          this.jobs(),
+          _.times(2, _.constant(null)).concat(this.subscribes()),
         )
       )
     );

@@ -69,7 +69,7 @@ class BlogPostCard extends Component {
             <div style={styles.teaser.container}>
               <BlogPostMeta blogPost={data} padBottom={0} color={colors.white} />
               <Headline level={4}>
-                {_.truncate(cardTeaser, { length: 100, separator: /,? +/ })}
+                {_.truncate(cardTeaser, { length: 90, separator: /,? +/ })}
               </Headline>
 
               <BlogPostAuthor author={author} light tiny />
@@ -104,7 +104,7 @@ const styles = {
   gradientContainer: {
     position: 'absolute',
     width: '100%',
-    background: `linear-gradient(${colors.black}, ${colors.tintBlack}, ${colors.black})`,
+    background: `linear-gradient(${colors.black}, ${colors.almostBlack}, ${colors.black})`,
     opacity: 0.7,
     borderRadius,
   },
