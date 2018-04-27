@@ -4,6 +4,7 @@ import windowSize from 'react-window-size';
 import { compose } from 'redux';
 
 import imageUrl from '../../theme/imageUrl';
+import Text from '../Text';
 
 class MarkdownRendererImage extends Component {
   isGraphCmsImage() {
@@ -21,12 +22,23 @@ class MarkdownRendererImage extends Component {
   }
 
   render() {
-    return <img alt='' {...this.props} src={this.src()} style={styles.container} />;
+    const {
+      alt,
+    } = this.props;
+
+    return (
+      <div style={styles.container}>
+        <img alt={alt} {...this.props} src={this.src()} style={styles.img} />
+        <Text grey>
+          {alt}
+        </Text>
+      </div>
+    );
   }
 }
 
 const styles = {
-  container: {
+  img: {
     width: '100%',
   },
 };
