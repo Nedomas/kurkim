@@ -59,7 +59,7 @@ class About extends Component {
           </Container>
         </Container>
 
-        <Footer {...this.props} />
+        <Footer {...this.props} marginTop={10} />
         <div dangerouslySetInnerHTML={{
           __html: facebookMessengerSource,
         }}/>

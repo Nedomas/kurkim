@@ -13,6 +13,7 @@ import Container from './Container';
 import Text from './Text';
 import BlogPostList from './BlogPostList';
 import Markdown from './Markdown';
+import SubscribeBlock from './SubscribeBlock';
 
 class Landing extends Component {
   render() {
@@ -37,6 +38,7 @@ class Landing extends Component {
             <Markdown center source={_.get(data, 'shareVisual.content')} />
           </Text>
         </Container>
+        <SubscribeBlock />
         <Footer {...this.props} />
       </div>
     );

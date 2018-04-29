@@ -15,6 +15,7 @@ import Headline from './Headline';
 import Markdown from './Markdown';
 import Text from './Text';
 import FullScreenLoading from './FullScreenLoading';
+import SubscribeBlock from './SubscribeBlock';
 
 import step from '@bloometry/step';
 import colors from '../theme/colors';
@@ -80,6 +81,7 @@ class BlogPost extends Component {
           </Container>
         </Container>
 
+        <SubscribeBlock />
         <Footer {...this.props} />
       </div>
     );

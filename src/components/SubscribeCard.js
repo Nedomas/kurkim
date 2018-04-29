@@ -75,6 +75,7 @@ class SubscribeCard extends Component {
   render() {
     const {
       height,
+      width,
       handleSubmit,
       data,
     } = this.props;
@@ -92,7 +93,7 @@ class SubscribeCard extends Component {
           styles.container,
           {
             height: `${height}px`,
-            backgroundImage: `url('${imageUrl({ handle: 'Pqfe42oQuS2XbSJFG1gr' }, { height })}')`,
+            backgroundImage: `url('${imageUrl({ handle: 'Pqfe42oQuS2XbSJFG1gr' }, { height, width })}')`,
           },
         ]}
       >

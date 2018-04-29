@@ -172,7 +172,7 @@ class Job extends Component {
           </div>
         </Container>
 
-        <Footer {...this.props} />
+        <Footer {...this.props} marginTop={8} />
       </div>
     );
   }

@@ -17,7 +17,7 @@ const Link = Radium(RouterLink);
 class Footer extends Component {
   render() {
     return (
-      <Container style={styles.container}>
+      <Container style={styles.container} {...this.props}>
         <Container pad padTop={isSmall(this) && 5} padBottom={isSmall(this) && 10} style={[styles.innerContainer, isSmall(this) && styles.small.innerContainer]}>
           <Logo dark {...this.props} style={styles.logo} />
           <div style={[styles.linksContainer, isSmall(this) && styles.small.linksContainer]}>
@@ -42,7 +42,7 @@ class Footer extends Component {
 
 const styles = {
   container: {
-    margin: `${step(6)} 0 0`,
+    // margin: `${step(6)} 0 0`,
     backgroundColor: colors.lightLightBlack,
   },
   innerContainer: {

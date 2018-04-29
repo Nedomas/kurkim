@@ -85,7 +85,7 @@ class Company extends Component {
           <CardsGrid cards={this.jobs()} />
         </Container>
 
-        <Footer {...this.props} />
+        <Footer {...this.props} marginTop={8} />
       </div>
     );
   }

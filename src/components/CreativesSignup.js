@@ -41,7 +41,7 @@ class CreativesSignup extends Component {
           </Container>
         </Container>
 
-        <Footer {...this.props} />
+        <Footer {...this.props} marginTop={7} />
       </div>
     );
   }

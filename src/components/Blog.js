@@ -19,7 +19,7 @@ class Blog extends Component {
           <Markdown center source={_.get(this.props.data, 'blog.content')} />
         </Container>
         <BlogPostList {...this.props} />
-        <Footer {...this.props} />
+        <Footer {...this.props} marginTop={8} />
       </div>
     );
   }
