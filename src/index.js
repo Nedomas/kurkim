@@ -7,6 +7,7 @@ import { ApolloProvider } from 'react-apollo';
 import { ApolloClient } from 'apollo-client';
 import { BatchHttpLink } from "apollo-link-batch-http";
 import { InMemoryCache } from 'apollo-cache-inmemory';
+import ScrollToTop from 'react-router-scroll-top';
 
 import store, { history } from './store';
 import App from './components/App';
@@ -28,7 +29,9 @@ ReactDOM.render(
   <Provider store={store}>
     <ApolloProvider client={client} key='apolloProvider'>
       <ConnectedRouter history={history}>
-        <App />
+        <ScrollToTop>
+          <App />
+        </ScrollToTop>
       </ConnectedRouter>
     </ApolloProvider>
   </Provider>
