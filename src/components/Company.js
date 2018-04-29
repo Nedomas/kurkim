@@ -67,14 +67,14 @@ class Company extends Component {
           <Container style={styles.meta.container} padBottom>
             <Cities cities={_.flatMap(this.jobs(), 'cities')} />
 
-            <Text level={2} padLeft>
+            {aboutUrl && <Text level={2} padLeft>
               <a href={aboutUrl} target='_blank' style={styles.meta.link.container}>
                 <Icon type='link' tiny />
                 <span style={styles.meta.link.text}>
                   {extractDomain(aboutUrl)}
                 </span>
               </a>
-            </Text>
+            </Text>}
           </Container>
           <Text level={3} padTop padBottom justify>
             <Markdown source={description} />
