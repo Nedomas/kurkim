@@ -44,13 +44,13 @@ class Icon extends Component {
     return (
       <Container
         component={TagName}
+        {...this.props}
         style={[
           styles.container,
           medium && styles.medium,
           tiny && styles.tiny,
           style,
         ]}
-        {...this.props}
       />
     );
   }
