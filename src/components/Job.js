@@ -26,6 +26,7 @@ import Text from './Text';
 import Markdown from './Markdown';
 import Footer from './Footer';
 import CompanyLogoWithBorder from './CompanyLogoWithBorder';
+import ScrollToTop from './ScrollToTop';
 
 import maxReadableWidth from '../theme/maxReadableWidth';
 import imageUrl from '../theme/imageUrl';
@@ -102,6 +103,7 @@ class Job extends Component {
 
     return (
       <div>
+        <ScrollToTop />
         <Helmet>
           <title>
             {formatJobHeadline(headline)} @ {name}

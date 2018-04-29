@@ -9,11 +9,13 @@ import Container from './Container';
 import Footer from './Footer';
 import BlogPostList from './BlogPostList';
 import Markdown from './Markdown';
+import ScrollToTop from './ScrollToTop';
 
 class Blog extends Component {
   render() {
     return (
       <div>
+        <ScrollToTop />
         <Navbar dark {...this.props} />
         <Container pad>
           <Markdown center source={_.get(this.props.data, 'blog.content')} />

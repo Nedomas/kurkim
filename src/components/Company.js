@@ -16,6 +16,7 @@ import Markdown from './Markdown';
 import Icon from './Icon';
 import Text from './Text';
 import FullScreenLoading from './FullScreenLoading';
+import ScrollToTop from './ScrollToTop';
 
 import step from '@bloometry/step';
 import colors from '../theme/colors';
@@ -57,6 +58,7 @@ class Company extends Component {
 
     return (
       <div>
+        <ScrollToTop />
         <Navbar dark {...this.props} />
 
         <Container pad readable center>

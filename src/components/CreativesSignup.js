@@ -10,6 +10,7 @@ import Footer from './Footer';
 import Markdown from './Markdown';
 import Text from './Text';
 import FullScreenLoading from './FullScreenLoading';
+import ScrollToTop from './ScrollToTop';
 
 class CreativesSignup extends Component {
   render() {
@@ -31,6 +32,7 @@ class CreativesSignup extends Component {
 
     return (
       <div>
+        <ScrollToTop />
         <Navbar dark {...this.props} />
 
         <Container pad dark middle minWindowHeight>

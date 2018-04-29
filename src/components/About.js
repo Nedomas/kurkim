@@ -10,6 +10,7 @@ import Container from './Container';
 import Footer from './Footer';
 import Markdown from './Markdown';
 import FullScreenLoading from './FullScreenLoading';
+import ScrollToTop from './ScrollToTop';
 
 const facebookMessengerSource = `
   <!-- Load Facebook SDK for JavaScript -->
@@ -61,6 +62,7 @@ class About extends Component {
 
     return (
       <div>
+        <ScrollToTop />
         <Navbar dark {...this.props} />
 
         <Container pad dark middle>

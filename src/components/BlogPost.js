@@ -16,6 +16,7 @@ import Markdown from './Markdown';
 import Text from './Text';
 import FullScreenLoading from './FullScreenLoading';
 import SubscribeBlock from './SubscribeBlock';
+import ScrollToTop from './ScrollToTop';
 
 import step from '@bloometry/step';
 import colors from '../theme/colors';
@@ -52,6 +53,7 @@ class BlogPost extends Component {
 
     return (
       <div>
+        <ScrollToTop />
         <Helmet>
           <title>
             {ogTitle || headline}
