@@ -4,7 +4,10 @@ import gql from 'graphql-tag';
 import { compose } from 'redux';
 import Radium from 'radium';
 
+import step from '@bloometry/step';
+
 import Navbar from './Navbar';
+import Icon from './Icon';
 import Container from './Container';
 import Footer from './Footer';
 import Markdown from './Markdown';
@@ -43,8 +46,17 @@ class About extends Component {
 
     const {
       data: {
-        CustomText: {
+        about: {
           content,
+        },
+        social: {
+          content: socialContent,
+        },
+        facebook: {
+          content: facebook,
+        },
+        instagram: {
+          content: instagram,
         },
       },
     } = this.props;
@@ -59,6 +71,20 @@ class About extends Component {
           </Container>
         </Container>
 
+        <Container limited center style={styles.social.container}>
+          <Container>
+            <Markdown source={socialContent} />
+          </Container>
+          <Container>
+            <a href={facebook} target='_black'>
+              <Icon type='facebook' medium pad={0.5} />
+            </a>
+            <a href={instagram} target='_black'>
+              <Icon type='instagram' medium pad={0.5} />
+            </a>
+          </Container>
+        </Container>
+
         <Footer {...this.props} marginTop={10} />
         <div dangerouslySetInnerHTML={{
           __html: facebookMessengerSource,
@@ -68,9 +94,26 @@ class About extends Component {
   }
 }
 
+const styles = {
+  social: {
+    container: {
+      textAlign: 'center',
+    },
+  },
+};
+
 const AboutQuery = gql`
   query AboutQuery {
-    CustomText(slug: "about") {
+    about: CustomText(slug: "about") {
+      content
+    }
+    social: CustomText(slug: "about-social") {
+      content
+    }
+    facebook: CustomText(slug: "facebook") {
+      content
+    }
+    instagram: CustomText(slug: "instagram") {
       content
     }
   }
