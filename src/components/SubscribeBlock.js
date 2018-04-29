@@ -87,7 +87,8 @@ class SubscribeBlock extends Component {
           ]}
         >
           <Container
-            pad={6}
+            padTop={6}
+            padBottom={2}
             style={[
               styles.contentContainer,
               isSmall(this) && styles.small.contentContainer,
