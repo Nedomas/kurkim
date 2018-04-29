@@ -31,7 +31,7 @@ class BlogPostCard extends Component {
       data,
       data: {
         headline,
-        cardTeaser,
+        teaser,
         displayImage,
         author,
       },
@@ -69,7 +69,7 @@ class BlogPostCard extends Component {
             <div style={styles.teaser.container}>
               <BlogPostMeta blogPost={data} padBottom={0} color={colors.white} />
               <Headline level={4}>
-                {_.truncate(cardTeaser, { length: 90, separator: /,? +/ })}
+                {_.truncate(teaser, { length: 90, separator: /,? +/ })}
               </Headline>
 
               <BlogPostAuthor author={author} light tiny />

@@ -153,7 +153,7 @@ const LandingCardsQuery = gql`
       id
       slug
       headline
-      cardTeaser
+      teaser
       publishedAt
       createdAt
       timeToRead
