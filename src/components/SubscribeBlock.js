@@ -96,11 +96,11 @@ class SubscribeBlock extends Component {
             readable
             center
           >
-            <Container style={styles.textContainer}>
+            <Container style={styles.textContainer} pad>
               <Markdown color={colors.white} source={_.get(data, 'subscribeBlock.content')} />
             </Container>
 
-            {!success && <Container style={styles.form}>
+            {!success && <Container style={styles.form} pad>
               <form onSubmit={handleSubmit((values) => this.handleSubmit(values))}>
                 <Style scopeSelector='.subscribe-block-input::-webkit-input-placeholder' rules={styles.placeholder} />
                 <Field className='subscribe-block-input' style={styles.input} marginBottom={0.5} component={Input} placeholder='Vardas' name='firstName' type='text' />
