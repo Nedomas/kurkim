@@ -4,8 +4,6 @@ import gql from 'graphql-tag';
 import { compose } from 'redux';
 import Radium from 'radium';
 
-import step from '@bloometry/step';
-
 import Navbar from './Navbar';
 import Icon from './Icon';
 import Container from './Container';

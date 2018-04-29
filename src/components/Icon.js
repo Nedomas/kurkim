@@ -36,7 +36,6 @@ class Icon extends Component {
       medium,
       tiny,
       style,
-      pad,
     } = this.props;
 
     const TagName = Radium(TYPES[type]);
