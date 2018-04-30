@@ -111,7 +111,7 @@ class SubscribeBlock extends Component {
                 </Button>
               </form>
             </Container>}
-            {success && <Container>
+            {success && <Container pad>
               <Text center padBottom={2} color={colors.white}>
                 Tu sėkmingai užsiprenumeravai Kurkim naujienlaiškį! Pasimatysim tavo el. pašto dėžutėje netrukus.
               </Text>
@@ -223,11 +223,11 @@ const styles = {
   },
   form: {
     // maxWidth: '400px',
-    width: '100%',
+    // width: '100%',
   },
   textContainer: {
     // maxWidth: '400px',
-    width: '100%',
+    // width: '100%',
     display: 'flex',
     flexDirection: 'column',
     // justifyContent: 'center',
