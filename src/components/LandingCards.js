@@ -127,6 +127,7 @@ const LandingCardsQuery = gql`
 
     allEvents(filter: {
       isPublished: $isPublished,
+      endTime_gte: $today,
     },
     orderBy: publishedAt_DESC) {
       id
